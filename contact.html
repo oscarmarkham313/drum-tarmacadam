@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Free Quote | Munster Pave &amp; Drive</title>
+  <meta name="description" content="Get a free, no-obligation quote for your tarmac or driveway project. Serving Limerick, Clare, Kerry, Cork and Tipperary. We respond within 24 hours.">
+  <meta name="keywords" content="free driveway quote Limerick, tarmac quote Munster, contact Munster Pave Drive, driveway quote Clare Kerry Cork Tipperary">
+  <meta property="og:title" content="Get a Free Quote | Munster Pave &amp; Drive">
+  <meta property="og:description" content="Free, no-obligation quotes for tarmac, resin and block paving driveways across Munster. We respond within 24 hours.">
+  <meta property="og:image" content="https://media.base44.com/images/public/69faf5ed7b379273801e0b6d/5d08894d4_logo.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+  <div class="container">
+    <span class="top-bar-left"><i class="fas fa-map-marker-alt"></i> Serving Limerick | Clare | Kerry | Cork | Tipperary</span>
+    <div class="top-bar-right">
+      <a href="tel:0874585218"><i class="fas fa-phone"></i> 087 458 5218</a>
+      <a href="mailto:info@munsterpaveanddrive.ie"><i class="fas fa-envelope"></i> info@munsterpaveanddrive.ie</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="https://media.base44.com/images/public/69faf5ed7b379273801e0b6d/5d08894d4_logo.png" alt="Munster Pave &amp; Drive Logo" height="60"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html" class="nav-cta">Get Free Quote</a>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="mob-cta">Get Free Quote</a>
+  </div>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Contact</span>
+      </div>
+      <h1>Get Your <span>Free Quote</span></h1>
+      <p>Fill in the form below and we'll get back to you within 24 hours with a detailed, no-obligation quote.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: FORM -->
+      <div class="form-wrapper reveal">
+        <h2>Request a Free Quote</h2>
+        <p>Tell us about your project and we'll provide a detailed, transparent quote. No pressure, no obligation — just honest advice.</p>
+
+        <form id="quote-form" action="https://formspree.io/f/info@munsterpaveanddrive.ie" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" placeholder="e.g. John Murphy" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 087 123 4567" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="county">County / Area <span class="req">*</span></label>
+              <select id="county" name="county" required>
+                <option value="" disabled selected>Select your county</option>
+                <option value="Limerick">Limerick</option>
+                <option value="Clare">Clare</option>
+                <option value="Kerry">Kerry</option>
+                <option value="Cork">Cork</option>
+                <option value="Tipperary">Tipperary</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Required <span class="req">*</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="Tarmac Driveway">Tarmac Driveway</option>
+                <option value="Resin Driveway">Resin Driveway</option>
+                <option value="Block Paving">Block Paving</option>
+                <option value="Tarmac Resurfacing">Tarmac Resurfacing</option>
+                <option value="Groundworks">Groundworks</option>
+                <option value="Commercial">Commercial Tarmac</option>
+                <option value="Other">Other / Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="size">Approximate Size</label>
+            <select id="size" name="size">
+              <option value="" disabled selected>Select approximate size</option>
+              <option value="Small (under 30m²)">Small — under 30m²</option>
+              <option value="Medium (30–60m²)">Medium — 30 to 60m²</option>
+              <option value="Large (60–100m²)">Large — 60 to 100m²</option>
+              <option value="Very Large (100m²+)">Very Large — 100m² or more</option>
+              <option value="Not Sure">Not Sure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message / Additional Details</label>
+            <textarea id="message" name="message" placeholder="Tell us anything else about your project — existing surface, access, special requirements, timeline, etc."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send My Quote Request
+          </button>
+        </form>
+
+        <p class="form-note">Or email us directly: <a href="mailto:info@munsterpaveanddrive.ie">info@munsterpaveanddrive.ie</a></p>
+      </div>
+
+      <!-- RIGHT: CONTACT INFO -->
+      <div class="info-col">
+
+        <div class="info-card reveal reveal-d1">
+          <div class="info-card-head">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <h4>Phone</h4>
+          </div>
+          <div class="main"><a href="tel:0874585218">087 458 5218</a></div>
+          <div class="sub">Call or text any time, Mon–Sat 8am–6pm</div>
+          <a href="tel:0874585218" class="btn btn-orange" style="font-size:13px;padding:11px 20px;"><i class="fas fa-phone"></i> Call Now</a>
+        </div>
+
+        <div class="info-card reveal reveal-d2">
+          <div class="info-card-head">
+            <div class="info-icon green"><i class="fab fa-whatsapp"></i></div>
+            <h4>WhatsApp</h4>
+          </div>
+          <div class="main"><a href="https://wa.me/353874585218?text=Hi%20Munster%20Pave%20%26%20Drive%2C%20I%27d%20like%20a%20free%20quote">087 458 5218</a></div>
+          <div class="sub">Message us on WhatsApp for a fast response</div>
+          <a href="https://wa.me/353874585218?text=Hi%20Munster%20Pave%20%26%20Drive%2C%20I%27d%20like%20a%20free%20quote" class="wa-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+
+        <div class="info-card reveal reveal-d3">
+          <div class="info-card-head">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <h4>Email</h4>
+          </div>
+          <div class="main" style="font-size:15px;"><a href="mailto:info@munsterpaveanddrive.ie">info@munsterpaveanddrive.ie</a></div>
+          <div class="sub">We reply to all emails within 24 hours</div>
+          <a href="mailto:info@munsterpaveanddrive.ie" class="btn btn-outline-orange" style="font-size:13px;padding:11px 20px;"><i class="fas fa-envelope"></i> Send Email</a>
+        </div>
+
+        <div class="info-card reveal reveal-d4">
+          <div class="info-card-head">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h4>Areas Covered</h4>
+          </div>
+          <div class="main" style="font-size:14px;line-height:1.6;font-weight:700;color:#555;">Limerick | Clare | Kerry<br>Cork | Tipperary</div>
+          <div class="sub">We cover all of Munster and surrounding areas</div>
+        </div>
+
+        <div class="resp-note reveal">
+          <i class="fas fa-clock"></i>
+          <span>We typically respond to all quote requests <strong>within 24 hours</strong>. Most calls answered same day.</span>
+        </div>
+
+      </div><!-- /info-col -->
+
+    </div><!-- /contact-grid -->
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="orange-bar"></div>
+      <p class="section-subtitle">Everything you need to know before getting started. Can't find your answer? Give us a call.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>How long does a tarmac driveway last?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">A properly laid tarmac driveway can last 15–25 years with minimal maintenance. The key is proper sub-base preparation and quality materials — both of which we take very seriously on every job. Regular sealing every 5–7 years will extend the life even further.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>Do you offer free quotes?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">Yes, absolutely. All quotes from Munster Pave &amp; Drive are completely free, detailed and come with no obligation whatsoever. We'll visit your property, assess the job properly and provide a transparent, itemised quote so you know exactly what you're getting.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>How long does it take to lay a driveway?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">Most residential tarmac driveways are completed in 1–2 days depending on size and complexity. Block paving and resin driveways may take slightly longer due to the nature of the materials. We'll give you a clear timeline before we start and stick to it.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>Do I need planning permission for a new driveway?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">In most cases, no planning permission is required for a standard residential driveway in Ireland. However, if your property is in a protected structure area or if you're creating a new vehicular entrance from a public road, permission may be needed. Resin and permeable surfaces are generally the safest choice from a planning perspective. We can advise on this during your free quote visit.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>What areas do you cover?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">We cover all of Limerick, Clare, Kerry, Cork and Tipperary, plus surrounding areas. We regularly travel throughout Munster and have completed jobs as far as Waterford and Galway. If you're not sure whether we cover your area, just give us a call or send us a message — we're happy to travel for the right job.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>How soon can you start?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">We typically have availability within 2–4 weeks of a confirmed booking. During busier periods (spring and summer) lead times can be slightly longer. We always aim to be as flexible as possible and will work around your schedule where we can. Contact us today to check current availability.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>Is tarmac or resin better for my driveway?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">Both are excellent options and the right choice depends on your budget, aesthetic preference and any planning requirements. Tarmac is more cost-effective, quick to install and very durable — perfect for most homes. Resin offers more decorative options, is fully permeable and looks premium — ideal for those who want a standout finish. We'll help you choose the best option for your specific situation during your free quote.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">
+          <h4>Are you fully insured?</h4>
+          <div class="faq-ico"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-ans">
+          <div class="faq-ans-inner">Yes, we carry full public liability insurance on every job we undertake. We're happy to provide proof of insurance on request. Our insurance covers all works carried out by our teams, giving you complete peace of mind throughout the entire project.</div>
+        </div>
+      </div>
+
+    </div><!-- /faq-list -->
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="https://media.base44.com/images/public/69faf5ed7b379273801e0b6d/5d08894d4_logo.png" alt="Munster Pave &amp; Drive" class="footer-logo">
+        <p>Munster's trusted tarmac and driveway specialists since 2009. Fully insured, fully committed to quality on every single job.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <div class="footer-links">
+          <a href="services.html">Tarmac Driveways</a>
+          <a href="services.html">Resin Driveways</a>
+          <a href="services.html">Block Paving</a>
+          <a href="services.html">Tarmac Resurfacing</a>
+          <a href="services.html">Groundworks</a>
+          <a href="services.html">Commercial Tarmac</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-ci"><i class="fas fa-map-marker-alt"></i><span>Limerick, Ireland</span></div>
+        <div class="footer-ci"><i class="fas fa-phone"></i><a href="tel:0874585218">087 458 5218</a></div>
+        <div class="footer-ci"><i class="fas fa-envelope"></i><a href="mailto:info@munsterpaveanddrive.ie">info@munsterpaveanddrive.ie</a></div>
+        <div class="footer-ci"><i class="fab fa-whatsapp"></i><a href="https://wa.me/353874585218?text=Hi%20Munster%20Pave%20%26%20Drive%2C%20I%27d%20like%20a%20free%20quote">WhatsApp Us</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <span>© 2025 Munster Pave &amp; Drive. All Rights Reserved.</span>
+        <span>Serving Limerick, Clare, Kerry, Cork &amp; Tipperary</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING BUTTONS ===== -->
+<div class="floating-btns">
+  <a href="tel:0874585218" class="float-btn call-btn" aria-label="Call us">
+    <i class="fas fa-phone"></i>
+    <span class="tip">Call Us Now</span>
+  </a>
+  <a href="https://wa.me/353874585218?text=Hi%20Munster%20Pave%20%26%20Drive%2C%20I%27d%20like%20a%20free%20quote" class="float-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tip">Chat with us on WhatsApp</span>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
