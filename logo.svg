@@ -1,0 +1,32 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480">
+  <defs>
+    <linearGradient id="silvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#9AAAC8"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#42A5F5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- D letterform (silver/white) -->
+  <path d="M60,60 L60,280 L160,280 Q270,280 270,170 Q270,60 160,60 Z M105,100 L158,100 Q225,100 225,170 Q225,240 158,240 L105,240 Z" fill="url(#silvGrad)"/>
+
+  <!-- G letterform (blue) with upward growth arrow -->
+  <!-- G body: open C shape -->
+  <path d="M420,100 Q310,60 280,130 Q250,200 310,240 L350,240 L350,200 L315,200 Q285,185 290,150 Q295,110 360,105" fill="none" stroke="url(#blueGrad)" stroke-width="36" stroke-linecap="round"/>
+  <!-- Horizontal G bar -->
+  <line x1="350" y1="175" x2="420" y2="175" stroke="url(#blueGrad)" stroke-width="36" stroke-linecap="round"/>
+  <!-- Arrow shaft going up-right from G -->
+  <line x1="355" y1="175" x2="420" y2="75" stroke="url(#blueGrad)" stroke-width="28" stroke-linecap="round"/>
+  <!-- Arrow head -->
+  <polygon points="420,75 390,95 410,110" fill="#42A5F5"/>
+
+  <!-- DUBLIN text -->
+  <text x="240" y="348" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="72" fill="#FFFFFF" letter-spacing="8">DUBLIN</text>
+  <!-- GROWTH text -->
+  <text x="240" y="408" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="68" fill="url(#blueGrad)" letter-spacing="6">GROWTH</text>
+  <!-- DIGITAL text with dashes -->
+  <text x="240" y="452" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="30" fill="#FFFFFF" letter-spacing="12">&#x2014;DIGITAL&#x2014;</text>
+</svg>

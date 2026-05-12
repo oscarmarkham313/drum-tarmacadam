@@ -16,27 +16,19 @@
 <div id="page-loader" class="page-loader">
   <div class="loader-logo">
     <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="lgLoader" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00FF87"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs>
+      <defs><linearGradient id="lgLoader" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs>
       <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="36" font-weight="600" fill="url(#lgLoader)">DGD</text>
     </svg>
   </div>
   <div class="loader-bar"><div class="loader-fill"></div></div>
 </div>
 
-<!-- Custom Cursor -->
-<div id="cursor-dot" class="cursor-dot"></div>
-<div id="cursor-ring" class="cursor-ring"></div>
+
 
 <!-- Navigation -->
 <nav class="nav">
   <div class="nav__inner">
-    <a href="index.html" class="nav__logo">
-      <svg width="48" height="32" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="lgNav" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00FF87"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs>
-        <text x="4" y="38" font-family="Cormorant Garamond, serif" font-size="40" font-weight="700" fill="url(#lgNav)">DGD</text>
-      </svg>
-      <span class="nav__logo-text">Dublin Growth Digital</span>
-    </a>
+    <a href="index.html" class="nav__logo"><img src="logo.svg" alt="Dublin Growth Digital" class="nav__logo-img" /></a>
     <ul class="nav__links">
       <li><a href="index.html" class="nav__link">Home</a></li>
       <li><a href="services.html" class="nav__link">Services</a></li>
@@ -103,7 +95,7 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC1)" stroke-width="1.5"><defs><linearGradient id="lgC1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00FF87"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC1)" stroke-width="1.5"><defs><linearGradient id="lgC1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
         <span class="service-card__tag">Social Media Management</span>
         <h3>Content That Converts</h3>
         <p>Scroll-stopping content strategies, daily community management, influencer partnerships, and paid social campaigns — all tailored to the Irish market.</p>
@@ -116,7 +108,7 @@
         <a href="services.html" class="btn btn--outline btn--sm">Explore SMM →</a>
       </div>
       <div class="service-card reveal reveal--delay-1">
-        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC2)" stroke-width="1.5"><defs><linearGradient id="lgC2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00FF87"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC2)" stroke-width="1.5"><defs><linearGradient id="lgC2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
         <span class="service-card__tag">Web Design &amp; Development</span>
         <h3>Sites That Sell</h3>
         <p>Luxury, conversion-optimised websites hand-crafted for Irish businesses. From hospitality to professional services — we build digital showrooms, not just websites.</p>
@@ -169,7 +161,14 @@
       <h2>52 Businesses. <em>52 Success Stories.</em></h2>
       <p class="section-sub">Don't take our word for it. Here's what Irish business owners say after working with Dublin Growth Digital.</p>
     </div>
-    <div class="testimonials-masonry">
+    <div class="testi-toggle-wrap" style="text-align:center;margin-bottom:8px">
+  <button id="testi-toggle-btn" class="testi-toggle-btn">
+    <span class="testi-toggle-label">See All 52 Reviews</span>
+    <span class="testi-toggle-icon">↓</span>
+  </button>
+</div>
+<div id="testi-collapsible" class="testi-collapsible">
+<div class="testimonials-masonry">
       <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"DGD completely transformed our Instagram. We went from 400 followers to over 12,000 in four months and our bookings filled up every weekend. Oscar genuinely gets the Dublin market."</p><div class="testi-author"><strong>Aoife Brennan</strong><span>Owner, The Copper Kettle Café, Ranelagh</span></div></div>
       <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Our new website is stunning. We had three separate people ask what agency built it on our opening night. The conversion rate jumped 180% in the first month alone."</p><div class="testi-author"><strong>Ciarán Murphy</strong><span>Founder, Murphy's Fine Jewellers, Grafton Street</span></div></div>
       <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"I was sceptical about social media for a solicitor's firm but the DGD team built us a content strategy that's professional, approachable and has brought in 22 new client enquiries since launch."</p><div class="testi-author"><strong>Niamh O'Sullivan</strong><span>Partner, O'Sullivan &amp; Associates Solicitors, Blackrock</span></div></div>
@@ -222,8 +221,10 @@
       <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"I can honestly say DGD have changed the trajectory of my business. I was stagnant for two years before finding them. Now we're growing 40% year on year. Can't recommend them highly enough."</p><div class="testi-author"><strong>Shane Gleeson</strong><span>Owner, Gleeson Security Systems, Tallaght</span></div></div>
       <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Exceptional communication throughout the entire web project. Every question answered within the hour, every revision done with a smile. The end result is exactly what we envisioned — and better."</p><div class="testi-author"><strong>Tara Malone</strong><span>Co-Founder, Malone &amp; Malone HR Consultancy, Pembroke Road</span></div></div>
     </div>
+</div>
   </div>
 </section>
+</div><!-- /testi-collapsible -->
 
 <!-- CTA Section -->
 <section class="section cta-section">
@@ -243,12 +244,43 @@
   </div>
 </section>
 
+
+<!-- 3 Core Services -->
+<section class="section" style="background:var(--dark-1)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">What We Offer</span>
+      <h2>Three Services. <em>One Goal.</em></h2>
+      <p class="section-sub">Every solution we deliver is built to make your brand impossible to ignore in the Irish market.</p>
+    </div>
+    <div class="services-trio">
+      <div class="service-trio-card reveal">
+        <div class="service-trio-icon">📱</div>
+        <h3>Social Media Management</h3>
+        <p>Full-service content creation, community management, paid social ads, and influencer partnerships — tailored to the Irish market and designed to drive real results.</p>
+        <a href="services.html#smm">Explore SMM →</a>
+      </div>
+      <div class="service-trio-card reveal reveal--delay-1">
+        <div class="service-trio-icon">🖥️</div>
+        <h3>Web Design & Development</h3>
+        <p>Bespoke, conversion-optimised websites with zero templates. Mobile-first, lightning fast, SEO-ready, and built to sell. Your digital showroom, crafted to impress.</p>
+        <a href="services.html#web">Explore Web Design →</a>
+      </div>
+      <div class="service-trio-card reveal reveal--delay-2">
+        <div class="service-trio-icon">🎯</div>
+        <h3>Paid Social Advertising</h3>
+        <p>Meta, TikTok, LinkedIn and Google ad campaigns managed end-to-end. Precision targeting, compelling creatives, and obsessive optimisation — maximising every euro of your ad spend.</p>
+        <a href="services.html#pricing">See Pricing →</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
       <div class="footer__col footer__col--brand">
-        <a href="index.html" class="footer__logo"><svg width="48" height="32" viewBox="0 0 120 48" fill="none"><defs><linearGradient id="lgFoot" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00FF87"/><stop offset="100%" stop-color="#FFD700"/></linearGradient></defs><text x="4" y="38" font-family="Cormorant Garamond, serif" font-size="40" font-weight="700" fill="url(#lgFoot)">DGD</text></svg></a>
+        <a href="index.html" class="footer__logo"><svg width="48" height="32" viewBox="0 0 120 48" fill="none"><defs><linearGradient id="lgFoot" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><text x="4" y="38" font-family="Cormorant Garamond, serif" font-size="40" font-weight="700" fill="url(#lgFoot)">DGD</text></svg></a>
         <p>Ireland's #1 SMMA &amp; Web Design Agency. Based in Dublin. Scaling Irish brands nationwide.</p>
         <a href="https://wa.me/353871257533" class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener">+353 87 125 7533</a>
       </div>
@@ -267,3 +299,6 @@
 <script src="main.js"></script>
 </body>
 </html>
+
+
+
