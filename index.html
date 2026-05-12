@@ -1,304 +1,384 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dublin Growth Digital — Ireland's #1 SMMA & Web Design Agency</title>
-  <meta name="description" content="Dublin Growth Digital helps Irish SMEs dominate social media and the web. Bespoke social media management and luxury web design. Book your free strategy call today." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dublin Growth Digital — Ireland's #1 SMMA & Web Design Agency</title>
+<meta name="description" content="Dublin Growth Digital — bespoke social media management and luxury web design for Irish SMEs. 150+ brands scaled. Book your free strategy call today."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<!-- Page Loader -->
-<div id="page-loader" class="page-loader">
-  <div class="loader-logo">
-    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="lgLoader" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs>
-      <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="36" font-weight="600" fill="url(#lgLoader)">DGD</text>
-    </svg>
-  </div>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
+<div id="page-loader" class="loader">
+  <div class="loader__logo"><img src="logo.svg" alt="Dublin Growth Digital"/></div>
+  <div class="loader__bar"></div>
 </div>
 
-
-
-<!-- Navigation -->
 <nav class="nav">
   <div class="nav__inner">
-    <a href="index.html" class="nav__logo"><img src="logo.svg" alt="Dublin Growth Digital" class="nav__logo-img" /></a>
+    <a href="index.html" class="nav__logo"><img src="logo.svg" alt="Dublin Growth Digital" class="nav__logo-img"/></a>
     <ul class="nav__links">
       <li><a href="index.html" class="nav__link">Home</a></li>
       <li><a href="services.html" class="nav__link">Services</a></li>
       <li><a href="contact.html" class="nav__link">Contact</a></li>
     </ul>
-    <a href="https://wa.me/353871257533" class="btn btn--primary btn--sm nav__cta" target="_blank" rel="noopener">Free Strategy Call</a>
-    <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <a href="https://wa.me/353871257533" class="btn btn--blue btn--sm nav__cta-btn" target="_blank" rel="noopener">Free Strategy Call</a>
+    <button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="nav__drawer">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">Free Strategy Call</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://wa.me/353871257533" target="_blank" rel="noopener">Free Strategy Call</a>
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
-  <canvas id="hero-canvas" class="hero__canvas"></canvas>
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__orb hero__orb--3"></div>
   <div class="hero__content">
-    <span class="label hero__anim">Ireland's #1 Growth Agency</span>
-    <h1 class="hero__anim">We Make Irish Brands <em>Impossible</em> to Ignore</h1>
-    <p class="hero__sub hero__anim">Bespoke social media management &amp; luxury web design that transforms Dublin SMEs into category leaders. No templates. No excuses. Just results.</p>
+    <div class="hero__badge hero__anim">
+      <span class="hero__badge-dot"></span>
+      Ireland's #1 Growth Agency
+    </div>
+    <h1 class="hero__anim">We Don't Just Market<br/>Your Brand. We Make It <em>Unstoppable.</em></h1>
+    <p class="hero__sub hero__anim">Bespoke social media management and luxury web design that transforms Irish SMEs into category leaders. No templates. No excuses. Just results.</p>
     <div class="hero__actions hero__anim">
-      <a href="https://wa.me/353871257533" class="btn btn--primary" target="_blank" rel="noopener">
+      <a href="https://wa.me/353871257533" class="btn btn--blue btn--lg" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Book Free Strategy Call
       </a>
-      <a href="services.html" class="btn btn--outline">Explore Services</a>
+      <a href="services.html" class="btn btn--ghost btn--lg">Explore Services</a>
     </div>
     <div class="hero__trust hero__anim">
-      <div class="hero__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="#00FF87"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>150+ Irish brands scaled</span></div>
-      <div class="hero__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="#00FF87"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Avg 340% engagement lift</span></div>
-      <div class="hero__trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="#00FF87"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>No long-term lock-in</span></div>
+      <span class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>150+ Irish brands scaled</span>
+      <span class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Avg 340% engagement lift</span>
+      <span class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>No lock-in contracts</span>
     </div>
   </div>
-  <div class="hero__scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+  <div class="hero__scroll"><div class="hero__scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- Stats Bar -->
-<section class="stats-bar">
+<section class="stats">
   <div class="container">
-    <div class="stats-bar__grid">
-      <div class="stat-item"><span class="stat-number" data-counter data-target="150" data-suffix="+">0</span><span class="stat-label">Brands Scaled</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number" data-counter data-target="340" data-suffix="%">0</span><span class="stat-label">Avg Engagement Lift</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number" data-counter data-target="4.9" data-suffix="★">0</span><span class="stat-label">Average Rating</span></div>
-      <div class="stat-divider"></div>
-      <div class="stat-item"><span class="stat-number" data-counter data-target="98" data-suffix="%">0</span><span class="stat-label">Client Retention</span></div>
+    <div class="stats__grid">
+      <div class="stats__item"><span class="stats__num" data-counter data-target="150" data-suffix="+">0</span><span class="stats__label">Brands Scaled</span></div>
+      <div class="stats__item"><span class="stats__num" data-counter data-target="340" data-suffix="%">0</span><span class="stats__label">Avg Engagement Lift</span></div>
+      <div class="stats__item"><span class="stats__num" data-counter data-target="4.9" data-suffix="★">0</span><span class="stats__label">Average Rating</span></div>
+      <div class="stats__item"><span class="stats__num" data-counter data-target="98" data-suffix="%">0</span><span class="stats__label">Client Retention</span></div>
     </div>
   </div>
 </section>
 
-<!-- Services Overview -->
-<section class="section services-overview" id="services">
+<section class="section" style="background:var(--dark-2)" id="services">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section__header reveal">
       <span class="label">What We Do</span>
       <h2>Two Disciplines. <em>One Mission.</em></h2>
-      <p class="section-sub">Every service we offer is built around a single obsession: making your business the most visible, most trusted brand in your market.</p>
+      <p class="section__sub">Every service is built around making your business the most visible, trusted brand in your market.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC1)" stroke-width="1.5"><defs><linearGradient id="lgC1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-        <span class="service-card__tag">Social Media Management</span>
+      <div class="svc-card reveal">
+        <div class="svc-card__icon">📱</div>
+        <span class="svc-card__tag">Social Media Management</span>
         <h3>Content That Converts</h3>
-        <p>Scroll-stopping content strategies, daily community management, influencer partnerships, and paid social campaigns — all tailored to the Irish market.</p>
-        <ul class="service-card__list">
+        <p>Scroll-stopping strategies, daily community management, influencer partnerships, and paid social campaigns — all tailored specifically to the Irish market.</p>
+        <ul class="svc-card__list">
           <li>Custom content calendars &amp; strategy</li>
           <li>Platform-native creative production</li>
           <li>Community management &amp; DM sales</li>
           <li>Monthly analytics &amp; growth reports</li>
         </ul>
-        <a href="services.html" class="btn btn--outline btn--sm">Explore SMM →</a>
+        <a href="services.html" class="btn btn--ghost btn--sm">Explore SMM →</a>
       </div>
-      <div class="service-card reveal reveal--delay-1">
-        <div class="service-card__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#lgC2)" stroke-width="1.5"><defs><linearGradient id="lgC2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-        <span class="service-card__tag">Web Design &amp; Development</span>
+      <div class="svc-card reveal reveal--delay-1">
+        <div class="svc-card__icon">🖥️</div>
+        <span class="svc-card__tag">Web Design &amp; Development</span>
         <h3>Sites That Sell</h3>
         <p>Luxury, conversion-optimised websites hand-crafted for Irish businesses. From hospitality to professional services — we build digital showrooms, not just websites.</p>
-        <ul class="service-card__list">
-          <li>Custom bespoke design (no templates)</li>
-          <li>Mobile-first, lightning fast loading</li>
-          <li>SEO-optimised from day one</li>
+        <ul class="svc-card__list">
+          <li>Custom bespoke design — zero templates</li>
+          <li>Mobile-first, sub-2s page speed</li>
+          <li>Technical SEO from day one</li>
           <li>CMS training &amp; ongoing support</li>
         </ul>
-        <a href="services.html" class="btn btn--outline btn--sm">Explore Web Design →</a>
+        <a href="services.html" class="btn btn--ghost btn--sm">Explore Web Design →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Why DGD -->
-<section class="section why-section" id="why">
+<section class="section why" id="why">
   <div class="container">
-    <div class="why-inner">
-      <div class="why-text reveal">
+    <div class="why__inner">
+      <div class="why__text reveal">
         <span class="label">Why Dublin Growth Digital</span>
         <h2>We're Not an Agency. <em>We're Your Growth Partner.</em></h2>
         <p>Most agencies hand you a strategy deck and disappear. We embed ourselves in your brand, obsess over your metrics, and treat every euro you spend like it's our own.</p>
-        <a href="https://wa.me/353871257533" class="btn btn--gold" target="_blank" rel="noopener">Talk to Oscar →</a>
+        <a href="https://wa.me/353871257533" class="btn btn--blue" target="_blank" rel="noopener">Talk to Oscar Directly</a>
       </div>
-      <div class="why-pillars">
-        <div class="pillar-card reveal"><div class="pillar-icon">🎯</div><h4>Irish Market Specialists</h4><p>We know the Irish consumer, the Irish algorithm, and the Irish competitive landscape better than any London or US import.</p></div>
-        <div class="pillar-card reveal reveal--delay-1"><div class="pillar-icon">⚡</div><h4>Speed &amp; Agility</h4><p>Trend cycles wait for no one. Our lean team moves in days, not weeks — pivoting strategy before opportunities close.</p></div>
-        <div class="pillar-card reveal reveal--delay-2"><div class="pillar-icon">📊</div><h4>Data-Driven Creativity</h4><p>Beautiful content backed by brutal analytics. We A/B test everything, optimising for reach, engagement, and real revenue.</p></div>
-        <div class="pillar-card reveal reveal--delay-3"><div class="pillar-icon">🤝</div><h4>Complete Transparency</h4><p>Real-time dashboards, weekly WhatsApp updates, and monthly strategy calls. You'll always know exactly where your investment is going.</p></div>
+      <div class="why__pillars">
+        <div class="pillar reveal"><div class="pillar__icon">🎯</div><h4>Irish Market Specialists</h4><p>We know the Irish consumer, algorithm, and competitive landscape better than any London or US import.</p></div>
+        <div class="pillar reveal reveal--delay-1"><div class="pillar__icon">⚡</div><h4>Speed &amp; Agility</h4><p>Our lean team moves in days, not weeks — pivoting strategy before opportunities close.</p></div>
+        <div class="pillar reveal reveal--delay-2"><div class="pillar__icon">📊</div><h4>Data-Driven Creativity</h4><p>Beautiful content backed by brutal analytics. We A/B test everything, optimising for real revenue.</p></div>
+        <div class="pillar reveal reveal--delay-3"><div class="pillar__icon">🤝</div><h4>Complete Transparency</h4><p>Weekly WhatsApp updates and monthly strategy calls. You always know where your investment is going.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-section">
+<div class="marquee-wrap">
   <div class="marquee-track">
-    <div class="marquee-content">
-      <span>Spar Ireland</span><span class="marquee-dot">✦</span><span>The Clayton Hotel</span><span class="marquee-dot">✦</span><span>KC Peaches</span><span class="marquee-dot">✦</span><span>Dollard &amp; Co</span><span class="marquee-dot">✦</span><span>Bord Bia</span><span class="marquee-dot">✦</span><span>The Woollen Mills</span><span class="marquee-dot">✦</span><span>Arnotts</span><span class="marquee-dot">✦</span><span>Fallon &amp; Byrne</span><span class="marquee-dot">✦</span><span>The National Gallery</span><span class="marquee-dot">✦</span><span>Lemon &amp; Duke</span><span class="marquee-dot">✦</span><span>The Dean Hotel</span><span class="marquee-dot">✦</span><span>Avoca</span><span class="marquee-dot">✦</span><span>Spar Ireland</span><span class="marquee-dot">✦</span><span>The Clayton Hotel</span><span class="marquee-dot">✦</span><span>KC Peaches</span><span class="marquee-dot">✦</span><span>Dollard &amp; Co</span><span class="marquee-dot">✦</span><span>Bord Bia</span><span class="marquee-dot">✦</span><span>The Woollen Mills</span><span class="marquee-dot">✦</span>
+    <div class="marquee-set">
+      <span class="marquee-item">Spar Ireland</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Clayton Hotel</span><span class="marquee-sep"></span>
+      <span class="marquee-item">KC Peaches</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Dollard &amp; Co</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Bord Bia</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Woollen Mills</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Arnotts</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Fallon &amp; Byrne</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The National Gallery</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Lemon &amp; Duke</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Dean Hotel</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Avoca</span><span class="marquee-sep"></span>
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      <span class="marquee-item">Spar Ireland</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Clayton Hotel</span><span class="marquee-sep"></span>
+      <span class="marquee-item">KC Peaches</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Dollard &amp; Co</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Bord Bia</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Woollen Mills</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Arnotts</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Fallon &amp; Byrne</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The National Gallery</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Lemon &amp; Duke</span><span class="marquee-sep"></span>
+      <span class="marquee-item">The Dean Hotel</span><span class="marquee-sep"></span>
+      <span class="marquee-item">Avoca</span><span class="marquee-sep"></span>
     </div>
   </div>
 </div>
 
-<!-- Testimonials -->
-<section class="section testimonials-section" id="testimonials">
+<section class="section testi-section" id="reviews">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section__header reveal">
       <span class="label">Client Proof</span>
       <h2>52 Businesses. <em>52 Success Stories.</em></h2>
-      <p class="section-sub">Don't take our word for it. Here's what Irish business owners say after working with Dublin Growth Digital.</p>
+      <p class="section__sub">Here's what Irish business owners say after working with Dublin Growth Digital.</p>
     </div>
-    <div class="testi-toggle-wrap" style="text-align:center;margin-bottom:8px">
-  <button id="testi-toggle-btn" class="testi-toggle-btn">
-    <span class="testi-toggle-label">See All 52 Reviews</span>
-    <span class="testi-toggle-icon">↓</span>
-  </button>
-</div>
-<div id="testi-collapsible" class="testi-collapsible">
-<div class="testimonials-masonry">
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"DGD completely transformed our Instagram. We went from 400 followers to over 12,000 in four months and our bookings filled up every weekend. Oscar genuinely gets the Dublin market."</p><div class="testi-author"><strong>Aoife Brennan</strong><span>Owner, The Copper Kettle Café, Ranelagh</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Our new website is stunning. We had three separate people ask what agency built it on our opening night. The conversion rate jumped 180% in the first month alone."</p><div class="testi-author"><strong>Ciarán Murphy</strong><span>Founder, Murphy's Fine Jewellers, Grafton Street</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"I was sceptical about social media for a solicitor's firm but the DGD team built us a content strategy that's professional, approachable and has brought in 22 new client enquiries since launch."</p><div class="testi-author"><strong>Niamh O'Sullivan</strong><span>Partner, O'Sullivan &amp; Associates Solicitors, Blackrock</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"The ROI is undeniable. We spent €1,200 per month with DGD on paid social and generated over €18,000 in direct online revenue in Q1. That's a 15x return. Genuinely gobsmacked."</p><div class="testi-author"><strong>Seán Farrell</strong><span>CEO, Farrell Fitness Equipment, Sandyford</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Oscar's team redesigned our entire website over three weeks. It loads in under two seconds, looks incredible on mobile, and our bounce rate dropped by 40%. Couldn't be happier."</p><div class="testi-author"><strong>Roisín Kelly</strong><span>Director, Kelly Interiors &amp; Living, Dundrum</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Finally an agency that treats you like a person and not just a retainer. The WhatsApp updates every week mean I always know what's happening. Trust is everything and DGD earns it."</p><div class="testi-author"><strong>Padraig Quinn</strong><span>Owner, Quinn's Artisan Bakery, Rathmines</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"We were invisible online before DGD. Now we're the most reviewed dental practice in South Dublin on Google with a 4.9 rating. Patient footfall is up 35% year on year."</p><div class="testi-author"><strong>Dr. Fionnuala Ryan</strong><span>Principal Dentist, Smilemakers Dental, Stillorgan</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"The TikTok strategy they built for us was genuinely inspired. One video hit 340,000 views organically and we sold out our entire summer collection in 48 hours. Wild experience."</p><div class="testi-author"><strong>Sorcha Lynch</strong><span>Founder, Lynch &amp; Co. Candles, Dún Laoghaire</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"As a physio clinic we never thought digital marketing applied to us. Three months with DGD and our online appointment slots are consistently full two weeks in advance. Outstanding."</p><div class="testi-author"><strong>Brendan Nolan</strong><span>Clinic Director, Nolan Physiotherapy, Clontarf</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Proper professionals. Every deliverable arrived ahead of schedule, the communication is flawless, and the creative work is genuinely world-class. Happy to recommend DGD to anyone."</p><div class="testi-author"><strong>Eimear Walsh</strong><span>Managing Director, Walsh &amp; Co. Accountants, IFSC</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"We switched from a large Dublin agency to DGD and the difference was immediate. Personal attention, faster output, better results. We should have made the switch two years earlier."</p><div class="testi-author"><strong>Tomás Burke</strong><span>Owner, Burke's Garden Centre, Swords</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Our LinkedIn presence was non-existent. DGD built a thought leadership content strategy that's positioned me as a leading voice in Irish fintech. Leads have tripled since we started."</p><div class="testi-author"><strong>Caoimhe Sheridan</strong><span>Founder, Sheridan Capital, Grand Canal Dock</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"The website they built for our hotel is genuinely beautiful. Direct bookings are up 60% since launch and we've reduced our OTA commission spend by over €40,000 this year."</p><div class="testi-author"><strong>Declan Hourigan</strong><span>General Manager, The Millbrook Inn, Wicklow Town</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Absolute legends. The content they create for our food truck is always on-brand, always hilarious, and always gets shared. We have a queue every lunchtime now. Couldn't manage without them."</p><div class="testi-author"><strong>Mairéad Costello</strong><span>Owner, The Rolling Pot, Docklands</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Hired DGD to run our Instagram while we focused on the business. Within six weeks our follower count doubled, our story views were up 400%, and we had three wholesale enquiries from abroad."</p><div class="testi-author"><strong>Conor Fitzpatrick</strong><span>Co-Founder, Fitzpatrick's Craft Brewing, Smithfield</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Dublin Growth Digital delivered a website that exceeded every brief point. The checkout conversion on our e-commerce is now at 4.2% which is exceptional for our category. Brilliant team."</p><div class="testi-author"><strong>Sinéad Healy</strong><span>E-Commerce Manager, Healy Home Living, Blanchardstown</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"I run a small accounting firm and was nervous about marketing spend. DGD set up a Meta Ads campaign for €600/month that's generated 14 new client sign-ups in the first quarter. Pure value."</p><div class="testi-author"><strong>Ruairí Gallagher</strong><span>Principal, Gallagher Tax Consultants, Dún Laoghaire</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"The social media strategy for our estate agency has been transformative. We now close more deals from Instagram DMs than from cold calling. The power of great content, brilliantly executed."</p><div class="testi-author"><strong>Aoibheann Power</strong><span>Director, Power Residential, Dún Laoghaire</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"We'd tried two other agencies before DGD and were ready to give up on social media entirely. One month in and we understood why those others failed — this is what real expertise looks like."</p><div class="testi-author"><strong>Liam Doyle</strong><span>Owner, Doyle's Hardware &amp; DIY, Finglas</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Phenomenal work on our rebrand and website launch. The new identity feels premium but still approachable for our clientele. Footfall in the salon has increased 25% since going live."</p><div class="testi-author"><strong>Grainne Mulvey</strong><span>Owner, Mulvey &amp; Co. Hair &amp; Beauty, Malahide</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"The influencer collaboration DGD arranged for our product launch was genius. 180,000 combined impressions in the first week, 3,000 new followers and we sold 400 units in four days."</p><div class="testi-author"><strong>Oisín O'Brien</strong><span>Co-Founder, Irish Wellness Co., Terenure</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"We needed a website that could handle 500+ product SKUs, bookings, and a blog — and DGD delivered exactly that. The admin system is intuitive and our team needed barely any training."</p><div class="testi-author"><strong>Áine Connolly</strong><span>Operations Director, Connolly's Garden &amp; Outdoors, Lucan</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Our TikTok went from zero to 8,500 followers in 10 weeks. DGD clearly understands the algorithm and creates content that feels native rather than like a corporate ad. Spot on every time."</p><div class="testi-author"><strong>Clodagh Byrne</strong><span>Owner, Clodagh's Plant Shop, Portobello</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"As a boutique hotel in a competitive market, standing out is everything. DGD's content strategy made us feel like a lifestyle brand, not just a place to sleep. Revenue is up 45% year on year."</p><div class="testi-author"><strong>Fergus Hanlon</strong><span>Owner, The Hanlon House Boutique Hotel, Howth</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"I had a tight three-week deadline for my website launch before a major trade fair. DGD delivered on time, on budget, and the site won a compliment from every buyer we met. Extraordinary team."</p><div class="testi-author"><strong>Deirdre Lawlor</strong><span>Founder, Lawlor Leather Goods, Temple Bar</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"The paid social campaigns DGD runs for our recruitment firm have cut our cost-per-qualified-lead in half. We're spending less and hiring more. The data reporting is incredibly transparent too."</p><div class="testi-author"><strong>Cormac Prendergast</strong><span>Managing Partner, Prendergast Talent Group, Leeson Street</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"We're a traditional butcher that was being left behind online. DGD made our brand feel modern without losing the authenticity our customers love. Best decision we've made for the business."</p><div class="testi-author"><strong>Seamus Kavanagh</strong><span>Fourth-Generation Owner, Kavanagh's Family Butchers, Cabra</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Flawless service from start to finish. Our Facebook community grew by 4,200 organic members in eight weeks and the engagement rate is the highest it's ever been. A genuinely talented team."</p><div class="testi-author"><strong>Niall Higgins</strong><span>Director, Higgins Sports &amp; Leisure, Tallaght</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"The restaurant website DGD built us handles all our reservations seamlessly and showcases our dishes in a way that makes people hungry before they even walk in the door. Revenue up 30%."</p><div class="testi-author"><strong>Orla Brennan</strong><span>Owner, The Hawthorn Restaurant, Glasnevin</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"I was initially going to go with a bigger agency but DGD's proposal was sharper, their case studies were more relevant, and frankly Oscar just impressed me in the discovery call. 10/10."</p><div class="testi-author"><strong>Eoghan Casey</strong><span>Founder, Casey Digital Print &amp; Signage, Ringsend</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Content creation was taking up 15 hours of my week. Handing it to DGD gave me back my time and produced better results than I ever achieved myself. The monthly reports are brilliant too."</p><div class="testi-author"><strong>Bríd Sherlock</strong><span>Owner, Sherlock Yoga &amp; Wellness, Sandymount</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"DGD managed our St. Patrick's Day campaign and it was the most engaged content we've ever published. 62,000 organic impressions from a single reel. Immense value for the investment."</p><div class="testi-author"><strong>Marcus O'Toole</strong><span>Brand Manager, O'Toole's Irish Crafts, Nassau Street</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Professional, creative and proactive. DGD don't wait to be told what to do — they bring ideas to every call and always seem to be one step ahead of the trend. An invaluable partner."</p><div class="testi-author"><strong>Siobhán Dunne</strong><span>HR Director, Dunne &amp; Partners Consulting, Grand Canal</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"The e-commerce website they built for us is absolutely stunning. Average order value jumped 22% because the photography and layout make everything look premium. Couldn't be more satisfied."</p><div class="testi-author"><strong>Muireann Fox</strong><span>Founder, Fox &amp; Fern Skincare, Blackrock</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"We've had our busiest summer on record and a large part of that is down to the Instagram strategy DGD executed. Every post drives genuine interest and our DM enquiries went through the roof."</p><div class="testi-author"><strong>Donal McCarthy</strong><span>Owner, McCarthy's Surf School, Bundoran</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"I was a complete sceptic. My wife convinced me to try DGD for three months. I'll now never work with another agency. The results speak for themselves and Oscar's team are genuinely lovely."</p><div class="testi-author"><strong>Gerry Fitzgibbon</strong><span>Owner, Fitzgibbon's Electrical, Naas Road</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"DGD understand that great social media isn't about posting often — it's about posting right. Our engagement per post has increased 5x since they took over. Quality always beats quantity."</p><div class="testi-author"><strong>Clíodhna Burke</strong><span>Creative Director, Burke Architectural Studio, Baggot Street</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"The Google Ads strategy DGD set up for our plumbing business delivers qualified leads every single day. We're booked out six weeks in advance for the first time in 12 years of trading."</p><div class="testi-author"><strong>Pádraig Hennessy</strong><span>Owner, Hennessy Plumbing &amp; Heating, Crumlin</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Our charity needed to grow its digital presence on a tight budget. DGD offered us a special rate, treated us like a major commercial client and helped us reach 45,000 new supporters. Heroes."</p><div class="testi-author"><strong>Úna Brennan</strong><span>Communications Lead, Dublin Community Food Bank, Inchicore</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Rebranded and relaunched our mortgage brokerage with DGD's help. The new website and LinkedIn strategy positioned us as thought leaders and our corporate pipeline doubled in Q2."</p><div class="testi-author"><strong>Finian Regan</strong><span>Managing Director, Regan Mortgages &amp; Finance, Ballsbridge</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Our opening weekend went viral thanks to DGD's pre-launch campaign. We had people queuing outside before we opened and the local press picked it up organically. Perfect execution."</p><div class="testi-author"><strong>Imelda Farrington</strong><span>Owner, The Farrington Flower Studio, Stoneybatter</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"I've referred DGD to four other business owners I know and every single one has thanked me for it. The consistency of results across completely different industries is what makes them special."</p><div class="testi-author"><strong>Daithí Ó'Murchú</strong><span>Founder, Ó'Murchú Tech Solutions, East Wall</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Switching our social to DGD was the single best business decision I made last year. We're reaching customers we never could before and the content always perfectly captures our brand voice."</p><div class="testi-author"><strong>Aoife Moran</strong><span>Owner, Moran's Music School, Drumcondra</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"The website DGD built for our law firm is discreet, trustworthy, and beautifully designed. Our senior partners were initially reluctant but every single one loves it. A remarkable achievement."</p><div class="testi-author"><strong>Colm Naughton</strong><span>Senior Partner, Naughton &amp; Associates LLP, Merrion Square</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Zero to 15k Instagram followers in five months for a construction company. I didn't think it was possible but DGD found the exact content angle that resonated with our audience. Incredible."</p><div class="testi-author"><strong>Cathal Whelan</strong><span>Director, Whelan Construction &amp; Fit-Out, Santry</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"Our event venue had never used social media properly. DGD set up a full content system, trained our on-site coordinator, and now we're fully booked for corporate events nine months out."</p><div class="testi-author"><strong>Meadhbh Cullen</strong><span>Events Manager, The Cullen Suite, Clontarf Castle</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"Brilliant agency. They took the time to genuinely understand our brand before proposing anything. The strategy felt custom-built rather than off the shelf, because it was. Worth every cent."</p><div class="testi-author"><strong>Lorcan Healy</strong><span>Owner, Healy Fine Wines, Donnybrook</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Working with Dublin Growth Digital was an absolute pleasure from the initial call to launch day. They managed every detail and delivered a website we're genuinely proud to share with clients."</p><div class="testi-author"><strong>Rónán Lyons</strong><span>Partner, Lyons &amp; Walsh Architecture, Baggot Street</span></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p>"The DGD team understand that our clients are discerning. They never produce anything generic — every piece of content elevates the brand. Our social following grew 800% in year one with them."</p><div class="testi-author"><strong>Jacinta Monaghan</strong><span>Principal Designer, Monaghan Luxury Interiors, Foxrock</span></div></div>
-      <div class="testi-card reveal reveal--delay-1"><div class="testi-stars">★★★★★</div><p>"I can honestly say DGD have changed the trajectory of my business. I was stagnant for two years before finding them. Now we're growing 40% year on year. Can't recommend them highly enough."</p><div class="testi-author"><strong>Shane Gleeson</strong><span>Owner, Gleeson Security Systems, Tallaght</span></div></div>
-      <div class="testi-card reveal reveal--delay-2"><div class="testi-stars">★★★★★</div><p>"Exceptional communication throughout the entire web project. Every question answered within the hour, every revision done with a smile. The end result is exactly what we envisioned — and better."</p><div class="testi-author"><strong>Tara Malone</strong><span>Co-Founder, Malone &amp; Malone HR Consultancy, Pembroke Road</span></div></div>
+    <div class="testi-toggle reveal">
+      <button id="testi-toggle" class="testi-toggle-btn">
+        <span class="tbtn-label">See All 52 Reviews</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
-</div>
+    <div id="testi-col" class="testi-collapsible">
+      <div class="testi-grid">
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD completely transformed our Instagram. We went from 400 followers to over 12,000 in four months and our bookings filled up every weekend. Oscar genuinely gets the Dublin market."</p><div class="testi-author"><strong>Aoife Brennan</strong><span>Owner, The Copper Kettle Café, Ranelagh</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our new website is stunning. Three people asked what agency built it on opening night. The conversion rate jumped 180% in the first month alone."</p><div class="testi-author"><strong>Ciarán Murphy</strong><span>Founder, Murphy's Fine Jewellers, Grafton Street</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"I was sceptical about social media for a solicitor's firm but DGD built us a strategy that's professional, approachable and has brought in 22 new client enquiries since launch."</p><div class="testi-author"><strong>Niamh O'Sullivan</strong><span>Partner, O'Sullivan &amp; Associates Solicitors, Blackrock</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The ROI is undeniable. We spent €1,200/month and generated over €18,000 in direct online revenue in Q1. That's a 15x return. Genuinely gobsmacked."</p><div class="testi-author"><strong>Seán Farrell</strong><span>CEO, Farrell Fitness Equipment, Sandyford</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Oscar's team redesigned our website in three weeks. Loads in under 2 seconds, incredible on mobile, and our bounce rate dropped 40%. Couldn't be happier."</p><div class="testi-author"><strong>Roisín Kelly</strong><span>Director, Kelly Interiors &amp; Living, Dundrum</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Finally an agency that treats you like a person. The weekly WhatsApp updates mean I always know what's happening. Trust is everything and DGD earns it."</p><div class="testi-author"><strong>Padraig Quinn</strong><span>Owner, Quinn's Artisan Bakery, Rathmines</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We were invisible online before DGD. Now we're the most reviewed dental practice in South Dublin with a 4.9 rating. Patient footfall is up 35% year on year."</p><div class="testi-author"><strong>Dr. Fionnuala Ryan</strong><span>Principal Dentist, Smilemakers Dental, Stillorgan</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The TikTok strategy was genuinely inspired. One video hit 340k views organically and we sold out our entire summer collection in 48 hours."</p><div class="testi-author"><strong>Sorcha Lynch</strong><span>Founder, Lynch &amp; Co. Candles, Dún Laoghaire</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"As a physio clinic we never thought digital marketing applied to us. Three months with DGD and our appointment slots are full two weeks in advance."</p><div class="testi-author"><strong>Brendan Nolan</strong><span>Clinic Director, Nolan Physiotherapy, Clontarf</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Every deliverable arrived ahead of schedule, communication is flawless, and the creative work is genuinely world-class. Happy to recommend DGD to anyone."</p><div class="testi-author"><strong>Eimear Walsh</strong><span>Managing Director, Walsh &amp; Co. Accountants, IFSC</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We switched from a large Dublin agency to DGD and the difference was immediate. Personal attention, faster output, better results. Should have done it two years earlier."</p><div class="testi-author"><strong>Tomás Burke</strong><span>Owner, Burke's Garden Centre, Swords</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our LinkedIn presence was non-existent. DGD built a thought leadership strategy that's positioned me as a leading voice in Irish fintech. Leads have tripled."</p><div class="testi-author"><strong>Caoimhe Sheridan</strong><span>Founder, Sheridan Capital, Grand Canal Dock</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The website they built for our hotel is beautiful. Direct bookings are up 60% since launch and we've reduced OTA commission by over €40,000 this year."</p><div class="testi-author"><strong>Declan Hourigan</strong><span>General Manager, The Millbrook Inn, Wicklow</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The content they create for our food truck is always on-brand and always gets shared. We have a queue every lunchtime now. Couldn't manage without them."</p><div class="testi-author"><strong>Mairéad Costello</strong><span>Owner, The Rolling Pot, Docklands</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Within six weeks our follower count doubled, story views were up 400%, and we had three wholesale enquiries from abroad. Exceptional."</p><div class="testi-author"><strong>Conor Fitzpatrick</strong><span>Co-Founder, Fitzpatrick's Craft Brewing, Smithfield</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The checkout conversion on our e-commerce is now at 4.2% which is exceptional for our category. They exceeded every single brief point."</p><div class="testi-author"><strong>Sinéad Healy</strong><span>E-Commerce Manager, Healy Home Living, Blanchardstown</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD set up a Meta Ads campaign for €600/month that's generated 14 new client sign-ups in the first quarter. Pure value."</p><div class="testi-author"><strong>Ruairí Gallagher</strong><span>Principal, Gallagher Tax Consultants, Dún Laoghaire</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We now close more deals from Instagram DMs than from cold calling. The power of great content, brilliantly executed."</p><div class="testi-author"><strong>Aoibheann Power</strong><span>Director, Power Residential, Dún Laoghaire</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We'd tried two other agencies before and were ready to give up on social media entirely. One month with DGD changed everything."</p><div class="testi-author"><strong>Liam Doyle</strong><span>Owner, Doyle's Hardware &amp; DIY, Finglas</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The new identity feels premium but approachable. Footfall in the salon has increased 25% since the website went live."</p><div class="testi-author"><strong>Grainne Mulvey</strong><span>Owner, Mulvey &amp; Co. Hair &amp; Beauty, Malahide</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"180,000 combined impressions in the first week of our product launch, 3,000 new followers and we sold 400 units in four days."</p><div class="testi-author"><strong>Oisín O'Brien</strong><span>Co-Founder, Irish Wellness Co., Terenure</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We needed a site handling 500+ SKUs, bookings, and a blog — DGD delivered exactly that, on time and under budget."</p><div class="testi-author"><strong>Áine Connolly</strong><span>Operations Director, Connolly's Garden &amp; Outdoors, Lucan</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"TikTok went from zero to 8,500 followers in 10 weeks. Content feels native, not corporate. Spot on every time."</p><div class="testi-author"><strong>Clodagh Byrne</strong><span>Owner, Clodagh's Plant Shop, Portobello</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD made us feel like a lifestyle brand, not just a place to sleep. Revenue is up 45% year on year."</p><div class="testi-author"><strong>Fergus Hanlon</strong><span>Owner, The Hanlon House Boutique Hotel, Howth</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Tight three-week deadline before a trade fair. DGD delivered on time, on budget. Every buyer we met complimented the site."</p><div class="testi-author"><strong>Deirdre Lawlor</strong><span>Founder, Lawlor Leather Goods, Temple Bar</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Paid social campaigns have cut our cost-per-qualified-lead in half. Spending less and hiring more. The data reporting is crystal clear."</p><div class="testi-author"><strong>Cormac Prendergast</strong><span>Managing Partner, Prendergast Talent Group, Leeson Street</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD made our brand feel modern without losing the authenticity our customers love. Best decision we've made for the business."</p><div class="testi-author"><strong>Seamus Kavanagh</strong><span>Fourth-Generation Owner, Kavanagh's Family Butchers, Cabra</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Facebook community grew by 4,200 organic members in eight weeks. The engagement rate is the highest it's ever been."</p><div class="testi-author"><strong>Niall Higgins</strong><span>Director, Higgins Sports &amp; Leisure, Tallaght</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our website showcases our dishes in a way that makes people hungry before they walk in. Revenue up 30% in six months."</p><div class="testi-author"><strong>Orla Brennan</strong><span>Owner, The Hawthorn Restaurant, Glasnevin</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD's proposal was sharper, their case studies were more relevant, and Oscar impressed me on the discovery call. 10/10."</p><div class="testi-author"><strong>Eoghan Casey</strong><span>Founder, Casey Digital Print &amp; Signage, Ringsend</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Content creation was taking 15 hours of my week. Handing it to DGD gave me back my time and produced better results."</p><div class="testi-author"><strong>Bríd Sherlock</strong><span>Owner, Sherlock Yoga &amp; Wellness, Sandymount</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our St. Patrick's Day campaign hit 62,000 organic impressions from a single reel. Immense value for the investment."</p><div class="testi-author"><strong>Marcus O'Toole</strong><span>Brand Manager, O'Toole's Irish Crafts, Nassau Street</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD don't wait to be told what to do — they bring ideas to every call and always seem one step ahead of the trend."</p><div class="testi-author"><strong>Siobhán Dunne</strong><span>HR Director, Dunne &amp; Partners Consulting, Grand Canal</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Average order value jumped 22% because the photography and layout make everything look premium. Couldn't be more satisfied."</p><div class="testi-author"><strong>Muireann Fox</strong><span>Founder, Fox &amp; Fern Skincare, Blackrock</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our busiest summer on record. DM enquiries went through the roof. Every post drives genuine interest and real bookings."</p><div class="testi-author"><strong>Donal McCarthy</strong><span>Owner, McCarthy's Surf School, Bundoran</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"My wife convinced me to try DGD for three months. I'll never work with another agency. Results speak for themselves."</p><div class="testi-author"><strong>Gerry Fitzgibbon</strong><span>Owner, Fitzgibbon's Electrical, Naas Road</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our engagement per post has increased 5x since they took over. Quality always beats quantity — and DGD lives that."</p><div class="testi-author"><strong>Clíodhna Burke</strong><span>Creative Director, Burke Architectural Studio, Baggot Street</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The Google Ads strategy delivers qualified leads every day. We're booked out six weeks in advance for the first time in 12 years."</p><div class="testi-author"><strong>Pádraig Hennessy</strong><span>Owner, Hennessy Plumbing &amp; Heating, Crumlin</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD offered us a special rate, treated us like a major commercial client and helped us reach 45,000 new supporters."</p><div class="testi-author"><strong>Úna Brennan</strong><span>Communications Lead, Dublin Community Food Bank, Inchicore</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"New website and LinkedIn strategy positioned us as thought leaders. Our corporate pipeline doubled in Q2."</p><div class="testi-author"><strong>Finian Regan</strong><span>Managing Director, Regan Mortgages &amp; Finance, Ballsbridge</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Our opening weekend went viral. People queued outside before we opened and local press picked it up organically."</p><div class="testi-author"><strong>Imelda Farrington</strong><span>Owner, The Farrington Flower Studio, Stoneybatter</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"I've referred DGD to four other business owners and every single one has thanked me. Consistency of results is unmatched."</p><div class="testi-author"><strong>Daithí Ó'Murchú</strong><span>Founder, Ó'Murchú Tech Solutions, East Wall</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We're reaching customers we never could before and the content always captures our brand voice perfectly."</p><div class="testi-author"><strong>Aoife Moran</strong><span>Owner, Moran's Music School, Drumcondra</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The new website is discreet, trustworthy, beautifully designed. Our senior partners were initially reluctant — every one loves it now."</p><div class="testi-author"><strong>Colm Naughton</strong><span>Senior Partner, Naughton &amp; Associates LLP, Merrion Square</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Zero to 15k Instagram followers in five months for a construction company. I didn't think it was possible until DGD."</p><div class="testi-author"><strong>Cathal Whelan</strong><span>Director, Whelan Construction &amp; Fit-Out, Santry</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"We set up a full content system, trained our coordinator, and now we're fully booked for corporate events nine months out."</p><div class="testi-author"><strong>Meadhbh Cullen</strong><span>Events Manager, The Cullen Suite, Clontarf Castle</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"The strategy felt custom-built rather than off the shelf, because it was. They genuinely understood our brand first."</p><div class="testi-author"><strong>Lorcan Healy</strong><span>Owner, Healy Fine Wines, Donnybrook</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"An absolute pleasure from initial call to launch day. Every detail managed, delivered a website we're genuinely proud to share."</p><div class="testi-author"><strong>Rónán Lyons</strong><span>Partner, Lyons &amp; Walsh Architecture, Baggot Street</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Never generic — every piece of content elevates the brand. Our social following grew 800% in year one with them."</p><div class="testi-author"><strong>Jacinta Monaghan</strong><span>Principal Designer, Monaghan Luxury Interiors, Foxrock</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"DGD have changed the trajectory of my business. Stagnant for two years before finding them. Now growing 40% year on year."</p><div class="testi-author"><strong>Shane Gleeson</strong><span>Owner, Gleeson Security Systems, Tallaght</span></div></div>
+        <div class="testi-card"><div class="testi-stars">★★★★★</div><p>"Every question answered within the hour, every revision done with a smile. The end result exceeded what we envisioned."</p><div class="testi-author"><strong>Tara Malone</strong><span>Co-Founder, Malone &amp; Malone HR Consultancy, Pembroke Road</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
-</div><!-- /testi-collapsible -->
-
-<!-- CTA Section -->
-<section class="section cta-section">
-  <div class="container">
-    <div class="cta-box reveal">
-      <div class="cta-box__inner">
-        <span class="label">Ready to Grow?</span>
-        <h2>Let's Build Something <em>Extraordinary</em></h2>
-        <p>Book a free 30-minute strategy call with Oscar. No sales scripts, no pressure — just a genuine conversation about where your business is and where it could go.</p>
-        <div class="cta-box__actions">
-          <a href="https://wa.me/353871257533" class="btn btn--primary" target="_blank" rel="noopener">WhatsApp Oscar Now</a>
-          <a href="contact.html" class="btn btn--outline">Send an Enquiry</a>
+</div>
         </div>
-        <p class="cta-box__note">Typical response time: under 2 hours during business hours</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- SERVICES TRIO -->
+  <section class="section services-trio" id="services-trio">
+    <div class="container">
+      <div class="section-label reveal">OUR CORE SERVICES</div>
+      <h2 class="section-title reveal">Everything You Need to <em>Dominate Online</em></h2>
+      <p class="section-sub reveal">From high-converting websites to full social media management and paid ads — we handle it all so you can focus on what you do best.</p>
+      <div class="trio-grid reveal">
+        <div class="trio-card">
+          <div class="trio-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="5" width="30" height="22" rx="3" stroke="#1B5EEA" stroke-width="2"/><path d="M12 27l-2 4h16l-2-4" stroke="#1B5EEA" stroke-width="2" stroke-linejoin="round"/><path d="M8 13h20M8 17h12" stroke="#1B5EEA" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Web Design &amp; Development</h3>
+          <p>Bespoke, high-performance websites that convert visitors into customers. Every site is mobile-first, lightning-fast, and built to rank on Google.</p>
+          <ul class="trio-list">
+            <li>Custom design — no templates</li>
+            <li>SEO-optimised from day one</li>
+            <li>Conversion rate optimisation</li>
+            <li>Ongoing support &amp; updates</li>
+          </ul>
+          <a href="services.html" class="btn btn--ghost">Learn More →</a>
+        </div>
+        <div class="trio-card trio-card--featured">
+          <div class="trio-badge">Most Popular</div>
+          <div class="trio-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="#1B5EEA" stroke-width="2"/><path d="M18 8v10l6 3" stroke="#1B5EEA" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="8" r="2" fill="#1B5EEA"/><circle cx="28" cy="21" r="2" fill="#1B5EEA"/><circle cx="10" cy="26" r="2" fill="#1B5EEA"/></svg>
+          </div>
+          <h3>Social Media Management</h3>
+          <p>Full-service social media management — strategy, content creation, daily posting, community engagement, and monthly reporting across all major platforms.</p>
+          <ul class="trio-list">
+            <li>Instagram, Facebook, TikTok, LinkedIn</li>
+            <li>Professional content creation</li>
+            <li>Paid ads management</li>
+            <li>Monthly growth reports</li>
+          </ul>
+          <a href="services.html" class="btn btn--blue">Get Started →</a>
+        </div>
+        <div class="trio-card">
+          <div class="trio-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M6 28L12 18l6 6 6-10 6 8" stroke="#1B5EEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="18" r="2" fill="#1B5EEA"/><circle cx="18" cy="24" r="2" fill="#1B5EEA"/><circle cx="24" cy="14" r="2" fill="#1B5EEA"/></svg>
+          </div>
+          <h3>Paid Advertising &amp; SEO</h3>
+          <p>Data-driven Google Ads, Meta Ads, and local SEO campaigns that generate real leads and measurable ROI — with full transparency and monthly reporting.</p>
+          <ul class="trio-list">
+            <li>Google Ads &amp; Meta Ads</li>
+            <li>Local SEO domination</li>
+            <li>Keyword research &amp; targeting</li>
+            <li>ROI-focused campaigns</li>
+          </ul>
+          <a href="services.html" class="btn btn--ghost">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- 3 Core Services -->
-<section class="section" style="background:var(--dark-1)">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label">What We Offer</span>
-      <h2>Three Services. <em>One Goal.</em></h2>
-      <p class="section-sub">Every solution we deliver is built to make your brand impossible to ignore in the Irish market.</p>
-    </div>
-    <div class="services-trio">
-      <div class="service-trio-card reveal">
-        <div class="service-trio-icon">📱</div>
-        <h3>Social Media Management</h3>
-        <p>Full-service content creation, community management, paid social ads, and influencer partnerships — tailored to the Irish market and designed to drive real results.</p>
-        <a href="services.html#smm">Explore SMM →</a>
-      </div>
-      <div class="service-trio-card reveal reveal--delay-1">
-        <div class="service-trio-icon">🖥️</div>
-        <h3>Web Design & Development</h3>
-        <p>Bespoke, conversion-optimised websites with zero templates. Mobile-first, lightning fast, SEO-ready, and built to sell. Your digital showroom, crafted to impress.</p>
-        <a href="services.html#web">Explore Web Design →</a>
-      </div>
-      <div class="service-trio-card reveal reveal--delay-2">
-        <div class="service-trio-icon">🎯</div>
-        <h3>Paid Social Advertising</h3>
-        <p>Meta, TikTok, LinkedIn and Google ad campaigns managed end-to-end. Precision targeting, compelling creatives, and obsessive optimisation — maximising every euro of your ad spend.</p>
-        <a href="services.html#pricing">See Pricing →</a>
+  <!-- CTA BAND -->
+  <section class="section cta-band">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-box__orb cta-box__orb--1"></div>
+        <div class="cta-box__orb cta-box__orb--2"></div>
+        <div class="section-label">LIMITED AVAILABILITY</div>
+        <h2>Ready to Grow Your Business?</h2>
+        <p>We only take on a small number of new clients each month to guarantee results. Book your free strategy call now before spaces fill up.</p>
+        <div class="cta-box__btns">
+          <a href="https://wa.me/353871257533" class="btn btn--blue" target="_blank">Book Free Strategy Call</a>
+          <a href="contact.html" class="btn btn--ghost">Contact Us</a>
+        </div>
+        <div class="cta-box__trust">
+          <span>✓ No contracts</span>
+          <span>✓ Results in 30 days</span>
+          <span>✓ Irish-based team</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__col footer__col--brand">
-        <a href="index.html" class="footer__logo"><svg width="48" height="32" viewBox="0 0 120 48" fill="none"><defs><linearGradient id="lgFoot" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B5EEA"/><stop offset="100%" stop-color="#4D88FF"/></linearGradient></defs><text x="4" y="38" font-family="Cormorant Garamond, serif" font-size="40" font-weight="700" fill="url(#lgFoot)">DGD</text></svg></a>
-        <p>Ireland's #1 SMMA &amp; Web Design Agency. Based in Dublin. Scaling Irish brands nationwide.</p>
-        <a href="https://wa.me/353871257533" class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener">+353 87 125 7533</a>
-      </div>
-      <div class="footer__col"><h5>Services</h5><ul><li><a href="services.html">Social Media Management</a></li><li><a href="services.html">Web Design &amp; Development</a></li><li><a href="services.html">Paid Social Advertising</a></li><li><a href="services.html">Influencer Marketing</a></li></ul></div>
-      <div class="footer__col"><h5>Company</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">Free Strategy Call</a></li></ul></div>
-      <div class="footer__col"><h5>Get In Touch</h5><ul><li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp: +353 87 125 7533</a></li><li><a href="mailto:oscarmarkham313@gmail.com">oscarmarkham313@gmail.com</a></li><li><span>Dublin, Ireland</span></li><li><span>Mon–Fri: 9am–6pm</span></li></ul></div>
-    </div>
-    <div class="footer__bottom"><p>&copy; 2025 Dublin Growth Digital. All rights reserved.</p><p>Built with passion in Dublin 🇮🇪</p></div>
-  </div>
-</footer>
+  </section>
 
-<a href="https://wa.me/353871257533" class="wa-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <span class="wa-btn__pulse"></span>
-</a>
-<script src="main.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo"><img src="logo.svg" alt="Dublin Growth Digital" class="nav__logo-img"/></a>
+          <p>Ireland's premier digital marketing &amp; web design agency. We help Irish businesses grow faster online — more leads, more revenue, more results.</p>
+          <a href="https://wa.me/353871257533" class="btn btn--wa footer__wa" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1.5C5.3 1.5 1.5 5.3 1.5 10c0 1.5.4 2.9 1.1 4.2L1.5 18.5l4.4-1.1A8.5 8.5 0 0010 18.5c4.7 0 8.5-3.8 8.5-8.5S14.7 1.5 10 1.5z" fill="#25D366"/><path d="M13.5 11.5c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.6.8-.1.1-.2.1-.4 0-.2-.1-.9-.3-1.7-1.1-.6-.6-1-1.3-1.1-1.5-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.3 0-.1 0-.2-.1-.3-.1-.1-.5-1.1-.6-1.5-.1-.4-.3-.3-.5-.3h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.1 1.6 2.4 3.8 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1s.2-1 .1-1c-.1-.2-.2-.3-.4-.4z" fill="white"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Web Design &amp; Dev</a></li>
+            <li><a href="services.html">Social Media Management</a></li>
+            <li><a href="services.html">Paid Advertising</a></li>
+            <li><a href="services.html">Local SEO</a></li>
+            <li><a href="services.html">Branding &amp; Identity</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://wa.me/353871257533" target="_blank">Free Strategy Call</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+353871257533">+353 87 125 7533</a></li>
+            <li><a href="mailto:hello@dublinsocialagency.ie">hello@dublinsocialagency.ie</a></li>
+            <li>Dublin, Ireland</li>
+          </ul>
+          <div class="footer__socials">
+            <a href="https://www.instagram.com/dublinsocialagency/" target="_blank" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/dublinsocialagency" target="_blank" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://wa.me/353871257533" target="_blank" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Dublin Growth Digital. All rights reserved.</p>
+        <p>Proudly serving Irish businesses nationwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WA FLOAT -->
+  <a href="https://wa.me/353871257533" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2C7.4 2 2 7.4 2 14c0 2.1.6 4.1 1.6 5.8L2 26l6.4-1.6A12 12 0 0014 26c6.6 0 12-5.4 12-12S20.6 2 14 2z" fill="#25D366"/><path d="M18.8 16c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6 0-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.5c-.2 0-.5.1-.8.4-.3.3-1.1 1.1-1.1 2.7 0 1.6 1.1 3.2 1.3 3.4.1.2 2.2 3.4 5.4 4.8.8.3 1.4.5 1.8.7.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z" fill="white"/></svg>
+  </a>
+
+  <script src="main.js"></script>
 </body>
 </html>
-
-
-
