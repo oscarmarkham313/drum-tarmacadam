@@ -428,3 +428,10 @@ h2 em,h1 em{font-style:italic;background:linear-gradient(135deg,var(--blue),var(
   .chat-window{left:1rem;right:1rem;width:auto;bottom:5.5rem;}
   .chat-bubble{left:1rem;bottom:1rem;}
 }
+
+/* ── Page Loader ─────────────────────────────────────────── */
+.page-loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .4s ease,visibility .4s ease;}
+.page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-bar{width:160px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
+.loader-bar__fill{height:100%;width:0;background:var(--blue);border-radius:2px;animation:loaderFill .6s ease forwards;}
+@keyframes loaderFill{to{width:100%}}
