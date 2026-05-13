@@ -58,11 +58,15 @@ window.addEventListener('load',()=>{
 (function initForm(){
   const f=document.getElementById('contact-form');
   if(!f)return;
-  f.addEventListener('submit',e=>{
+  f.addEventListener('submit',async e=>{
     e.preventDefault();
-    const ff=f.querySelector('.form-fields'),s=document.getElementById('form-success');
-    if(ff)ff.style.display='none';
-    if(s)s.style.display='block';
+    const data=new FormData(f);
+    const res=await fetch(f.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(res.ok){
+      const ff=f.querySelector('.form-fields'),s=document.getElementById('form-success');
+      if(ff)ff.style.display='none';
+      if(s)s.style.display='block';
+    }
   });
 })();
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
@@ -84,3 +88,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
     setTimeout(()=>{el.style.opacity='1';el.style.transform='none';},40);
   });
 })();
+
