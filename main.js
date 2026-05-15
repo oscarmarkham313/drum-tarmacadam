@@ -242,35 +242,41 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 
 (function initVisitorTracking(){
   const ENDPOINT='https://formspree.io/f/meendppv';
-  let pinged=false;
+  let initialPinged=false;
+  let engagedPinged=false;
 
-  function sendPing(type){
-    if(pinged)return;
-    pinged=true;
+  const pageName=(location.pathname.split('/').pop()||'home').replace('.html','')||'home';
+
+  function sendPing(type,isEngaged){
+    if(isEngaged&&engagedPinged)return;
+    if(!isEngaged&&initialPinged)return;
+    if(isEngaged) engagedPinged=true; else initialPinged=true;
+
     fetch('https://ipapi.co/json/')
       .then(r=>r.json())
       .then(geo=>{
         const payload={
-          _subject:'[DGD] Visitor: '+type,
-          type,
-          page: location.href,
-          referrer: document.referrer||'Direct',
-          device: /Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop',
-          browser: navigator.userAgent.split(') ')[0].split('(')[1]||'Unknown',
-          city: geo.city||'',
-          country: geo.country_name||'',
-          isp: geo.org||'',
-          time: new Date().toLocaleString('en-IE',{timeZone:'Europe/Dublin'})
+          _subject:'[DGD Website] '+type,
+          '📄 Page': pageName,
+          '🔗 URL': location.href,
+          '↩ Came from': document.referrer||'Direct / typed URL',
+          '📱 Device': /Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop',
+          '🌍 Location': (geo.city||'?')+', '+(geo.region||'')+'  '+( geo.country_name||''),
+          '🏢 ISP / Network': geo.org||'Unknown',
+          '🕐 Time (Dublin)': new Date().toLocaleString('en-IE',{timeZone:'Europe/Dublin'}),
         };
         fetch(ENDPOINT,{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json','Accept':'application/json'}});
       }).catch(()=>{});
   }
 
-  // Fire after 45s on any page (engaged visitor)
-  setTimeout(()=>sendPing('45s on '+location.pathname.split('/').pop()||'home'),45000);
+  // Every visit — fires after 3s (filters out instant bounces)
+  setTimeout(()=>sendPing('New visitor on '+pageName, false), 3000);
 
-  // Fire immediately on contact page
+  // Engaged visitor — still on page after 45s
+  setTimeout(()=>sendPing('🔥 Engaged 45s on '+pageName, true), 45000);
+
+  // Contact page — extra alert even if they don't submit
   if(location.pathname.includes('contact')){
-    setTimeout(()=>sendPing('Visited contact page'),2000);
+    setTimeout(()=>sendPing('👀 Visited Contact page — did not submit yet', true), 4000);
   }
 })();
