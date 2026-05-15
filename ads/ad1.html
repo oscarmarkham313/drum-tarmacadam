@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad 1 — The Transformation | Drum Tarmacadam</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Segoe UI', sans-serif; }
+
+.ad-wrap {
+  position: relative;
+  width: 1080px;
+  height: 1080px;
+  overflow: hidden;
+  background: #000;
+  flex-shrink: 0;
+}
+
+/* BG Video */
+.bg-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.bg-video.active { opacity: 1; }
+
+/* Dark overlay */
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
+  z-index: 2;
+}
+
+/* SCENE containers */
+.scene {
+  position: absolute; inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  padding: 60px;
+}
+.scene.active { opacity: 1; pointer-events: all; }
+
+/* Scene 1 — hook text */
+.scene-1 .hook {
+  font-size: 62px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.scene-1.active .hook { transform: translateY(0); opacity: 1; }
+.scene-1 .hook span { color: #2563eb; }
+
+/* Scene 2 — main message */
+.scene-2 .logo-area {
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 40px;
+  opacity: 0; transform: translateY(-20px);
+  transition: all 0.6s ease 0.1s;
+}
+.scene-2.active .logo-area { opacity: 1; transform: translateY(0); }
+.logo-icon {
+  width: 70px; height: 70px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 900; color: #fff;
+}
+.logo-text { font-size: 32px; font-weight: 900; color: #fff; letter-spacing: 1px; }
+.logo-text span { color: #2563eb; }
+
+.scene-2 .main-msg {
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 1.15;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  opacity: 0; transform: scale(0.92);
+  transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s;
+}
+.scene-2.active .main-msg { opacity: 1; transform: scale(1); }
+.scene-2 .main-msg em { color: #f59e0b; font-style: normal; }
+
+.scene-2 .sub-msg {
+  margin-top: 24px;
+  font-size: 28px;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  font-weight: 500;
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease 0.5s;
+}
+.scene-2.active .sub-msg { opacity: 1; transform: translateY(0); }
+
+/* Scene 3 — CTA */
+.scene-3 {
+  background: linear-gradient(135deg, rgba(10,10,44,0.97) 0%, rgba(30,58,95,0.97) 100%);
+  justify-content: center;
+}
+.cta-badge {
+  background: #f59e0b;
+  color: #000;
+  font-weight: 900;
+  font-size: 22px;
+  padding: 10px 32px;
+  border-radius: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  opacity: 0; transform: translateY(-20px);
+  transition: all 0.5s ease;
+}
+.scene-3.active .cta-badge { opacity: 1; transform: translateY(0); }
+
+.phone-number {
+  font-size: 96px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2px;
+  text-align: center;
+  line-height: 1;
+  opacity: 0; transform: scale(0.8);
+  transition: all 0.6s cubic-bezier(0.22,1,0.36,1) 0.15s;
+}
+.scene-3.active .phone-number { opacity: 1; transform: scale(1); }
+.phone-number span { color: #2563eb; }
+
+.website {
+  font-size: 30px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.4s;
+}
+.scene-3.active .website { opacity: 1; }
+
+.free-quote {
+  margin-top: 36px;
+  display: flex; gap: 16px;
+}
+.fq-pill {
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+.scene-3.active .fq-pill:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.scene-3.active .fq-pill:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.65s; }
+
+/* Drum logo watermark */
+.watermark {
+  position: absolute;
+  bottom: 30px; right: 36px;
+  z-index: 10;
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 6px;
+  background: #2563eb;
+  z-index: 20;
+  width: 0%;
+  transition: width linear;
+}
+
+/* Controls */
+.controls {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+.btn-play { background: #2563eb; color: #fff; }
+.btn-play:hover { background: #1d4ed8; transform: scale(1.04); }
+.btn-download { background: #f59e0b; color: #000; }
+.btn-download:hover { background: #d97706; transform: scale(1.04); }
+.btn-download:disabled { background: #94a3b8; color: #fff; cursor: not-allowed; transform: none; }
+.rec-dot { width: 12px; height: 12px; background: #ef4444; border-radius: 50%; display: none; }
+.rec-dot.active { display: block; animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.status-text { color: #94a3b8; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="ad-wrap" id="adWrap">
+
+  <!-- Background footage via Pexels embed -->
+  <video class="bg-video active" id="bgVid" autoplay muted loop playsinline
+    src="https://videos.pexels.com/video-files/18459032/18459032-uhd_2560_1440_24fps.mp4"
+    poster="https://images.pexels.com/videos/18459032/pictures/preview-0.jpg">
+  </video>
+
+  <div class="overlay"></div>
+
+  <!-- SCENE 1: Hook (0–3s) -->
+  <div class="scene scene-1 active" id="scene1">
+    <div class="hook">That driveway's been<br><span>embarrassing you</span><br>for long enough.</div>
+  </div>
+
+  <!-- SCENE 2: Message (3–14s) -->
+  <div class="scene scene-2" id="scene2">
+    <div class="logo-area">
+      <div class="logo-icon">DT</div>
+      <div class="logo-text">DRUM <span>TARMACADAM</span></div>
+    </div>
+    <div class="main-msg">Premium tarmac driveways.<br><em>Built to last.</em></div>
+    <div class="sub-msg">Serving homes across Munster</div>
+  </div>
+
+  <!-- SCENE 3: CTA (14–20s) -->
+  <div class="scene scene-3" id="scene3">
+    <div class="cta-badge">Free Quote — No Obligation</div>
+    <div class="phone-number"><span>087</span> 945 4566</div>
+    <div class="website">drumtarmacadam.ie</div>
+    <div class="free-quote">
+      <div class="fq-pill">✓ Premium Finish</div>
+      <div class="fq-pill">✓ Local & Trusted</div>
+    </div>
+  </div>
+
+  <div class="watermark">DRUM TARMACADAM</div>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Hidden audio — replace src with ElevenLabs generated file -->
+  <audio id="voiceover" preload="auto">
+    <source src="audio/ad1-vo.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<div class="controls">
+  <button class="btn btn-play" id="playBtn" onclick="startAd()">▶ Play Ad</button>
+  <div class="rec-dot" id="recDot"></div>
+  <button class="btn btn-download" id="dlBtn" onclick="recordAndDownload()">⬇ Record & Download</button>
+  <span class="status-text" id="statusText">Ready</span>
+</div>
+
+<script>
+const TOTAL = 20000;
+const SCENES = [
+  { el: document.getElementById('scene1'), start: 0,     end: 3000  },
+  { el: document.getElementById('scene2'), start: 3000,  end: 14000 },
+  { el: document.getElementById('scene3'), start: 14000, end: 20000 },
+];
+const progressBar = document.getElementById('progressBar');
+const vo = document.getElementById('voiceover');
+let startTime, animFrame, adRunning = false;
+
+function startAd() {
+  if (adRunning) return;
+  adRunning = true;
+  document.getElementById('playBtn').disabled = true;
+  SCENES.forEach(s => s.el.classList.remove('active'));
+  progressBar.style.transition = 'none';
+  progressBar.style.width = '0%';
+
+  vo.currentTime = 0;
+  vo.play().catch(() => {});
+
+  startTime = performance.now();
+  requestAnimationFrame(tick);
+}
+
+function tick(now) {
+  const elapsed = now - startTime;
+  const pct = Math.min((elapsed / TOTAL) * 100, 100);
+  progressBar.style.transition = 'none';
+  progressBar.style.width = pct + '%';
+
+  SCENES.forEach(s => {
+    const inScene = elapsed >= s.start && elapsed < s.end;
+    s.el.classList.toggle('active', inScene);
+  });
+
+  if (elapsed < TOTAL) {
+    animFrame = requestAnimationFrame(tick);
+  } else {
+    SCENES[SCENES.length - 1].el.classList.add('active');
+    adRunning = false;
+    document.getElementById('playBtn').disabled = false;
+    document.getElementById('statusText').textContent = 'Ready';
+  }
+}
+
+// MediaRecorder record + download
+async function recordAndDownload() {
+  const btn = document.getElementById('dlBtn');
+  const dot = document.getElementById('recDot');
+  const status = document.getElementById('statusText');
+  if (adRunning) return;
+
+  btn.disabled = true;
+  dot.classList.add('active');
+  status.textContent = 'Recording… (20s)';
+
+  const adEl = document.getElementById('adWrap');
+  const stream = adEl.captureStream ? adEl.captureStream(60) : adEl.mozCaptureStream(60);
+
+  // Add audio track if voiceover loaded
+  try {
+    const audioCtx = new AudioContext();
+    const dest = audioCtx.createMediaStreamDestination();
+    const src = audioCtx.createMediaElementSource(vo);
+    src.connect(dest);
+    src.connect(audioCtx.destination);
+    dest.stream.getAudioTracks().forEach(t => stream.addTrack(t));
+  } catch(e) {}
+
+  const chunks = [];
+  const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+  rec.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+  rec.onstop = () => {
+    const blob = new Blob(chunks, { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'drum-tarmacadam-ad1-transformation.webm';
+    a.click();
+    URL.revokeObjectURL(url);
+    btn.disabled = false;
+    dot.classList.remove('active');
+    status.textContent = 'Downloaded!';
+  };
+
+  rec.start();
+  startAd();
+  setTimeout(() => rec.stop(), TOTAL + 500);
+}
+</script>
+</body>
+</html>

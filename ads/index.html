@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drum Tarmacadam — 5 Video Ads</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #05050f; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0a0a2c 0%, #0d1b3e 100%);
+  border-bottom: 3px solid #2563eb;
+  padding: 36px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-left h1 { font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: 2px; }
+.header-left p { color: #64748b; margin-top: 6px; font-size: 0.95rem; }
+.header-badge {
+  background: #2563eb; color: #fff; font-weight: 800;
+  padding: 10px 24px; border-radius: 50px; font-size: 0.85rem;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ELEVENLABS BANNER */
+.el-banner {
+  background: linear-gradient(135deg, #1a0a2e, #2d1060);
+  border-bottom: 2px solid #7c3aed;
+  padding: 20px 48px;
+  display: flex; align-items: center; gap: 20px;
+}
+.el-icon { font-size: 28px; }
+.el-text { flex: 1; }
+.el-text strong { color: #c4b5fd; font-size: 1rem; display: block; margin-bottom: 4px; }
+.el-text p { color: #94a3b8; font-size: 0.88rem; line-height: 1.5; }
+.el-btn {
+  background: #7c3aed; color: #fff; border: none; cursor: pointer;
+  padding: 12px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 700;
+  white-space: nowrap; text-decoration: none; display: inline-block;
+  transition: background 0.2s;
+}
+.el-btn:hover { background: #6d28d9; }
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 32px;
+  padding: 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* AD CARD */
+.ad-card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ad-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(37,99,235,0.15); }
+
+.card-header {
+  background: linear-gradient(135deg, #1e3a5f, #1a1a2e);
+  padding: 18px 24px;
+  display: flex; align-items: center; gap: 14px;
+  border-bottom: 1px solid #1e293b;
+}
+.card-num {
+  background: #2563eb; color: #fff; width: 38px; height: 38px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1rem; flex-shrink: 0;
+}
+.card-title { font-size: 1.05rem; font-weight: 800; color: #fff; }
+.card-theme { font-size: 0.75rem; color: #60a5fa; margin-top: 2px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Preview iframe */
+.preview-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background: #000;
+  overflow: hidden;
+}
+.preview-wrap iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+  transform-origin: top left;
+}
+.preview-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.preview-overlay:hover { background: rgba(0,0,0,0.4); }
+.play-btn-big {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: #2563eb;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: #fff;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.5);
+  transition: transform 0.2s;
+}
+.preview-overlay:hover .play-btn-big { transform: scale(1.1); }
+
+.card-actions {
+  padding: 18px 24px;
+  display: flex; gap: 10px; align-items: center;
+  border-top: 1px solid #1e293b;
+}
+.act-btn {
+  padding: 11px 22px; border-radius: 50px; border: none;
+  cursor: pointer; font-size: 0.88rem; font-weight: 700;
+  transition: all 0.2s; white-space: nowrap;
+}
+.act-open { background: #2563eb; color: #fff; flex: 1; }
+.act-open:hover { background: #1d4ed8; }
+.act-download { background: #f59e0b; color: #000; flex: 1; }
+.act-download:hover { background: #d97706; }
+
+.vo-status {
+  font-size: 0.75rem; color: #64748b; text-align: center;
+  padding: 8px 24px 16px;
+}
+.vo-status.ready { color: #22c55e; }
+
+/* VOICEOVER SCRIPTS SECTION */
+.scripts-section {
+  max-width: 1500px; margin: 0 auto;
+  padding: 0 48px 48px;
+}
+.scripts-section h2 {
+  font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+  color: #475569; margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+.scripts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 20px; }
+.script-card {
+  background: #0f172a; border: 1px solid #1e293b; border-radius: 12px;
+  padding: 22px 24px;
+}
+.sc-num { font-size: 0.72rem; color: #f59e0b; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.sc-text { font-size: 0.95rem; color: #e2e8f0; line-height: 1.75; font-style: italic; }
+.sc-text strong { color: #f59e0b; font-style: normal; }
+.sc-copy {
+  margin-top: 14px; background: #1e293b; border: none; color: #94a3b8;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.sc-copy:hover { background: #2563eb; color: #fff; }
+
+/* FOOTER */
+.footer {
+  background: #2563eb; text-align: center;
+  padding: 24px; color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>DRUM TARMACADAM</h1>
+    <p>5 × 20-Second Video Ads — Ready to Play, Record & Download</p>
+  </div>
+  <div class="header-badge">5 Ads Ready</div>
+</div>
+
+<!-- ElevenLabs banner -->
+<div class="el-banner">
+  <div class="el-icon">🎙️</div>
+  <div class="el-text">
+    <strong>Add Laoibhise Voiceover (ElevenLabs)</strong>
+    <p>Log into your ElevenLabs account, select the <strong>Laoibhise</strong> voice, paste each script below, download the MP3, and save it as <code>audio/ad1-vo.mp3</code> through <code>audio/ad5-vo.mp3</code> in the ads folder. The audio will automatically sync when you hit Record & Download.</p>
+  </div>
+  <a class="el-btn" href="https://elevenlabs.io" target="_blank">Open ElevenLabs →</a>
+</div>
+
+<!-- AD GRID -->
+<div class="grid">
+
+  <div class="ad-card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div><div class="card-title">The Transformation</div><div class="card-theme">Before & After / Curb Appeal</div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe src="ad1.html" scrolling="no" id="frame1"></iframe>
+      <div class="preview-overlay" id="overlay1" onclick="openAd(1)">
+        <div class="play-btn-big">▶</div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="act-btn act-open" onclick="openAd(1)">▶ Open & Play</button>
+      <button class="act-btn act-download" onclick="openAndRecord(1)">⬇ Open & Download</button>
+    </div>
+    <div class="vo-status" id="vo1">🎙️ Add audio/ad1-vo.mp3 for voiceover</div>
+  </div>
+
+  <div class="ad-card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div><div class="card-title">The Craft</div><div class="card-theme">Process / Quality / Pride</div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe src="ad2.html" scrolling="no" id="frame2"></iframe>
+      <div class="preview-overlay" id="overlay2" onclick="openAd(2)">
+        <div class="play-btn-big">▶</div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="act-btn act-open" onclick="openAd(2)">▶ Open & Play</button>
+      <button class="act-btn act-download" onclick="openAndRecord(2)">⬇ Open & Download</button>
+    </div>
+    <div class="vo-status" id="vo2">🎙️ Add audio/ad2-vo.mp3 for voiceover</div>
+  </div>
+
+  <div class="ad-card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div><div class="card-title">The Urgency</div><div class="card-theme">Pain Point / Act Now</div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe src="ad3.html" scrolling="no" id="frame3"></iframe>
+      <div class="preview-overlay" id="overlay3" onclick="openAd(3)">
+        <div class="play-btn-big">▶</div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="act-btn act-open" onclick="openAd(3)">▶ Open & Play</button>
+      <button class="act-btn act-download" onclick="openAndRecord(3)">⬇ Open & Download</button>
+    </div>
+    <div class="vo-status" id="vo3">🎙️ Add audio/ad3-vo.mp3 for voiceover</div>
+  </div>
+
+  <div class="ad-card">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div><div class="card-title">The Social Proof</div><div class="card-theme">5-Star Reviews / Real Results</div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe src="ad4.html" scrolling="no" id="frame4"></iframe>
+      <div class="preview-overlay" id="overlay4" onclick="openAd(4)">
+        <div class="play-btn-big">▶</div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="act-btn act-open" onclick="openAd(4)">▶ Open & Play</button>
+      <button class="act-btn act-download" onclick="openAndRecord(4)">⬇ Open & Download</button>
+    </div>
+    <div class="vo-status" id="vo4">🎙️ Add audio/ad4-vo.mp3 for voiceover</div>
+  </div>
+
+  <div class="ad-card">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div><div class="card-title">The Value</div><div class="card-theme">Investment / No Hidden Costs</div></div>
+    </div>
+    <div class="preview-wrap">
+      <iframe src="ad5.html" scrolling="no" id="frame5"></iframe>
+      <div class="preview-overlay" id="overlay5" onclick="openAd(5)">
+        <div class="play-btn-big">▶</div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="act-btn act-open" onclick="openAd(5)">▶ Open & Play</button>
+      <button class="act-btn act-download" onclick="openAndRecord(5)">⬇ Open & Download</button>
+    </div>
+    <div class="vo-status" id="vo5">🎙️ Add audio/ad5-vo.mp3 for voiceover</div>
+  </div>
+
+</div>
+
+<!-- VOICEOVER SCRIPTS -->
+<div class="scripts-section">
+  <h2>Laoibhise Voiceover Scripts — Copy & Paste into ElevenLabs</h2>
+  <div class="scripts-grid">
+
+    <div class="script-card">
+      <div class="sc-num">Ad 1 — The Transformation</div>
+      <div class="sc-text" id="s1">"That cracked, crumbling driveway out front? It's costing you more than you think — in curb appeal, in value, in pride. One call to Drum Tarmacadam and we transform it. Premium finish, built to last — serving homes right across Munster. Call <strong>087 945 4566</strong> today. Free quote, no obligation. Don't wait — your new driveway is one call away."</div>
+      <button class="sc-copy" onclick="copyScript(1)">Copy Script</button>
+    </div>
+
+    <div class="script-card">
+      <div class="sc-num">Ad 2 — The Craft</div>
+      <div class="sc-text" id="s2">"This is what a proper driveway looks like when it's done right. At Drum Tarmacadam, we don't rush. We use premium materials, experienced hands, and we take pride in every single job. Homes all across Munster trust us to deliver a finish that lasts — and looks incredible from day one. Get your free quote today. <strong>087 945 4566.</strong> Drum Tarmacadam."</div>
+      <button class="sc-copy" onclick="copyScript(2)">Copy Script</button>
+    </div>
+
+    <div class="script-card">
+      <div class="sc-num">Ad 3 — The Urgency</div>
+      <div class="sc-text" id="s3">"Still looking at that same driveway you've been meaning to fix for years? We can sort that for you. Drum Tarmacadam — premium tarmac driveways built to last, for homes all across Munster. The finish is flawless. The price is fair. And we're booking up fast — so don't leave it another season. Ring us now. <strong>087 945 4566.</strong> Free quote. No strings."</div>
+      <button class="sc-copy" onclick="copyScript(3)">Copy Script</button>
+    </div>
+
+    <div class="script-card">
+      <div class="sc-num">Ad 4 — The Social Proof</div>
+      <div class="sc-text" id="s4">"Homeowners across Munster are waking up to driveways they're actually proud of. Drum Tarmacadam has built a reputation on one thing: showing up, doing it properly, and leaving the job looking immaculate every time. Five-star reviews. Real customers. Real results. Call <strong>087 945 4566</strong> and get your free quote today. Drum Tarmacadam."</div>
+      <button class="sc-copy" onclick="copyScript(4)">Copy Script</button>
+    </div>
+
+    <div class="script-card">
+      <div class="sc-num">Ad 5 — The Value</div>
+      <div class="sc-text" id="s5">"A new tarmac driveway isn't a cost. It's an investment in your home. Drum Tarmacadam delivers a premium finish that adds instant value to your property — using durable materials that stand up to years of Irish weather. No pushy sales. No hidden costs. Just honest, quality work from a team that actually cares. Your free quote is one call away. <strong>087 945 4566.</strong> Drum Tarmacadam."</div>
+      <button class="sc-copy" onclick="copyScript(5)">Copy Script</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Drum Tarmacadam &nbsp;|&nbsp; 087 945 4566 &nbsp;|&nbsp; drumtarmacadam.ie &nbsp;|&nbsp; info@drumtarmacadam.ie
+</div>
+
+<script>
+function openAd(n) {
+  window.open('ad' + n + '.html', '_blank');
+}
+function openAndRecord(n) {
+  const w = window.open('ad' + n + '.html', '_blank');
+  // Small delay to let the page load, then trigger record
+  setTimeout(() => {
+    try { w.recordAndDownload && w.recordAndDownload(); } catch(e) {}
+  }, 1500);
+}
+function copyScript(n) {
+  const el = document.getElementById('s' + n);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btns = document.querySelectorAll('.sc-copy');
+    btns[n-1].textContent = '✓ Copied!';
+    btns[n-1].style.background = '#22c55e';
+    btns[n-1].style.color = '#fff';
+    setTimeout(() => {
+      btns[n-1].textContent = 'Copy Script';
+      btns[n-1].style.background = '';
+      btns[n-1].style.color = '';
+    }, 2000);
+  });
+}
+
+// Scale iframes to fit preview containers
+function scaleIframes() {
+  document.querySelectorAll('.preview-wrap').forEach(wrap => {
+    const iframe = wrap.querySelector('iframe');
+    const w = wrap.offsetWidth;
+    const scale = w / 1080;
+    iframe.style.width = '1080px';
+    iframe.style.height = '1080px';
+    iframe.style.transform = `scale(${scale})`;
+  });
+}
+window.addEventListener('load', scaleIframes);
+window.addEventListener('resize', scaleIframes);
+</script>
+</body>
+</html>
