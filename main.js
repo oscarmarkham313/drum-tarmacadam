@@ -239,3 +239,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
     }
   });
 })();
+
+(function initVisitorTracking(){
+  const ENDPOINT='https://formspree.io/f/meendppv';
+  let pinged=false;
+
+  function sendPing(type){
+    if(pinged)return;
+    pinged=true;
+    fetch('https://ipapi.co/json/')
+      .then(r=>r.json())
+      .then(geo=>{
+        const payload={
+          _subject:'[DGD] Visitor: '+type,
+          type,
+          page: location.href,
+          referrer: document.referrer||'Direct',
+          device: /Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop',
+          browser: navigator.userAgent.split(') ')[0].split('(')[1]||'Unknown',
+          city: geo.city||'',
+          country: geo.country_name||'',
+          isp: geo.org||'',
+          time: new Date().toLocaleString('en-IE',{timeZone:'Europe/Dublin'})
+        };
+        fetch(ENDPOINT,{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json','Accept':'application/json'}});
+      }).catch(()=>{});
+  }
+
+  // Fire after 45s on any page (engaged visitor)
+  setTimeout(()=>sendPing('45s on '+location.pathname.split('/').pop()||'home'),45000);
+
+  // Fire immediately on contact page
+  if(location.pathname.includes('contact')){
+    setTimeout(()=>sendPing('Visited contact page'),2000);
+  }
+})();
