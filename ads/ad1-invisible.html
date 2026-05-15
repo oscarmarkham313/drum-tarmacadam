@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ad 1 — Is Your Business Invisible?</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{width:1080px;height:1920px;background:#06070F;font-family:'Segoe UI',sans-serif;overflow:hidden;cursor:none;}
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=DM+Sans:wght@400;600;700&display=swap');
+
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;}
+  .active{animation:fadeIn .6s forwards;}
+  .out{animation:fadeOut .5s forwards;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeOut{from{opacity:1}to{opacity:0}}
+
+  /* ORBS */
+  .orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;}
+  .orb1{width:600px;height:600px;background:rgba(27,94,234,.25);top:-100px;left:-200px;animation:orbFloat 8s ease-in-out infinite;}
+  .orb2{width:500px;height:500px;background:rgba(37,99,235,.15);bottom:-100px;right:-150px;animation:orbFloat 10s ease-in-out infinite reverse;}
+  @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,40px)}}
+
+  /* NOISE TEXTURE */
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:999;}
+
+  /* GRID LINES */
+  .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(27,94,234,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,94,234,.04) 1px,transparent 1px);background-size:80px 80px;}
+
+  /* PROGRESS BAR */
+  .progress{position:absolute;bottom:0;left:0;height:5px;background:linear-gradient(90deg,#1B5EEA,#4D88FF);animation:prog 18s linear forwards;}
+  @keyframes prog{from{width:0}to{width:100%}}
+
+  /* LOGO */
+  .logo{position:absolute;top:80px;left:80px;display:flex;align-items:center;gap:16px;opacity:0;animation:fadeIn .8s .3s forwards;}
+  .logo-box{width:64px;height:64px;background:linear-gradient(135deg,#1B5EEA,#4D88FF);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;font-family:'DM Sans',sans-serif;}
+  .logo-text{display:flex;flex-direction:column;}
+  .logo-text strong{color:#fff;font-size:22px;font-family:'DM Sans',sans-serif;font-weight:700;line-height:1.1;}
+  .logo-text span{color:#4D88FF;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:.1em;}
+
+  /* SCENE 1 */
+  #s1{flex-direction:column;gap:0;}
+  #s1 .tag{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:.25em;color:#4D88FF;margin-bottom:40px;opacity:0;animation:fadeIn .6s .5s forwards;}
+  #s1 h1{font-family:'Cormorant Garamond',serif;font-size:130px;font-weight:700;color:#fff;text-align:center;line-height:.95;opacity:0;animation:fadeIn .8s .8s forwards;}
+  #s1 h1 em{color:#1B5EEA;font-style:italic;}
+  #s1 .sub{font-family:'DM Sans',sans-serif;font-size:36px;color:rgba(255,255,255,.55);margin-top:40px;text-align:center;opacity:0;animation:fadeIn .6s 1.3s forwards;}
+
+  /* SCENE 2 */
+  #s2{flex-direction:column;align-items:center;gap:48px;}
+  #s2 .pain{display:flex;flex-direction:column;gap:32px;width:880px;}
+  .pain-item{display:flex;align-items:center;gap:28px;opacity:0;}
+  .pain-item:nth-child(1){animation:slideIn .5s 0.2s forwards;}
+  .pain-item:nth-child(2){animation:slideIn .5s 0.6s forwards;}
+  .pain-item:nth-child(3){animation:slideIn .5s 1.0s forwards;}
+  .pain-item:nth-child(4){animation:slideIn .5s 1.4s forwards;}
+  @keyframes slideIn{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+  .pain-x{width:56px;height:56px;border-radius:50%;background:rgba(239,68,68,.15);border:2px solid rgba(239,68,68,.4);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+  .pain-item p{font-family:'DM Sans',sans-serif;font-size:38px;color:rgba(255,255,255,.75);font-weight:500;}
+  #s2 .s2-head{font-family:'DM Sans',sans-serif;font-size:28px;letter-spacing:.2em;color:#4D88FF;font-weight:600;opacity:0;animation:fadeIn .5s 0.1s forwards;}
+
+  /* SCENE 3 */
+  #s3{flex-direction:column;gap:40px;}
+  #s3 .s3-label{font-family:'DM Sans',sans-serif;font-size:22px;letter-spacing:.25em;color:#4D88FF;font-weight:600;opacity:0;animation:fadeIn .5s .2s forwards;}
+  #s3 h2{font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:700;color:#fff;text-align:center;line-height:1;opacity:0;animation:scaleIn .7s .5s forwards;}
+  @keyframes scaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+  #s3 h2 em{color:#4D88FF;font-style:italic;}
+  .stats-row{display:flex;gap:60px;margin-top:20px;}
+  .stat-box{display:flex;flex-direction:column;align-items:center;opacity:0;}
+  .stat-box:nth-child(1){animation:fadeIn .5s 1s forwards;}
+  .stat-box:nth-child(2){animation:fadeIn .5s 1.3s forwards;}
+  .stat-box:nth-child(3){animation:fadeIn .5s 1.6s forwards;}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:700;color:#1B5EEA;line-height:1;}
+  .stat-lbl{font-family:'DM Sans',sans-serif;font-size:22px;color:rgba(255,255,255,.5);letter-spacing:.1em;font-weight:600;}
+  .stat-divider{width:2px;background:rgba(27,94,234,.3);align-self:stretch;margin:10px 0;}
+
+  /* SCENE 4 — CTA */
+  #s4{flex-direction:column;gap:40px;}
+  #s4 .cta-label{font-family:'DM Sans',sans-serif;font-size:22px;letter-spacing:.25em;color:#4D88FF;font-weight:600;opacity:0;animation:fadeIn .5s .3s forwards;}
+  #s4 h2{font-family:'Cormorant Garamond',serif;font-size:115px;font-weight:700;color:#fff;text-align:center;line-height:1;opacity:0;animation:fadeIn .7s .6s forwards;}
+  #s4 h2 em{color:#4D88FF;font-style:italic;}
+  #s4 .cta-sub{font-family:'DM Sans',sans-serif;font-size:34px;color:rgba(255,255,255,.55);text-align:center;max-width:780px;line-height:1.5;opacity:0;animation:fadeIn .5s 1s forwards;}
+  .cta-btn{background:linear-gradient(135deg,#1B5EEA,#4D88FF);border-radius:28px;padding:40px 80px;font-family:'DM Sans',sans-serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:.05em;opacity:0;animation:fadeIn .5s 1.4s forwards;box-shadow:0 20px 60px rgba(27,94,234,.5);}
+  .cta-wa{font-family:'DM Sans',sans-serif;font-size:28px;color:rgba(255,255,255,.4);opacity:0;animation:fadeIn .5s 1.8s forwards;letter-spacing:.05em;}
+  .cta-wa strong{color:#25D366;}
+
+  /* SCENE 5 — END CARD */
+  #s5{flex-direction:column;gap:24px;}
+  #s5 .end-logo{width:120px;height:120px;background:linear-gradient(135deg,#1B5EEA,#4D88FF);border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:900;color:#fff;font-family:'DM Sans',sans-serif;opacity:0;animation:scaleIn .6s .3s forwards;}
+  #s5 h3{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;color:#fff;text-align:center;opacity:0;animation:fadeIn .6s .7s forwards;}
+  #s5 .end-sub{font-family:'DM Sans',sans-serif;font-size:32px;color:#4D88FF;font-weight:600;opacity:0;animation:fadeIn .5s 1s forwards;letter-spacing:.05em;}
+  #s5 .end-url{font-family:'DM Sans',sans-serif;font-size:28px;color:rgba(255,255,255,.4);opacity:0;animation:fadeIn .5s 1.3s forwards;}
+  .pulse-ring{position:absolute;width:300px;height:300px;border-radius:50%;border:2px solid rgba(27,94,234,.3);animation:pulseRing 2s 1s ease-out infinite;}
+  .pulse-ring:nth-child(2){animation-delay:1.5s;}
+  @keyframes pulseRing{0%{transform:scale(.8);opacity:.8}100%{transform:scale(2.5);opacity:0}}
+</style>
+</head>
+<body>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="grid"></div>
+  <div class="progress"></div>
+
+  <div class="logo">
+    <div class="logo-box">DG</div>
+    <div class="logo-text">
+      <strong>Dublin Growth</strong>
+      <span>DIGITAL</span>
+    </div>
+  </div>
+
+  <!-- Scene 1: Hook -->
+  <div class="scene" id="s1">
+    <div class="tag">ATTENTION IRISH BUSINESS OWNERS</div>
+    <h1>Is Your<br>Business<br><em>Invisible</em><br>Online?</h1>
+    <div class="sub">You're losing customers every single day.</div>
+  </div>
+
+  <!-- Scene 2: Pain points -->
+  <div class="scene" id="s2">
+    <div class="s2-head">SOUND FAMILIAR?</div>
+    <div class="pain">
+      <div class="pain-item"><div class="pain-x">✕</div><p>No leads from your website</p></div>
+      <div class="pain-item"><div class="pain-x">✕</div><p>Social media going nowhere</p></div>
+      <div class="pain-item"><div class="pain-x">✕</div><p>Competitors outranking you</p></div>
+      <div class="pain-item"><div class="pain-x">✕</div><p>Wasting money on ads that don't work</p></div>
+    </div>
+  </div>
+
+  <!-- Scene 3: Solution + social proof -->
+  <div class="scene" id="s3">
+    <div class="s3-label">DUBLIN GROWTH DIGITAL</div>
+    <h2>We Fix<br><em>All</em> of That.</h2>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">50+</div><div class="stat-lbl">BRANDS SCALED</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-box"><div class="stat-num">4.2x</div><div class="stat-lbl">AVG ROAS</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-box"><div class="stat-num">30</div><div class="stat-lbl">DAY RESULTS</div></div>
+    </div>
+  </div>
+
+  <!-- Scene 4: CTA -->
+  <div class="scene" id="s4">
+    <div class="cta-label">LIMITED SPOTS AVAILABLE</div>
+    <h2>Book Your<br><em>Free</em><br>Strategy Call</h2>
+    <div class="cta-sub">30 minutes. Zero obligation.<br>Real results for your business.</div>
+    <div class="cta-btn">Get Started Today →</div>
+    <div class="cta-wa">WhatsApp: <strong>+353 87 125 7533</strong></div>
+  </div>
+
+  <!-- Scene 5: End card -->
+  <div class="scene" id="s5">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="end-logo">DG</div>
+    <h3>Dublin Growth<br>Digital</h3>
+    <div class="end-sub">Ireland's #1 Marketing Agency</div>
+    <div class="end-url">dublinsocialagency.ie</div>
+  </div>
+
+<script>
+const scenes = ['s1','s2','s3','s4','s5'];
+const durations = [3500, 4000, 4000, 4000, 3000];
+let current = 0;
+
+function showScene(i) {
+  const el = document.getElementById(scenes[i]);
+  el.classList.add('active');
+  setTimeout(() => {
+    el.classList.remove('active');
+    el.classList.add('out');
+    setTimeout(() => { el.classList.remove('out'); }, 600);
+    current++;
+    if (current < scenes.length) showScene(current);
+    else setTimeout(() => { current = 0; showScene(0); }, 1000);
+  }, durations[i]);
+}
+
+setTimeout(() => showScene(0), 500);
+</script>
+</body>
+</html>

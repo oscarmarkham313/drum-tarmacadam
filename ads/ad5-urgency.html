@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ad 5 — Urgency / Limited Spots</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1080px;height:1920px;background:#06070F;font-family:'Segoe UI',sans-serif;overflow:hidden;cursor:none;}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=DM+Sans:wght@400;600;700&display=swap');
+.orb{position:absolute;border-radius:50%;filter:blur(150px);}
+.orb1{width:800px;height:800px;background:rgba(27,94,234,.2);top:-100px;left:-200px;animation:d 12s ease-in-out infinite;}
+.orb2{width:600px;height:600px;background:rgba(59,130,246,.12);bottom:0;right:-100px;animation:d 9s ease-in-out infinite reverse;}
+@keyframes d{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-40px)}}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(27,94,234,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,94,234,.04) 1px,transparent 1px);background-size:80px 80px;}
+.progress{position:absolute;bottom:0;left:0;height:5px;background:linear-gradient(90deg,#1B5EEA,#4D88FF);animation:prog 19s linear forwards;}
+@keyframes prog{from{width:0}to{width:100%}}
+.logo{position:absolute;top:80px;left:80px;display:flex;align-items:center;gap:16px;opacity:0;animation:fi .8s .3s forwards;}
+.logo-box{width:64px;height:64px;background:linear-gradient(135deg,#1B5EEA,#4D88FF);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;font-family:'DM Sans',sans-serif;}
+.logo-text strong{display:block;color:#fff;font-size:22px;font-family:'DM Sans',sans-serif;font-weight:700;}
+.logo-text span{color:#4D88FF;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:.1em;}
+@keyframes fi{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fu{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes si{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+@keyframes sc{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;}
+.scene.active{opacity:1;pointer-events:all;}
+
+/* S1 — Attention grabber */
+#s1{gap:0;}
+.alert-banner{background:rgba(239,68,68,.15);border:2px solid rgba(239,68,68,.4);border-radius:20px;padding:24px 60px;font-family:'DM Sans',sans-serif;font-size:28px;color:#f87171;font-weight:700;letter-spacing:.1em;margin-bottom:50px;opacity:0;animation:fi .5s .3s forwards;animation:fi .5s .3s forwards, pulse 2s 1s infinite;}
+#s1 h1{font-family:'Cormorant Garamond',serif;font-size:128px;font-weight:700;color:#fff;text-align:center;line-height:.95;opacity:0;animation:sc .8s .6s forwards;}
+#s1 h1 em{font-style:italic;color:#4D88FF;}
+#s1 .s1-sub{font-family:'DM Sans',sans-serif;font-size:36px;color:rgba(255,255,255,.5);text-align:center;margin-top:36px;line-height:1.5;max-width:800px;opacity:0;animation:fu .5s 1.2s forwards;}
+
+/* S2 — Counter / Spots */
+#s2{gap:60px;}
+#s2 .s2h{font-family:'DM Sans',sans-serif;font-size:24px;letter-spacing:.25em;color:#f87171;font-weight:600;opacity:0;animation:fi .5s .3s forwards;}
+.spots-wrap{position:relative;opacity:0;animation:sc .7s .6s forwards;}
+.spots-circle{width:500px;height:500px;border-radius:50%;border:3px solid rgba(27,94,234,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:rgba(27,94,234,.05);}
+.spots-circle::before{content:'';position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(27,94,234,.1);animation:ripple 2s 1s ease-out infinite;}
+@keyframes ripple{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.15);opacity:0}}
+.spots-num{font-family:'Cormorant Garamond',serif;font-size:180px;font-weight:700;color:#1B5EEA;line-height:1;}
+.spots-label{font-family:'DM Sans',sans-serif;font-size:28px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.12em;}
+.spots-sub{font-family:'DM Sans',sans-serif;font-size:22px;color:rgba(255,255,255,.35);margin-top:8px;}
+.spots-bar{width:600px;opacity:0;animation:fi .6s 1s forwards;}
+.spots-bar-label{display:flex;justify-content:space-between;font-family:'DM Sans',sans-serif;font-size:22px;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.spots-bar-track{height:12px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden;}
+.spots-bar-fill{height:100%;width:70%;background:linear-gradient(90deg,#1B5EEA,#4D88FF);border-radius:8px;animation:fillBar 1.5s 1.2s ease-out both;}
+@keyframes fillBar{from{width:0}to{width:70%}}
+
+/* S3 — Why choose us */
+#s3{gap:50px;padding:0 80px;}
+#s3 .s3h{font-family:'DM Sans',sans-serif;font-size:22px;letter-spacing:.25em;color:#4D88FF;font-weight:600;opacity:0;animation:fi .4s .2s forwards;}
+#s3 h2{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:700;color:#fff;text-align:center;line-height:1;opacity:0;animation:sc .7s .5s forwards;}
+#s3 h2 em{color:#4D88FF;font-style:italic;}
+.why-list{display:flex;flex-direction:column;gap:22px;width:100%;}
+.why-item{display:flex;align-items:center;gap:28px;background:rgba(27,94,234,.06);border:1px solid rgba(27,94,234,.15);border-radius:16px;padding:30px 36px;opacity:0;}
+.why-item:nth-child(1){animation:si .5s .7s forwards;}
+.why-item:nth-child(2){animation:si .5s .95s forwards;}
+.why-item:nth-child(3){animation:si .5s 1.2s forwards;}
+.why-item:nth-child(4){animation:si .5s 1.45s forwards;}
+.why-icon{font-size:40px;}
+.why-text strong{font-family:'DM Sans',sans-serif;font-size:30px;color:#fff;font-weight:700;}
+.why-text span{display:block;font-family:'DM Sans',sans-serif;font-size:22px;color:rgba(255,255,255,.4);margin-top:4px;}
+
+/* S4 — Testimonial */
+#s4{padding:0 80px;gap:30px;}
+#s4 .stars{font-size:52px;opacity:0;animation:fi .5s .3s forwards;}
+#s4 .qmark{font-size:140px;color:rgba(27,94,234,.4);font-family:Georgia,serif;line-height:.4;opacity:0;animation:fi .5s .4s forwards;}
+#s4 blockquote{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;color:#fff;text-align:center;line-height:1.2;font-style:italic;opacity:0;animation:fu .7s .7s forwards;}
+#s4 .aut{font-family:'DM Sans',sans-serif;font-size:30px;font-weight:600;color:#4D88FF;margin-top:30px;opacity:0;animation:fi .5s 1.2s forwards;}
+#s4 .rol{font-family:'DM Sans',sans-serif;font-size:24px;color:rgba(255,255,255,.4);margin-top:8px;opacity:0;animation:fi .5s 1.4s forwards;}
+
+/* S5 — Final CTA */
+#s5{gap:36px;}
+#s5 .flash{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:40px;padding:16px 44px;font-family:'DM Sans',sans-serif;font-size:24px;color:#f87171;font-weight:700;letter-spacing:.1em;opacity:0;animation:fi .5s .2s forwards, pulse 1.5s .8s infinite;}
+#s5 h2{font-family:'Cormorant Garamond',serif;font-size:116px;font-weight:700;color:#fff;text-align:center;line-height:.95;opacity:0;animation:sc .7s .5s forwards;}
+#s5 h2 em{color:#4D88FF;font-style:italic;}
+#s5 p{font-family:'DM Sans',sans-serif;font-size:32px;color:rgba(255,255,255,.5);text-align:center;line-height:1.5;opacity:0;animation:fu .5s .9s forwards;}
+.big-btn{background:linear-gradient(135deg,#1B5EEA,#4D88FF);border-radius:28px;padding:48px 90px;font-family:'DM Sans',sans-serif;font-size:46px;font-weight:700;color:#fff;opacity:0;animation:sc .5s 1.3s forwards;box-shadow:0 24px 70px rgba(27,94,234,.55);animation:sc .5s 1.3s forwards, pulse 2s 2s infinite;}
+.wa-line{font-family:'DM Sans',sans-serif;font-size:30px;color:rgba(255,255,255,.35);opacity:0;animation:fi .5s 1.7s forwards;}
+.wa-line strong{color:#25D366;}
+.trust-row{display:flex;gap:40px;opacity:0;animation:fi .5s 2s forwards;}
+.trust-item{font-family:'DM Sans',sans-serif;font-size:22px;color:rgba(255,255,255,.3);}
+.trust-item span{color:#4D88FF;}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="grid"></div>
+<div class="progress"></div>
+<div class="logo"><div class="logo-box">DG</div><div class="logo-text"><strong>Dublin Growth</strong><span>DIGITAL</span></div></div>
+
+<div class="scene" id="s1">
+  <div class="alert-banner">⚠️ ONLY 3 SPOTS LEFT THIS MONTH</div>
+  <h1>Your<br>Competitors<br>Are <em>Already</em><br>Growing.</h1>
+  <div class="s1-sub">Every day you wait is another day they pull further ahead.</div>
+</div>
+
+<div class="scene" id="s2">
+  <div class="s2h">SPOTS FILLING FAST</div>
+  <div class="spots-wrap">
+    <div class="spots-circle">
+      <div class="spots-num">3</div>
+      <div class="spots-label">SPOTS REMAINING</div>
+      <div class="spots-sub">This month's intake</div>
+    </div>
+  </div>
+  <div class="spots-bar">
+    <div class="spots-bar-label"><span>Available</span><span>70% Full</span></div>
+    <div class="spots-bar-track"><div class="spots-bar-fill"></div></div>
+  </div>
+</div>
+
+<div class="scene" id="s3">
+  <div class="s3h">WHY DUBLIN GROWTH DIGITAL</div>
+  <h2>The Smart<br><em>Choice</em></h2>
+  <div class="why-list">
+    <div class="why-item"><div class="why-icon">🏆</div><div class="why-text"><strong>Ireland's #1 Agency</strong><span>Trusted by 50+ Irish businesses</span></div></div>
+    <div class="why-item"><div class="why-icon">⚡</div><div class="why-text"><strong>Results in 30 Days</strong><span>Or we continue working for free</span></div></div>
+    <div class="why-item"><div class="why-icon">🔓</div><div class="why-text"><strong>No Lock-In Contracts</strong><span>Cancel anytime — we earn your trust</span></div></div>
+    <div class="why-item"><div class="why-icon">🇮🇪</div><div class="why-text"><strong>100% Irish Team</strong><span>We know the Irish market inside out</span></div></div>
+  </div>
+</div>
+
+<div class="scene" id="s4">
+  <div class="stars">★★★★★</div>
+  <div class="qmark">"</div>
+  <blockquote>Best investment I've made for my business. Leads are coming in every week now.</blockquote>
+  <div class="aut">Aoife O'Brien</div>
+  <div class="rol">O'Brien Solicitors, Dublin</div>
+</div>
+
+<div class="scene" id="s5">
+  <div class="flash">⚡ 3 SPOTS LEFT — ACT NOW</div>
+  <h2>Don't<br>Miss<br><em>Out.</em></h2>
+  <p>Book your free strategy call today.<br>Zero pressure. Real results.</p>
+  <div class="big-btn">Claim Your Spot →</div>
+  <div class="wa-line">WhatsApp: <strong>+353 87 125 7533</strong></div>
+  <div class="trust-row">
+    <div class="trust-item"><span>✓</span> Free call</div>
+    <div class="trust-item"><span>✓</span> No contract</div>
+    <div class="trust-item"><span>✓</span> Irish team</div>
+  </div>
+</div>
+
+<script>
+const scenes=['s1','s2','s3','s4','s5'];
+const durations=[3500,4500,4500,4000,3800];
+let cur=0;
+function show(i){
+  const el=document.getElementById(scenes[i]);
+  el.classList.add('active');
+  setTimeout(()=>{
+    el.style.transition='opacity .5s';el.style.opacity='0';
+    setTimeout(()=>{el.classList.remove('active');el.style.opacity='';el.style.transition='';
+      cur++;if(cur<scenes.length)show(cur);else setTimeout(()=>{cur=0;show(0);},800);
+    },500);
+  },durations[i]);
+}
+setTimeout(()=>show(0),500);
+</script>
+</body>
+</html>
