@@ -214,3 +214,28 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 
   setTimeout(()=>{if(nudge&&!open)nudge.style.opacity='1';},3000);
 })();
+
+(function initLeadPopup(){
+  const popup=document.getElementById('lead-popup');
+  const closeBtn=document.getElementById('lead-close');
+  const form=document.getElementById('lead-form');
+  const success=document.getElementById('lead-success');
+  if(!popup)return;
+  if(sessionStorage.getItem('dgd_lead'))return;
+  setTimeout(()=>popup.classList.add('show'),7000);
+  closeBtn.addEventListener('click',()=>{
+    popup.classList.remove('show');
+    sessionStorage.setItem('dgd_lead','1');
+  });
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const data=new FormData(form);
+    const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(res.ok){
+      form.style.display='none';
+      success.style.display='block';
+      sessionStorage.setItem('dgd_lead','1');
+      setTimeout(()=>popup.classList.remove('show'),3000);
+    }
+  });
+})();
