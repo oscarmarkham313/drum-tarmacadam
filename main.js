@@ -1,282 +1,536 @@
-﻿'use strict';
-window.addEventListener('load',()=>{
-  const l=document.getElementById('page-loader');
-  if(l) setTimeout(()=>l.classList.add('hidden'),500);
+'use strict';
+gsap.registerPlugin(ScrollTrigger);
+
+/* ══════════════════════════════════════════════════════════════
+   1. PAGE LOADER
+══════════════════════════════════════════════════════════════ */
+window.addEventListener('load', () => {
+  const l = document.querySelector('.page-loader');
+  if (l) setTimeout(() => l.classList.add('hidden'), 400);
 });
-(function initNav(){
-  const nav=document.querySelector('.nav');
-  if(!nav)return;
-  const upd=()=>nav.classList.toggle('scrolled',window.scrollY>30);
-  window.addEventListener('scroll',upd,{passive:true});upd();
-  const p=location.pathname.split('/').pop()||'index.html';
-  document.querySelectorAll('.nav__link').forEach(l=>{if(l.getAttribute('href')===p)l.classList.add('active');});
+
+/* ══════════════════════════════════════════════════════════════
+   2. NAV — .scrolled at 80px
+══════════════════════════════════════════════════════════════ */
+(function initNav() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  // Fade nav in on load
+  gsap.to(nav, { opacity: 1, y: 0, duration: 0.6, delay: 0.3, ease: 'power2.out' });
 })();
-(function initBurger(){
-  const b=document.querySelector('.nav__burger'),d=document.querySelector('.nav__drawer');
-  if(!b||!d)return;
-  b.addEventListener('click',()=>{
-    const o=b.classList.toggle('open');
-    d.classList.toggle('open',o);
-    document.body.style.overflow=o?'hidden':'';
+
+/* ══════════════════════════════════════════════════════════════
+   3. MOBILE MENU
+══════════════════════════════════════════════════════════════ */
+(function initMobileMenu() {
+  const burger = document.querySelector('.nav__burger');
+  const drawer = document.querySelector('.nav__drawer');
+  if (!burger || !drawer) return;
+
+  function toggleMenu(open) {
+    burger.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.contains('open');
+    toggleMenu(!isOpen);
   });
-  d.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    b.classList.remove('open');d.classList.remove('open');document.body.style.overflow='';
-  }));
-})();
-(function initReveal(){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-  }),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-})();
-(function initCounters(){
-  function ease(t){return 1-Math.pow(1-t,4);}
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const el=e.target,target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||'',dur=2000,s=performance.now();
-    function run(n){const p=Math.min((n-s)/dur,1),v=target*ease(p);el.textContent=(Number.isInteger(target)?Math.round(v).toLocaleString():v.toFixed(1))+suffix;if(p<1)requestAnimationFrame(run);}
-    requestAnimationFrame(run);io.unobserve(el);
-  }),{threshold:.3});
-  document.querySelectorAll('[data-counter]').forEach(el=>io.observe(el));
-})();
-(function initFAQ(){
-  document.querySelectorAll('.faq-item__q').forEach(q=>q.addEventListener('click',()=>{
-    const it=q.closest('.faq-item'),open=it.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o=>o.classList.remove('open'));
-    if(!open)it.classList.add('open');
-  }));
-})();
-(function initTestiToggle(){
-  const btn=document.getElementById('testi-toggle'),col=document.getElementById('testi-col');
-  if(!btn||!col)return;
-  btn.addEventListener('click',()=>{
-    const o=col.classList.toggle('open');
-    btn.classList.toggle('open',o);
-    btn.querySelector('.tbtn-label').textContent=o?'Hide Reviews':'See All 52 Reviews';
+
+  drawer.querySelectorAll('.nav__drawer-link').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false);
   });
 })();
-(function initForm(){
-  const f=document.getElementById('contact-form');
-  if(!f)return;
-  f.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const data=new FormData(f);
-    const res=await fetch(f.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(res.ok){
-      const ff=f.querySelector('.form-fields'),s=document.getElementById('form-success');
-      if(ff)ff.style.display='none';
-      if(s)s.style.display='block';
+
+/* ══════════════════════════════════════════════════════════════
+   4. PAGE LOAD GSAP SEQUENCE (hero page only)
+══════════════════════════════════════════════════════════════ */
+(function initHeroAnimation() {
+  if (!document.querySelector('.hero')) return;
+
+  const tl = gsap.timeline({ delay: 0.5 });
+
+  tl.to('.hero__badge', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' })
+    .to('.hero__headline .line-inner', { opacity: 1, y: 0, stagger: 0.15, duration: 0.75, ease: 'power3.out' }, '-=0.2')
+    .to('.hero__sub', { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, '-=0.3')
+    .to('.hero__actions', { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, '-=0.25')
+    .to('.hero__trust', { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.15')
+    .to('.hero__scroll', { opacity: 1, duration: 0.4, ease: 'power2.out' })
+    .to('.stats-bar', { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   5. SCROLL ANIMATIONS — .reveal
+══════════════════════════════════════════════════════════════ */
+(function initReveal() {
+  const reveals = gsap.utils.toArray('.reveal');
+  reveals.forEach(el => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 88%',
+      onEnter: () => el.classList.add('visible'),
+      once: true
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   6. COUNT-UP NUMBERS
+══════════════════════════════════════════════════════════════ */
+(function initCountUp() {
+  const elements = document.querySelectorAll('[data-count]');
+  if (!elements.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      io.unobserve(entry.target);
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const isDecimal = target % 1 !== 0;
+      const duration = 2000;
+      const start = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = target * easeOut(progress);
+        const display = isDecimal ? value.toFixed(1) : Math.floor(value).toString();
+        el.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.5 });
+
+  elements.forEach(el => io.observe(el));
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   7. MAGNETIC BUTTONS
+══════════════════════════════════════════════════════════════ */
+(function initMagnetic() {
+  document.querySelectorAll('.btn--gold').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      gsap.to(btn, { x: dx * 8, y: dy * 8, duration: 0.3, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   8. TESTIMONIAL CAROUSEL
+══════════════════════════════════════════════════════════════ */
+(function initTestimonials() {
+  const cards = Array.from(document.querySelectorAll('.testi-card'));
+  const dots = Array.from(document.querySelectorAll('.testi-dot'));
+  const prevBtn = document.querySelector('.testi-btn--prev');
+  const nextBtn = document.querySelector('.testi-btn--next');
+  if (!cards.length) return;
+
+  const TOTAL = cards.length;
+  let current = 0;
+  let autoTimer = null;
+  let paused = false;
+
+  function getVisible() {
+    return window.innerWidth >= 1024 ? 3 : 1;
+  }
+
+  function showSlide(idx) {
+    const vis = getVisible();
+    current = ((idx % TOTAL) + TOTAL) % TOTAL;
+    cards.forEach((card, i) => {
+      const offset = (i - current + TOTAL) % TOTAL;
+      card.classList.toggle('visible', offset < vis);
+    });
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+  }
+
+  function next() { showSlide(current + 1); }
+  function prev() { showSlide(current - 1); }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => { if (!paused) next(); }, 4000);
+  }
+  function stopAuto() { if (autoTimer) clearInterval(autoTimer); }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { showSlide(i); stopAuto(); startAuto(); });
+  });
+
+  const wrap = document.querySelector('.testi-carousel-wrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => { paused = true; });
+    wrap.addEventListener('mouseleave', () => { paused = false; });
+  }
+
+  showSlide(0);
+  startAuto();
+  window.addEventListener('resize', () => showSlide(current));
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   9. ACTIVE NAV LINK
+══════════════════════════════════════════════════════════════ */
+(function initActiveNav() {
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav__link, .nav__drawer-link').forEach(link => {
+    const href = link.getAttribute('href') || '';
+    const linkFile = href.split('/').pop() || 'index.html';
+    if (linkFile === path || (path === '' && linkFile === 'index.html')) {
+      link.classList.add('active');
     }
   });
 })();
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const t=document.getElementById(a.getAttribute('href').slice(1));
-  if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-}));
-(function initParallax(){
-  const hc=document.querySelector('.hero__content');
-  if(!hc)return;
-  window.addEventListener('scroll',()=>{
-    const y=window.scrollY;
-    if(y<window.innerHeight){hc.style.transform='translateY('+y*.18+'px)';hc.style.opacity=1-(y/(window.innerHeight*.9));}
-  },{passive:true});
-})();
-(function initHeroAnim(){
-  document.querySelectorAll('.hero__anim').forEach((el,i)=>{
-    el.style.opacity='0';el.style.transform='translateY(28px)';
-    el.style.transition='opacity .8s cubic-bezier(.4,0,.2,1) '+(0.08+i*0.13)+'s,transform .8s cubic-bezier(.4,0,.2,1) '+(0.08+i*0.13)+'s';
-    setTimeout(()=>{el.style.opacity='1';el.style.transform='none';},40);
+
+/* ══════════════════════════════════════════════════════════════
+   10. EXIT INTENT
+══════════════════════════════════════════════════════════════ */
+(function initExitIntent() {
+  const overlay = document.querySelector('.exit-overlay');
+  const closeBtn = document.querySelector('.exit-popup__close');
+  const dismissBtn = document.querySelector('.exit-popup__dismiss');
+  if (!overlay) return;
+
+  if (sessionStorage.getItem('dgd_exit')) return;
+
+  function showExit() {
+    if (sessionStorage.getItem('dgd_exit')) return;
+    overlay.classList.add('show');
+    sessionStorage.setItem('dgd_exit', '1');
+    document.removeEventListener('mouseleave', onMouseLeave);
+  }
+
+  function closeExit() {
+    overlay.classList.remove('show');
+  }
+
+  function onMouseLeave(e) {
+    if (e.clientY < 20) showExit();
+  }
+
+  setTimeout(() => {
+    document.addEventListener('mouseleave', onMouseLeave);
+  }, 5000);
+
+  if (closeBtn) closeBtn.addEventListener('click', closeExit);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeExit);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeExit();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) closeExit();
   });
 })();
 
+/* ══════════════════════════════════════════════════════════════
+   11. LEAD POPUP — 7s delay, once per session
+══════════════════════════════════════════════════════════════ */
+(function initLeadPopup() {
+  const popup = document.querySelector('.lead-popup');
+  const closeBtn = document.querySelector('.lead-popup__close');
+  if (!popup) return;
+  if (sessionStorage.getItem('dgd_lead')) return;
 
-(function initChat(){
-  const toggle=document.getElementById('chat-toggle');
-  const win=document.getElementById('chat-window');
-  const msgs=document.getElementById('chat-msgs');
-  const input=document.getElementById('chat-input');
-  const send=document.getElementById('chat-send');
-  const chips=document.getElementById('chat-chips');
-  const nudge=document.getElementById('chat-nudge');
-  if(!toggle||!win)return;
+  setTimeout(() => {
+    if (sessionStorage.getItem('dgd_lead')) return;
+    popup.classList.add('show');
+    sessionStorage.setItem('dgd_lead', '1');
+  }, 7000);
 
-  const KB=[
-    {k:['price','cost','how much','pricing','package','packages','rate','rates','charge'],
-     r:`Our packages start from <strong>€497/month</strong>:<br>• Starter – €497/mo<br>• Growth – €997/mo (most popular)<br>• Dominator – €1,997/mo<br><br>All rolling monthly, no lock-in. Want a custom quote?`,
-     chips:['Book free call','Tell me more','Contact us']},
-    {k:['web','website','site','design','build','develop'],
-     r:`We build fully custom websites — no templates. Every site is mobile-first, lightning-fast, and SEO-optimised from day one.<br><br>Most websites are delivered within 2–3 weeks. Want to discuss your project?`,
-     chips:['Get a quote','See pricing','Book free call']},
-    {k:['social','instagram','facebook','tiktok','linkedin','post','content'],
-     r:`We offer full social media management — strategy, content creation, daily posting, community engagement, and monthly reporting across all platforms.<br><br>Most clients see <strong>300%+ reach growth</strong> within 90 days.`,
-     chips:['See pricing','Book free call','Contact us']},
-    {k:['ads','google','meta','ppc','paid','advertising','leads'],
-     r:`We run data-driven Google Ads and Meta Ads campaigns with full ROI tracking. Average ROAS for our clients is <strong>4.2x</strong>.<br><br>No wasted budget — every euro is tracked and optimised.`,
-     chips:['See pricing','Book free call','Contact us']},
-    {k:['seo','rank','google rank','search','organic'],
-     r:`Our local SEO service gets Irish businesses ranking on Google for their key search terms — including Google Maps / Business Profile optimisation.<br><br>Results typically show within 60–90 days.`,
-     chips:['See pricing','Book free call']},
-    {k:['result','how long','when','timeline','fast','quick'],
-     r:`Most clients see measurable results within the first <strong>30 days</strong>. Paid ads can generate leads in the first week. SEO and organic social compound over 60–90 days.`,
-     chips:['Book free call','See pricing']},
-    {k:['contract','lock','cancel','commitment','tie'],
-     r:`No long-term contracts. We work on rolling monthly agreements — we're confident in our results, so we don't need to lock you in. Cancel anytime with 30 days notice.`,
-     chips:['See pricing','Book free call']},
-    {k:['contact','call','speak','talk','reach','phone','whatsapp','email'],
-     r:`You can reach us via:<br>📱 WhatsApp: <a href="https://wa.me/353871257533" target="_blank">+353 87 125 7533</a><br>📧 Email: <a href="mailto:dublingrowthdigital@gmail.com">dublingrowthdigital@gmail.com</a><br><br>Or book a free strategy call — we usually reply within minutes!`,
-     chips:['Book free call','Contact page']},
-    {k:['book','strategy','free','consultation','meeting','appointment'],
-     r:`Book your free 30-minute strategy call on WhatsApp — just tap below. No pressure, no obligation, just honest advice. 👇`,
-     chips:['WhatsApp now','Contact page']},
-    {k:['who','about','team','based','ireland','dublin','location'],
-     r:`We're a Dublin-based digital marketing agency working with Irish businesses nationwide. From Cork to Galway, we help businesses get more leads online.`,
-     chips:['Our services','Book free call','Contact us']},
-    {k:['hello','hi','hey','hiya','howya','good morning','good afternoon'],
-     r:`Hey there! 👋 I'm the Dublin Growth Digital assistant. I can answer questions about our services, pricing, and how we can help grow your business online.<br><br>What would you like to know?`,
-     chips:['Services & pricing','How fast are results?','Book free call']},
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => popup.classList.remove('show'));
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   12. EXIT POPUP FORM SUBMIT
+══════════════════════════════════════════════════════════════ */
+(function initExitForm() {
+  const form = document.getElementById('exit-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const data = new FormData(form);
+      data.append('_subject', 'Exit Intent Audit Request — Dublin Growth Digital');
+      const res = await fetch('https://formspree.io/f/meendppv', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        const inner = form.closest('.exit-popup__form-inner') || form.parentElement;
+        if (inner) inner.classList.add('hidden');
+        const success = document.querySelector('.exit-popup__success');
+        if (success) success.classList.add('show');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   13. LEAD POPUP FORM SUBMIT
+══════════════════════════════════════════════════════════════ */
+(function initLeadForm() {
+  const form = document.getElementById('lead-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const data = new FormData(form);
+      data.append('_subject', 'Free Audit Request — Dublin Growth Digital');
+      const res = await fetch('https://formspree.io/f/meendppv', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        const formEl = document.querySelector('.lead-popup__form');
+        if (formEl) formEl.classList.add('hidden');
+        const success = document.querySelector('.lead-popup__success');
+        if (success) success.classList.add('show');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   14. CONTACT FORM SUBMIT
+══════════════════════════════════════════════════════════════ */
+(function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  function setError(input, state) {
+    input.classList.toggle('error', state);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const required = form.querySelectorAll('[required]');
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        setError(field, true);
+        valid = false;
+        field.addEventListener('input', () => setError(field, false), { once: true });
+      } else {
+        setError(field, false);
+      }
+    });
+
+    if (!valid) return;
+
+    const btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        const success = document.querySelector('.form-success');
+        if (success) success.classList.add('show');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   15. VISITOR TRACKING
+══════════════════════════════════════════════════════════════ */
+(function initVisitorTracking() {
+  const ENDPOINT = 'https://formspree.io/f/meendppv';
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+
+  async function getIpData() {
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      if (res.ok) return await res.json();
+    } catch (_) {}
+    return {};
+  }
+
+  async function sendPing(type) {
+    const ipData = await getIpData();
+    const payload = {
+      _subject: `[DGD Tracking] ${type} — ${page}`,
+      event: type,
+      page: page,
+      url: window.location.href,
+      referrer: document.referrer || 'direct',
+      userAgent: navigator.userAgent.substring(0, 200),
+      ip: ipData.ip || 'unknown',
+      city: ipData.city || 'unknown',
+      country: ipData.country_name || 'unknown',
+      timestamp: new Date().toISOString()
+    };
+    try {
+      await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (_) {}
+  }
+
+  // 3s page ping — once per session per page
+  const pingKey = 'dgd_pinged_' + page;
+  if (!sessionStorage.getItem(pingKey)) {
+    setTimeout(() => {
+      sessionStorage.setItem(pingKey, '1');
+      sendPing('Page Visit');
+    }, 3000);
+  }
+
+  // 45s engaged ping
+  const engagedKey = 'dgd_engaged_' + page;
+  if (!sessionStorage.getItem(engagedKey)) {
+    setTimeout(() => {
+      sessionStorage.setItem(engagedKey, '1');
+      sendPing('Engaged Visitor (45s)');
+    }, 45000);
+  }
+
+  // Contact page specific ping
+  if (page === 'contact.html') {
+    const contactKey = 'dgd_contact_visit';
+    if (!sessionStorage.getItem(contactKey)) {
+      setTimeout(() => {
+        sessionStorage.setItem(contactKey, '1');
+        sendPing('Contact Page Visit');
+      }, 2000);
+    }
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   16. STAGGER FADE-UP via ScrollTrigger
+══════════════════════════════════════════════════════════════ */
+(function initStaggerCards() {
+  const groups = [
+    '.result-card',
+    '.service-card',
+    '.why-block',
+    '.process-step',
+    '.pricing-card',
+    '.case-card',
+    '.testi-mini'
   ];
 
-  const CHIPS_MAP={
-    'Book free call':()=>window.open('https://wa.me/353871257533','_blank'),
-    'WhatsApp now':()=>window.open('https://wa.me/353871257533','_blank'),
-    'Contact us':()=>location.href='contact.html',
-    'Contact page':()=>location.href='contact.html',
-    'See pricing':()=>location.href='services.html#pricing',
-    'Our services':()=>location.href='services.html',
-    'Tell me more':()=>location.href='services.html',
-  };
+  groups.forEach(selector => {
+    const els = gsap.utils.toArray(selector);
+    if (!els.length) return;
 
-  let open=false;
-
-  function showMsg(text,type){
-    const d=document.createElement('div');
-    d.className='chat-msg chat-msg--'+type;
-    d.innerHTML=text;
-    msgs.appendChild(d);
-    msgs.scrollTop=msgs.scrollHeight;
-  }
-
-  function showTyping(){
-    const d=document.createElement('div');
-    d.className='chat-typing';d.id='chat-typing';
-    d.innerHTML='<span></span><span></span><span></span>';
-    msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
-  }
-
-  function setChips(list){
-    chips.innerHTML='';
-    (list||[]).forEach(label=>{
-      const b=document.createElement('button');
-      b.className='chat-chip';b.textContent=label;
-      b.addEventListener('click',()=>{
-        if(CHIPS_MAP[label])return CHIPS_MAP[label]();
-        processInput(label);
+    // Group by parent container for stagger effect
+    const parents = [...new Set(els.map(el => el.parentElement))];
+    parents.forEach(parent => {
+      const children = parent.querySelectorAll(selector);
+      if (!children.length) return;
+      gsap.from(children, {
+        scrollTrigger: {
+          trigger: parent,
+          start: 'top 85%',
+          once: true
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.65,
+        stagger: 0.1,
+        ease: 'power2.out'
       });
-      chips.appendChild(b);
     });
-  }
-
-  function processInput(text){
-    showMsg(text,'user');setChips([]);
-    const t=text.toLowerCase();
-    const typing=showTyping();
-    setTimeout(()=>{
-      typing.remove();
-      let matched=null;
-      for(const entry of KB){
-        if(entry.k.some(kw=>t.includes(kw))){matched=entry;break;}
-      }
-      if(matched){
-        showMsg(matched.r,'bot');
-        setChips(matched.chips||[]);
-      } else {
-        showMsg(`Great question! For the most accurate answer, our team would love to help directly.<br><br>📱 <a href="https://wa.me/353871257533" target="_blank">WhatsApp us</a> for a quick reply, or <a href="contact.html">send a message</a>.`,'bot');
-        setChips(['WhatsApp now','Contact us','Book free call']);
-      }
-    },700+Math.random()*400);
-  }
-
-  toggle.addEventListener('click',()=>{
-    open=!open;
-    toggle.classList.toggle('open',open);
-    win.classList.toggle('open',open);
-    if(nudge)nudge.style.display='none';
-    if(open&&msgs.children.length===0){
-      setTimeout(()=>{
-        showMsg('Hey! 👋 I\'m the DGD assistant. Ask me anything about our services, pricing, or how we can help grow your business online!','bot');
-        setChips(['Services & pricing','How fast are results?','Book free call','Contact us']);
-      },300);
-    }
-  });
-
-  send.addEventListener('click',()=>{const v=input.value.trim();if(v){input.value='';processInput(v);}});
-  input.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=input.value.trim();if(v){input.value='';processInput(v);}}});
-
-  setTimeout(()=>{if(nudge&&!open)nudge.style.opacity='1';},3000);
-})();
-
-(function initLeadPopup(){
-  const popup=document.getElementById('lead-popup');
-  const closeBtn=document.getElementById('lead-close');
-  const form=document.getElementById('lead-form');
-  const success=document.getElementById('lead-success');
-  if(!popup)return;
-  if(sessionStorage.getItem('dgd_lead'))return;
-  setTimeout(()=>popup.classList.add('show'),7000);
-  closeBtn.addEventListener('click',()=>{
-    popup.classList.remove('show');
-    sessionStorage.setItem('dgd_lead','1');
-  });
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const data=new FormData(form);
-    const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(res.ok){
-      form.style.display='none';
-      success.style.display='block';
-      sessionStorage.setItem('dgd_lead','1');
-      setTimeout(()=>popup.classList.remove('show'),3000);
-    }
   });
 })();
 
-(function initVisitorTracking(){
-  const ENDPOINT='https://formspree.io/f/meendppv';
-  let initialPinged=false;
-  let engagedPinged=false;
+/* ══════════════════════════════════════════════════════════════
+   17. HERO PARALLAX
+══════════════════════════════════════════════════════════════ */
+(function initHeroParallax() {
+  if (!document.querySelector('.hero__content')) return;
+  gsap.to('.hero__content', {
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    },
+    y: 80,
+    ease: 'none'
+  });
+})();
 
-  const pageName=(location.pathname.split('/').pop()||'home').replace('.html','')||'home';
+/* ══════════════════════════════════════════════════════════════
+   18. FAQ ACCORDION
+══════════════════════════════════════════════════════════════ */
+(function initFaq() {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const trigger = item.querySelector('.faq-question');
+    const content = item.querySelector('.faq-answer');
+    if (!trigger || !content) return;
 
-  function sendPing(type,isEngaged){
-    if(isEngaged&&engagedPinged)return;
-    if(!isEngaged&&initialPinged)return;
-    if(isEngaged) engagedPinged=true; else initialPinged=true;
-
-    fetch('https://ipapi.co/json/')
-      .then(r=>r.json())
-      .then(geo=>{
-        const payload={
-          _subject:'[DGD Website] '+type,
-          '📄 Page': pageName,
-          '🔗 URL': location.href,
-          '↩ Came from': document.referrer||'Direct / typed URL',
-          '📱 Device': /Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop',
-          '🌍 Location': (geo.city||'?')+', '+(geo.region||'')+'  '+( geo.country_name||''),
-          '🏢 ISP / Network': geo.org||'Unknown',
-          '🕐 Time (Dublin)': new Date().toLocaleString('en-IE',{timeZone:'Europe/Dublin'}),
-        };
-        fetch(ENDPOINT,{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json','Accept':'application/json'}});
-      }).catch(()=>{});
-  }
-
-  // Every visit — fires after 3s (filters out instant bounces)
-  setTimeout(()=>sendPing('New visitor on '+pageName, false), 3000);
-
-  // Engaged visitor — still on page after 45s
-  setTimeout(()=>sendPing('🔥 Engaged 45s on '+pageName, true), 45000);
-
-  // Contact page — extra alert even if they don't submit
-  if(location.pathname.includes('contact')){
-    setTimeout(()=>sendPing('👀 Visited Contact page — did not submit yet', true), 4000);
-  }
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        const ans = openItem.querySelector('.faq-answer');
+        if (ans) gsap.to(ans, { height: 0, duration: 0.3, ease: 'power2.inOut' });
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        gsap.set(content, { height: 'auto' });
+        gsap.from(content, { height: 0, duration: 0.35, ease: 'power2.out' });
+      }
+    });
+  });
 })();
