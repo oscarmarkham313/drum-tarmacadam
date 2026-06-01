@@ -20,8 +20,6 @@ window.addEventListener('load', () => {
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-  // Fade nav in on load
-  gsap.to(nav, { opacity: 1, y: 0, duration: 0.6, delay: 0.3, ease: 'power2.out' });
 })();
 
 /* ══════════════════════════════════════════════════════════════
@@ -65,8 +63,7 @@ window.addEventListener('load', () => {
     .to('.hero__sub', { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, '-=0.3')
     .to('.hero__actions', { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, '-=0.25')
     .to('.hero__trust', { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.15')
-    .to('.hero__scroll', { opacity: 1, duration: 0.4, ease: 'power2.out' })
-    .to('.stats-bar', { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.2');
+    .to('.hero__scroll', { opacity: 1, duration: 0.4, ease: 'power2.out' });
 })();
 
 /* ══════════════════════════════════════════════════════════════
@@ -74,14 +71,31 @@ window.addEventListener('load', () => {
 ══════════════════════════════════════════════════════════════ */
 (function initReveal() {
   const reveals = gsap.utils.toArray('.reveal');
+
+  // Immediately reveal anything already in viewport on load
+  function revealInView() {
+    reveals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.95) el.classList.add('visible');
+    });
+  }
+
+  // ScrollTrigger for scroll-in reveals
   reveals.forEach(el => {
     ScrollTrigger.create({
       trigger: el,
-      start: 'top 88%',
+      start: 'top 92%',
       onEnter: () => el.classList.add('visible'),
       once: true
     });
   });
+
+  // Fallback: run on load and after a short delay (catches anything GSAP misses)
+  window.addEventListener('load', () => {
+    revealInView();
+    setTimeout(revealInView, 600);
+  });
+  revealInView();
 })();
 
 /* ══════════════════════════════════════════════════════════════

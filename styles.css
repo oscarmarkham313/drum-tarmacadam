@@ -161,8 +161,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  opacity: 0;
-  transform: translateY(-10px);
   transition: background 0.35s var(--ease), backdrop-filter 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
@@ -527,7 +525,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   background: var(--dark-3);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  opacity: 0;
 }
 
 .stats-bar__inner {
