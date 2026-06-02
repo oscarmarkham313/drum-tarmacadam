@@ -17,10 +17,10 @@
       setTimeout(() => {
         loader.classList.add('hidden');
         document.body.style.overflow = '';
-      }, 500);
+      }, 150);
     });
     // Failsafe
-    setTimeout(() => loader.classList.add('hidden'), 3000);
+    setTimeout(() => loader.classList.add('hidden'), 1500);
   });
 })();
 
