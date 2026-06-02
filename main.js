@@ -1,550 +1,275 @@
 'use strict';
-gsap.registerPlugin(ScrollTrigger);
 
-/* ══════════════════════════════════════════════════════════════
-   1. PAGE LOADER
-══════════════════════════════════════════════════════════════ */
-window.addEventListener('load', () => {
-  const l = document.querySelector('.page-loader');
-  if (l) setTimeout(() => l.classList.add('hidden'), 400);
-});
+/* ============================================================
+   DUBLIN GROWTH DIGITAL — main.js v3.0
+   Legora-inspired editorial animations
+   ============================================================ */
 
-/* ══════════════════════════════════════════════════════════════
-   2. NAV — .scrolled at 80px
-══════════════════════════════════════════════════════════════ */
+/* --- 1. Page Loader --------------------------------------- */
+(function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  const word = loader.querySelector('.loader__word');
+
+  requestAnimationFrame(() => {
+    if (word) { word.classList.add('show'); }
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 500);
+    });
+    // Failsafe
+    setTimeout(() => loader.classList.add('hidden'), 3000);
+  });
+})();
+
+/* --- 2. Navigation --------------------------------------- */
 (function initNav() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
-  function onScroll() {
-    nav.classList.toggle('scrolled', window.scrollY > 80);
-  }
+
+  // Scroll state
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-})();
 
-/* ══════════════════════════════════════════════════════════════
-   3. MOBILE MENU
-══════════════════════════════════════════════════════════════ */
-(function initMobileMenu() {
-  const burger = document.querySelector('.nav__burger');
+  // Active link
+  const links = nav.querySelectorAll('.nav__links a');
+  const page = location.pathname.split('/').pop() || 'index.html';
+  links.forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href === page || (page === '' && href === 'index.html') ||
+        (href === 'index.html' && (page === '' || page === '/'))) {
+      a.classList.add('active');
+    }
+  });
+
+  // Mobile hamburger
+  const hamburger = nav.querySelector('.nav__hamburger');
   const drawer = document.querySelector('.nav__drawer');
-  if (!burger || !drawer) return;
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      drawer.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    // Close on link click
+    drawer.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      })
+    );
+  }
+})();
 
-  function toggleMenu(open) {
-    burger.classList.toggle('open', open);
-    drawer.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+/* --- 3. Hero Animation ----------------------------------- */
+(function initHero() {
+  const lineInners = document.querySelectorAll('.hero__title .line-inner');
+  const pill = document.querySelector('.hero__pill');
+  const bottom = document.querySelector('.hero__bottom');
+  const hint = document.querySelector('.hero__scroll-hint');
+  if (!lineInners.length) return;
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 });
+
+  tl.to(lineInners, {
+    y: '0%',
+    duration: 1.1,
+    stagger: 0.1,
+  });
+
+  if (pill) {
+    tl.to(pill, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
   }
 
-  burger.addEventListener('click', () => {
-    const isOpen = drawer.classList.contains('open');
-    toggleMenu(!isOpen);
-  });
+  if (bottom) {
+    tl.to(bottom, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
+  }
 
-  drawer.querySelectorAll('.nav__drawer-link').forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false);
-  });
+  if (hint) {
+    tl.to(hint, { opacity: 1, duration: 0.5 }, '-=0.3');
+  }
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   4. PAGE LOAD GSAP SEQUENCE (hero page only)
-══════════════════════════════════════════════════════════════ */
-(function initHeroAnimation() {
-  if (!document.querySelector('.hero')) return;
-
-  const tl = gsap.timeline({ delay: 0.5 });
-
-  tl.to('.hero__badge', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' })
-    .to('.hero__headline .line-inner', { opacity: 1, y: 0, stagger: 0.15, duration: 0.75, ease: 'power3.out' }, '-=0.2')
-    .to('.hero__sub', { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, '-=0.3')
-    .to('.hero__actions', { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, '-=0.25')
-    .to('.hero__trust', { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.15')
-    .to('.hero__scroll', { opacity: 1, duration: 0.4, ease: 'power2.out' });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   5. SCROLL ANIMATIONS — .reveal
-══════════════════════════════════════════════════════════════ */
+/* --- 4. Scroll Reveal ------------------------------------ */
 (function initReveal() {
-  const reveals = gsap.utils.toArray('.reveal');
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
 
-  // Immediately reveal anything already in viewport on load
-  function revealInView() {
-    reveals.forEach(el => {
+  const check = () => {
+    els.forEach(el => {
+      if (el.classList.contains('in')) return;
       const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.95) el.classList.add('visible');
+      if (r.top < window.innerHeight * 0.93) el.classList.add('in');
     });
-  }
+  };
 
-  // ScrollTrigger for scroll-in reveals
-  reveals.forEach(el => {
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 92%',
-      onEnter: () => el.classList.add('visible'),
-      once: true
-    });
-  });
-
-  // Fallback: run on load and after a short delay (catches anything GSAP misses)
-  window.addEventListener('load', () => {
-    revealInView();
-    setTimeout(revealInView, 600);
-  });
-  revealInView();
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('load', () => { check(); setTimeout(check, 400); });
+  check();
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   6. COUNT-UP NUMBERS
-══════════════════════════════════════════════════════════════ */
+/* --- 5. Count-Up Stats ----------------------------------- */
 (function initCountUp() {
-  const elements = document.querySelectorAll('[data-count]');
-  if (!elements.length) return;
+  const nums = document.querySelectorAll('[data-count]');
+  if (!nums.length) return;
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      io.unobserve(entry.target);
-      const el = entry.target;
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const isDecimal = target % 1 !== 0;
-      const duration = 2000;
-      const start = performance.now();
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
 
-      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  const animate = (el) => {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const decimals = Number.isInteger(target) ? 0 : 1;
+    const duration = 1800;
+    const start = performance.now();
 
-      function tick(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const value = target * easeOut(progress);
-        const display = isDecimal ? value.toFixed(1) : Math.floor(value).toString();
-        el.textContent = display + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    });
-  }, { threshold: 0.5 });
-
-  elements.forEach(el => io.observe(el));
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   7. MAGNETIC BUTTONS
-══════════════════════════════════════════════════════════════ */
-(function initMagnetic() {
-  document.querySelectorAll('.btn--gold').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = (e.clientX - cx) / (rect.width / 2);
-      const dy = (e.clientY - cy) / (rect.height / 2);
-      gsap.to(btn, { x: dx * 8, y: dy * 8, duration: 0.3, ease: 'power2.out' });
-    });
-    btn.addEventListener('mouseleave', () => {
-      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
-    });
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   8. TESTIMONIAL CAROUSEL
-══════════════════════════════════════════════════════════════ */
-(function initTestimonials() {
-  const cards = Array.from(document.querySelectorAll('.testi-card'));
-  const dots = Array.from(document.querySelectorAll('.testi-dot'));
-  const prevBtn = document.querySelector('.testi-btn--prev');
-  const nextBtn = document.querySelector('.testi-btn--next');
-  if (!cards.length) return;
-
-  const TOTAL = cards.length;
-  let current = 0;
-  let autoTimer = null;
-  let paused = false;
-
-  function getVisible() {
-    return window.innerWidth >= 1024 ? 3 : 1;
-  }
-
-  function showSlide(idx) {
-    const vis = getVisible();
-    current = ((idx % TOTAL) + TOTAL) % TOTAL;
-    cards.forEach((card, i) => {
-      const offset = (i - current + TOTAL) % TOTAL;
-      card.classList.toggle('visible', offset < vis);
-    });
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-  }
-
-  function next() { showSlide(current + 1); }
-  function prev() { showSlide(current - 1); }
-
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(() => { if (!paused) next(); }, 4000);
-  }
-  function stopAuto() { if (autoTimer) clearInterval(autoTimer); }
-
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { showSlide(i); stopAuto(); startAuto(); });
-  });
-
-  const wrap = document.querySelector('.testi-carousel-wrap');
-  if (wrap) {
-    wrap.addEventListener('mouseenter', () => { paused = true; });
-    wrap.addEventListener('mouseleave', () => { paused = false; });
-  }
-
-  showSlide(0);
-  startAuto();
-  window.addEventListener('resize', () => showSlide(current));
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   9. ACTIVE NAV LINK
-══════════════════════════════════════════════════════════════ */
-(function initActiveNav() {
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav__link, .nav__drawer-link').forEach(link => {
-    const href = link.getAttribute('href') || '';
-    const linkFile = href.split('/').pop() || 'index.html';
-    if (linkFile === path || (path === '' && linkFile === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   10. EXIT INTENT
-══════════════════════════════════════════════════════════════ */
-(function initExitIntent() {
-  const overlay = document.querySelector('.exit-overlay');
-  const closeBtn = document.querySelector('.exit-popup__close');
-  const dismissBtn = document.querySelector('.exit-popup__dismiss');
-  if (!overlay) return;
-
-  if (sessionStorage.getItem('dgd_exit')) return;
-
-  function showExit() {
-    if (sessionStorage.getItem('dgd_exit')) return;
-    overlay.classList.add('show');
-    sessionStorage.setItem('dgd_exit', '1');
-    document.removeEventListener('mouseleave', onMouseLeave);
-  }
-
-  function closeExit() {
-    overlay.classList.remove('show');
-  }
-
-  function onMouseLeave(e) {
-    if (e.clientY < 20) showExit();
-  }
-
-  setTimeout(() => {
-    document.addEventListener('mouseleave', onMouseLeave);
-  }, 5000);
-
-  if (closeBtn) closeBtn.addEventListener('click', closeExit);
-  if (dismissBtn) dismissBtn.addEventListener('click', closeExit);
-
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeExit();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('show')) closeExit();
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   11. LEAD POPUP — 7s delay, once per session
-══════════════════════════════════════════════════════════════ */
-(function initLeadPopup() {
-  const popup = document.querySelector('.lead-popup');
-  const closeBtn = document.querySelector('.lead-popup__close');
-  if (!popup) return;
-  if (sessionStorage.getItem('dgd_lead')) return;
-
-  setTimeout(() => {
-    if (sessionStorage.getItem('dgd_lead')) return;
-    popup.classList.add('show');
-    sessionStorage.setItem('dgd_lead', '1');
-  }, 7000);
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => popup.classList.remove('show'));
-  }
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   12. EXIT POPUP FORM SUBMIT
-══════════════════════════════════════════════════════════════ */
-(function initExitForm() {
-  const form = document.getElementById('exit-form');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    try {
-      const data = new FormData(form);
-      data.append('_subject', 'Exit Intent Audit Request — Dublin Growth Digital');
-      const res = await fetch('https://formspree.io/f/meendppv', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (res.ok) {
-        const inner = form.closest('.exit-popup__form-inner') || form.parentElement;
-        if (inner) inner.classList.add('hidden');
-        const success = document.querySelector('.exit-popup__success');
-        if (success) success.classList.add('show');
-      } else {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   13. LEAD POPUP FORM SUBMIT
-══════════════════════════════════════════════════════════════ */
-(function initLeadForm() {
-  const form = document.getElementById('lead-form');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    try {
-      const data = new FormData(form);
-      data.append('_subject', 'Free Audit Request — Dublin Growth Digital');
-      const res = await fetch('https://formspree.io/f/meendppv', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (res.ok) {
-        const formEl = document.querySelector('.lead-popup__form');
-        if (formEl) formEl.classList.add('hidden');
-        const success = document.querySelector('.lead-popup__success');
-        if (success) success.classList.add('show');
-      } else {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   14. CONTACT FORM SUBMIT
-══════════════════════════════════════════════════════════════ */
-(function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  function setError(input, state) {
-    input.classList.toggle('error', state);
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let valid = true;
-
-    const required = form.querySelectorAll('[required]');
-    required.forEach(field => {
-      if (!field.value.trim()) {
-        setError(field, true);
-        valid = false;
-        field.addEventListener('input', () => setError(field, false), { once: true });
-      } else {
-        setError(field, false);
-      }
-    });
-
-    if (!valid) return;
-
-    const btn = form.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (res.ok) {
-        form.style.display = 'none';
-        const success = document.querySelector('.form-success');
-        if (success) success.classList.add('show');
-      } else {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  });
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   15. VISITOR TRACKING
-══════════════════════════════════════════════════════════════ */
-(function initVisitorTracking() {
-  const ENDPOINT = 'https://formspree.io/f/meendppv';
-  const page = window.location.pathname.split('/').pop() || 'index.html';
-
-  async function getIpData() {
-    try {
-      const res = await fetch('https://ipapi.co/json/');
-      if (res.ok) return await res.json();
-    } catch (_) {}
-    return {};
-  }
-
-  async function sendPing(type) {
-    const ipData = await getIpData();
-    const payload = {
-      _subject: `[DGD Tracking] ${type} — ${page}`,
-      event: type,
-      page: page,
-      url: window.location.href,
-      referrer: document.referrer || 'direct',
-      userAgent: navigator.userAgent.substring(0, 200),
-      ip: ipData.ip || 'unknown',
-      city: ipData.city || 'unknown',
-      country: ipData.country_name || 'unknown',
-      timestamp: new Date().toISOString()
+    const tick = (now) => {
+      const pct = Math.min((now - start) / duration, 1);
+      const val = target * easeOut(pct);
+      el.innerHTML = val.toFixed(decimals) + `<span class="suffix">${suffix}</span>`;
+      if (pct < 1) requestAnimationFrame(tick);
     };
-    try {
-      await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (_) {}
-  }
+    requestAnimationFrame(tick);
+  };
 
-  // 3s page ping — once per session per page
-  const pingKey = 'dgd_pinged_' + page;
-  if (!sessionStorage.getItem(pingKey)) {
-    setTimeout(() => {
-      sessionStorage.setItem(pingKey, '1');
-      sendPing('Page Visit');
-    }, 3000);
-  }
-
-  // 45s engaged ping
-  const engagedKey = 'dgd_engaged_' + page;
-  if (!sessionStorage.getItem(engagedKey)) {
-    setTimeout(() => {
-      sessionStorage.setItem(engagedKey, '1');
-      sendPing('Engaged Visitor (45s)');
-    }, 45000);
-  }
-
-  // Contact page specific ping
-  if (page === 'contact.html') {
-    const contactKey = 'dgd_contact_visit';
-    if (!sessionStorage.getItem(contactKey)) {
-      setTimeout(() => {
-        sessionStorage.setItem(contactKey, '1');
-        sendPing('Contact Page Visit');
-      }, 2000);
-    }
-  }
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   16. STAGGER FADE-UP via ScrollTrigger
-══════════════════════════════════════════════════════════════ */
-(function initStaggerCards() {
-  const groups = [
-    '.result-card',
-    '.service-card',
-    '.why-block',
-    '.process-step',
-    '.pricing-card',
-    '.case-card',
-    '.testi-mini'
-  ];
-
-  groups.forEach(selector => {
-    const els = gsap.utils.toArray(selector);
-    if (!els.length) return;
-
-    // Group by parent container for stagger effect
-    const parents = [...new Set(els.map(el => el.parentElement))];
-    parents.forEach(parent => {
-      const children = parent.querySelectorAll(selector);
-      if (!children.length) return;
-      gsap.from(children, {
-        scrollTrigger: {
-          trigger: parent,
-          start: 'top 85%',
-          once: true
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.65,
-        stagger: 0.1,
-        ease: 'power2.out'
-      });
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animate(e.target); obs.unobserve(e.target); }
     });
-  });
+  }, { threshold: 0.3 });
+
+  nums.forEach(n => obs.observe(n));
 })();
 
-/* ══════════════════════════════════════════════════════════════
-   17. HERO PARALLAX
-══════════════════════════════════════════════════════════════ */
-(function initHeroParallax() {
-  if (!document.querySelector('.hero__content')) return;
-  gsap.to('.hero__content', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    },
-    y: 80,
-    ease: 'none'
-  });
-})();
+/* --- 6. Services Sticky Scroll -------------------------- */
+(function initStickyServices() {
+  const panels = document.querySelectorAll('.svc-panel');
+  const tabs = document.querySelectorAll('.svc-tab');
+  const details = document.querySelectorAll('.svc-detail');
+  if (!panels.length) return;
 
-/* ══════════════════════════════════════════════════════════════
-   18. FAQ ACCORDION
-══════════════════════════════════════════════════════════════ */
-(function initFaq() {
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const trigger = item.querySelector('.faq-question');
-    const content = item.querySelector('.faq-answer');
-    if (!trigger || !content) return;
+  const setActive = (idx) => {
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    details.forEach((d, i) => d.classList.toggle('active', i === idx));
+  };
 
-    trigger.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(openItem => {
-        openItem.classList.remove('open');
-        const ans = openItem.querySelector('.faq-answer');
-        if (ans) gsap.to(ans, { height: 0, duration: 0.3, ease: 'power2.inOut' });
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        gsap.set(content, { height: 'auto' });
-        gsap.from(content, { height: 0, duration: 0.35, ease: 'power2.out' });
+  setActive(0);
+
+  // Tab clicks (desktop)
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => setActive(i)));
+
+  // IntersectionObserver for scroll-driven update
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(panels).indexOf(e.target);
+        if (idx !== -1) setActive(idx);
       }
     });
+  }, { threshold: 0.4, rootMargin: '-10% 0px -40% 0px' });
+
+  panels.forEach(p => obs.observe(p));
+})();
+
+/* --- 7. Testimonials Drag Scroll ------------------------ */
+(function initTestimonials() {
+  const track = document.querySelector('.testimonials__track');
+  const prevBtn = document.querySelector('.t-btn--prev');
+  const nextBtn = document.querySelector('.t-btn--next');
+  if (!track) return;
+
+  // Drag
+  let isDragging = false, startX = 0, scrollLeft = 0;
+
+  track.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    track.classList.add('grabbing');
   });
+  track.addEventListener('mouseleave', () => { isDragging = false; track.classList.remove('grabbing'); });
+  track.addEventListener('mouseup', () => { isDragging = false; track.classList.remove('grabbing'); });
+  track.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+
+  // Buttons
+  const cardW = () => (track.querySelector('.tcard')?.offsetWidth || 320) + 16;
+  if (prevBtn) prevBtn.addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));
+  if (nextBtn) nextBtn.addEventListener('click', () => track.scrollBy({ left: cardW(), behavior: 'smooth' }));
+})();
+
+/* --- 8. Exit Intent Popup -------------------------------- */
+(function initExitPopup() {
+  const popup = document.getElementById('exit-popup');
+  if (!popup) return;
+  let shown = false;
+
+  const show = () => {
+    if (shown) return;
+    shown = true;
+    popup.classList.add('show');
+  };
+
+  const hide = () => popup.classList.remove('show');
+
+  // Exit intent on desktop
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY <= 0) show();
+  });
+
+  // Fallback: 60s timer
+  setTimeout(show, 60000);
+
+  // Close
+  popup.querySelector('.exit-popup__close')?.addEventListener('click', hide);
+  popup.querySelector('.exit-popup__bg')?.addEventListener('click', hide);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+})();
+
+/* --- 9. Visitor Tracking --------------------------------- */
+(function initTracking() {
+  const ENDPOINT = 'https://formspree.io/f/meendppv';
+  let sentInitial = false, sentEngaged = false;
+  const page = (location.pathname.split('/').pop() || 'home').replace('.html', '') || 'home';
+
+  function send(type, isEngaged) {
+    if (isEngaged && sentEngaged) return;
+    if (!isEngaged && sentInitial) return;
+    if (isEngaged) sentEngaged = true; else sentInitial = true;
+
+    fetch('https://ipapi.co/json/')
+      .then(r => r.json())
+      .then(geo => {
+        const body = {
+          _subject: '[DGD] ' + type,
+          '📄 Page': page,
+          '🔗 URL': location.href,
+          '↩ Referrer': document.referrer || 'Direct',
+          '📱 Device': /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+          '🌍 Location': (geo.city || '?') + ', ' + (geo.region || '') + ' ' + (geo.country_name || ''),
+          '🏢 Network': geo.org || 'Unknown',
+          '🕐 Time': new Date().toLocaleString('en-IE', { timeZone: 'Europe/Dublin' }),
+        };
+        fetch(ENDPOINT, {
+          method: 'POST',
+          body: JSON.stringify(body),
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        });
+      })
+      .catch(() => {});
+  }
+
+  setTimeout(() => send('New visitor — ' + page, false), 3000);
+  setTimeout(() => send('🔥 45s engaged — ' + page, true), 45000);
+  if (page === 'contact') {
+    setTimeout(() => send('👀 Contact page — no submit yet', true), 5000);
+  }
 })();
