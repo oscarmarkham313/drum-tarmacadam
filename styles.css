@@ -132,18 +132,6 @@ button { font-family: inherit; }
 }
 .loader__word.show { opacity: 1; transform: none; }
 
-/* --- Announcement Bar ----------------------------------- */
-.announce-bar {
-  width: 100%; background: #0a0a0a; color: #fff;
-  text-align: center; padding: 10px 16px;
-  position: relative; z-index: 1000;
-}
-.announce-bar__text {
-  font-family: var(--font-body); font-size: clamp(12px, 2.2vw, 14px);
-  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  color: #fff;
-}
-
 /* --- Navigation ----------------------------------------- */
 .nav {
   position: fixed;
