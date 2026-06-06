@@ -132,6 +132,18 @@ button { font-family: inherit; }
 }
 .loader__word.show { opacity: 1; transform: none; }
 
+/* --- Announcement Bar ----------------------------------- */
+.announce-bar {
+  width: 100%; background: #0a0a0a; color: #fff;
+  text-align: center; padding: 10px 16px;
+  position: relative; z-index: 1000;
+}
+.announce-bar__text {
+  font-family: var(--font-body); font-size: clamp(12px, 2.2vw, 14px);
+  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  color: #fff;
+}
+
 /* --- Navigation ----------------------------------------- */
 .nav {
   position: fixed;
@@ -871,14 +883,12 @@ button { font-family: inherit; }
 .wa-float:hover { transform: translateY(-3px); }
 .wa-float__label {
   background: #0a0a0a; color: #fff;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
   padding: 6px 14px; border-radius: 100px; white-space: nowrap;
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+  opacity: 1; transform: none;
   pointer-events: none;
 }
-.wa-float:hover .wa-float__label { opacity: 1; transform: none; }
 .wa-float__icon {
   width: 60px; height: 60px; border-radius: 50%;
   background: #25D366; display: flex; align-items: center; justify-content: center;
