@@ -206,7 +206,40 @@
   if (nextBtn) nextBtn.addEventListener('click', () => track.scrollBy({ left: cardW(), behavior: 'smooth' }));
 })();
 
-/* --- 8. Exit Intent Popup -------------------------------- */
+/* --- 8. Mobile Services Accordion ----------------------- */
+(function initServicesAccordion() {
+  const BREAKPOINT = 1100;
+  if (window.innerWidth > BREAKPOINT) return;
+
+  const panels = document.querySelectorAll('.svc-panel');
+  if (!panels.length) return;
+
+  // Open first panel by default
+  panels[0].classList.add('acc-open');
+  const firstBtn = panels[0].querySelector('.svc-panel__acc-head');
+  if (firstBtn) firstBtn.setAttribute('aria-expanded', 'true');
+
+  panels.forEach(panel => {
+    const btn = panel.querySelector('.svc-panel__acc-head');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = panel.classList.contains('acc-open');
+      // Close all
+      panels.forEach(p => {
+        p.classList.remove('acc-open');
+        const b = p.querySelector('.svc-panel__acc-head');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        panel.classList.add('acc-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+/* --- 9. Exit Intent Popup -------------------------------- */
 (function initExitPopup() {
   const popup = document.getElementById('exit-popup');
   if (!popup) return;
