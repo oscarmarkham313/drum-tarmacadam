@@ -281,14 +281,10 @@ button { font-family: inherit; }
   color: rgba(255,255,255,0.55);
   line-height: 1.65;
   margin-top: 32px;
-  opacity: 0;
-  transform: translateY(14px);
 }
 .hero__actions {
   display: flex; align-items: center; gap: 12px; flex-shrink: 0;
   margin-top: 40px;
-  opacity: 0;
-  transform: translateY(14px);
 }
 .btn--hero {
   display: inline-flex; align-items: center; gap: 8px;
@@ -307,8 +303,6 @@ button { font-family: inherit; }
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   justify-content: center;
   margin-top: 28px;
-  opacity: 0;
-  transform: translateY(14px);
 }
 .hero__proof-item { font-size: 13px; color: rgba(255,255,255,0.38); }
 .hero__proof-item strong { color: rgba(255,255,255,0.7); }

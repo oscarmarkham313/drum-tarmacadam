@@ -75,12 +75,16 @@
   const hint = document.querySelector('.hero__scroll-hint');
   if (!lineInners.length) return;
 
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 });
+  // Set initial states via GSAP (fallback: elements visible if GSAP fails)
+  if (pill) gsap.set(pill, { opacity: 0, y: 10 });
+  if (sub) gsap.set(sub, { opacity: 0, y: 14 });
+  if (actions) gsap.set(actions, { opacity: 0, y: 14 });
+  if (proof) gsap.set(proof, { opacity: 0, y: 14 });
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 });
 
   if (pill) tl.to(pill, { opacity: 1, y: 0, duration: 0.6 });
-
   tl.to(lineInners, { y: '0%', duration: 1.1, stagger: 0.1 }, '-=0.3');
-
   if (sub) tl.to(sub, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
   if (actions) tl.to(actions, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
   if (proof) tl.to(proof, { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
