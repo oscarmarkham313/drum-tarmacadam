@@ -69,29 +69,22 @@
 (function initHero() {
   const lineInners = document.querySelectorAll('.hero__title .line-inner');
   const pill = document.querySelector('.hero__pill');
-  const bottom = document.querySelector('.hero__bottom');
+  const sub = document.querySelector('.hero__sub');
+  const actions = document.querySelector('.hero__actions');
+  const proof = document.querySelector('.hero__proof');
   const hint = document.querySelector('.hero__scroll-hint');
   if (!lineInners.length) return;
 
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 });
 
-  tl.to(lineInners, {
-    y: '0%',
-    duration: 1.1,
-    stagger: 0.1,
-  });
+  if (pill) tl.to(pill, { opacity: 1, y: 0, duration: 0.6 });
 
-  if (pill) {
-    tl.to(pill, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
-  }
+  tl.to(lineInners, { y: '0%', duration: 1.1, stagger: 0.1 }, '-=0.3');
 
-  if (bottom) {
-    tl.to(bottom, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
-  }
-
-  if (hint) {
-    tl.to(hint, { opacity: 1, duration: 0.5 }, '-=0.3');
-  }
+  if (sub) tl.to(sub, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
+  if (actions) tl.to(actions, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
+  if (proof) tl.to(proof, { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
+  if (hint) tl.to(hint, { opacity: 1, duration: 0.5 }, '-=0.3');
 })();
 
 /* --- 4. Scroll Reveal ------------------------------------ */
