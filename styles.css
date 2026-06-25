@@ -274,10 +274,11 @@ button { font-family: inherit; }
   margin-top: 40px;
 }
 .btn--hero {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--text); color: var(--bg);
   font-size: 15px; font-weight: 600;
   padding: 16px 36px; border-radius: 100px;
+  min-height: 52px;
   text-decoration: none; letter-spacing: -0.01em;
   box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   transition: transform 0.22s var(--ease-out), box-shadow 0.22s;
@@ -285,6 +286,11 @@ button { font-family: inherit; }
 .btn--hero:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+@media (max-width: 600px) {
+  .btn--hero { width: 100%; }
+  .hero__actions { flex-direction: column; align-items: center; width: 100%; gap: 16px; }
+  .hero__wa-link { justify-content: center; }
 }
 .hero__proof {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
@@ -356,6 +362,7 @@ button { font-family: inherit; }
 
 /* --- Stats Bar ------------------------------------------ */
 .stats-bar { border-bottom: 1px solid var(--border); }
+.stats-bar--dark { background: #0a0a0a; border-bottom: none; }
 .stats-bar__grid {
   max-width: var(--container);
   margin: 0 auto;
@@ -364,10 +371,12 @@ button { font-family: inherit; }
   background: var(--border);
   gap: 1px;
 }
+.stats-bar--dark .stats-bar__grid { background: rgba(255,255,255,0.08); }
 .stat-item {
   background: var(--bg);
   padding: clamp(32px, 4vw, 52px) clamp(24px, 3.5vw, 44px);
 }
+.stats-bar--dark .stat-item { background: #0a0a0a; }
 .stat-item__num {
   font-family: var(--font-display);
   font-size: clamp(44px, 5.5vw, 76px);
@@ -377,8 +386,25 @@ button { font-family: inherit; }
   color: var(--text);
   margin-bottom: 8px;
 }
+.stats-bar--dark .stat-item__num { color: #ffffff; }
+.stats-bar--dark .stat-item__num .suffix { color: rgba(255,255,255,0.4); }
 .stat-item__num .suffix { color: var(--text-4); }
 .stat-item__label { font-size: 13px; color: var(--text-3); letter-spacing: 0.02em; line-height: 1.4; }
+.stats-bar--dark .stat-item__label { color: rgba(255,255,255,0.45); }
+
+/* --- Hero WA secondary link ----------------------------- */
+.hero__wa-link {
+  font-size: 14px; font-weight: 500;
+  color: var(--text-3);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+  white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.hero__wa-link:hover { color: var(--text); }
 
 /* --- Services Sticky Section ---------------------------- */
 .services {
