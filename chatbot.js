@@ -10,7 +10,7 @@
   /* ── Conversation tree ─────────────────────────────────── */
   var FLOW = {
     welcome: {
-      text: "👋 Hi! I'm the DGD assistant. What can I help you with today?",
+      text: "👋 Hi! I'm Katie from DGD. What can I help you with today?",
       chips: ['📱 Social Media', '🖥️ Web Design', '📣 Google & Meta Ads', '💰 Pricing', '📊 Our Results', '📞 Book a Call']
     },
     social: {
@@ -81,9 +81,9 @@
       '<div class="dgd-chat__panel" id="dgd-chat-panel" aria-hidden="true">' +
         '<div class="dgd-chat__head">' +
           '<div class="dgd-chat__head-l">' +
-            '<div class="dgd-chat__ava">D</div>' +
+            '<div class="dgd-chat__ava">👩</div>' +
             '<div>' +
-              '<div class="dgd-chat__aname">DGD Assistant</div>' +
+              '<div class="dgd-chat__aname">Katie — DGD Assistant</div>' +
               '<div class="dgd-chat__online"><span class="dgd-chat__dot"></span>Online now</div>' +
             '</div>' +
           '</div>' +
@@ -102,7 +102,7 @@
         '</div>' +
       '</div>' +
       '<button class="dgd-chat__btn" id="dgd-chat-btn" aria-label="Chat with us">' +
-        '<span class="dgd-ic-chat" aria-hidden="true">👋</span>' +
+        '<span class="dgd-ic-chat" aria-hidden="true">👩</span>' +
         '<svg class="dgd-ic-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>' +
         '<span class="dgd-chat__badge" id="dgd-chat-badge">1</span>' +
       '</button>';
