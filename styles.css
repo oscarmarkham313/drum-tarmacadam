@@ -1266,6 +1266,7 @@ button { font-family: inherit; }
   flex-shrink: 0;
 }
 .dgd-chat__btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.3); }
+.dgd-ic-chat { font-size: 26px; line-height: 1; display: block; }
 .dgd-ic-x { display: none; }
 .dgd-chat__btn.open .dgd-ic-chat { display: none; }
 .dgd-chat__btn.open .dgd-ic-x { display: block; }
