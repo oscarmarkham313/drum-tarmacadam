@@ -257,18 +257,236 @@
 .showcase-card__title { font-family: var(--font-display); font-size: 18px; font-weight: 400; margin-bottom: 6px; }
 .showcase-card__desc { font-size: 13px; color: var(--text-3); line-height: 1.5; }
 
-/* Preview styles for different niches */
-.preview-restaurant {
-  background: #0a0a0a;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 8px; padding: 24px;
+/* ── Premium site preview styles ── */
+/* Shared nav strip */
+.wp { display: flex; flex-direction: column; height: 100%; overflow: hidden; font-family: var(--font-body); }
+.wp-nav {
+  height: 26px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 10px; flex-shrink: 0;
 }
-.preview-restaurant__hero-text {
-  font-family: var(--font-display); font-size: clamp(16px,2vw,24px);
-  color: rgba(255,255,255,0.9); font-style: italic; text-align: center;
+.wp-logo { font-size: 10px; font-weight: 600; letter-spacing: 0.03em; }
+.wp-links { display: flex; gap: 7px; }
+.wp-link { width: 16px; height: 2px; border-radius: 2px; }
+.wp-btn { border-radius: 100px; padding: 3px 8px; font-size: 7px; font-weight: 600; letter-spacing: 0.04em; display: inline-block; }
+
+/* ── RESTAURANT ── */
+.wp-rest { background: #080808; }
+.wp-rest .wp-nav { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.wp-rest .wp-logo { color: rgba(255,255,255,0.85); letter-spacing: 0.18em; text-transform: uppercase; font-size: 8px; }
+.wp-rest .wp-link { background: rgba(255,255,255,0.1); }
+.wp-rest .wp-btn { border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); background: transparent; }
+.wp-rest-hero {
+  flex: 1; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 12px 14px;
 }
-.preview-restaurant__tag { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-.preview-restaurant__line { width: 40px; height: 1px; background: rgba(255,255,255,0.2); }
+.wp-rest-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, #2a1008 0%, #0d0500 50%, #120a00 100%);
+}
+.wp-rest-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(120,70,20,0.18) 0%, transparent 60%),
+              linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 55%);
+}
+.wp-rest-content { position: relative; z-index: 1; }
+.wp-rest-tag { font-size: 7px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 5px; }
+.wp-rest-line { width: 28px; height: 1px; background: rgba(255,220,150,0.25); margin-bottom: 7px; }
+.wp-rest-h { font-family: var(--font-display); font-size: 17px; font-style: italic; color: rgba(255,255,255,0.92); line-height: 1.2; margin-bottom: 10px; }
+.wp-rest-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  border: 1px solid rgba(255,255,255,0.18); border-radius: 100px;
+  padding: 4px 11px; font-size: 7px; color: rgba(255,255,255,0.6);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.wp-rest-dishes {
+  display: flex; flex-shrink: 0; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.wp-rest-dish {
+  flex: 1; padding: 6px 5px; border-right: 1px solid rgba(255,255,255,0.04);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.wp-rest-dish:last-child { border-right: none; }
+.wp-rest-dish-img { height: 22px; border-radius: 3px; }
+.wp-rest-dish:nth-child(1) .wp-rest-dish-img { background: linear-gradient(135deg, #3d1a08, #180800); }
+.wp-rest-dish:nth-child(2) .wp-rest-dish-img { background: linear-gradient(135deg, #1a1800, #0c0a00); }
+.wp-rest-dish:nth-child(3) .wp-rest-dish-img { background: linear-gradient(135deg, #200c00, #100400); }
+.wp-rest-dish:nth-child(4) .wp-rest-dish-img { background: linear-gradient(135deg, #161008, #080400); }
+.wp-rest-dish-name { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; width: 70%; }
+.wp-rest-dish-price { height: 2.5px; background: rgba(255,255,255,0.05); border-radius: 2px; width: 40%; }
+
+/* ── E-COMMERCE ── */
+.wp-ecomm { background: #fff; }
+.wp-ecomm .wp-nav { background: #fff; border-bottom: 1px solid #f0f0f0; }
+.wp-ecomm .wp-logo { color: #0a0a0a; }
+.wp-ecomm .wp-link { background: #e0e0e0; }
+.wp-ecomm .wp-btn { background: #0a0a0a; color: #fff; }
+.wp-ecomm-hero { display: flex; flex-shrink: 0; overflow: hidden; }
+.wp-ecomm-hero-l { flex: 1; padding: 12px 10px; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+.wp-ecomm-eyebrow { font-size: 7px; text-transform: uppercase; letter-spacing: 0.14em; color: #aaa; }
+.wp-ecomm-h { font-family: var(--font-display); font-size: 16px; color: #0a0a0a; line-height: 1.18; }
+.wp-ecomm-desc { height: 2.5px; background: #e8e8e8; border-radius: 2px; width: 90%; }
+.wp-ecomm-desc2 { height: 2.5px; background: #e8e8e8; border-radius: 2px; width: 65%; }
+.wp-ecomm-cta { margin-top: 4px; background: #0a0a0a; color: #fff; border-radius: 100px; padding: 5px 11px; font-size: 7.5px; font-weight: 600; display: inline-block; }
+.wp-ecomm-hero-r {
+  width: 42%; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #e8e0ff, #c8bcf4);
+  min-height: 80px;
+}
+.wp-ecomm-hero-r::before {
+  content: ''; position: absolute; top: 10%; left: 10%; right: 10%;
+  bottom: 10%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+}
+.wp-ecomm-hero-r::after {
+  content: ''; position: absolute; bottom: 8px; right: 8px;
+  width: 28px; height: 28px; border-radius: 6px;
+  background: rgba(255,255,255,0.3);
+}
+.wp-ecomm-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 6px; background: #f7f7f7; }
+.wp-ecomm-card { background: #fff; border-radius: 6px; overflow: hidden; border: 1px solid #f0f0f0; }
+.wp-ecomm-card-img { aspect-ratio: 1; }
+.wp-ecomm-card:nth-child(1) .wp-ecomm-card-img { background: linear-gradient(135deg,#fef0e0,#f8d4a0); }
+.wp-ecomm-card:nth-child(2) .wp-ecomm-card-img { background: linear-gradient(135deg,#e8f4e0,#c4e0b8); }
+.wp-ecomm-card:nth-child(3) .wp-ecomm-card-img { background: linear-gradient(135deg,#e4eaf8,#c8d4f0); }
+.wp-ecomm-card-foot { padding: 4px 5px; }
+.wp-ecomm-card-l1 { height: 3px; background: #e8e8e8; border-radius: 2px; margin-bottom: 2.5px; }
+.wp-ecomm-card-l2 { height: 3px; background: #f0f0f0; border-radius: 2px; width: 50%; }
+
+/* ── TRADE ── */
+.wp-trade { background: #fff; }
+.wp-trade .wp-nav { background: #0f0f0f; }
+.wp-trade .wp-logo { color: rgba(255,255,255,0.9); font-size: 9px; letter-spacing: 0.1em; }
+.wp-trade .wp-link { background: rgba(255,255,255,0.14); }
+.wp-trade .wp-btn { background: #22c55e; color: #fff; }
+.wp-trade-hero { background: #0f0f0f; padding: 12px; display: flex; flex-direction: column; gap: 7px; flex-shrink: 0; }
+.wp-trade-eyebrow { font-size: 7px; letter-spacing: 0.14em; text-transform: uppercase; color: #22c55e; font-weight: 600; }
+.wp-trade-h { font-family: var(--font-display); font-size: 15px; color: rgba(255,255,255,0.93); line-height: 1.2; }
+.wp-trade-h em { color: #22c55e; font-style: italic; }
+.wp-trade-badges { display: flex; gap: 5px; flex-wrap: wrap; }
+.wp-trade-badge {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px; padding: 4px 8px; font-size: 7px; color: rgba(255,255,255,0.6);
+  display: flex; align-items: center; gap: 3px;
+}
+.wp-trade-cta {
+  background: #22c55e; color: #fff; border-radius: 100px;
+  padding: 6px 12px; font-size: 7.5px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 4px; align-self: flex-start;
+}
+.wp-trade-services { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 7px; background: #fff; }
+.wp-trade-svc { border: 1px solid #f0f0f0; border-radius: 7px; padding: 7px; display: flex; flex-direction: column; gap: 4px; }
+.wp-trade-svc-icon { width: 20px; height: 20px; border-radius: 5px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+.wp-trade-svc-name { height: 3px; background: #ddd; border-radius: 2px; width: 80%; }
+.wp-trade-svc-sub { height: 2px; background: #eee; border-radius: 2px; }
+.wp-trade-svc-sub2 { height: 2px; background: #eee; border-radius: 2px; width: 65%; }
+
+/* ── FITNESS ── */
+.wp-fit { background: #070707; }
+.wp-fit .wp-nav { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.wp-fit .wp-logo { color: #fff; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+.wp-fit .wp-link { background: rgba(255,255,255,0.1); }
+.wp-fit .wp-btn { background: #fff; color: #000; }
+.wp-fit-grid { flex: 1; display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; padding: 6px; }
+.wp-fit-block {
+  border-radius: 8px; padding: 10px; display: flex; flex-direction: column;
+  justify-content: flex-end; position: relative; overflow: hidden;
+}
+.wp-fit-main {
+  grid-row: span 2;
+  background: linear-gradient(160deg, #1c1c1c 0%, #0a0a0a 60%, #141414 100%);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.wp-fit-main::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.03), transparent 55%);
+}
+.wp-fit-main-h { font-family: var(--font-display); font-size: 20px; color: rgba(255,255,255,0.93); line-height: 1.1; position: relative; }
+.wp-fit-main-sub { font-size: 7px; color: rgba(255,255,255,0.3); margin-top: 4px; position: relative; letter-spacing: 0.08em; text-transform: uppercase; }
+.wp-fit-main-btn {
+  margin-top: 10px; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px; padding: 4px 11px; font-size: 7px; color: rgba(255,255,255,0.65);
+  display: inline-block; position: relative;
+}
+.wp-fit-classes { background: #fff; }
+.wp-fit-classes-label { font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin-bottom: 6px; }
+.wp-fit-class-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; border-bottom: 1px solid #f0f0f0; }
+.wp-fit-class-row:last-child { border-bottom: none; }
+.wp-fit-class-name { height: 2.5px; background: #e0e0e0; border-radius: 2px; width: 52%; }
+.wp-fit-class-time { height: 2.5px; background: #eeeeee; border-radius: 2px; width: 22%; }
+.wp-fit-join { background: linear-gradient(135deg, #1a1a1a, #111); border: 1px solid rgba(255,255,255,0.05); }
+.wp-fit-join-label { font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 6px; }
+.wp-fit-join-btn { background: #fff; color: #000; border-radius: 5px; padding: 5px 8px; font-size: 7px; font-weight: 700; display: inline-block; }
+
+/* ── PROPERTY ── */
+.wp-prop { background: #f4f3ee; }
+.wp-prop .wp-nav { background: #fff; border-bottom: 1px solid #efefef; }
+.wp-prop .wp-logo { color: #0a0a0a; font-size: 10px; }
+.wp-prop .wp-link { background: #e0e0e0; }
+.wp-prop .wp-btn { background: #0a0a0a; color: #fff; }
+.wp-prop-search { padding: 7px 8px; background: #fff; border-bottom: 1px solid #eee; flex-shrink: 0; }
+.wp-prop-sbar { background: #f5f5f5; border: 1px solid #e5e5e5; border-radius: 7px; padding: 5px 8px; display: flex; align-items: center; gap: 7px; }
+.wp-prop-sbar-text { height: 2.5px; background: #d8d8d8; border-radius: 2px; flex: 1; }
+.wp-prop-sbar-icon { width: 20px; height: 16px; background: #0a0a0a; border-radius: 4px; flex-shrink: 0; display: grid; place-items: center; }
+.wp-prop-sbar-icon::after { content: ''; width: 7px; height: 7px; border: 1.5px solid #fff; border-radius: 50%; display: block; }
+.wp-prop-feat { padding: 7px 8px; flex-shrink: 0; }
+.wp-prop-feat-label { font-size: 7px; text-transform: uppercase; letter-spacing: 0.12em; color: #999; margin-bottom: 5px; }
+.wp-prop-feat-img {
+  height: 52px; border-radius: 8px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #8090a8, #607090);
+  margin-bottom: 5px;
+}
+.wp-prop-feat-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+.wp-prop-feat-price { font-size: 12px; font-weight: 700; color: #0a0a0a; }
+.wp-prop-feat-addr { height: 2.5px; background: #d8d8d8; border-radius: 2px; width: 68%; margin-top: 3px; }
+.wp-prop-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 5px 8px 8px; }
+.wp-prop-card { background: #fff; border-radius: 7px; overflow: hidden; border: 1px solid #eee; }
+.wp-prop-card-img { height: 30px; }
+.wp-prop-card:nth-child(1) .wp-prop-card-img { background: linear-gradient(135deg, #ccd4e4, #aab8d0); }
+.wp-prop-card:nth-child(2) .wp-prop-card-img { background: linear-gradient(135deg, #ccd8c4, #b0c4a8); }
+.wp-prop-card-info { padding: 4px 5px; display: flex; flex-direction: column; gap: 2px; }
+.wp-prop-card-price { height: 3.5px; background: #1a1a1a; border-radius: 2px; width: 55%; }
+.wp-prop-card-l1 { height: 2px; background: #e8e8e8; border-radius: 2px; width: 90%; }
+.wp-prop-card-l2 { height: 2px; background: #f0f0f0; border-radius: 2px; width: 60%; }
+
+/* ── BEAUTY ── */
+.wp-beauty { background: #fdf8f4; }
+.wp-beauty .wp-nav { background: #fff; border-bottom: 1px solid #f0ece7; }
+.wp-beauty .wp-logo { color: #0a0a0a; letter-spacing: 0.14em; font-size: 9px; }
+.wp-beauty .wp-link { background: #e8ddd4; }
+.wp-beauty .wp-btn { background: #0a0a0a; color: #fff; }
+.wp-beauty-hero {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; padding: 8px 14px; position: relative;
+}
+.wp-beauty-arc {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 150px; height: 80px; border-radius: 0 0 75px 75px;
+  background: linear-gradient(180deg, #f5e6d8 0%, #ead4be 100%);
+  opacity: 0.7;
+}
+.wp-beauty-img {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, #f5e0cc, #e8c8a4);
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  position: relative; z-index: 1;
+}
+.wp-beauty-brand { font-family: var(--font-display); font-size: 15px; font-style: italic; color: #0a0a0a; position: relative; z-index: 1; }
+.wp-beauty-tagline { font-size: 7.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; position: relative; z-index: 1; }
+.wp-beauty-book { background: #0a0a0a; color: #fff; border-radius: 100px; padding: 6px 18px; font-size: 8px; font-weight: 600; letter-spacing: 0.06em; position: relative; z-index: 1; }
+.wp-beauty-services {
+  border-top: 1px solid #f0ebe6; display: grid; grid-template-columns: repeat(3, 1fr); flex-shrink: 0;
+}
+.wp-beauty-svc { padding: 7px 4px; text-align: center; border-right: 1px solid #f0ebe6; }
+.wp-beauty-svc:last-child { border-right: none; }
+.wp-beauty-svc-name { height: 3px; background: #e8ddd5; border-radius: 2px; width: 75%; margin: 0 auto 3px; }
+.wp-beauty-svc-price { height: 2.5px; background: #f0e8e0; border-radius: 2px; width: 45%; margin: 0 auto; }
+
+/* ── Keep legacy classes for backward compat ── */
+.preview-restaurant { background: #0a0a0a; }
 
 .preview-ecomm {
   background: var(--bg-alt);
@@ -394,7 +612,7 @@
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
   </ul>
   <div class="nav__right">
-    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary" style="font-size:13px;padding:9px 20px;" target="_blank" rel="noopener">Get a Quote</a>
+    <a href="get-quote.html" class="btn btn--primary" style="font-size:13px;padding:9px 20px;">Get a Quote</a>
   </div>
   <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -407,7 +625,7 @@
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
   </ul>
   <div class="nav__drawer-cta">
-    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get a Free Quote</a>
+    <a href="get-quote.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
   </div>
 </nav>
 
@@ -427,7 +645,7 @@
       <h1 class="wd-hero__h1">High-end websites built for <em>every niche.</em></h1>
       <p class="wd-hero__sub">From restaurants to real estate, fitness studios to fashion brands — we design and build premium, conversion-focused websites for every industry in Ireland and beyond.</p>
       <div class="wd-hero__actions">
-        <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get a Free Quote</a>
+        <a href="get-quote.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
         <a href="#showcase" class="btn btn--ghost btn--lg">See Examples</a>
       </div>
       <div class="wd-hero__trust">
@@ -462,61 +680,41 @@
         <div class="wd-browser__screen">
           <!-- Slide 1: Restaurant -->
           <div class="wd-slide wd-slide--active">
-            <div class="preview-restaurant" style="height:100%">
-              <div class="preview-restaurant__tag">Est. Dublin 2018</div>
-              <div class="preview-restaurant__line"></div>
-              <div class="preview-restaurant__hero-text">Where every meal<br>tells a story.</div>
-              <div class="preview-restaurant__line"></div>
-              <div style="background:rgba(255,255,255,0.12);border-radius:100px;padding:6px 20px;font-size:9px;color:rgba(255,255,255,0.8);letter-spacing:0.12em;text-transform:uppercase">Reserve a Table</div>
+            <div class="wp wp-rest" style="height:100%">
+              <div class="wp-nav"><span class="wp-logo">Marcello's</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Reserve</span></div>
+              <div class="wp-rest-hero"><div class="wp-rest-content"><div class="wp-rest-tag">Est. Dublin 2018</div><div class="wp-rest-line"></div><div class="wp-rest-h">Where every meal<br>tells a story.</div><div class="wp-rest-cta">Reserve a Table →</div></div></div>
+              <div class="wp-rest-dishes"><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div></div>
             </div>
           </div>
-          <!-- Slide 2: Fitness -->
+          <!-- Slide 2: E-Commerce -->
           <div class="wd-slide">
-            <div class="preview-fitness" style="height:100%">
-              <div class="preview-fitness__block">
-                <div class="preview-fitness__label">Train. Transform.<br>Dominate.</div>
-              </div>
-              <div class="preview-fitness__block">
-                <div class="preview-fitness__label">Classes</div>
-              </div>
-              <div class="preview-fitness__block">
-                <div class="preview-fitness__label">Join Now</div>
-              </div>
+            <div class="wp wp-ecomm" style="height:100%">
+              <div class="wp-nav"><span class="wp-logo">Lumière</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Cart</span></div>
+              <div class="wp-ecomm-hero"><div class="wp-ecomm-hero-l"><div class="wp-ecomm-eyebrow">New Collection</div><div class="wp-ecomm-h">Crafted for<br>everyday luxury.</div><div class="wp-ecomm-desc"></div><div class="wp-ecomm-desc2"></div><div class="wp-ecomm-cta">Shop Now →</div></div><div class="wp-ecomm-hero-r"></div></div>
+              <div class="wp-ecomm-grid"><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div></div>
             </div>
           </div>
-          <!-- Slide 3: E-commerce -->
+          <!-- Slide 3: Fitness -->
           <div class="wd-slide">
-            <div class="preview-ecomm" style="height:100%">
-              <div class="preview-ecomm__nav">
-                <div class="preview-ecomm__nav-dot"></div>
-                <div class="preview-ecomm__nav-dot"></div>
-                <div class="preview-ecomm__nav-dot"></div>
-              </div>
-              <div class="preview-ecomm__grid">
-                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
-                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
-                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
-              </div>
+            <div class="wp wp-fit" style="height:100%">
+              <div class="wp-nav"><span class="wp-logo">Apex Fitness</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Join Now</span></div>
+              <div class="wp-fit-grid"><div class="wp-fit-block wp-fit-main"><div class="wp-fit-main-h">Train.<br>Transform.<br>Dominate.</div><div class="wp-fit-main-sub">Dublin's Premier Training Centre</div><div class="wp-fit-main-btn">View Classes →</div></div><div class="wp-fit-block wp-fit-classes"><div class="wp-fit-classes-label">Today's Classes</div><div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div><div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div><div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div></div><div class="wp-fit-block wp-fit-join"><div class="wp-fit-join-label">Membership</div><div class="wp-fit-join-btn">Start Free Trial</div></div></div>
             </div>
           </div>
           <!-- Slide 4: Trade -->
           <div class="wd-slide">
-            <div class="preview-trade" style="height:100%">
-              <div class="preview-trade__hero"><span>Dublin's Most Trusted Plumbers</span></div>
-              <div class="preview-trade__badges">
-                <div class="preview-trade__badge">⭐ 500+ Reviews</div>
-                <div class="preview-trade__badge">✓ RGI Registered</div>
-              </div>
-              <div class="preview-trade__cta"><span>Get a Free Quote →</span></div>
+            <div class="wp wp-trade" style="height:100%">
+              <div class="wp-nav"><span class="wp-logo">ClearFlow</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Call Now</span></div>
+              <div class="wp-trade-hero"><div class="wp-trade-eyebrow">Dublin's #1 Plumbing Service</div><div class="wp-trade-h">Fast repairs.<br><em>Trusted results.</em></div><div class="wp-trade-badges"><div class="wp-trade-badge">⭐ 500+ Reviews</div><div class="wp-trade-badge">✓ RGI Certified</div><div class="wp-trade-badge">⚡ Same Day</div></div><div class="wp-trade-cta">Get a Free Quote →</div></div>
+              <div class="wp-trade-services"><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🚿</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🔧</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🏠</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">⚡</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div></div>
             </div>
           </div>
           <!-- Slide 5: Beauty -->
           <div class="wd-slide">
-            <div class="preview-beauty" style="height:100%">
-              <div class="preview-beauty__circle"></div>
-              <div class="preview-beauty__title">Beauty by Design</div>
-              <div class="preview-beauty__sub">Dublin's Premium Salon</div>
-              <div class="preview-beauty__btn">Book Now</div>
+            <div class="wp wp-beauty" style="height:100%">
+              <div class="wp-nav"><span class="wp-logo">Elara Studio</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Book</span></div>
+              <div class="wp-beauty-hero"><div class="wp-beauty-arc"></div><div class="wp-beauty-img"></div><div class="wp-beauty-brand">Beauty by Design</div><div class="wp-beauty-tagline">Dublin's Premium Salon</div><div class="wp-beauty-book">Book an Appointment</div></div>
+              <div class="wp-beauty-services"><div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div><div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div><div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div></div>
             </div>
           </div>
           <!-- Indicators -->
@@ -679,7 +877,7 @@
       </div>
     </div>
     <p style="text-align:center;font-size:14px;color:var(--text-3);margin-top:24px" class="reveal">
-      Don't see your niche? <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">Message us</a> — we design for every industry.
+      Don't see your niche? <a href="get-quote.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">Message us</a> — we design for every industry.
     </p>
   </div>
 </section>
@@ -756,131 +954,201 @@
     </div>
     <div class="showcase-grid">
 
+      <!-- Restaurant -->
       <div class="showcase-card reveal">
         <div class="showcase-card__preview">
-          <div class="preview-restaurant" style="height:100%">
-            <div class="preview-restaurant__tag">Est. Dublin 2018</div>
-            <div class="preview-restaurant__line"></div>
-            <div class="preview-restaurant__hero-text">Where every meal<br>tells a story.</div>
-            <div class="preview-restaurant__line"></div>
-            <div style="background:rgba(255,255,255,0.1);border-radius:100px;padding:6px 18px;font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.1em;text-transform:uppercase">Reserve a Table</div>
+          <div class="wp wp-rest" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">Marcello's</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">Reserve</span>
+            </div>
+            <div class="wp-rest-hero">
+              <div class="wp-rest-content">
+                <div class="wp-rest-tag">Est. Dublin 2018</div>
+                <div class="wp-rest-line"></div>
+                <div class="wp-rest-h">Where every meal<br>tells a story.</div>
+                <div class="wp-rest-cta">Reserve a Table →</div>
+              </div>
+            </div>
+            <div class="wp-rest-dishes">
+              <div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div>
+              <div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div>
+              <div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div>
+              <div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div>
+            </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">Restaurant & Hospitality</div>
+          <div class="showcase-card__niche">Restaurant &amp; Hospitality</div>
           <div class="showcase-card__title">Cinematic dining experience</div>
-          <div class="showcase-card__desc">Dark, editorial design with online booking, seasonal menus, and gallery.</div>
+          <div class="showcase-card__desc">Dark editorial design with online reservation, seasonal menus, and photography gallery.</div>
         </div>
       </div>
 
+      <!-- E-Commerce -->
       <div class="showcase-card reveal reveal-d1">
         <div class="showcase-card__preview">
-          <div class="preview-ecomm" style="height:100%">
-            <div class="preview-ecomm__nav">
-              <div class="preview-ecomm__nav-dot"></div>
-              <div class="preview-ecomm__nav-dot"></div>
-              <div class="preview-ecomm__nav-dot"></div>
+          <div class="wp wp-ecomm" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">Lumière</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">Cart (2)</span>
             </div>
-            <div class="preview-ecomm__grid">
-              <div class="preview-ecomm__item">
-                <div class="preview-ecomm__item-img"></div>
-                <div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div>
+            <div class="wp-ecomm-hero">
+              <div class="wp-ecomm-hero-l">
+                <div class="wp-ecomm-eyebrow">New Collection</div>
+                <div class="wp-ecomm-h">Crafted for<br>everyday luxury.</div>
+                <div class="wp-ecomm-desc"></div>
+                <div class="wp-ecomm-desc2"></div>
+                <div class="wp-ecomm-cta">Shop Now →</div>
               </div>
-              <div class="preview-ecomm__item">
-                <div class="preview-ecomm__item-img"></div>
-                <div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div>
-              </div>
-              <div class="preview-ecomm__item">
-                <div class="preview-ecomm__item-img"></div>
-                <div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div>
-              </div>
+              <div class="wp-ecomm-hero-r"></div>
+            </div>
+            <div class="wp-ecomm-grid">
+              <div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div>
+              <div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div>
+              <div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-foot"><div class="wp-ecomm-card-l1"></div><div class="wp-ecomm-card-l2"></div></div></div>
             </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">E-Commerce & Retail</div>
-          <div class="showcase-card__title">Clean product-first store</div>
-          <div class="showcase-card__desc">Light, editorial e-commerce design focused on product discovery and conversion.</div>
+          <div class="showcase-card__niche">E-Commerce &amp; Retail</div>
+          <div class="showcase-card__title">Premium product-first store</div>
+          <div class="showcase-card__desc">High-converting online stores built for discovery, desire, and seamless checkout.</div>
         </div>
       </div>
 
+      <!-- Trades -->
       <div class="showcase-card reveal reveal-d2">
         <div class="showcase-card__preview">
-          <div class="preview-trade" style="height:100%">
-            <div class="preview-trade__hero"><span>Dublin's Most Trusted Plumbers</span></div>
-            <div class="preview-trade__badges">
-              <div class="preview-trade__badge">⭐ 500+ Reviews</div>
-              <div class="preview-trade__badge">✓ RGI Registered</div>
+          <div class="wp wp-trade" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">ClearFlow</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">Call Now</span>
             </div>
-            <div class="preview-trade__cta"><span>Get a Free Quote →</span></div>
+            <div class="wp-trade-hero">
+              <div class="wp-trade-eyebrow">Dublin's #1 Plumbing Service</div>
+              <div class="wp-trade-h">Fast repairs.<br><em>Trusted results.</em></div>
+              <div class="wp-trade-badges">
+                <div class="wp-trade-badge">⭐ 500+ Reviews</div>
+                <div class="wp-trade-badge">✓ RGI Certified</div>
+                <div class="wp-trade-badge">⚡ Same Day</div>
+              </div>
+              <div class="wp-trade-cta">Get a Free Quote →</div>
+            </div>
+            <div class="wp-trade-services">
+              <div class="wp-trade-svc"><div class="wp-trade-svc-icon">🚿</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div><div class="wp-trade-svc-sub2"></div></div>
+              <div class="wp-trade-svc"><div class="wp-trade-svc-icon">🔧</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div><div class="wp-trade-svc-sub2"></div></div>
+              <div class="wp-trade-svc"><div class="wp-trade-svc-icon">🏠</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div><div class="wp-trade-svc-sub2"></div></div>
+              <div class="wp-trade-svc"><div class="wp-trade-svc-icon">⚡</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div><div class="wp-trade-svc-sub2"></div></div>
+            </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">Trades & Home Services</div>
-          <div class="showcase-card__title">Lead generation focused</div>
-          <div class="showcase-card__desc">Trust signals front and centre, built to rank locally and generate calls from day one.</div>
+          <div class="showcase-card__niche">Trades &amp; Home Services</div>
+          <div class="showcase-card__title">Trust-first lead generation</div>
+          <div class="showcase-card__desc">Built to rank locally on Google and turn every visitor into a call or quote request.</div>
         </div>
       </div>
 
+      <!-- Fitness -->
       <div class="showcase-card reveal">
         <div class="showcase-card__preview">
-          <div class="preview-fitness" style="height:100%">
-            <div class="preview-fitness__block">
-              <div class="preview-fitness__label">Train. Transform.<br>Dominate.</div>
+          <div class="wp wp-fit" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">Apex Fitness</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">Join Now</span>
             </div>
-            <div class="preview-fitness__block">
-              <div class="preview-fitness__label">Classes</div>
-            </div>
-            <div class="preview-fitness__block">
-              <div class="preview-fitness__label">Join Now</div>
+            <div class="wp-fit-grid">
+              <div class="wp-fit-block wp-fit-main">
+                <div class="wp-fit-main-h">Train.<br>Transform.<br>Dominate.</div>
+                <div class="wp-fit-main-sub">Dublin's Premier Training Centre</div>
+                <div class="wp-fit-main-btn">View Classes →</div>
+              </div>
+              <div class="wp-fit-block wp-fit-classes">
+                <div class="wp-fit-classes-label">Today's Classes</div>
+                <div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div>
+                <div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div>
+                <div class="wp-fit-class-row"><div class="wp-fit-class-name"></div><div class="wp-fit-class-time"></div></div>
+              </div>
+              <div class="wp-fit-block wp-fit-join">
+                <div class="wp-fit-join-label">Membership</div>
+                <div class="wp-fit-join-btn">Start Free Trial</div>
+              </div>
             </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">Fitness & Gyms</div>
-          <div class="showcase-card__title">Bold & high-energy</div>
-          <div class="showcase-card__desc">Gym and studio websites with class timetables, membership sign-up, and trainer profiles.</div>
+          <div class="showcase-card__niche">Fitness &amp; Gyms</div>
+          <div class="showcase-card__title">Bold bento-style layout</div>
+          <div class="showcase-card__desc">Dynamic gym and studio sites with live class timetables, membership flows, and trainer profiles.</div>
         </div>
       </div>
 
+      <!-- Property -->
       <div class="showcase-card reveal reveal-d1">
         <div class="showcase-card__preview">
-          <div class="preview-property" style="height:100%">
-            <div class="preview-property__hero">
-              <div class="preview-property__label">Premium Dublin Properties</div>
+          <div class="wp wp-prop" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">Prestige Living</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">List Property</span>
             </div>
-            <div class="preview-property__grid">
-              <div class="preview-property__card">
-                <div class="preview-property__card-img"></div>
-                <div class="preview-property__card-foot"><div class="preview-property__card-line"></div><div class="preview-property__card-line"></div></div>
+            <div class="wp-prop-search">
+              <div class="wp-prop-sbar">
+                <div class="wp-prop-sbar-text"></div>
+                <div class="wp-prop-sbar-icon"></div>
               </div>
-              <div class="preview-property__card">
-                <div class="preview-property__card-img" style="background:linear-gradient(135deg,#dce8d0,#c4d8b8)"></div>
-                <div class="preview-property__card-foot"><div class="preview-property__card-line"></div><div class="preview-property__card-line"></div></div>
-              </div>
+            </div>
+            <div class="wp-prop-feat">
+              <div class="wp-prop-feat-label">Featured Property</div>
+              <div class="wp-prop-feat-img"></div>
+              <div class="wp-prop-feat-price">€895,000</div>
+              <div class="wp-prop-feat-addr"></div>
+            </div>
+            <div class="wp-prop-grid">
+              <div class="wp-prop-card"><div class="wp-prop-card-img"></div><div class="wp-prop-card-info"><div class="wp-prop-card-price"></div><div class="wp-prop-card-l1"></div><div class="wp-prop-card-l2"></div></div></div>
+              <div class="wp-prop-card"><div class="wp-prop-card-img"></div><div class="wp-prop-card-info"><div class="wp-prop-card-price"></div><div class="wp-prop-card-l1"></div><div class="wp-prop-card-l2"></div></div></div>
             </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">Property & Real Estate</div>
-          <div class="showcase-card__title">Premium listings & lead gen</div>
-          <div class="showcase-card__desc">Property sites with dynamic listings, mortgage calculator, and valuation request forms.</div>
+          <div class="showcase-card__niche">Property &amp; Real Estate</div>
+          <div class="showcase-card__title">Premium listings &amp; lead gen</div>
+          <div class="showcase-card__desc">Property sites with live listings, search filters, mortgage calculator, and valuation forms.</div>
         </div>
       </div>
 
+      <!-- Beauty -->
       <div class="showcase-card reveal reveal-d2">
         <div class="showcase-card__preview">
-          <div class="preview-beauty" style="height:100%">
-            <div class="preview-beauty__circle"></div>
-            <div class="preview-beauty__title">Beauty by Design</div>
-            <div class="preview-beauty__sub">Dublin's Premium Salon</div>
-            <div class="preview-beauty__btn">Book Now</div>
+          <div class="wp wp-beauty" style="height:100%">
+            <div class="wp-nav">
+              <span class="wp-logo">Elara Studio</span>
+              <div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div>
+              <span class="wp-btn">Book</span>
+            </div>
+            <div class="wp-beauty-hero">
+              <div class="wp-beauty-arc"></div>
+              <div class="wp-beauty-img"></div>
+              <div class="wp-beauty-brand">Beauty by Design</div>
+              <div class="wp-beauty-tagline">Dublin's Premium Salon</div>
+              <div class="wp-beauty-book">Book an Appointment</div>
+            </div>
+            <div class="wp-beauty-services">
+              <div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div>
+              <div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div>
+              <div class="wp-beauty-svc"><div class="wp-beauty-svc-name"></div><div class="wp-beauty-svc-price"></div></div>
+            </div>
           </div>
         </div>
         <div class="showcase-card__info">
-          <div class="showcase-card__niche">Beauty & Salons</div>
-          <div class="showcase-card__title">Elegant & feminine</div>
-          <div class="showcase-card__desc">Luxurious beauty sites with online booking, treatment menus, and before/after galleries.</div>
+          <div class="showcase-card__niche">Beauty &amp; Salons</div>
+          <div class="showcase-card__title">Elegant &amp; conversion-focused</div>
+          <div class="showcase-card__desc">Luxurious salon sites with online booking, treatment menus, and before/after galleries.</div>
         </div>
       </div>
 
@@ -989,8 +1257,8 @@
     <h2>Your website should be your best <em>salesperson.</em></h2>
     <p>Book a free 30-minute call and we'll show you exactly what we'd build for your business — no obligation.</p>
     <div class="cta-band__btns">
-      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get a Free Quote</a>
-      <a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html" class="btn btn--ghost btn--lg">Send a Message</a>
+      <a href="get-quote.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
+      <a href="get-quote.html" class="btn btn--ghost btn--lg">Get a Quote</a>
     </div>
   </div>
 </section>
@@ -1103,6 +1371,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 </script>
 </body>
 </html>
+
 
 
 

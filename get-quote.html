@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png"/>
+<meta name="theme-color" content="#0F0F0F"/>
+<title>Get a Free Quote — Dublin Growth Digital</title>
+<meta name="description" content="Tell us about your website project and we'll come back with a free quote and strategy within 2 hours."/>
+<link rel="canonical" href="https://dublingrowthdigital.com/get-quote.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css?v=11"/>
+<style>
+/* ── Quote page ── */
+.quote-section {
+  min-height: 100vh;
+  padding: clamp(110px,13vw,160px) var(--gutter) clamp(60px,8vw,100px);
+  background: var(--bg); position: relative; overflow: hidden;
+}
+.quote-section__bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.052) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 20% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 20% 50%, black 20%, transparent 80%);
+}
+.quote-inner {
+  max-width: var(--container); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(48px,7vw,100px); align-items: start;
+  position: relative; z-index: 1;
+}
+/* Left info */
+.quote-info { padding-top: 12px; }
+.quote-info h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px,5vw,72px);
+  font-weight: 400; line-height: 1.06;
+  letter-spacing: -0.02em; margin-top: 22px;
+}
+.quote-info h1 em { font-style: italic; }
+.quote-info p {
+  margin-top: 18px; font-size: clamp(15px,1.3vw,17px);
+  color: var(--text-2); line-height: 1.7; max-width: 440px;
+}
+.quote-checks {
+  margin-top: 36px; display: flex; flex-direction: column; gap: 12px;
+}
+.quote-check {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--text-2);
+}
+.quote-check__icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--bg-dark); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0;
+}
+.quote-divider {
+  margin-top: 40px; padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.quote-testimonial {
+  font-size: 15px; color: var(--text); font-style: italic;
+  font-family: var(--font-display); line-height: 1.6;
+  margin-bottom: 14px;
+}
+.quote-testimonial-author { font-size: 12px; color: var(--text-3); font-style: normal; font-family: var(--font-body); }
+.quote-testimonial-stars { color: #f59e0b; font-size: 13px; margin-bottom: 8px; }
+
+/* Form card */
+.quote-card {
+  background: #fff;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-xl);
+  padding: clamp(28px,4vw,48px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+}
+.quote-card__title {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 400;
+  margin-bottom: 6px; color: var(--text);
+}
+.quote-card__sub { font-size: 13px; color: var(--text-3); margin-bottom: 28px; }
+
+.qform { display: flex; flex-direction: column; gap: 16px; }
+.qform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.qfield { display: flex; flex-direction: column; gap: 6px; }
+.qfield label {
+  font-size: 12px; font-weight: 500; color: var(--text-2);
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+.qfield input,
+.qfield select,
+.qfield textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 14px; color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  outline: none;
+  appearance: none; -webkit-appearance: none;
+}
+.qfield input:focus,
+.qfield select:focus,
+.qfield textarea:focus {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+}
+.qfield select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.qfield select option[value=""] { color: var(--text-3); }
+.qfield textarea { resize: vertical; min-height: 80px; }
+.qfield input::placeholder,
+.qfield textarea::placeholder { color: var(--text-4); }
+.qform__submit {
+  margin-top: 4px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.qform__submit .btn {
+  width: 100%; justify-content: center;
+  padding: 15px; font-size: 15px;
+}
+.qform__note {
+  text-align: center; font-size: 12px; color: var(--text-4);
+}
+
+/* Success state */
+.qform--success { display: none; }
+.qform--success.show { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 32px 0; text-align: center; }
+.qform--success__icon { font-size: 48px; }
+.qform--success__h { font-family: var(--font-display); font-size: 26px; }
+.qform--success__p { font-size: 14px; color: var(--text-2); line-height: 1.7; max-width: 320px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .quote-inner { grid-template-columns: 1fr; }
+  .quote-info p { max-width: none; }
+  .quote-info { padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .qform__row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="loader__word">Quote</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav scrolled" role="navigation">
+  <a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html" class="nav__logo">
+    <img src="logo.svg" alt="Dublin Growth Digital"/>
+  </a>
+  <ul class="nav__links">
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html">Home</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/web-design.html">Web Design</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Services</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/results.html">Results</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
+  </ul>
+  <div class="nav__right">
+    <a href="get-quote.html" class="btn btn--primary" style="font-size:13px;padding:9px 20px;">Get a Quote</a>
+  </div>
+  <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<nav class="nav__drawer">
+  <ul class="nav__drawer-links">
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html">Home</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/web-design.html">Web Design</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Services</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/results.html">Results</a></li>
+    <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
+  </ul>
+  <div class="nav__drawer-cta">
+    <a href="get-quote.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
+  </div>
+</nav>
+
+<section class="quote-section">
+  <div class="quote-section__bg" aria-hidden="true"></div>
+  <div class="quote-inner">
+
+    <!-- Left: Info -->
+    <div class="quote-info">
+      <span class="pill">Free Quote</span>
+      <h1>Tell us about your <em>project.</em></h1>
+      <p>Fill in the form and we'll come back to you within 2 hours with a clear plan and quote for your new website. Zero obligation.</p>
+      <div class="quote-checks">
+        <div class="quote-check">
+          <div class="quote-check__icon">✓</div>
+          Response within 2 hours
+        </div>
+        <div class="quote-check">
+          <div class="quote-check__icon">✓</div>
+          Free strategy consultation included
+        </div>
+        <div class="quote-check">
+          <div class="quote-check__icon">✓</div>
+          No obligation — just a clear quote
+        </div>
+        <div class="quote-check">
+          <div class="quote-check__icon">✓</div>
+          Websites delivered in as little as 1 day
+        </div>
+      </div>
+      <div class="quote-divider">
+        <div class="quote-testimonial-stars">★★★★★</div>
+        <p class="quote-testimonial">"They built our restaurant website in a day and we had enquiries coming in that same evening. Incredible work."</p>
+        <div class="quote-testimonial-author">— Laura Toomey, The Garden Table, Dublin</div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="quote-card">
+      <div class="quote-card__title">Get your free quote</div>
+      <div class="quote-card__sub">Takes less than 60 seconds — we handle the rest.</div>
+
+      <form class="qform" id="quoteForm" action="https://formspree.io/f/meendppv" method="POST">
+        <input type="hidden" name="_subject" value="New Website Quote Request — DGD"/>
+
+        <div class="qform__row">
+          <div class="qfield">
+            <label for="q-bizname">Business Name *</label>
+            <input type="text" id="q-bizname" name="business_name" placeholder="e.g. Murphy's Plumbing" required/>
+          </div>
+          <div class="qfield">
+            <label for="q-name">Your Name *</label>
+            <input type="text" id="q-name" name="name" placeholder="e.g. John Murphy" required/>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label for="q-phone">Phone Number *</label>
+          <input type="tel" id="q-phone" name="phone" placeholder="e.g. 087 123 4567" required/>
+        </div>
+
+        <div class="qfield">
+          <label for="q-type">Type of Website *</label>
+          <select id="q-type" name="website_type" required>
+            <option value="" disabled selected>Select your industry…</option>
+            <option value="Restaurant / Hospitality">Restaurant / Hospitality</option>
+            <option value="E-Commerce Store">E-Commerce Store</option>
+            <option value="Trades / Home Services">Trades / Home Services</option>
+            <option value="Fitness / Gym">Fitness / Gym</option>
+            <option value="Beauty / Salon">Beauty / Salon</option>
+            <option value="Property / Real Estate">Property / Real Estate</option>
+            <option value="Professional Services (Legal, Finance, Consulting)">Professional Services</option>
+            <option value="Healthcare / Clinic">Healthcare / Clinic</option>
+            <option value="Education / Training">Education / Training</option>
+            <option value="Automotive">Automotive</option>
+            <option value="Construction / Architecture">Construction / Architecture</option>
+            <option value="Tech / SaaS">Tech / SaaS</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="qfield">
+          <label for="q-budget">Your Budget *</label>
+          <select id="q-budget" name="budget" required>
+            <option value="" disabled selected>Select your budget range…</option>
+            <option value="Under €500">Under €500</option>
+            <option value="€500 – €1,000">€500 – €1,000</option>
+            <option value="€1,000 – €2,500">€1,000 – €2,500</option>
+            <option value="€2,500 – €5,000">€2,500 – €5,000</option>
+            <option value="€5,000 – €10,000">€5,000 – €10,000</option>
+            <option value="€10,000+">€10,000+</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="qfield">
+          <label for="q-details">Anything else we should know?</label>
+          <textarea id="q-details" name="details" placeholder="Tell us about your business, what you need, any inspiration sites…"></textarea>
+        </div>
+
+        <div class="qform__submit">
+          <button type="submit" class="btn btn--primary btn--lg">Send My Quote Request →</button>
+          <p class="qform__note">🔒 Your details are kept private. No spam, ever.</p>
+        </div>
+      </form>
+
+      <!-- Success message (shown by JS after submit) -->
+      <div class="qform--success" id="quoteSuccess">
+        <div class="qform--success__icon">🎉</div>
+        <div class="qform--success__h">Request received!</div>
+        <p class="qform--success__p">Thanks! We'll have a quote and free strategy plan in your inbox within 2 hours. Keep an eye out.</p>
+        <a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html" class="btn btn--ghost">Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand-logo"><img src="logo.svg" alt="Dublin Growth Digital"/></div>
+        <p class="footer__brand-desc">Ireland's premium digital growth partner for established businesses.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/web-design.html">Web Design</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Social Media</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Google &amp; Meta Ads</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">SEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Company</div>
+        <ul class="footer__links">
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html">Home</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/results.html">Results</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <ul class="footer__links">
+          <li><a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">&copy; 2026 Dublin Growth Digital. All rights reserved.</span>
+      <div class="footer__socials">
+        <a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/353871257533" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="main.js"></script>
+<script src="chatbot.js"></script>
+<script>
+// GSAP entrance
+window.addEventListener('load', function() {
+  if (typeof gsap === 'undefined') return;
+  gsap.from('.quote-info .pill',    { opacity: 0, y: 16, duration: 0.6, delay: 0.2 });
+  gsap.from('.quote-info h1',       { opacity: 0, y: 32, duration: 0.9, delay: 0.35, ease: 'expo.out' });
+  gsap.from('.quote-info p',        { opacity: 0, y: 20, duration: 0.7, delay: 0.5 });
+  gsap.from('.quote-checks',        { opacity: 0, y: 18, duration: 0.6, delay: 0.65 });
+  gsap.from('.quote-divider',       { opacity: 0, y: 14, duration: 0.6, delay: 0.8 });
+  gsap.from('.quote-card',          { opacity: 0, y: 36, duration: 1.0, delay: 0.4, ease: 'expo.out' });
+});
+
+// Handle form submit via fetch (stay on page, show success)
+var form = document.getElementById('quoteForm');
+var success = document.getElementById('quoteSuccess');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        form.style.display = 'none';
+        success.classList.add('show');
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    }).catch(function() {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+    });
+  });
+}
+</script>
+</body>
+</html>
