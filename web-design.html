@@ -19,6 +19,165 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
+/* ── Web Design Hero ── */
+.wd-hero {
+  position: relative; overflow: hidden;
+  padding: clamp(120px,14vw,170px) var(--gutter) clamp(80px,10vw,120px);
+  border-bottom: 1px solid var(--border);
+}
+.wd-hero__bg { position: absolute; inset: 0; z-index: 0; background: var(--bg); }
+.wd-hero__dot {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.058) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.wd-hero__glow {
+  position: absolute; top: -15%; right: 10%; width: 700px; height: 700px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.022) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+  animation: glowDrift 10s ease-in-out infinite alternate;
+}
+@keyframes glowDrift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(-40px, 30px) scale(1.15); }
+}
+.wd-hero__fade {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 100% 90% at 50% 115%, transparent, var(--bg) 68%);
+}
+.wd-hero__inner {
+  max-width: var(--container); margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(48px,7vw,100px); align-items: center;
+}
+.wd-hero__content { max-width: 580px; }
+.wd-hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px,5.5vw,88px);
+  font-weight: 400; line-height: 1.04; letter-spacing: -0.025em;
+  margin-top: 24px;
+}
+.wd-hero__h1 em { font-style: italic; }
+.wd-hero__sub {
+  margin-top: 20px; font-size: clamp(15px,1.4vw,18px);
+  color: var(--text-2); line-height: 1.65;
+}
+.wd-hero__actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+.wd-hero__trust {
+  display: flex; align-items: center; gap: 20px;
+  margin-top: 44px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.wd-hero__t-item { display: flex; flex-direction: column; gap: 3px; }
+.wd-hero__t-num { font-family: var(--font-display); font-size: 22px; color: var(--text); line-height: 1; }
+.wd-hero__t-lbl { font-size: 11px; color: var(--text-3); }
+.wd-hero__t-sep { width: 1px; height: 28px; background: var(--border-dk); flex-shrink: 0; }
+
+/* ── Browser mockup ── */
+.wd-hero__visual { position: relative; overflow: visible; }
+.wd-browser {
+  border-radius: 14px; border: 1px solid rgba(0,0,0,0.13); overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 28px 80px rgba(0,0,0,0.13), 0 8px 24px rgba(0,0,0,0.07);
+  background: #fff; position: relative; z-index: 2;
+  animation: browserFloat 7s ease-in-out infinite;
+}
+@keyframes browserFloat {
+  0%, 100% { transform: translateY(0) rotate(-0.3deg); }
+  50%       { transform: translateY(-10px) rotate(0.3deg); }
+}
+.wd-browser__bar {
+  height: 36px; background: #efefef; border-bottom: 1px solid rgba(0,0,0,0.07);
+  display: flex; align-items: center; gap: 10px; padding: 0 12px; flex-shrink: 0;
+}
+.wd-browser__dots { display: flex; gap: 5px; flex-shrink: 0; }
+.wd-browser__dots span { width: 9px; height: 9px; border-radius: 50%; }
+.wd-browser__dots span:nth-child(1) { background: #ff5f57; }
+.wd-browser__dots span:nth-child(2) { background: #ffbd2e; }
+.wd-browser__dots span:nth-child(3) { background: #28ca41; }
+.wd-browser__url {
+  flex: 1; background: rgba(0,0,0,0.07); border-radius: 6px;
+  font-size: 10px; color: #999; padding: 4px 10px; text-align: center;
+  max-width: 260px; margin: 0 auto; overflow: hidden; white-space: nowrap;
+}
+.wd-browser__screen {
+  aspect-ratio: 16/10.5; position: relative; overflow: hidden; background: #fff;
+}
+.wd-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; }
+.wd-slide--active { opacity: 1; }
+
+/* Slide indicators */
+.wd-browser__indicators {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 5px; z-index: 4;
+}
+.wd-browser__dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); transition: background 0.3s, width 0.3s;
+}
+.wd-browser__dot.active { background: rgba(255,255,255,0.9); width: 16px; border-radius: 3px; }
+
+/* ── Floating badges ── */
+.wd-badge {
+  position: absolute; z-index: 3;
+  background: rgba(255,255,255,0.97);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 14px; padding: 11px 15px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.06);
+  white-space: nowrap;
+}
+.wd-badge--speed { left: -28px; bottom: 24%; animation: badgeF1 5s ease-in-out infinite; }
+.wd-badge--live  { right: -28px; top: 18%; animation: badgeF2 4.5s ease-in-out infinite 0.9s; }
+@keyframes badgeF1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes badgeF2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+.wd-badge__icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
+.wd-badge__title { font-size: 9px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-3); font-weight: 500; margin-bottom: 2px; }
+.wd-badge__val { font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; }
+
+/* ── Industry ticker ── */
+.wd-ticker {
+  overflow: hidden; border-bottom: 1px solid var(--border);
+  padding: 16px 0; background: var(--bg);
+  position: relative;
+}
+.wd-ticker::before, .wd-ticker::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+}
+.wd-ticker::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+.wd-ticker::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+.wd-ticker__track {
+  display: flex; width: max-content;
+  animation: tickerScroll 24s linear infinite;
+}
+.wd-ticker__track:hover { animation-play-state: paused; }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.wd-ticker__group { display: flex; }
+.wd-ticker__item {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 0 28px; font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em; color: var(--text-3); white-space: nowrap;
+  text-transform: uppercase;
+}
+.wd-ticker__item::after {
+  content: '✦'; font-size: 8px; color: var(--text-4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .wd-hero__inner { grid-template-columns: 1fr; }
+  .wd-hero__visual { display: none; }
+  .wd-hero__content { max-width: none; }
+}
+@media (max-width: 640px) {
+  .wd-hero__actions { flex-direction: column; align-items: flex-start; }
+  .wd-hero__trust { gap: 14px; }
+  .wd-hero__t-sep { display: none; }
+}
+
 /* ── Web Design Page Extras ── */
 .niche-grid {
   display: grid;
@@ -255,18 +414,173 @@
 <!-- ═══════════════════════════════════
      HERO
 ═══════════════════════════════════ -->
-<section class="page-hero">
-  <div class="page-hero__bg" aria-hidden="true"></div>
-  <div class="page-hero__inner">
-    <span class="pill">Premium Web Design</span>
-    <h1>High-end websites built for <em>every niche.</em></h1>
-    <p>From restaurants to real estate, fitness studios to fashion brands — we design and build premium, conversion-focused websites for every industry in Ireland and beyond.</p>
-    <div class="page-hero__actions">
-      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get a Free Quote</a>
-      <a href="#showcase" class="btn btn--ghost btn--lg">See Examples</a>
+<section class="wd-hero">
+  <div class="wd-hero__bg">
+    <div class="wd-hero__dot"></div>
+    <div class="wd-hero__glow"></div>
+    <div class="wd-hero__fade"></div>
+  </div>
+  <div class="wd-hero__inner">
+    <!-- Left: Copy -->
+    <div class="wd-hero__content">
+      <span class="pill">Premium Web Design</span>
+      <h1 class="wd-hero__h1">High-end websites built for <em>every niche.</em></h1>
+      <p class="wd-hero__sub">From restaurants to real estate, fitness studios to fashion brands — we design and build premium, conversion-focused websites for every industry in Ireland and beyond.</p>
+      <div class="wd-hero__actions">
+        <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get a Free Quote</a>
+        <a href="#showcase" class="btn btn--ghost btn--lg">See Examples</a>
+      </div>
+      <div class="wd-hero__trust">
+        <div class="wd-hero__t-item">
+          <span class="wd-hero__t-num">52+</span>
+          <span class="wd-hero__t-lbl">Websites built</span>
+        </div>
+        <div class="wd-hero__t-sep"></div>
+        <div class="wd-hero__t-item">
+          <span class="wd-hero__t-num">1 day</span>
+          <span class="wd-hero__t-lbl">Avg. delivery</span>
+        </div>
+        <div class="wd-hero__t-sep"></div>
+        <div class="wd-hero__t-item">
+          <span class="wd-hero__t-num">4.9★</span>
+          <span class="wd-hero__t-lbl">Client rating</span>
+        </div>
+        <div class="wd-hero__t-sep"></div>
+        <div class="wd-hero__t-item">
+          <span class="wd-hero__t-num">100%</span>
+          <span class="wd-hero__t-lbl">Custom design</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right: Browser mockup -->
+    <div class="wd-hero__visual">
+      <div class="wd-browser">
+        <div class="wd-browser__bar">
+          <div class="wd-browser__dots"><span></span><span></span><span></span></div>
+          <div class="wd-browser__url">dublingrowthdigital.com/your-site</div>
+        </div>
+        <div class="wd-browser__screen">
+          <!-- Slide 1: Restaurant -->
+          <div class="wd-slide wd-slide--active">
+            <div class="preview-restaurant" style="height:100%">
+              <div class="preview-restaurant__tag">Est. Dublin 2018</div>
+              <div class="preview-restaurant__line"></div>
+              <div class="preview-restaurant__hero-text">Where every meal<br>tells a story.</div>
+              <div class="preview-restaurant__line"></div>
+              <div style="background:rgba(255,255,255,0.12);border-radius:100px;padding:6px 20px;font-size:9px;color:rgba(255,255,255,0.8);letter-spacing:0.12em;text-transform:uppercase">Reserve a Table</div>
+            </div>
+          </div>
+          <!-- Slide 2: Fitness -->
+          <div class="wd-slide">
+            <div class="preview-fitness" style="height:100%">
+              <div class="preview-fitness__block">
+                <div class="preview-fitness__label">Train. Transform.<br>Dominate.</div>
+              </div>
+              <div class="preview-fitness__block">
+                <div class="preview-fitness__label">Classes</div>
+              </div>
+              <div class="preview-fitness__block">
+                <div class="preview-fitness__label">Join Now</div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3: E-commerce -->
+          <div class="wd-slide">
+            <div class="preview-ecomm" style="height:100%">
+              <div class="preview-ecomm__nav">
+                <div class="preview-ecomm__nav-dot"></div>
+                <div class="preview-ecomm__nav-dot"></div>
+                <div class="preview-ecomm__nav-dot"></div>
+              </div>
+              <div class="preview-ecomm__grid">
+                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
+                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
+                <div class="preview-ecomm__item"><div class="preview-ecomm__item-img"></div><div class="preview-ecomm__item-foot"><div class="preview-ecomm__item-line"></div><div class="preview-ecomm__item-line"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4: Trade -->
+          <div class="wd-slide">
+            <div class="preview-trade" style="height:100%">
+              <div class="preview-trade__hero"><span>Dublin's Most Trusted Plumbers</span></div>
+              <div class="preview-trade__badges">
+                <div class="preview-trade__badge">⭐ 500+ Reviews</div>
+                <div class="preview-trade__badge">✓ RGI Registered</div>
+              </div>
+              <div class="preview-trade__cta"><span>Get a Free Quote →</span></div>
+            </div>
+          </div>
+          <!-- Slide 5: Beauty -->
+          <div class="wd-slide">
+            <div class="preview-beauty" style="height:100%">
+              <div class="preview-beauty__circle"></div>
+              <div class="preview-beauty__title">Beauty by Design</div>
+              <div class="preview-beauty__sub">Dublin's Premium Salon</div>
+              <div class="preview-beauty__btn">Book Now</div>
+            </div>
+          </div>
+          <!-- Indicators -->
+          <div class="wd-browser__indicators">
+            <div class="wd-browser__dot active"></div>
+            <div class="wd-browser__dot"></div>
+            <div class="wd-browser__dot"></div>
+            <div class="wd-browser__dot"></div>
+            <div class="wd-browser__dot"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating badges -->
+      <div class="wd-badge wd-badge--speed">
+        <span class="wd-badge__icon">⚡</span>
+        <div>
+          <div class="wd-badge__title">PageSpeed Score</div>
+          <div class="wd-badge__val">99 / 100</div>
+        </div>
+      </div>
+      <div class="wd-badge wd-badge--live">
+        <span class="wd-badge__icon">🚀</span>
+        <div>
+          <div class="wd-badge__title">Delivery Time</div>
+          <div class="wd-badge__val">1 Day</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Industry ticker -->
+<div class="wd-ticker" aria-hidden="true">
+  <div class="wd-ticker__track">
+    <div class="wd-ticker__group">
+      <span class="wd-ticker__item">Restaurants</span>
+      <span class="wd-ticker__item">E-Commerce</span>
+      <span class="wd-ticker__item">Trades</span>
+      <span class="wd-ticker__item">Fitness &amp; Gyms</span>
+      <span class="wd-ticker__item">Property</span>
+      <span class="wd-ticker__item">Beauty &amp; Salons</span>
+      <span class="wd-ticker__item">Professional Services</span>
+      <span class="wd-ticker__item">Healthcare</span>
+      <span class="wd-ticker__item">Education</span>
+      <span class="wd-ticker__item">Automotive</span>
+      <span class="wd-ticker__item">Construction</span>
+      <span class="wd-ticker__item">Tech &amp; SaaS</span>
+    </div>
+    <div class="wd-ticker__group" aria-hidden="true">
+      <span class="wd-ticker__item">Restaurants</span>
+      <span class="wd-ticker__item">E-Commerce</span>
+      <span class="wd-ticker__item">Trades</span>
+      <span class="wd-ticker__item">Fitness &amp; Gyms</span>
+      <span class="wd-ticker__item">Property</span>
+      <span class="wd-ticker__item">Beauty &amp; Salons</span>
+      <span class="wd-ticker__item">Professional Services</span>
+      <span class="wd-ticker__item">Healthcare</span>
+      <span class="wd-ticker__item">Education</span>
+      <span class="wd-ticker__item">Automotive</span>
+      <span class="wd-ticker__item">Construction</span>
+      <span class="wd-ticker__item">Tech &amp; SaaS</span>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════
      STATS
@@ -746,6 +1060,46 @@ document.querySelectorAll('.faq-item').forEach(item => {
     if (!isOpen) item.classList.add('open');
   });
 });
+
+// Browser slide cycling
+(function() {
+  const slides = document.querySelectorAll('.wd-slide');
+  const dots   = document.querySelectorAll('.wd-browser__dot');
+  if (!slides.length) return;
+  let current = 0;
+  function go(n) {
+    slides[current].classList.remove('wd-slide--active');
+    dots[current]?.classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('wd-slide--active');
+    dots[current]?.classList.add('active');
+  }
+  setInterval(() => go(current + 1), 2800);
+})();
+
+// GSAP hero entrance (runs after loader hides)
+(function() {
+  function runHeroAnim() {
+    if (typeof gsap === 'undefined') return;
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.from('.wd-hero__content .pill',    { opacity: 0, y: 18, duration: 0.7 }, 0.05)
+      .from('.wd-hero__h1',               { opacity: 0, y: 36, duration: 1.0 }, 0.2)
+      .from('.wd-hero__sub',              { opacity: 0, y: 22, duration: 0.8 }, 0.4)
+      .from('.wd-hero__actions',          { opacity: 0, y: 16, duration: 0.7 }, 0.55)
+      .from('.wd-hero__trust',            { opacity: 0, y: 14, duration: 0.6 }, 0.7)
+      .from('.wd-browser',                { opacity: 0, y: 52, duration: 1.2 }, 0.3)
+      .from('.wd-badge',                  { opacity: 0, scale: 0.82, y: 10, duration: 0.7, stagger: 0.18, ease: 'back.out(1.6)' }, 1.0);
+  }
+  // Wait for loader to be hidden then animate
+  const loader = document.getElementById('loader');
+  if (!loader) { setTimeout(runHeroAnim, 200); return; }
+  const obs = new MutationObserver(() => {
+    if (loader.classList.contains('hidden')) { obs.disconnect(); runHeroAnim(); }
+  });
+  obs.observe(loader, { attributes: true });
+  // Failsafe
+  setTimeout(runHeroAnim, 1800);
+})();
 </script>
 </body>
 </html>
