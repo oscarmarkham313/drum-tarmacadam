@@ -168,15 +168,13 @@
       hideTyping();
 
       if (key === '__book') {
-        addMsg('Opening our booking calendar for you! 📅', false);
-        setTimeout(function() { window.open(CALENDAR, '_blank', 'noopener'); }, 400);
-        setTimeout(function() { addChips(['← Main menu']); }, 200);
+        addMsg('Taking you to our contact page! 📞', false);
+        setTimeout(function() { window.location.href = 'contact.html'; }, 400);
         return;
       }
       if (key === '__whatsapp') {
         addMsg('Opening WhatsApp for you! 💬', false);
         setTimeout(function() { window.open(WHATSAPP, '_blank', 'noopener'); }, 400);
-        setTimeout(function() { addChips(['← Main menu']); }, 200);
         return;
       }
       if (key === '__results') {
