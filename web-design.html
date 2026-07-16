@@ -1,589 +1,204 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon.png"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png"/>
-    <meta name="theme-color" content="#0F0F0F"/>
-<title>Premium Web Design — Dublin Growth Digital</title>
-<meta name="description" content="High-end, custom websites for every niche. Dublin Growth Digital designs and builds premium websites for Irish businesses that convert visitors into customers."/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png"/>
+<meta name="theme-color" content="#0F0F0F"/>
+<title>Get Your Website Built — Dublin Growth Digital</title>
+<meta name="description" content="Tell us about your dream website. We'll have it live within 24 hours. Free quote, no obligation."/>
 <link rel="canonical" href="https://dublingrowthdigital.com/web-design.html"/>
-<meta property="og:title" content="Premium Web Design — Dublin Growth Digital"/>
-<meta property="og:description" content="High-end custom websites built for every industry. Fast, beautiful, and built to convert."/>
-<meta property="og:url" content="https://dublingrowthdigital.com/web-design.html"/>
-<meta property="og:type" content="website"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
-/* ── Web Design Hero ── */
-.wd-hero {
-  position: relative; overflow: hidden;
-  padding: clamp(120px,14vw,170px) var(--gutter) clamp(80px,10vw,120px);
-  border-bottom: 1px solid var(--border);
-}
-.wd-hero__bg { position: absolute; inset: 0; z-index: 0; background: var(--bg); }
-.wd-hero__dot {
-  position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(0,0,0,0.058) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-.wd-hero__glow {
-  position: absolute; top: -15%; right: 10%; width: 700px; height: 700px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.022) 0%, transparent 70%);
-  border-radius: 50%; pointer-events: none;
-  animation: glowDrift 10s ease-in-out infinite alternate;
-}
-@keyframes glowDrift {
-  from { transform: translate(0,0) scale(1); }
-  to   { transform: translate(-40px, 30px) scale(1.15); }
-}
-.wd-hero__fade {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 100% 90% at 50% 115%, transparent, var(--bg) 68%);
-}
-.wd-hero__inner {
-  max-width: var(--container); margin: 0 auto; position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(48px,7vw,100px); align-items: center;
-}
-.wd-hero__content { max-width: 580px; }
-.wd-hero__h1 {
-  font-family: var(--font-display);
-  font-size: clamp(44px,5.5vw,88px);
-  font-weight: 400; line-height: 1.04; letter-spacing: -0.025em;
-  margin-top: 24px;
-}
-.wd-hero__h1 em { font-style: italic; }
-.wd-hero__sub {
-  margin-top: 20px; font-size: clamp(15px,1.4vw,18px);
-  color: var(--text-2); line-height: 1.65;
-}
-.wd-hero__actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
-.wd-hero__trust {
-  display: flex; align-items: center; gap: 20px;
-  margin-top: 44px; padding-top: 32px;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-}
-.wd-hero__t-item { display: flex; flex-direction: column; gap: 3px; }
-.wd-hero__t-num { font-family: var(--font-display); font-size: 22px; color: var(--text); line-height: 1; }
-.wd-hero__t-lbl { font-size: 11px; color: var(--text-3); }
-.wd-hero__t-sep { width: 1px; height: 28px; background: var(--border-dk); flex-shrink: 0; }
-
-/* ── Browser mockup ── */
-.wd-hero__visual { position: relative; overflow: visible; }
-.wd-browser {
-  border-radius: 14px; border: 1px solid rgba(0,0,0,0.13); overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 28px 80px rgba(0,0,0,0.13), 0 8px 24px rgba(0,0,0,0.07);
-  background: #fff; position: relative; z-index: 2;
-  animation: browserFloat 7s ease-in-out infinite;
-}
-@keyframes browserFloat {
-  0%, 100% { transform: translateY(0) rotate(-0.3deg); }
-  50%       { transform: translateY(-10px) rotate(0.3deg); }
-}
-.wd-browser__bar {
-  height: 36px; background: #efefef; border-bottom: 1px solid rgba(0,0,0,0.07);
-  display: flex; align-items: center; gap: 10px; padding: 0 12px; flex-shrink: 0;
-}
-.wd-browser__dots { display: flex; gap: 5px; flex-shrink: 0; }
-.wd-browser__dots span { width: 9px; height: 9px; border-radius: 50%; }
-.wd-browser__dots span:nth-child(1) { background: #ff5f57; }
-.wd-browser__dots span:nth-child(2) { background: #ffbd2e; }
-.wd-browser__dots span:nth-child(3) { background: #28ca41; }
-.wd-browser__url {
-  flex: 1; background: rgba(0,0,0,0.07); border-radius: 6px;
-  font-size: 10px; color: #999; padding: 4px 10px; text-align: center;
-  max-width: 260px; margin: 0 auto; overflow: hidden; white-space: nowrap;
-}
-.wd-browser__screen {
-  aspect-ratio: 16/10.5; position: relative; overflow: hidden; background: #fff;
-}
-.wd-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; }
-.wd-slide--active { opacity: 1; }
-
-/* Slide indicators */
-.wd-browser__indicators {
-  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 5px; z-index: 4;
-}
-.wd-browser__dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: rgba(255,255,255,0.4); transition: background 0.3s, width 0.3s;
-}
-.wd-browser__dot.active { background: rgba(255,255,255,0.9); width: 16px; border-radius: 3px; }
-
-/* ── Floating badges ── */
-.wd-badge {
-  position: absolute; z-index: 3;
-  background: rgba(255,255,255,0.97);
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 14px; padding: 11px 15px;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.06);
-  white-space: nowrap;
-}
-.wd-badge--speed { left: -28px; bottom: 24%; animation: badgeF1 5s ease-in-out infinite; }
-.wd-badge--live  { right: -28px; top: 18%; animation: badgeF2 4.5s ease-in-out infinite 0.9s; }
-@keyframes badgeF1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-@keyframes badgeF2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
-.wd-badge__icon { font-size: 20px; line-height: 1; flex-shrink: 0; }
-.wd-badge__title { font-size: 9px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-3); font-weight: 500; margin-bottom: 2px; }
-.wd-badge__val { font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; }
-
-/* ── Industry ticker ── */
-.wd-ticker {
-  overflow: hidden; border-bottom: 1px solid var(--border);
-  padding: 16px 0; background: var(--bg);
+/* ── Dream Website Questionnaire ── */
+.cq-hero {
+  background: var(--bg-dark);
+  padding: clamp(100px,14vw,160px) var(--gutter) clamp(60px,8vw,100px);
+  text-align: center;
   position: relative;
+  overflow: hidden;
 }
-.wd-ticker::before, .wd-ticker::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+.cq-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
-.wd-ticker::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-.wd-ticker::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-.wd-ticker__track {
-  display: flex; width: max-content;
-  animation: tickerScroll 24s linear infinite;
-}
-.wd-ticker__track:hover { animation-play-state: paused; }
-@keyframes tickerScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.wd-ticker__group { display: flex; }
-.wd-ticker__item {
-  display: inline-flex; align-items: center; gap: 14px;
-  padding: 0 28px; font-size: 12px; font-weight: 500;
-  letter-spacing: 0.06em; color: var(--text-3); white-space: nowrap;
+.cq-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
 }
-.wd-ticker__item::after {
-  content: '✦'; font-size: 8px; color: var(--text-4);
-}
-
-/* ── Responsive ── */
-@media (max-width: 960px) {
-  .wd-hero__inner { grid-template-columns: 1fr; }
-  .wd-hero__visual { display: none; }
-  .wd-hero__content { max-width: none; }
-}
-@media (max-width: 640px) {
-  .wd-hero__actions { flex-direction: column; align-items: flex-start; }
-  .wd-hero__trust { gap: 14px; }
-  .wd-hero__t-sep { display: none; }
-}
-
-/* ── Web Design Page Extras ── */
-.niche-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  margin-top: clamp(48px,6vw,80px);
-}
-.niche-card {
-  background: var(--bg);
-  padding: clamp(28px,3vw,40px) clamp(24px,2.5vw,36px);
-  transition: background 0.25s;
-  cursor: default;
-}
-.niche-card:hover { background: #fff; }
-.niche-card__icon { font-size: 28px; margin-bottom: 16px; }
-.niche-card__title {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.2;
-}
-.niche-card__desc { font-size: 13px; color: var(--text-3); line-height: 1.55; }
-
-.includes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: clamp(48px,6vw,80px);
-}
-.include-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(24px,3vw,36px);
-  background: var(--bg);
-  transition: border-color 0.25s, transform 0.3s var(--ease-out);
-}
-.include-card:hover { border-color: var(--border-dk); transform: translateY(-3px); }
-.include-card__icon {
-  width: 40px; height: 40px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  margin-bottom: 16px;
-}
-.include-card__title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
-.include-card__desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
-
-.showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: clamp(48px,6vw,80px);
-}
-.showcase-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  transition: border-color 0.25s, transform 0.3s var(--ease-out);
-  background: var(--bg);
-}
-.showcase-card:hover { border-color: var(--border-dk); transform: translateY(-4px); }
-.showcase-card__preview {
-  aspect-ratio: 16/10;
-  position: relative;
-  overflow: hidden;
-}
-.showcase-card__info { padding: 20px 24px; }
-.showcase-card__niche { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-4); margin-bottom: 6px; }
-.showcase-card__title { font-family: var(--font-display); font-size: 18px; font-weight: 400; margin-bottom: 6px; }
-.showcase-card__desc { font-size: 13px; color: var(--text-3); line-height: 1.5; }
-
-/* ══════════════════════════════════════
-   SITE PREVIEW SYSTEM — World-class redesign
-   Inspired by Noma, SSENSE, Equinox, Savills, Aesop
-   ══════════════════════════════════════ */
-.wp { display: flex; flex-direction: column; height: 100%; overflow: hidden; font-family: var(--font-body); }
-.wp-nav {
-  height: 27px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 10px; flex-shrink: 0; gap: 6px;
-}
-.wp-logo { font-size: 10px; font-weight: 700; letter-spacing: 0.03em; }
-.wp-links { display: flex; gap: 8px; align-items: center; }
-.wp-link { width: 16px; height: 2px; border-radius: 2px; }
-.wp-btn { border-radius: 100px; padding: 3px 9px; font-size: 7px; font-weight: 700; letter-spacing: 0.04em; display: inline-block; white-space: nowrap; }
-
-/* ── RESTAURANT — Inspired by Noma / Eleven Madison Park ── */
-.wp-rest { background: #060606; }
-.wp-rest .wp-nav { border-bottom: 1px solid rgba(255,255,255,0.05); }
-.wp-rest .wp-logo { color: rgba(255,255,255,0.88); font-family: var(--font-display); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; font-size: 8.5px; font-style: italic; }
-.wp-rest .wp-link { background: rgba(255,255,255,0.09); }
-.wp-rest .wp-btn { border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.5); background: transparent; }
-.wp-rest-hero {
-  flex: 1; position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 6px; padding: 10px; background: #0a0604;
-}
-.wp-rest-photo {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 130% 100% at 50% 40%, rgba(100,54,12,0.24) 0%, rgba(60,30,6,0.12) 45%, transparent 72%);
-}
-.wp-rest-photo::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(6,6,6,0.96) 0%, rgba(6,6,6,0.25) 42%, transparent 65%);
-}
-.wp-rest-content { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.wp-rest-eyebrow { font-size: 6.5px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(220,175,100,0.42); }
-.wp-rest-divider { width: 42px; height: 1px; background: linear-gradient(to right, transparent, rgba(220,175,100,0.28), transparent); margin: 1px 0; }
-.wp-rest-h { font-family: var(--font-display); font-size: 22px; font-style: italic; color: rgba(255,255,255,0.95); line-height: 1.1; }
-.wp-rest-cta { margin-top: 5px; border: 1px solid rgba(255,255,255,0.14); border-radius: 100px; padding: 5px 16px; font-size: 7px; color: rgba(255,255,255,0.52); letter-spacing: 0.16em; text-transform: uppercase; display: inline-block; }
-.wp-rest-dishes { display: flex; flex-shrink: 0; border-top: 1px solid rgba(255,255,255,0.05); }
-.wp-rest-dish { flex: 1; padding: 5px 4px; border-right: 1px solid rgba(255,255,255,0.03); display: flex; flex-direction: column; gap: 3px; }
-.wp-rest-dish:last-child { border-right: none; }
-.wp-rest-dish-img { height: 24px; border-radius: 3px; }
-.wp-rest-dish:nth-child(1) .wp-rest-dish-img { background: linear-gradient(155deg, #4a1f08, #1c0900, #2c1204); }
-.wp-rest-dish:nth-child(2) .wp-rest-dish-img { background: linear-gradient(155deg, #221a0a, #0d0900, #181200); }
-.wp-rest-dish:nth-child(3) .wp-rest-dish-img { background: linear-gradient(155deg, #2e1408, #140600, #201008); }
-.wp-rest-dish:nth-child(4) .wp-rest-dish-img { background: linear-gradient(155deg, #1c170a, #080600, #140f0a); }
-.wp-rest-dish-name { height: 2.5px; background: rgba(255,255,255,0.08); border-radius: 2px; width: 72%; }
-.wp-rest-dish-price { height: 2px; background: rgba(220,175,100,0.1); border-radius: 2px; width: 38%; }
-
-/* ── E-COMMERCE — Inspired by SSENSE / COS / Mr Porter ── */
-.wp-ecomm { background: #ffffff; }
-.wp-ecomm .wp-nav { background: #fff; border-bottom: 1px solid #efefef; }
-.wp-ecomm .wp-logo { color: #0a0a0a; font-size: 11px; letter-spacing: 0.06em; font-weight: 700; }
-.wp-ecomm .wp-link { background: #d8d8d8; width: 18px; }
-.wp-ecomm .wp-btn { background: #0a0a0a; color: #fff; }
-.wp-ecomm-cats { display: flex; border-bottom: 1px solid #f0f0f0; flex-shrink: 0; padding: 0 8px; overflow: hidden; }
-.wp-ecomm-cat { padding: 4px 7px; font-size: 7px; color: #aaa; white-space: nowrap; border-bottom: 1.5px solid transparent; display: inline-block; }
-.wp-ecomm-cat.act { color: #0a0a0a; font-weight: 700; border-bottom-color: #0a0a0a; }
-.wp-ecomm-hero { display: flex; flex-shrink: 0; min-height: 72px; }
-.wp-ecomm-hero-l { flex: 1; padding: 10px 10px 8px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
-.wp-ecomm-season { font-size: 6.5px; text-transform: uppercase; letter-spacing: 0.2em; color: #bbb; }
-.wp-ecomm-h { font-family: var(--font-display); font-size: 16px; color: #0a0a0a; line-height: 1.12; }
-.wp-ecomm-desc { height: 2.5px; background: #eee; border-radius: 2px; }
-.wp-ecomm-desc2 { height: 2.5px; background: #eee; border-radius: 2px; width: 60%; }
-.wp-ecomm-shop { margin-top: 5px; font-size: 7.5px; color: #0a0a0a; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 4px; }
-.wp-ecomm-shop::after { content: '→'; }
-.wp-ecomm-hero-r {
-  width: 42%; position: relative; overflow: hidden;
-  background: linear-gradient(160deg, #ede8ff 0%, #d0c8f8 45%, #b8aff0 72%, #ccc4f4 100%);
-}
-.wp-ecomm-hero-r::before {
-  content: ''; position: absolute; top: 8%; left: 8%; right: 8%; bottom: 0;
-  background: linear-gradient(175deg, rgba(255,255,255,0.4) 0%, rgba(200,190,255,0.12) 55%, transparent 80%);
-  border-radius: 50% 50% 30% 30%;
-}
-.wp-ecomm-hero-r::after {
-  content: 'SS25'; position: absolute; top: 7px; right: 7px;
-  background: rgba(255,255,255,0.55); border-radius: 3px;
-  font-size: 6px; font-weight: 800; letter-spacing: 0.08em;
-  padding: 2px 5px; color: #333;
-}
-.wp-ecomm-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px 5px 5px; background: #fafafa; }
-.wp-ecomm-card { background: #fff; border: 1px solid #efefef; overflow: hidden; border-radius: 4px; display: flex; flex-direction: column; }
-.wp-ecomm-card-img { aspect-ratio: 3/4; flex-shrink: 0; }
-.wp-ecomm-card:nth-child(1) .wp-ecomm-card-img { background: linear-gradient(170deg, #f8ede0, #f0d4a4, #e8c080); }
-.wp-ecomm-card:nth-child(2) .wp-ecomm-card-img { background: linear-gradient(170deg, #eef2ec, #d4e4d0, #b8d0b4); }
-.wp-ecomm-card:nth-child(3) .wp-ecomm-card-img { background: linear-gradient(170deg, #eceef8, #d0d8f0, #b4bfdf); }
-.wp-ecomm-card-info { padding: 3px 5px 4px; }
-.wp-ecomm-price { font-size: 7px; font-weight: 700; color: #0a0a0a; display: block; }
-.wp-ecomm-card:nth-child(1) .wp-ecomm-price::after { content: '€299'; }
-.wp-ecomm-card:nth-child(2) .wp-ecomm-price::after { content: '€445'; }
-.wp-ecomm-card:nth-child(3) .wp-ecomm-price::after { content: '€189'; }
-.wp-ecomm-card-name { height: 2.5px; background: #e0e0e0; border-radius: 2px; margin-top: 2px; width: 80%; }
-
-/* ── TRADE — Inspired by top Irish trade service sites ── */
-.wp-trade { background: #fff; }
-.wp-trade .wp-nav { background: #0f0f0f; }
-.wp-trade .wp-logo { color: #fff; font-size: 9px; letter-spacing: 0.08em; }
-.wp-trade .wp-link { background: rgba(255,255,255,0.15); }
-.wp-trade .wp-btn { background: #22c55e; color: #fff; }
-.wp-trade-hero { background: #0f0f0f; padding: 10px 12px 9px; display: flex; flex-direction: column; gap: 5px; flex-shrink: 0; position: relative; overflow: hidden; }
-.wp-trade-hero::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 80px; background: linear-gradient(to left, rgba(34,197,94,0.06), transparent); }
-.wp-trade-stars { font-size: 8px; color: #f59e0b; display: flex; align-items: center; gap: 4px; }
-.wp-trade-stars-text { font-size: 7px; color: rgba(255,255,255,0.3); font-style: normal; }
-.wp-trade-eyebrow { font-size: 6.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #22c55e; font-weight: 700; }
-.wp-trade-h { font-family: var(--font-display); font-size: 16px; color: rgba(255,255,255,0.95); line-height: 1.18; }
-.wp-trade-h em { color: #22c55e; font-style: italic; }
-.wp-trade-badges { display: flex; gap: 4px; flex-wrap: wrap; }
-.wp-trade-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 4px; padding: 3px 6px; font-size: 6.5px; color: rgba(255,255,255,0.6); }
-.wp-trade-cta { display: inline-flex; align-items: center; gap: 4px; background: #22c55e; color: #fff; border-radius: 100px; padding: 5px 11px; font-size: 7px; font-weight: 700; align-self: flex-start; }
-.wp-trade-services { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 5px; }
-.wp-trade-svc { border: 1px solid #f0f0f0; border-radius: 7px; padding: 7px 7px 6px; display: flex; flex-direction: column; gap: 3px; }
-.wp-trade-svc-icon { width: 22px; height: 22px; border-radius: 6px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-bottom: 2px; }
-.wp-trade-svc-name { height: 3px; background: #dedede; border-radius: 2px; width: 80%; }
-.wp-trade-svc-sub { height: 2px; background: #eeeeee; border-radius: 2px; }
-.wp-trade-svc-sub2 { height: 2px; background: #eeeeee; border-radius: 2px; width: 60%; }
-
-/* ── FITNESS — Inspired by Equinox / Barry's Bootcamp / F45 ── */
-.wp-fit { background: #060606; }
-.wp-fit .wp-nav { border-bottom: 1px solid rgba(255,255,255,0.05); }
-.wp-fit .wp-logo { color: #fff; font-family: var(--font-display); font-style: italic; font-size: 12px; letter-spacing: 0.02em; }
-.wp-fit .wp-link { background: rgba(255,255,255,0.1); }
-.wp-fit .wp-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: #fff; }
-.wp-fit-grid { flex: 1; display: grid; grid-template-columns: 1.7fr 1fr; grid-template-rows: 1fr 0.65fr; gap: 3px; padding: 5px; }
-.wp-fit-block { border-radius: 9px; overflow: hidden; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 9px; }
-.wp-fit-main {
-  grid-row: span 2;
-  background: linear-gradient(175deg, #1c1c1c 0%, #0c0c0c 55%, #141414 100%);
-  border: 1px solid rgba(255,255,255,0.04);
-}
-.wp-fit-main::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 30% 20%, rgba(255,255,255,0.025), transparent 60%);
-}
-.wp-fit-h { font-family: var(--font-display); font-size: 24px; font-style: italic; color: rgba(255,255,255,0.95); line-height: 1; position: relative; }
-.wp-fit-sub { font-size: 6.5px; color: rgba(255,255,255,0.25); margin: 5px 0; text-transform: uppercase; letter-spacing: 0.12em; position: relative; }
-.wp-fit-btn { display: inline-flex; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 5px 11px; font-size: 7px; color: rgba(255,255,255,0.55); position: relative; align-self: flex-start; }
-.wp-fit-classes { background: #fff; border-radius: 9px; }
-.wp-fit-cls-head { font-size: 6.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #111; margin-bottom: 5px; position: relative; }
-.wp-fit-cls-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f4f4f4; position: relative; align-items: center; }
-.wp-fit-cls-row:last-child { border-bottom: none; }
-.wp-fit-cls-name { font-size: 6.5px; color: #333; font-weight: 600; }
-.wp-fit-cls-time { font-size: 6px; color: #aaa; }
-.wp-fit-cta { background: linear-gradient(135deg, #1e1e1e, #131313); border: 1px solid rgba(255,255,255,0.05); border-radius: 9px; }
-.wp-fit-cta-label { font-size: 6.5px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); text-transform: uppercase; position: relative; margin-bottom: 5px; }
-.wp-fit-cta-btn { background: #fff; color: #000; border-radius: 6px; padding: 4px 7px; font-size: 7px; font-weight: 800; display: inline-block; position: relative; letter-spacing: 0.02em; }
-
-/* ── PROPERTY — Inspired by Savills / Knight Frank / Sherry FitzGerald ── */
-.wp-prop { background: #f5f3ee; }
-.wp-prop .wp-nav { background: #fff; border-bottom: 1px solid #ebebeb; }
-.wp-prop .wp-logo { color: #0a0a0a; font-family: var(--font-display); font-size: 10px; font-weight: 400; letter-spacing: 0.12em; }
-.wp-prop .wp-link { background: #d0d0d0; }
-.wp-prop .wp-btn { background: #0a0a0a; color: #fff; }
-.wp-prop-search { padding: 6px 8px; background: #fff; border-bottom: 1px solid #ebebeb; flex-shrink: 0; }
-.wp-prop-sbar { display: flex; background: #f5f5f5; border: 1px solid #e4e4e4; border-radius: 7px; overflow: hidden; align-items: center; }
-.wp-prop-sbar-loc { flex: 1; padding: 5px 8px; display: flex; align-items: center; gap: 5px; border-right: 1px solid #e4e4e4; }
-.wp-prop-sbar-dot { width: 7px; height: 7px; border: 1.5px solid #bbb; border-radius: 50%; flex-shrink: 0; }
-.wp-prop-sbar-text { font-size: 6.5px; color: #aaa; }
-.wp-prop-sbar-type { padding: 5px 8px; font-size: 6.5px; color: #555; border-right: 1px solid #e4e4e4; white-space: nowrap; }
-.wp-prop-sbar-btn { background: #0a0a0a; padding: 5px 10px; font-size: 7px; color: #fff; font-weight: 700; white-space: nowrap; }
-.wp-prop-feat { padding: 5px 8px; flex-shrink: 0; }
-.wp-prop-feat-label { font-size: 6.5px; text-transform: uppercase; letter-spacing: 0.16em; color: #999; margin-bottom: 4px; }
-.wp-prop-feat-img {
-  height: 50px; border-radius: 7px; position: relative; overflow: hidden; margin-bottom: 5px;
-  background: linear-gradient(145deg, #8da0ba 0%, #6a84a0 40%, #4a647e 80%, #3a5268 100%);
-}
-.wp-prop-feat-img::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
-}
-.wp-prop-feat-img::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.56) 0%, transparent 55%);
-}
-.wp-prop-feat-badge { position: absolute; top: 5px; left: 6px; background: rgba(255,255,255,0.92); border-radius: 4px; padding: 2px 6px; font-size: 6px; font-weight: 800; color: #0a0a0a; letter-spacing: 0.06em; z-index: 1; }
-.wp-prop-feat-price { font-size: 14px; font-weight: 800; color: #0a0a0a; font-family: var(--font-display); letter-spacing: -0.02em; }
-.wp-prop-feat-addr { font-size: 7px; color: #777; margin-top: 2px; }
-.wp-prop-feat-beds { display: flex; gap: 8px; margin-top: 3px; }
-.wp-prop-feat-bed { font-size: 6.5px; color: #aaa; }
-.wp-prop-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 4px 8px 7px; }
-.wp-prop-card { background: #fff; border-radius: 7px; overflow: hidden; border: 1px solid #e8e8e8; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
-.wp-prop-card-img { height: 32px; }
-.wp-prop-card:nth-child(1) .wp-prop-card-img { background: linear-gradient(145deg, #c0cedf, #90a8c0); }
-.wp-prop-card:nth-child(2) .wp-prop-card-img { background: linear-gradient(145deg, #c0d4b8, #98bc90); }
-.wp-prop-card-info { padding: 4px 6px; }
-.wp-prop-card-price { font-size: 8px; font-weight: 800; color: #0a0a0a; display: block; }
-.wp-prop-card:nth-child(1) .wp-prop-card-price::after { content: '€595,000'; }
-.wp-prop-card:nth-child(2) .wp-prop-card-price::after { content: '€420,000'; }
-.wp-prop-card-l1 { height: 2px; background: #e8e8e8; border-radius: 2px; width: 85%; margin-top: 2px; }
-.wp-prop-card-l2 { height: 2px; background: #f0f0f0; border-radius: 2px; width: 50%; margin-top: 2px; }
-
-/* ── BEAUTY — Inspired by Aesop / Charlotte Tilbury / Glossier ── */
-.wp-beauty { background: #fdf8f4; }
-.wp-beauty .wp-nav { background: #fff; border-bottom: 1px solid #ede9e4; }
-.wp-beauty .wp-logo { color: #0a0a0a; font-family: var(--font-display); font-size: 9.5px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; font-style: italic; }
-.wp-beauty .wp-link { background: #e4d9d0; }
-.wp-beauty .wp-btn { background: #0a0a0a; color: #fff; }
-.wp-beauty-hero {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 7px; padding: 8px 14px; position: relative; overflow: hidden;
-}
-.wp-beauty-arch {
-  position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
-  width: 190px; height: 115px; border-radius: 0 0 95px 95px;
-  background: linear-gradient(180deg, #f2e3d1 0%, #e8d0bc 100%);
-}
-.wp-beauty-img {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #faeee0, #e8caa8, #d4a880);
-  border: 3px solid rgba(255,255,255,0.95);
-  box-shadow: 0 6px 20px rgba(160,100,50,0.14);
-  position: relative; z-index: 1;
-}
-.wp-beauty-brand { font-family: var(--font-display); font-size: 18px; font-style: italic; color: #0a0a0a; position: relative; z-index: 1; }
-.wp-beauty-tagline { font-size: 7px; letter-spacing: 0.26em; text-transform: uppercase; color: #c4b0a4; position: relative; z-index: 1; }
-.wp-beauty-book { background: #0a0a0a; color: #fff; border-radius: 100px; padding: 6px 18px; font-size: 7.5px; font-weight: 700; letter-spacing: 0.06em; position: relative; z-index: 1; display: inline-block; }
-.wp-beauty-services { border-top: 1px solid #ede9e4; display: grid; grid-template-columns: repeat(3, 1fr); flex-shrink: 0; }
-.wp-beauty-svc { padding: 6px 5px; text-align: center; border-right: 1px solid #ede9e4; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.wp-beauty-svc:last-child { border-right: none; }
-.wp-beauty-svc-name { font-size: 6.5px; font-weight: 600; color: #555; letter-spacing: 0.04em; }
-.wp-beauty-svc-price { font-size: 7px; color: #b08060; font-weight: 500; }
-
-/* ══════════════════════════════════════
-   STICKY BOTTOM CTA BAR
-   ══════════════════════════════════════ */
-.scta {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
-  background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.09);
-  padding: 13px var(--gutter);
-  transform: translateY(100%);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-.scta.scta--visible { transform: translateY(0); }
-.scta.scta--gone { display: none; }
-.scta__inner {
-  max-width: var(--container); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; gap: 20px;
-}
-.scta__l { display: flex; align-items: center; gap: 14px; min-width: 0; }
-.scta__dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0;
+.cq-hero__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
   animation: sctaPulse 2s ease-in-out infinite;
 }
-@keyframes sctaPulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.45); }
-  50% { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+.cq-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(38px,7vw,82px);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 auto 24px;
+  max-width: 820px;
 }
-.scta__info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.scta__hl { font-family: var(--font-display); font-size: 18px; color: #fff; white-space: nowrap; line-height: 1.2; }
-.scta__tags { display: flex; gap: 14px; }
-.scta__tag { font-size: 12px; color: rgba(255,255,255,0.4); white-space: nowrap; }
-.scta__r { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.scta__btn {
-  background: #fff; color: #0a0a0a; border-radius: 100px; padding: 12px 28px;
-  font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
-  transition: all 0.2s ease; display: inline-block; letter-spacing: -0.01em;
+.cq-hero h1 em {
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
 }
-.scta__btn:hover { background: #f0f0f0; transform: translateY(-1px); }
-.scta__x {
-  background: transparent; border: none; color: rgba(255,255,255,0.32);
-  font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1;
-  transition: color 0.15s;
+.cq-hero__sub {
+  font-size: clamp(15px,1.8vw,18px);
+  color: rgba(255,255,255,0.48);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
 }
-.scta__x:hover { color: rgba(255,255,255,0.72); }
-@media (max-width: 640px) {
-  .scta__tags { display: none; }
-  .scta__hl { font-size: 14px; }
-  .scta__btn { font-size: 13px; padding: 10px 18px; }
+.cq-wrap {
+  background: var(--bg-alt);
+  padding: clamp(48px,7vw,96px) var(--gutter);
 }
-@media (max-width: 400px) {
-  .scta__dot { display: none; }
-  .scta__hl { font-size: 13px; }
+.cq-form-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(32px,5vw,60px);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.06);
 }
-
-.faq-list { margin-top: clamp(48px,6vw,80px); }
-.faq-item {
-  border-bottom: 1px solid var(--border);
-  padding: 24px 0;
+.cq-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+.cq-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.cq-budget-card { position: relative; cursor: pointer; }
+.cq-budget-card input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.cq-budget-card__inner {
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.18s, background 0.18s;
   cursor: pointer;
-}
-.faq-item:first-child { border-top: 1px solid var(--border); }
-.faq-item__q {
-  display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  font-size: 16px; font-weight: 500; color: var(--text);
   user-select: none;
 }
-.faq-item__icon {
-  width: 24px; height: 24px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; color: var(--text-3);
-  transition: transform 0.3s var(--ease-out);
+.cq-budget-card input:checked + .cq-budget-card__inner {
+  border-color: var(--text);
+  background: var(--bg-dark);
 }
-.faq-item.open .faq-item__icon { transform: rotate(45deg); }
-.faq-item__a {
-  font-size: 14px; color: var(--text-2); line-height: 1.7;
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s var(--ease-out), padding 0.3s ease;
+.cq-budget-card input:checked + .cq-budget-card__inner .cq-budget-amount,
+.cq-budget-card input:checked + .cq-budget-card__inner .cq-budget-label { color: #fff; }
+.cq-budget-card__inner:hover { border-color: var(--text-2); }
+.cq-budget-amount {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1;
 }
-.faq-item.open .faq-item__a { max-height: 300px; padding-top: 14px; }
-
-@media (max-width: 1000px) {
-  .niche-grid { grid-template-columns: repeat(3, 1fr); }
-  .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+.cq-budget-label { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+.cq-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
 }
-@media (max-width: 768px) {
-  .niche-grid { grid-template-columns: repeat(2, 1fr); }
-  .includes-grid { grid-template-columns: repeat(2, 1fr); }
-  .showcase-grid { grid-template-columns: 1fr; }
+.cq-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.cq-label { font-size: 13px; font-weight: 600; color: var(--text-2); }
+.cq-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.18s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
 }
-@media (max-width: 480px) {
-  .niche-grid { grid-template-columns: repeat(2, 1fr); }
-  .includes-grid { grid-template-columns: 1fr; }
+.cq-input:focus { outline: none; border-color: var(--text); }
+.cq-input::placeholder { color: var(--text-4); }
+.cq-textarea { resize: vertical; min-height: 100px; }
+.cq-divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+.cq-submit {
+  width: 100%;
+  padding: 18px 32px;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.18s, transform 0.18s;
+  letter-spacing: -0.01em;
+}
+.cq-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+.cq-submit:active { transform: translateY(0); }
+.cq-privacy { text-align: center; font-size: 12px; color: var(--text-4); margin-top: 16px; }
+.cq-trust {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px,4vw,56px);
+  flex-wrap: wrap;
+  padding: clamp(32px,4vw,48px) var(--gutter);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.cq-trust-item { text-align: center; }
+.cq-trust-num { font-family: var(--font-display); font-size: 28px; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.cq-trust-lbl { font-size: 12px; color: var(--text-3); }
+.cq-success { display: none; text-align: center; padding: 48px 32px; }
+.cq-success__icon { font-size: 48px; margin-bottom: 20px; }
+.cq-success h3 { font-family: var(--font-display); font-size: 28px; margin-bottom: 12px; }
+.cq-success p { color: var(--text-3); line-height: 1.6; }
+@media (max-width: 600px) {
+  .cq-budget-grid { grid-template-columns: 1fr; }
+  .cq-row { grid-template-columns: 1fr; }
+  .cq-form-card { padding: 28px 20px; }
 }
 </style>
 </head>
 <body>
 
 <div class="loader" id="loader" aria-hidden="true">
-  <span class="loader__word">Web Design</span>
+  <span class="loader__word">Your Website</span>
 </div>
 
-<!-- Nav -->
 <nav class="nav scrolled" role="navigation">
-  <a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html" class="nav__logo">
-    <img src="logo.svg" alt="Dublin Growth Digital"/>
-  </a>
+  <a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html" class="nav__logo"><img src="logo.svg" alt="Dublin Growth Digital"/></a>
   <ul class="nav__links">
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html">Home</a></li>
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/web-design.html" class="active">Web Design</a></li>
@@ -592,7 +207,8 @@
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
   </ul>
   <div class="nav__right">
-    <a href="contact.html" class="btn btn--primary" style="font-size:13px;padding:9px 20px;">Get a Quote</a>
+    <a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html" class="btn btn--ghost" style="font-size:13px;padding:9px 20px;">Services</a>
+    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary" style="font-size:13px;padding:9px 20px;" target="_blank" rel="noopener">Book a Call</a>
   </div>
   <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -605,546 +221,163 @@
     <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
   </ul>
   <div class="nav__drawer-cta">
-    <a href="contact.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
+    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Book Free Call</a>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════
-     HERO
-═══════════════════════════════════ -->
-<section class="wd-hero">
-  <div class="wd-hero__bg">
-    <div class="wd-hero__dot"></div>
-    <div class="wd-hero__glow"></div>
-    <div class="wd-hero__fade"></div>
+<!-- Hero -->
+<section class="cq-hero">
+  <div class="cq-hero__eyebrow">
+    <span class="cq-hero__dot"></span>
+    Takes 2 minutes · Free Quote
   </div>
-  <div class="wd-hero__inner">
-    <!-- Left: Copy -->
-    <div class="wd-hero__content">
-      <span class="pill">Premium Web Design</span>
-      <h1 class="wd-hero__h1">High-end websites built for <em>every niche.</em></h1>
-      <p class="wd-hero__sub">From restaurants to real estate, fitness studios to fashion brands — we design and build premium, conversion-focused websites for every industry in Ireland and beyond.</p>
-      <div class="wd-hero__actions">
-        <a href="contact.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
-        <a href="#showcase" class="btn btn--ghost btn--lg">See Examples</a>
-      </div>
-      <div class="wd-hero__trust">
-        <div class="wd-hero__t-item">
-          <span class="wd-hero__t-num">52+</span>
-          <span class="wd-hero__t-lbl">Websites built</span>
-        </div>
-        <div class="wd-hero__t-sep"></div>
-        <div class="wd-hero__t-item">
-          <span class="wd-hero__t-num">1 day</span>
-          <span class="wd-hero__t-lbl">Avg. delivery</span>
-        </div>
-        <div class="wd-hero__t-sep"></div>
-        <div class="wd-hero__t-item">
-          <span class="wd-hero__t-num">4.9★</span>
-          <span class="wd-hero__t-lbl">Client rating</span>
-        </div>
-        <div class="wd-hero__t-sep"></div>
-        <div class="wd-hero__t-item">
-          <span class="wd-hero__t-num">100%</span>
-          <span class="wd-hero__t-lbl">Custom design</span>
-        </div>
-      </div>
+  <h1>Make Your Dream Website<br><em>Come To Life.</em></h1>
+  <p class="cq-hero__sub">Tell us a little about your business and what you need — we'll come back to you with a quote and timeline within a few hours.</p>
+</section>
+
+<!-- Questionnaire -->
+<section class="cq-wrap">
+  <div class="cq-form-card">
+
+    <div class="cq-success" id="cqSuccess">
+      <div class="cq-success__icon">🎉</div>
+      <h3>We've got your details!</h3>
+      <p>We'll review your request and come back to you with a quote within a few hours.<br>Check your email — and feel free to WhatsApp us if you're in a hurry.</p>
+      <a href="https://wa.me/353871257533?text=Hi%2C%20I%20just%20submitted%20a%20website%20enquiry" class="btn btn--primary btn--lg" style="margin-top:28px;display:inline-flex;" target="_blank" rel="noopener">Message Us on WhatsApp →</a>
     </div>
-    <!-- Right: Browser mockup -->
-    <div class="wd-hero__visual">
-      <div class="wd-browser">
-        <div class="wd-browser__bar">
-          <div class="wd-browser__dots"><span></span><span></span><span></span></div>
-          <div class="wd-browser__url">dublingrowthdigital.com/your-site</div>
+
+    <form action="https://formspree.io/f/meendppv" method="POST" id="cqForm">
+      <input type="hidden" name="_subject" value="🌐 New Website Enquiry — DGD"/>
+
+      <!-- Business type -->
+      <div class="cq-section-label">What type of website do you need?</div>
+      <div class="cq-field" style="margin-bottom:36px">
+        <select class="cq-input" name="website_type" required>
+          <option value="" disabled selected>Select your business type…</option>
+          <option>Restaurant / Café</option>
+          <option>Trade / Construction</option>
+          <option>Online Shop / E-commerce</option>
+          <option>Fitness / Beauty / Wellness</option>
+          <option>Professional Services</option>
+          <option>Hair / Barber / Nail Salon</option>
+          <option>Medical / Dental / Clinic</option>
+          <option>Real Estate / Property</option>
+          <option>Hotel / Accommodation</option>
+          <option>Cleaning / Maintenance</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <hr class="cq-divider"/>
+
+      <!-- Business details -->
+      <div class="cq-section-label">Tell us about your business</div>
+      <div class="cq-row">
+        <div class="cq-field">
+          <label class="cq-label" for="cq_name">Your Name *</label>
+          <input class="cq-input" type="text" id="cq_name" name="name" placeholder="John Murphy" required/>
         </div>
-        <div class="wd-browser__screen">
-          <!-- Slide 1: Restaurant -->
-          <div class="wd-slide wd-slide--active">
-            <div class="wp wp-rest" style="height:100%">
-              <div class="wp-nav"><span class="wp-logo">Marcello's</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Reserve</span></div>
-              <div class="wp-rest-hero"><div class="wp-rest-photo"></div><div class="wp-rest-content"><div class="wp-rest-eyebrow">Est. Dublin · Since 2018</div><div class="wp-rest-divider"></div><div class="wp-rest-h">Where every<br>meal tells<br>a story.</div><div class="wp-rest-cta">Reserve a Table →</div></div></div>
-              <div class="wp-rest-dishes"><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div></div>
-            </div>
-          </div>
-          <!-- Slide 2: E-Commerce -->
-          <div class="wd-slide">
-            <div class="wp wp-ecomm" style="height:100%">
-              <div class="wp-nav"><span class="wp-logo">Lumière</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Cart</span></div>
-              <div class="wp-ecomm-cats"><span class="wp-ecomm-cat act">New In</span><span class="wp-ecomm-cat">Dresses</span><span class="wp-ecomm-cat">Jackets</span><span class="wp-ecomm-cat">Accessories</span></div>
-              <div class="wp-ecomm-hero"><div class="wp-ecomm-hero-l"><div class="wp-ecomm-season">SS 2025</div><div class="wp-ecomm-h">Crafted for<br>everyday luxury.</div><div class="wp-ecomm-desc"></div><div class="wp-ecomm-desc2"></div><div class="wp-ecomm-shop">Shop Now</div></div><div class="wp-ecomm-hero-r"></div></div>
-              <div class="wp-ecomm-grid"><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div></div>
-            </div>
-          </div>
-          <!-- Slide 3: Fitness -->
-          <div class="wd-slide">
-            <div class="wp wp-fit" style="height:100%">
-              <div class="wp-nav"><span class="wp-logo">Apex</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Join Now</span></div>
-              <div class="wp-fit-grid"><div class="wp-fit-block wp-fit-main"><div class="wp-fit-h">Train.<br>Transform.<br>Dominate.</div><div class="wp-fit-sub">Dublin's Premier Training Centre</div><div class="wp-fit-btn">View Classes →</div></div><div class="wp-fit-block wp-fit-classes"><div class="wp-fit-cls-head">Today's Classes</div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">HIIT</span><span class="wp-fit-cls-time">6:00am</span></div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">Yoga</span><span class="wp-fit-cls-time">8:30am</span></div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">Boxing</span><span class="wp-fit-cls-time">12pm</span></div></div><div class="wp-fit-block wp-fit-cta"><div class="wp-fit-cta-label">Membership</div><div class="wp-fit-cta-btn">Start Free Trial</div></div></div>
-            </div>
-          </div>
-          <!-- Slide 4: Trade -->
-          <div class="wd-slide">
-            <div class="wp wp-trade" style="height:100%">
-              <div class="wp-nav"><span class="wp-logo">ClearFlow</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Call Now</span></div>
-              <div class="wp-trade-hero"><div class="wp-trade-stars">★★★★★ <span class="wp-trade-stars-text">5.0 · 847 reviews</span></div><div class="wp-trade-eyebrow">Dublin's #1 Plumbing Service</div><div class="wp-trade-h">Fast repairs.<br><em>Trusted results.</em></div><div class="wp-trade-badges"><div class="wp-trade-badge">⭐ 500+ Reviews</div><div class="wp-trade-badge">✓ RGI Certified</div><div class="wp-trade-badge">⚡ Same Day</div></div><div class="wp-trade-cta">Get a Free Quote →</div></div>
-              <div class="wp-trade-services"><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🚿</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🔧</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🏠</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">⚡</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div></div>
-            </div>
-          </div>
-          <!-- Slide 5: Beauty -->
-          <div class="wd-slide">
-            <div class="wp wp-beauty" style="height:100%">
-              <div class="wp-nav"><span class="wp-logo">Elara Studio</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Book</span></div>
-              <div class="wp-beauty-hero"><div class="wp-beauty-arch"></div><div class="wp-beauty-img"></div><div class="wp-beauty-brand">Beauty by Design</div><div class="wp-beauty-tagline">Dublin's Premium Salon</div><div class="wp-beauty-book">Book an Appointment</div></div>
-              <div class="wp-beauty-services"><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Facial</span><span class="wp-beauty-svc-price">€95</span></div><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Lashes</span><span class="wp-beauty-svc-price">€75</span></div><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Massage</span><span class="wp-beauty-svc-price">€85</span></div></div>
-            </div>
-          </div>
-          <!-- Indicators -->
-          <div class="wd-browser__indicators">
-            <div class="wd-browser__dot active"></div>
-            <div class="wd-browser__dot"></div>
-            <div class="wd-browser__dot"></div>
-            <div class="wd-browser__dot"></div>
-            <div class="wd-browser__dot"></div>
-          </div>
+        <div class="cq-field">
+          <label class="cq-label" for="cq_business">Business Name</label>
+          <input class="cq-input" type="text" id="cq_business" name="business_name" placeholder="Murphy's Café"/>
         </div>
       </div>
-      <!-- Floating badges -->
-      <div class="wd-badge wd-badge--speed">
-        <span class="wd-badge__icon">⚡</span>
-        <div>
-          <div class="wd-badge__title">PageSpeed Score</div>
-          <div class="wd-badge__val">99 / 100</div>
+      <div class="cq-row">
+        <div class="cq-field">
+          <label class="cq-label" for="cq_phone">Phone Number *</label>
+          <input class="cq-input" type="tel" id="cq_phone" name="phone" placeholder="+353 87 000 0000" required/>
+        </div>
+        <div class="cq-field">
+          <label class="cq-label" for="cq_email">Email Address *</label>
+          <input class="cq-input" type="email" id="cq_email" name="email" placeholder="john@yourbusiness.ie" required/>
         </div>
       </div>
-      <div class="wd-badge wd-badge--live">
-        <span class="wd-badge__icon">🚀</span>
-        <div>
-          <div class="wd-badge__title">Delivery Time</div>
-          <div class="wd-badge__val">1 Day</div>
-        </div>
+      <div class="cq-field">
+        <label class="cq-label" for="cq_about">What does your business do? <span style="font-weight:400;color:var(--text-4)">(optional)</span></label>
+        <textarea class="cq-input cq-textarea" id="cq_about" name="about_business" placeholder="e.g. We're a family-run plumbing company based in Cork, serving both homes and commercial properties…"></textarea>
       </div>
-    </div>
+
+      <hr class="cq-divider"/>
+
+      <!-- Budget -->
+      <div class="cq-section-label">What's your budget for the website?</div>
+      <div class="cq-budget-grid">
+        <label class="cq-budget-card">
+          <input type="radio" name="budget" value="Under €500"/>
+          <div class="cq-budget-card__inner">
+            <div>
+              <div class="cq-budget-amount">Under €500</div>
+              <div class="cq-budget-label">Starter site</div>
+            </div>
+          </div>
+        </label>
+        <label class="cq-budget-card">
+          <input type="radio" name="budget" value="€500 – €1,000"/>
+          <div class="cq-budget-card__inner">
+            <div>
+              <div class="cq-budget-amount">€500 – €1,000</div>
+              <div class="cq-budget-label">Professional site</div>
+            </div>
+          </div>
+        </label>
+        <label class="cq-budget-card">
+          <input type="radio" name="budget" value="€1,000 – €2,500"/>
+          <div class="cq-budget-card__inner">
+            <div>
+              <div class="cq-budget-amount">€1,000 – €2,500</div>
+              <div class="cq-budget-label">Premium build</div>
+            </div>
+          </div>
+        </label>
+        <label class="cq-budget-card">
+          <input type="radio" name="budget" value="€2,500+"/>
+          <div class="cq-budget-card__inner">
+            <div>
+              <div class="cq-budget-amount">€2,500+</div>
+              <div class="cq-budget-label">Full custom project</div>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <button type="submit" class="cq-submit">
+        Get My Free Quote
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+      <p class="cq-privacy">🔒 We never share your details. No spam, ever.</p>
+    </form>
   </div>
 </section>
 
-<!-- Industry ticker -->
-<div class="wd-ticker" aria-hidden="true">
-  <div class="wd-ticker__track">
-    <div class="wd-ticker__group">
-      <span class="wd-ticker__item">Restaurants</span>
-      <span class="wd-ticker__item">E-Commerce</span>
-      <span class="wd-ticker__item">Trades</span>
-      <span class="wd-ticker__item">Fitness &amp; Gyms</span>
-      <span class="wd-ticker__item">Property</span>
-      <span class="wd-ticker__item">Beauty &amp; Salons</span>
-      <span class="wd-ticker__item">Professional Services</span>
-      <span class="wd-ticker__item">Healthcare</span>
-      <span class="wd-ticker__item">Education</span>
-      <span class="wd-ticker__item">Automotive</span>
-      <span class="wd-ticker__item">Construction</span>
-      <span class="wd-ticker__item">Tech &amp; SaaS</span>
-    </div>
-    <div class="wd-ticker__group" aria-hidden="true">
-      <span class="wd-ticker__item">Restaurants</span>
-      <span class="wd-ticker__item">E-Commerce</span>
-      <span class="wd-ticker__item">Trades</span>
-      <span class="wd-ticker__item">Fitness &amp; Gyms</span>
-      <span class="wd-ticker__item">Property</span>
-      <span class="wd-ticker__item">Beauty &amp; Salons</span>
-      <span class="wd-ticker__item">Professional Services</span>
-      <span class="wd-ticker__item">Healthcare</span>
-      <span class="wd-ticker__item">Education</span>
-      <span class="wd-ticker__item">Automotive</span>
-      <span class="wd-ticker__item">Construction</span>
-      <span class="wd-ticker__item">Tech &amp; SaaS</span>
-    </div>
+<!-- Trust strip -->
+<div class="cq-trust">
+  <div class="cq-trust-item">
+    <div class="cq-trust-num">24hr</div>
+    <div class="cq-trust-lbl">Quote turnaround</div>
+  </div>
+  <div class="cq-trust-item">
+    <div class="cq-trust-num">52+</div>
+    <div class="cq-trust-lbl">Sites built</div>
+  </div>
+  <div class="cq-trust-item">
+    <div class="cq-trust-num">1 Day</div>
+    <div class="cq-trust-lbl">Delivery time</div>
+  </div>
+  <div class="cq-trust-item">
+    <div class="cq-trust-num">4.9★</div>
+    <div class="cq-trust-lbl">Client rating</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════
-     STATS
-═══════════════════════════════════ -->
-<section class="stats-bar">
-  <div class="stats-bar__grid">
-    <div class="stat-item reveal">
-      <div class="stat-item__num" data-count="52" data-suffix="+">52<span class="suffix">+</span></div>
-      <div class="stat-item__label">Websites built for Irish businesses</div>
-    </div>
-    <div class="stat-item reveal reveal-d1">
-      <div class="stat-item__num" data-count="1" data-suffix=" day">1<span class="suffix"> day</span></div>
-      <div class="stat-item__label">Average delivery time</div>
-    </div>
-    <div class="stat-item reveal reveal-d2">
-      <div class="stat-item__num" data-count="100" data-suffix="%">100<span class="suffix">%</span></div>
-      <div class="stat-item__label">Custom — no templates ever</div>
-    </div>
-    <div class="stat-item reveal reveal-d3">
-      <div class="stat-item__num" data-count="4.9" data-suffix="★">4.9<span class="suffix">★</span></div>
-      <div class="stat-item__label">Average client satisfaction</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     NICHES
-═══════════════════════════════════ -->
-<section style="padding:var(--section-py) var(--gutter);border-bottom:1px solid var(--border)">
-  <div style="max-width:var(--container);margin:0 auto">
-    <div class="section-header reveal">
-      <span class="pill">Every Industry</span>
-      <h2>We design for every niche.</h2>
-      <p>No matter what your business does, we know your market and we know what converts in it.</p>
-    </div>
-    <div class="niche-grid">
-      <div class="niche-card reveal">
-        <div class="niche-card__icon">🍽️</div>
-        <div class="niche-card__title">Restaurants & Hospitality</div>
-        <div class="niche-card__desc">Mouthwatering designs with online booking, menus, and gallery that fill tables every night.</div>
-      </div>
-      <div class="niche-card reveal reveal-d1">
-        <div class="niche-card__icon">🛍️</div>
-        <div class="niche-card__title">E-Commerce & Retail</div>
-        <div class="niche-card__desc">High-converting online stores with seamless checkout, product pages built to sell.</div>
-      </div>
-      <div class="niche-card reveal reveal-d2">
-        <div class="niche-card__icon">🔧</div>
-        <div class="niche-card__title">Trades & Home Services</div>
-        <div class="niche-card__desc">Lead-generating sites for plumbers, electricians, builders — built to rank locally on Google.</div>
-      </div>
-      <div class="niche-card reveal reveal-d3">
-        <div class="niche-card__icon">💪</div>
-        <div class="niche-card__title">Fitness & Gyms</div>
-        <div class="niche-card__desc">Dynamic fitness websites with class timetables, membership sign-ups, and trainer profiles.</div>
-      </div>
-      <div class="niche-card reveal">
-        <div class="niche-card__icon">🏠</div>
-        <div class="niche-card__title">Property & Real Estate</div>
-        <div class="niche-card__desc">Premium property sites with listings, valuations, and lead capture that fills your pipeline.</div>
-      </div>
-      <div class="niche-card reveal reveal-d1">
-        <div class="niche-card__icon">💅</div>
-        <div class="niche-card__title">Beauty & Salons</div>
-        <div class="niche-card__desc">Elegant, visually stunning sites with online booking that keep your diary fully booked.</div>
-      </div>
-      <div class="niche-card reveal reveal-d2">
-        <div class="niche-card__icon">⚖️</div>
-        <div class="niche-card__title">Professional Services</div>
-        <div class="niche-card__desc">Trust-building websites for solicitors, accountants, and consultants that win clients.</div>
-      </div>
-      <div class="niche-card reveal reveal-d3">
-        <div class="niche-card__icon">🏥</div>
-        <div class="niche-card__title">Healthcare & Clinics</div>
-        <div class="niche-card__desc">Professional, GDPR-compliant sites for doctors, dentists, and clinics with appointment booking.</div>
-      </div>
-      <div class="niche-card reveal">
-        <div class="niche-card__icon">🎓</div>
-        <div class="niche-card__title">Education & Training</div>
-        <div class="niche-card__desc">Course enrolment sites and training academies designed to fill seats and grow revenue.</div>
-      </div>
-      <div class="niche-card reveal reveal-d1">
-        <div class="niche-card__icon">🚗</div>
-        <div class="niche-card__title">Automotive</div>
-        <div class="niche-card__desc">Showroom-quality sites for car dealerships, garages, and detailers that drive enquiries.</div>
-      </div>
-      <div class="niche-card reveal reveal-d2">
-        <div class="niche-card__icon">🏗️</div>
-        <div class="niche-card__title">Construction & Architecture</div>
-        <div class="niche-card__desc">Portfolio-led sites that showcase your work and generate high-value project enquiries.</div>
-      </div>
-      <div class="niche-card reveal reveal-d3">
-        <div class="niche-card__icon">💻</div>
-        <div class="niche-card__title">Tech & SaaS</div>
-        <div class="niche-card__desc">Clean, modern sites for tech companies and SaaS products built to convert and impress investors.</div>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:14px;color:var(--text-3);margin-top:24px" class="reveal">
-      Don't see your niche? <a href="contact.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">Message us</a> — we design for every industry.
-    </p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     WHAT'S INCLUDED
-═══════════════════════════════════ -->
-<section style="padding:var(--section-py) var(--gutter);border-bottom:1px solid var(--border);background:var(--bg-alt)">
-  <div style="max-width:var(--container);margin:0 auto">
-    <div class="section-header reveal">
-      <span class="pill">What's Included</span>
-      <h2>Everything your website needs to perform.</h2>
-      <p>Every website we build comes fully loaded — no paying extra for the basics.</p>
-    </div>
-    <div class="includes-grid">
-      <div class="include-card reveal">
-        <div class="include-card__icon">🎨</div>
-        <div class="include-card__title">100% Custom Design</div>
-        <div class="include-card__desc">No templates, no page builders. Every pixel is designed specifically for your brand, your customers, and your goals.</div>
-      </div>
-      <div class="include-card reveal reveal-d1">
-        <div class="include-card__icon">📱</div>
-        <div class="include-card__title">Mobile-First & Responsive</div>
-        <div class="include-card__desc">Over 70% of visitors are on mobile. Your site looks and works perfectly on every screen size from day one.</div>
-      </div>
-      <div class="include-card reveal reveal-d2">
-        <div class="include-card__icon">⚡</div>
-        <div class="include-card__title">Lightning Fast Speed</div>
-        <div class="include-card__desc">Optimised for Google's Core Web Vitals. Fast-loading sites rank higher and convert better — we obsess over performance.</div>
-      </div>
-      <div class="include-card reveal">
-        <div class="include-card__icon">🔍</div>
-        <div class="include-card__title">SEO-Ready From Day One</div>
-        <div class="include-card__desc">Proper meta tags, structured data, XML sitemap, and clean code that gives your site the best possible start on Google.</div>
-      </div>
-      <div class="include-card reveal reveal-d1">
-        <div class="include-card__icon">🔒</div>
-        <div class="include-card__title">SSL & Security</div>
-        <div class="include-card__desc">HTTPS security certificate, GDPR compliance, and secure contact forms included on every site we build.</div>
-      </div>
-      <div class="include-card reveal reveal-d2">
-        <div class="include-card__icon">📊</div>
-        <div class="include-card__title">Analytics & Tracking</div>
-        <div class="include-card__desc">Google Analytics and conversion tracking set up so you know exactly how many visitors you're getting and where they come from.</div>
-      </div>
-      <div class="include-card reveal">
-        <div class="include-card__icon">✍️</div>
-        <div class="include-card__title">Copywriting Included</div>
-        <div class="include-card__desc">We write all the copy for your website — no blank pages to fill in. Compelling, conversion-focused content that sells.</div>
-      </div>
-      <div class="include-card reveal reveal-d1">
-        <div class="include-card__icon">🔗</div>
-        <div class="include-card__title">Domain & Hosting Setup</div>
-        <div class="include-card__desc">We handle the full technical setup — domain connection, hosting configuration, and launch. Zero technical headaches for you.</div>
-      </div>
-      <div class="include-card reveal reveal-d2">
-        <div class="include-card__icon">🛠️</div>
-        <div class="include-card__title">30-Day Post-Launch Support</div>
-        <div class="include-card__desc">After launch we're still here. 30 days of free edits and support to make sure everything is perfect for your business.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SHOWCASE
-═══════════════════════════════════ -->
-<section id="showcase" style="padding:var(--section-py) var(--gutter);border-bottom:1px solid var(--border)">
-  <div style="max-width:var(--container);margin:0 auto">
-    <div class="section-header reveal">
-      <span class="pill">Design Examples</span>
-      <h2>Built for your industry.</h2>
-      <p>A glimpse of the styles and experiences we create for different niches.</p>
-    </div>
-    <div class="showcase-grid">
-
-      <!-- Restaurant -->
-      <div class="showcase-card reveal">
-        <div class="showcase-card__preview">
-          <div class="wp wp-rest" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">Marcello's</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Reserve</span></div>
-            <div class="wp-rest-hero"><div class="wp-rest-photo"></div><div class="wp-rest-content"><div class="wp-rest-eyebrow">Est. Dublin · Since 2018</div><div class="wp-rest-divider"></div><div class="wp-rest-h">Where every<br>meal tells<br>a story.</div><div class="wp-rest-cta">Reserve a Table →</div></div></div>
-            <div class="wp-rest-dishes"><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div><div class="wp-rest-dish"><div class="wp-rest-dish-img"></div><div class="wp-rest-dish-name"></div><div class="wp-rest-dish-price"></div></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">Restaurant &amp; Hospitality</div>
-          <div class="showcase-card__title">Cinematic dining experience</div>
-          <div class="showcase-card__desc">Dark editorial design with online reservation, seasonal menus, and photography gallery.</div>
-        </div>
-      </div>
-
-      <!-- E-Commerce -->
-      <div class="showcase-card reveal reveal-d1">
-        <div class="showcase-card__preview">
-          <div class="wp wp-ecomm" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">Lumière</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Cart</span></div>
-            <div class="wp-ecomm-cats"><span class="wp-ecomm-cat act">New In</span><span class="wp-ecomm-cat">Dresses</span><span class="wp-ecomm-cat">Jackets</span><span class="wp-ecomm-cat">Accessories</span></div>
-            <div class="wp-ecomm-hero"><div class="wp-ecomm-hero-l"><div class="wp-ecomm-season">SS 2025</div><div class="wp-ecomm-h">Crafted for<br>everyday luxury.</div><div class="wp-ecomm-desc"></div><div class="wp-ecomm-desc2"></div><div class="wp-ecomm-shop">Shop Now</div></div><div class="wp-ecomm-hero-r"></div></div>
-            <div class="wp-ecomm-grid"><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div><div class="wp-ecomm-card"><div class="wp-ecomm-card-img"></div><div class="wp-ecomm-card-info"><div class="wp-ecomm-price"></div><div class="wp-ecomm-card-name"></div></div></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">E-Commerce &amp; Retail</div>
-          <div class="showcase-card__title">Premium product-first store</div>
-          <div class="showcase-card__desc">High-converting online stores built for discovery, desire, and seamless checkout.</div>
-        </div>
-      </div>
-
-      <!-- Trades -->
-      <div class="showcase-card reveal reveal-d2">
-        <div class="showcase-card__preview">
-          <div class="wp wp-trade" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">ClearFlow</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Call Now</span></div>
-            <div class="wp-trade-hero"><div class="wp-trade-stars">★★★★★ <span class="wp-trade-stars-text">5.0 · 847 reviews</span></div><div class="wp-trade-eyebrow">Dublin's #1 Plumbing Service</div><div class="wp-trade-h">Fast repairs.<br><em>Trusted results.</em></div><div class="wp-trade-badges"><div class="wp-trade-badge">⭐ 500+ Reviews</div><div class="wp-trade-badge">✓ RGI Certified</div><div class="wp-trade-badge">⚡ Same Day</div></div><div class="wp-trade-cta">Get a Free Quote →</div></div>
-            <div class="wp-trade-services"><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🚿</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🔧</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">🏠</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div><div class="wp-trade-svc"><div class="wp-trade-svc-icon">⚡</div><div class="wp-trade-svc-name"></div><div class="wp-trade-svc-sub"></div></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">Trades &amp; Home Services</div>
-          <div class="showcase-card__title">Trust-first lead generation</div>
-          <div class="showcase-card__desc">Built to rank locally on Google and turn every visitor into a call or quote request.</div>
-        </div>
-      </div>
-
-      <!-- Fitness -->
-      <div class="showcase-card reveal">
-        <div class="showcase-card__preview">
-          <div class="wp wp-fit" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">Apex</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Join Now</span></div>
-            <div class="wp-fit-grid"><div class="wp-fit-block wp-fit-main"><div class="wp-fit-h">Train.<br>Transform.<br>Dominate.</div><div class="wp-fit-sub">Dublin's Premier Training Centre</div><div class="wp-fit-btn">View Classes →</div></div><div class="wp-fit-block wp-fit-classes"><div class="wp-fit-cls-head">Today's Classes</div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">HIIT</span><span class="wp-fit-cls-time">6:00am</span></div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">Yoga</span><span class="wp-fit-cls-time">8:30am</span></div><div class="wp-fit-cls-row"><span class="wp-fit-cls-name">Boxing</span><span class="wp-fit-cls-time">12pm</span></div></div><div class="wp-fit-block wp-fit-cta"><div class="wp-fit-cta-label">Membership</div><div class="wp-fit-cta-btn">Start Free Trial</div></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">Fitness &amp; Gyms</div>
-          <div class="showcase-card__title">Bold bento-style layout</div>
-          <div class="showcase-card__desc">Dynamic gym and studio sites with live class timetables, membership flows, and trainer profiles.</div>
-        </div>
-      </div>
-
-      <!-- Property -->
-      <div class="showcase-card reveal reveal-d1">
-        <div class="showcase-card__preview">
-          <div class="wp wp-prop" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">Prestige Living</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">List Property</span></div>
-            <div class="wp-prop-search"><div class="wp-prop-sbar"><div class="wp-prop-sbar-loc"><div class="wp-prop-sbar-dot"></div><span class="wp-prop-sbar-text">Dublin, Ireland</span></div><span class="wp-prop-sbar-type">For Sale</span><div class="wp-prop-sbar-btn">Search</div></div></div>
-            <div class="wp-prop-feat">
-              <div class="wp-prop-feat-label">Featured Property</div>
-              <div class="wp-prop-feat-img"><div class="wp-prop-feat-badge">FOR SALE</div></div>
-              <div class="wp-prop-feat-price">€895,000</div>
-              <div class="wp-prop-feat-addr">Ailesbury Road, Ballsbridge, D4</div>
-              <div class="wp-prop-feat-beds"><span class="wp-prop-feat-bed">5 bed</span><span class="wp-prop-feat-bed">4 bath</span><span class="wp-prop-feat-bed">310 m²</span></div>
-            </div>
-            <div class="wp-prop-grid"><div class="wp-prop-card"><div class="wp-prop-card-img"></div><div class="wp-prop-card-info"><div class="wp-prop-card-price"></div><div class="wp-prop-card-l1"></div><div class="wp-prop-card-l2"></div></div></div><div class="wp-prop-card"><div class="wp-prop-card-img"></div><div class="wp-prop-card-info"><div class="wp-prop-card-price"></div><div class="wp-prop-card-l1"></div><div class="wp-prop-card-l2"></div></div></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">Property &amp; Real Estate</div>
-          <div class="showcase-card__title">Premium listings &amp; lead gen</div>
-          <div class="showcase-card__desc">Property sites with live listings, search filters, mortgage calculator, and valuation forms.</div>
-        </div>
-      </div>
-
-      <!-- Beauty -->
-      <div class="showcase-card reveal reveal-d2">
-        <div class="showcase-card__preview">
-          <div class="wp wp-beauty" style="height:100%">
-            <div class="wp-nav"><span class="wp-logo">Elara Studio</span><div class="wp-links"><span class="wp-link"></span><span class="wp-link"></span><span class="wp-link"></span></div><span class="wp-btn">Book</span></div>
-            <div class="wp-beauty-hero"><div class="wp-beauty-arch"></div><div class="wp-beauty-img"></div><div class="wp-beauty-brand">Beauty by Design</div><div class="wp-beauty-tagline">Dublin's Premium Salon</div><div class="wp-beauty-book">Book an Appointment</div></div>
-            <div class="wp-beauty-services"><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Facial</span><span class="wp-beauty-svc-price">€95</span></div><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Lashes</span><span class="wp-beauty-svc-price">€75</span></div><div class="wp-beauty-svc"><span class="wp-beauty-svc-name">Massage</span><span class="wp-beauty-svc-price">€85</span></div></div>
-          </div>
-        </div>
-        <div class="showcase-card__info">
-          <div class="showcase-card__niche">Beauty &amp; Salons</div>
-          <div class="showcase-card__title">Elegant &amp; conversion-focused</div>
-          <div class="showcase-card__desc">Luxurious salon sites with online booking, treatment menus, and before/after galleries.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     PROCESS
-═══════════════════════════════════ -->
-<section class="process">
-  <div class="process__inner">
-    <div class="section-header reveal">
-      <span class="pill pill--inv">Our Process</span>
-      <h2>From idea to live in as little as 1 day.</h2>
-      <p>A streamlined process that keeps you informed at every step.</p>
-    </div>
-    <div class="process__grid">
-      <div class="process-step reveal">
-        <div class="process-step__n">01</div>
-        <h3 class="process-step__title">Discovery & Strategy</h3>
-        <p class="process-step__desc">We start with a deep dive into your business, your customers, and your competitors — so every design decision is rooted in strategy, not just aesthetics.</p>
-      </div>
-      <div class="process-step reveal reveal-d1">
-        <div class="process-step__n">02</div>
-        <h3 class="process-step__title">Design & Wireframe</h3>
-        <p class="process-step__desc">We design the full website layout before writing a line of code. You see exactly what you're getting and can provide feedback before build begins.</p>
-      </div>
-      <div class="process-step reveal reveal-d2">
-        <div class="process-step__n">03</div>
-        <h3 class="process-step__title">Build & Optimise</h3>
-        <p class="process-step__desc">Clean, fast code. Every page built mobile-first, optimised for speed, and structured for SEO. We don't cut corners — ever.</p>
-      </div>
-      <div class="process-step reveal reveal-d3">
-        <div class="process-step__n">04</div>
-        <h3 class="process-step__title">Launch & Support</h3>
-        <p class="process-step__desc">We handle the full launch — domain setup, SSL, analytics. Then we stay with you for 30 days to make sure everything is perfect.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════
-     FAQ
-═══════════════════════════════════ -->
-<section style="padding:var(--section-py) var(--gutter);background:var(--bg-alt);border-bottom:1px solid var(--border)">
-  <div style="max-width:var(--container);margin:0 auto">
-    <div class="section-header reveal">
-      <span class="pill">FAQ</span>
-      <h2>Common questions answered.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-item__q">
-          How long does it take to build my website?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">Most websites are delivered within 1 day. Larger e-commerce or enterprise projects typically take a few days. We'll give you a clear timeline before we start.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-item__q">
-          Do I need to provide content and images?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">No — all copywriting is included in every package. We'll interview you about your business and write all the content. For images, we either use professional stock photography or can advise on a simple photoshoot if needed.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-item__q">
-          Will my website rank on Google?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">Every site we build is fully SEO-optimised from day one — proper meta tags, page speed, structured data, and Google Search Console setup. For faster Google results, we recommend adding our SEO or Google Ads service.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-item__q">
-          Can I update my website myself after it's built?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">Yes — we can build your site on a CMS (like WordPress or Webflow) so you can make updates yourself, or we offer a monthly maintenance plan where we handle all updates for you. Your choice.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-item__q">
-          Do you work with businesses outside Dublin?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">Absolutely. We work with businesses all across Ireland — Cork, Galway, Limerick, Waterford, and everywhere in between. Everything is handled remotely with regular video calls and updates.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-item__q">
-          What happens after the 30-day support period?
-          <span class="faq-item__icon">+</span>
-        </div>
-        <div class="faq-item__a">After your support period ends you own the website fully. You can manage it yourself or sign up to one of our monthly management packages which cover updates, security, backups, and ongoing improvements.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     CTA
-═══════════════════════════════════ -->
+<!-- WhatsApp CTA -->
 <section class="cta-band">
   <div class="cta-band__inner reveal">
-    <span class="pill">Start Today</span>
-    <h2>Your website should be your best <em>salesperson.</em></h2>
-    <p>Book a free 30-minute call and we'll show you exactly what we'd build for your business — no obligation.</p>
+    <span class="pill">Prefer to chat?</span>
+    <h2>WhatsApp us <em>right now.</em></h2>
+    <p>Fastest response — we're usually back within minutes during business hours.</p>
     <div class="cta-band__btns">
-      <a href="contact.html" class="btn btn--primary btn--lg">Get a Free Quote</a>
-      <a href="contact.html" class="btn btn--ghost btn--lg">Get a Quote</a>
+      <a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20get%20a%20website%20built" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Open WhatsApp</a>
+      <a href="tel:+353871257533" class="btn btn--ghost btn--lg">Call Us</a>
     </div>
   </div>
 </section>
@@ -1160,7 +393,7 @@
       <div>
         <div class="footer__col-title">Services</div>
         <ul class="footer__links">
-          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/web-design.html">Web Design</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Web Design</a></li>
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Social Media</a></li>
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">Google &amp; Meta Ads</a></li>
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html">SEO</a></li>
@@ -1173,31 +406,34 @@
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/index.html">Home</a></li>
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/results.html">Results</a></li>
           <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/contact.html">Contact</a></li>
+          <li><a href="https://oscarmarkham313.github.io/dublin-growth-digital/services.html#pricing">Pricing</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__col-title">Contact</div>
         <ul class="footer__links">
-          <li></li>
-          
-          <li><a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="mailto:dublingrowthdigital@gmail.com">dublingrowthdigital@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/dublin.growth.digital/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/Dublin.Growth.Digital" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <span class="footer__copy">&copy; 2026 Dublin Growth Digital. All rights reserved.</span>
       <div class="footer__socials">
-        <a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/dublin.growth.digital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/Dublin.Growth.Digital" target="_blank" rel="noopener">Facebook</a>
         <a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20get%20a%20website%20built" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-float__icon">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </span>
 </a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1206,102 +442,34 @@
 <script src="main.js"></script>
 <script src="chatbot.js"></script>
 <script>
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-item__q').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-// Browser slide cycling
 (function() {
-  const slides = document.querySelectorAll('.wd-slide');
-  const dots   = document.querySelectorAll('.wd-browser__dot');
-  if (!slides.length) return;
-  let current = 0;
-  function go(n) {
-    slides[current].classList.remove('wd-slide--active');
-    dots[current]?.classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('wd-slide--active');
-    dots[current]?.classList.add('active');
-  }
-  setInterval(() => go(current + 1), 2800);
-})();
-
-// GSAP hero entrance (runs after loader hides)
-(function() {
-  function runHeroAnim() {
-    if (typeof gsap === 'undefined') return;
-    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-    tl.from('.wd-hero__content .pill',    { opacity: 0, y: 18, duration: 0.7 }, 0.05)
-      .from('.wd-hero__h1',               { opacity: 0, y: 36, duration: 1.0 }, 0.2)
-      .from('.wd-hero__sub',              { opacity: 0, y: 22, duration: 0.8 }, 0.4)
-      .from('.wd-hero__actions',          { opacity: 0, y: 16, duration: 0.7 }, 0.55)
-      .from('.wd-hero__trust',            { opacity: 0, y: 14, duration: 0.6 }, 0.7)
-      .from('.wd-browser',                { opacity: 0, y: 52, duration: 1.2 }, 0.3)
-      .from('.wd-badge',                  { opacity: 0, scale: 0.82, y: 10, duration: 0.7, stagger: 0.18, ease: 'back.out(1.6)' }, 1.0);
-  }
-  // Wait for loader to be hidden then animate
-  const loader = document.getElementById('loader');
-  if (!loader) { setTimeout(runHeroAnim, 200); return; }
-  const obs = new MutationObserver(() => {
-    if (loader.classList.contains('hidden')) { obs.disconnect(); runHeroAnim(); }
-  });
-  obs.observe(loader, { attributes: true });
-  // Failsafe
-  setTimeout(runHeroAnim, 1800);
-})();
-
-
-// Sticky bottom CTA bar
-(function() {
-  var bar = document.getElementById('scta');
-  var closeBtn = document.getElementById('sctaX');
-  if (!bar || !closeBtn) return;
-  var dismissed = false;
-  function onScroll() {
-    if (dismissed) return;
-    if (window.scrollY > 400) {
-      bar.classList.add('scta--visible');
-    } else {
-      bar.classList.remove('scta--visible');
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  closeBtn.addEventListener('click', function() {
-    dismissed = true;
-    bar.classList.remove('scta--visible');
-    setTimeout(function() { bar.classList.add('scta--gone'); }, 450);
+  var form = document.getElementById('cqForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.cq-submit');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('cqSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Get My Free Quote';
+        btn.disabled = false;
+        alert('Something went wrong — please try again or WhatsApp us directly.');
+      }
+    }).catch(function() {
+      btn.textContent = 'Get My Free Quote';
+      btn.disabled = false;
+      alert('Something went wrong — please try again or WhatsApp us directly.');
+    });
   });
 })();
 </script>
-
-<!-- Sticky CTA Bar -->
-<div class="scta" id="scta" role="complementary" aria-label="Get a website">
-  <div class="scta__inner">
-    <div class="scta__l">
-      <div class="scta__dot" aria-hidden="true"></div>
-      <div class="scta__info">
-        <span class="scta__hl">Get your website now</span>
-        <div class="scta__tags" aria-hidden="true">
-          <span class="scta__tag">✓ Free Quote</span>
-          <span class="scta__tag">✓ 1 Day Delivery</span>
-          <span class="scta__tag">✓ 52+ Sites Built</span>
-        </div>
-      </div>
-    </div>
-    <div class="scta__r">
-      <a href="contact.html" class="scta__btn">Get Started →</a>
-      <button class="scta__x" id="sctaX" aria-label="Dismiss">✕</button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
-
-
-
-

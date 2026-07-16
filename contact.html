@@ -384,49 +384,21 @@
 
       <!-- Step 1: Website type -->
       <div class="cq-section-label">What type of website do you need?</div>
-      <div class="cq-type-grid">
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Restaurant / Café"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">🍽️</div>
-            <div class="cq-type-name">Restaurant<br>/ Café</div>
-          </div>
-        </label>
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Trade / Construction"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">🔨</div>
-            <div class="cq-type-name">Trade /<br>Construction</div>
-          </div>
-        </label>
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Online Shop / E-commerce"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">🛒</div>
-            <div class="cq-type-name">Online Shop<br>/ E-commerce</div>
-          </div>
-        </label>
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Fitness / Beauty / Wellness"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">💆</div>
-            <div class="cq-type-name">Fitness / Beauty<br>/ Wellness</div>
-          </div>
-        </label>
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Professional Services"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">💼</div>
-            <div class="cq-type-name">Professional<br>Services</div>
-          </div>
-        </label>
-        <label class="cq-type-card">
-          <input type="radio" name="website_type" value="Other"/>
-          <div class="cq-type-card__inner">
-            <div class="cq-type-icon">✨</div>
-            <div class="cq-type-name">Something<br>Else</div>
-          </div>
-        </label>
+      <div class="cq-field" style="margin-bottom:36px">
+        <select class="cq-input" name="website_type" required>
+          <option value="" disabled selected>Select your business type…</option>
+          <option>Restaurant / Café</option>
+          <option>Trade / Construction</option>
+          <option>Online Shop / E-commerce</option>
+          <option>Fitness / Beauty / Wellness</option>
+          <option>Professional Services</option>
+          <option>Hair / Barber / Nail Salon</option>
+          <option>Medical / Dental / Clinic</option>
+          <option>Real Estate / Property</option>
+          <option>Hotel / Accommodation</option>
+          <option>Cleaning / Maintenance</option>
+          <option>Other</option>
+        </select>
       </div>
 
       <hr class="cq-divider"/>
