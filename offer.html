@@ -21,6 +21,7 @@
 
 /* ── Hero ── */
 .oh {
+  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -40,47 +41,54 @@
 .oh__bg::after {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 70% at 50% 108%, transparent 0%, var(--bg) 62%);
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, var(--bg) 0%, transparent 100%);
 }
 .oh__inner {
   max-width: var(--container);
   margin: 0 auto;
   width: 100%;
-  padding: 0 var(--gutter) clamp(56px, 8vw, 100px);
+  padding: 0 var(--gutter) clamp(40px, 6vw, 80px);
   position: relative;
   z-index: 1;
 }
-.oh__pill { margin-bottom: 32px; }
+.oh__pill { margin-bottom: 24px; }
 .oh__title {
   font-family: var(--font-display);
-  font-size: clamp(50px, 9vw, 118px);
+  font-size: clamp(40px, 9vw, 118px);
   font-weight: 400;
   line-height: 0.97;
   letter-spacing: -0.028em;
-  color: var(--text);
+  color: #0a0a0a;
   max-width: 900px;
 }
-.oh__title em { font-style: italic; }
+.oh__title em { font-style: italic; color: var(--accent); }
 .oh__bottom {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 48px;
+  gap: 24px;
   flex-wrap: wrap;
-  margin-top: 44px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.1);
 }
-.oh__price-tag { display: flex; flex-direction: column; gap: 6px; }
+.oh__price-tag { display: flex; flex-direction: column; gap: 4px; }
 .oh__price-main {
   font-family: var(--font-display);
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(28px, 4vw, 52px);
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: var(--text);
+  color: #0a0a0a;
 }
-.oh__price-sub { font-size: 14px; color: var(--text-3); line-height: 1.5; }
-.oh__price-sub strong { color: var(--text-2); font-weight: 500; }
+.oh__price-sub { font-size: 14px; color: #888; line-height: 1.5; }
+.oh__price-sub strong { color: #333; font-weight: 500; }
+
+/* Mobile hero fixes */
+@media (max-width: 640px) {
+  .oh__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .oh__bottom .btn--accent { width: 100%; justify-content: center; text-align: center; }
+  .oh__nav-btn { display: none !important; }
+}
 
 .btn--accent {
   background: var(--accent);
@@ -458,7 +466,7 @@ function goToStripe() {
     <li><a href="offer.html" class="active">Offer</a></li>
   </ul>
   <div class="nav__right">
-    <button onclick="goToStripe()" class="btn btn--accent" style="font-size:13px;padding:9px 20px;">Get Started</button>
+    <button onclick="goToStripe()" class="btn btn--accent oh__nav-btn" style="font-size:13px;padding:9px 20px;">Get Started</button>
   </div>
   <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
