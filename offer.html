@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Offer — Dublin Growth Digital</title>
+<meta name="description" content="A custom website and a full Meta Ads campaign for your Irish business. €750 today, €750 when you're happy. No contracts."/>
+<link rel="canonical" href="https://dublingrowthdigital.com/offer.html"/>
+<meta property="og:title" content="The Offer — Dublin Growth Digital"/>
+<meta property="og:description" content="Custom website + Meta Ads campaign. €750 today, €750 on results."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+:root {
+  --accent:       #1E4A3C;
+  --accent-light: rgba(30,74,60,0.07);
+}
+
+/* ── Hero ── */
+.oh {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 68px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+.oh__bg { position: absolute; inset: 0; pointer-events: none; }
+.oh__bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.oh__bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 108%, transparent 0%, var(--bg) 62%);
+}
+.oh__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--gutter) clamp(56px, 8vw, 100px);
+  position: relative;
+  z-index: 1;
+}
+.oh__pill { margin-bottom: 32px; }
+.oh__title {
+  font-family: var(--font-display);
+  font-size: clamp(50px, 9vw, 118px);
+  font-weight: 400;
+  line-height: 0.97;
+  letter-spacing: -0.028em;
+  color: var(--text);
+  max-width: 900px;
+}
+.oh__title em { font-style: italic; }
+.oh__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.oh__price-tag { display: flex; flex-direction: column; gap: 6px; }
+.oh__price-main {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.oh__price-sub { font-size: 14px; color: var(--text-3); line-height: 1.5; }
+.oh__price-sub strong { color: var(--text-2); font-weight: 500; }
+
+.btn--accent {
+  background: var(--accent);
+  color: white !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.14);
+}
+.btn--accent:hover {
+  background: #163d30;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(30,74,60,0.28);
+}
+
+/* ── Split bar ── */
+.split-bar {
+  background: var(--bg-dark);
+  padding: clamp(40px, 5vw, 64px) var(--gutter);
+}
+.split-bar__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .split-bar__inner { grid-template-columns: 1fr; }
+  .split-bar__divider { display: none; }
+}
+.split-bar__divider { background: rgba(255,255,255,0.1); height: 100%; min-height: 80px; }
+.split-item { padding: 12px clamp(16px, 4vw, 52px); }
+.split-item:first-child { padding-left: 0; }
+.split-item:last-child  { padding-right: 0; }
+.split-item__label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 10px;
+}
+.split-item__amount {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400; color: #fff;
+  letter-spacing: -0.025em; line-height: 1;
+}
+.split-item__when {
+  margin-top: 8px; font-size: 14px;
+  color: rgba(255,255,255,0.38); line-height: 1.55;
+}
+.split-item__when strong { color: rgba(255,255,255,0.72); font-weight: 400; }
+
+/* ── Includes section ── */
+.includes-section {
+  padding: var(--section-py) var(--gutter);
+  background: var(--bg);
+}
+.includes-inner { max-width: var(--container); margin: 0 auto; }
+.includes-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.includes-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  margin-top: 16px;
+  line-height: 1.05;
+  max-width: 520px;
+}
+.includes-header p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 380px;
+  flex-shrink: 0;
+}
+
+/* ── Accordion ── */
+.accord { border-top: 1px solid var(--border-md); }
+
+.accord-item { border-bottom: 1px solid var(--border-md); }
+
+.accord-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.18s;
+}
+.accord-trigger:hover { opacity: 0.72; }
+
+.accord-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.accord-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.accord-item.open .accord-icon { background: var(--accent-light); }
+.accord-icon svg {
+  width: 20px; height: 20px;
+  stroke: var(--text-2);
+  transition: stroke 0.2s;
+}
+.accord-item.open .accord-icon svg { stroke: var(--accent); }
+
+.accord-meta { display: flex; flex-direction: column; gap: 3px; }
+.accord-category {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+.accord-item.open .accord-category { color: var(--accent); }
+.accord-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.accord-count {
+  font-size: 13px;
+  color: var(--text-4);
+  white-space: nowrap;
+}
+
+.accord-chevron {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border-md);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, transform 0.35s var(--ease-out);
+}
+.accord-item.open .accord-chevron {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(180deg);
+}
+.accord-chevron svg {
+  width: 13px; height: 13px;
+  stroke: var(--text-3);
+  transition: stroke 0.2s;
+}
+.accord-item.open .accord-chevron svg { stroke: white; }
+
+/* Panel */
+.accord-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease-out);
+}
+.accord-item.open .accord-panel { grid-template-rows: 1fr; }
+.accord-panel-inner { overflow: hidden; }
+
+.accord-grid {
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+@media (max-width: 640px) {
+  .accord-grid { grid-template-columns: 1fr; }
+}
+
+.accord-entry {
+  padding: 22px 24px 22px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.accord-entry:nth-child(odd)  { padding-right: 40px; }
+.accord-entry:nth-child(even) { padding-left: 40px; padding-right: 0; border-left: 1px solid var(--border); }
+@media (max-width: 640px) {
+  .accord-entry:nth-child(even) { padding-left: 0; border-left: none; }
+}
+
+.accord-entry-tick {
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.accord-entry-tick::after {
+  content: '';
+  width: 4px; height: 7px;
+  border: 1.5px solid white;
+  border-left: none; border-top: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+.accord-entry-text { display: flex; flex-direction: column; gap: 3px; }
+.accord-entry-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+.accord-entry-desc {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.55;
+}
+
+/* ── How it works ── */
+.hiw {
+  background: var(--bg-alt);
+  padding: var(--section-py) var(--gutter);
+}
+.hiw__inner { max-width: var(--container); margin: 0 auto; }
+.hiw__head { margin-bottom: 56px; }
+.hiw__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-top: 16px;
+}
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border-md);
+}
+@media (max-width: 768px) { .hiw-steps { grid-template-columns: 1fr; } }
+.hiw-step {
+  padding: 40px 40px 40px 0;
+  border-right: 1px solid var(--border);
+}
+.hiw-step:last-child { border-right: none; }
+.hiw-step:not(:first-child) { padding-left: 40px; }
+@media (max-width: 768px) {
+  .hiw-step { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 0; }
+  .hiw-step:not(:first-child) { padding-left: 0; }
+  .hiw-step:last-child { border-bottom: none; }
+}
+.hiw-step__num {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+}
+.hiw-step__title {
+  font-family: var(--font-display);
+  font-size: 21px; font-weight: 400; margin-bottom: 10px;
+}
+.hiw-step__body { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+/* ── Bottom CTA ── */
+.bottom-cta {
+  background: var(--bg-dark);
+  padding: clamp(72px, 10vw, 120px) var(--gutter);
+  text-align: center;
+}
+.bottom-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: #fff;
+  max-width: 560px;
+  margin: 0 auto 12px;
+  line-height: 1.05;
+}
+.bottom-cta h2 em { font-style: italic; }
+.bottom-cta p { font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 40px; }
+.btn--inv-white {
+  background: #fff;
+  color: var(--bg-dark) !important;
+}
+.btn--inv-white:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+}
+
+/* ── Footer ── */
+.offer-footer {
+  padding: 36px var(--gutter);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.offer-footer__inner {
+  max-width: var(--container); margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.offer-footer__copy { font-size: 13px; color: var(--text-3); }
+.offer-footer__links { display: flex; gap: 20px; list-style: none; }
+.offer-footer__links a {
+  font-size: 13px; color: var(--text-3);
+  text-decoration: none; transition: color 0.18s;
+}
+.offer-footer__links a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- ─── CONFIG ──────────────────────────────────────────────────── -->
+<!-- Replace with your Stripe Payment Link after creating it in     -->
+<!-- Stripe Dashboard → Payment Links → + New → set amount to €750  -->
+<script>
+const STRIPE_LINK = 'https://whop.com/checkout/plan_EeyocfGbLALyC/';
+function goToStripe() {
+  if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { value: 750, currency: 'EUR' });
+  window.location.href = STRIPE_LINK;
+}
+</script>
+<!-- ──────────────────────────────────────────────────────────────── -->
+
+<!-- Loader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="loader__word">The Offer</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo" aria-label="Dublin Growth Digital home">
+    <img src="logo.svg" alt="Dublin Growth Digital"/>
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="offer.html" class="active">Offer</a></li>
+  </ul>
+  <div class="nav__right">
+    <button onclick="goToStripe()" class="btn btn--accent" style="font-size:13px;padding:9px 20px;">Get Started</button>
+  </div>
+  <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<nav class="nav__drawer" aria-label="Mobile navigation">
+  <ul class="nav__drawer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="offer.html">Offer</a></li>
+  </ul>
+  <div class="nav__drawer-cta">
+    <button onclick="goToStripe()" class="btn btn--accent btn--lg" style="width:100%;justify-content:center;">Get Started — €750 Today</button>
+    <a href="contact.html" class="btn btn--ghost btn--lg">Ask a Question</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="oh">
+  <div class="oh__bg" aria-hidden="true"></div>
+  <div class="oh__inner">
+    <div class="oh__pill">
+      <span class="pill">Website + Meta Ads · Fixed Price · Irish Businesses</span>
+    </div>
+    <h1 class="oh__title">
+      A website that works.<br>
+      Ads that <em>convert.</em>
+    </h1>
+    <div class="oh__bottom">
+      <div class="oh__price-tag">
+        <div class="oh__price-main">€1,500 total</div>
+        <div class="oh__price-sub">
+          <strong>€750 today</strong> to get started &nbsp;·&nbsp; <strong>€750 when you're happy</strong>
+        </div>
+      </div>
+      <div>
+        <button onclick="goToStripe()" class="btn btn--accent btn--lg">
+          Get Started — Pay €750 Today →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPLIT PAYMENT BAR
+════════════════════════════════════════════════ -->
+<div class="split-bar">
+  <div class="split-bar__inner">
+    <div class="split-item">
+      <div class="split-item__label">Pay today</div>
+      <div class="split-item__amount">€750</div>
+      <div class="split-item__when">We start building immediately. Website and campaign both live within <strong>14 days</strong>.</div>
+    </div>
+    <div class="split-bar__divider"></div>
+    <div class="split-item">
+      <div class="split-item__label">Pay after results</div>
+      <div class="split-item__amount">€750</div>
+      <div class="split-item__when">Due after <strong>30 days</strong> — only when you're satisfied. Not happy? We keep going. No extra charge.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     WHAT'S INCLUDED — ACCORDIONS
+════════════════════════════════════════════════ -->
+<section class="includes-section">
+  <div class="includes-inner">
+
+    <div class="includes-header reveal">
+      <div>
+        <span class="pill">Everything Included</span>
+        <h2>A website and a campaign. Built together.</h2>
+      </div>
+      <p>One package covers everything — design, copy, ads, and management. Click each section to see exactly what you're getting.</p>
+    </div>
+
+    <div class="accord">
+
+      <!-- ── Website Creation ── -->
+      <div class="accord-item open" data-accord="website">
+        <button class="accord-trigger" aria-expanded="true" aria-controls="panel-website">
+          <div class="accord-trigger-left">
+            <div class="accord-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
+            </div>
+            <div class="accord-meta">
+              <span class="accord-category">Included in your package</span>
+              <span class="accord-title">Website Creation</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <span class="accord-count">8 deliverables</span>
+            <div class="accord-chevron">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round">
+                <path d="M3 6l5 5 5-5"/>
+              </svg>
+            </div>
+          </div>
+        </button>
+        <div class="accord-panel" id="panel-website" role="region">
+          <div class="accord-panel-inner">
+            <div class="accord-grid">
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Custom design from scratch</span>
+                  <span class="accord-entry-desc">Built specifically for your business — not a template, not a page builder. Every section designed for your audience and your goals.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Fully mobile-responsive</span>
+                  <span class="accord-entry-desc">Looks and works perfectly on every screen — desktop, tablet, and mobile. Over 70% of Irish web traffic is mobile; your site will be ready for it.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Copywriting included</span>
+                  <span class="accord-entry-desc">We write all the words — headlines, service descriptions, about sections, and calls to action. Clear, direct language that converts visitors into enquiries.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Lead capture forms</span>
+                  <span class="accord-entry-desc">Contact forms, quote request forms, and click-to-call buttons wired directly to your inbox. Every enquiry lands exactly where it needs to go.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">On-page SEO setup</span>
+                  <span class="accord-entry-desc">Page titles, meta descriptions, heading structure, image alt tags, and schema markup — the technical foundations that help Google understand your business.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Google Analytics + Search Console</span>
+                  <span class="accord-entry-desc">Full analytics setup from day one so you can see exactly where your visitors come from, what they do on your site, and which pages are driving enquiries.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Fast load times</span>
+                  <span class="accord-entry-desc">Optimised images, clean code, and a lightweight build. A slow website loses customers before they even read a word — yours won't have that problem.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Delivered in 14 days</span>
+                  <span class="accord-entry-desc">We move fast. From your deposit to a live website in two weeks — with a review round built in so you're happy with every detail before it goes live.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Meta Marketing ── -->
+      <div class="accord-item" data-accord="meta">
+        <button class="accord-trigger" aria-expanded="false" aria-controls="panel-meta">
+          <div class="accord-trigger-left">
+            <div class="accord-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div class="accord-meta">
+              <span class="accord-category">Included in your package</span>
+              <span class="accord-title">Meta Ads Campaign</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <span class="accord-count">8 deliverables</span>
+            <div class="accord-chevron">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round">
+                <path d="M3 6l5 5 5-5"/>
+              </svg>
+            </div>
+          </div>
+        </button>
+        <div class="accord-panel" id="panel-meta" role="region">
+          <div class="accord-panel-inner">
+            <div class="accord-grid">
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Campaign strategy &amp; audience research</span>
+                  <span class="accord-entry-desc">We identify exactly who your ideal customer is — their age, interests, location, and behaviours — and build targeting layers to reach them efficiently on Facebook and Instagram.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Ad copy written for your customer</span>
+                  <span class="accord-entry-desc">Hooks, headlines, and body copy written to stop the scroll and speak directly to what your customer actually cares about — not generic marketing speak.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Creative production</span>
+                  <span class="accord-entry-desc">Static image ads and short-form video ads designed and produced for your campaign. We handle the visuals so your ads look professional without you lifting a finger.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Full pixel &amp; conversion tracking</span>
+                  <span class="accord-entry-desc">Meta pixel installed and every conversion event configured — leads, form submissions, phone clicks, purchases. You'll know exactly what each euro of ad spend is producing.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">30 days active management</span>
+                  <span class="accord-entry-desc">Daily monitoring, budget adjustments, audience refinements, and ad rotation throughout the month. We don't set it and forget it — we actively optimise for results.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">A/B testing throughout</span>
+                  <span class="accord-entry-desc">Multiple ad variations tested in parallel — different hooks, visuals, and audiences. We cut what doesn't work and scale what does, continuously throughout the month.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Weekly performance reports</span>
+                  <span class="accord-entry-desc">Every Monday, a plain-English report lands in your inbox: spend, leads, cost per lead, and what we're doing about it. No dashboards to learn, no jargon to decode.</span>
+                </div>
+              </div>
+              <div class="accord-entry">
+                <span class="accord-entry-tick"></span>
+                <div class="accord-entry-text">
+                  <span class="accord-entry-title">Direct WhatsApp access</span>
+                  <span class="accord-entry-desc">Your campaign manager's number. Not a support ticket, not an account manager who passes it on. One person, direct line, always available during business hours.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.accord -->
+
+    <!-- CTA under includes -->
+    <div style="margin-top:56px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <button onclick="goToStripe()" class="btn btn--accent btn--lg">Get Started — Pay €750 Today →</button>
+      <span style="font-size:14px;color:var(--text-3);">€400/month to keep it running after. Cancel any time.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════ -->
+<section class="hiw">
+  <div class="hiw__inner">
+    <div class="hiw__head reveal">
+      <span class="pill">How It Works</span>
+      <h2>Simple. No calls before you start.</h2>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal">
+        <div class="hiw-step__num">01</div>
+        <div class="hiw-step__title">Pay your €750 deposit</div>
+        <p class="hiw-step__body">Secure Stripe checkout. We'll contact you within 24 hours to kick things off — website brief and ad account access, all handled by email and WhatsApp.</p>
+      </div>
+      <div class="hiw-step reveal reveal-d1">
+        <div class="hiw-step__num">02</div>
+        <div class="hiw-step__title">Live in 14 days</div>
+        <p class="hiw-step__body">Your website goes live. Your Meta campaign launches. Weekly reports start landing in your inbox so you see exactly what's happening at all times.</p>
+      </div>
+      <div class="hiw-step reveal reveal-d2">
+        <div class="hiw-step__num">03</div>
+        <div class="hiw-step__title">Pay €750 when you're happy</div>
+        <p class="hiw-step__body">After 30 days of results, you pay the balance. Not satisfied? We keep going — no extra charge — until the leads are flowing the way they should be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     BOTTOM CTA
+════════════════════════════════════════════════ -->
+<section class="bottom-cta">
+  <h2>A site. Ads. Leads. <em>Done.</em></h2>
+  <p>€750 today. Everything live in 14 days.</p>
+  <button onclick="goToStripe()" class="btn btn--inv-white btn--lg">
+    Get Started — Pay €750 Now →
+  </button>
+</section>
+
+<!-- Footer -->
+<footer class="offer-footer">
+  <div class="offer-footer__inner">
+    <span class="offer-footer__copy">&copy; 2026 Dublin Growth Digital. All rights reserved.</span>
+    <ul class="offer-footer__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- WA Float -->
+<a href="https://wa.me/353871257533?text=Hey%21%20I%27m%20interested%20in%20your%20offer." class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script src="main.js"></script>
+
+<script>
+// ── Accordion ──────────────────────────────────────────────────
+document.querySelectorAll('.accord-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    const item = trigger.closest('.accord-item');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.accord-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.accord-trigger').setAttribute('aria-expanded', 'false');
+    });
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
