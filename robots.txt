@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oscarmarkham313.github.io/dublin-growth-digital/sitemap.xml
