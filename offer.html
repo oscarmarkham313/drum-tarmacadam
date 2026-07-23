@@ -401,7 +401,7 @@
 <!-- Replace with your Stripe Payment Link after creating it in     -->
 <!-- Stripe Dashboard → Payment Links → + New → set amount to €750  -->
 <script>
-const STRIPE_LINK = 'https://buy.stripe.com/YOUR_LINK_HERE';
+const STRIPE_LINK = 'https://whop.com/checkout/plan_EeyocfGbLALyC/';
 function goToStripe() {
   if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { value: 750, currency: 'EUR' });
   window.location.href = STRIPE_LINK;
