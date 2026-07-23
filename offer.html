@@ -691,9 +691,8 @@ function goToStripe() {
     </div><!-- /.accord -->
 
     <!-- CTA under includes -->
-    <div style="margin-top:56px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="margin-top:56px;">
       <button onclick="goToStripe()" class="btn btn--accent btn--lg">Get Started — Pay €750 Today →</button>
-      <span style="font-size:14px;color:var(--text-3);">€400/month to keep it running after. Cancel any time.</span>
     </div>
 
   </div>
@@ -762,6 +761,42 @@ function goToStripe() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>gsap.registerPlugin(ScrollTrigger);</script>
 <script src="main.js"></script>
+
+<!-- ── Claim Popup ── -->
+<div id="claim-popup" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div id="claim-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);"></div>
+  <div style="position:relative;background:#fafafa;border-radius:16px;padding:clamp(36px,5vw,56px);max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.22);text-align:center;">
+    <button id="claim-close" aria-label="Close" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#aaa;font-size:22px;line-height:1;padding:4px;">&#x2715;</button>
+    <div style="width:48px;height:3px;background:#1E4A3C;margin:0 auto 24px;border-radius:2px;"></div>
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:clamp(26px,4vw,36px);font-weight:400;letter-spacing:-0.02em;color:#0a0a0a;margin-bottom:12px;line-height:1.15;">Claim your offer now</h2>
+    <p style="font-size:15px;color:#666;line-height:1.6;margin-bottom:28px;">Website + Meta Ads. <strong style="color:#0a0a0a;">€750 today</strong>, €750 when you're happy. No contracts.</p>
+    <button onclick="goToStripe();document.getElementById('claim-popup').style.display='none';" class="btn btn--accent btn--lg" style="width:100%;justify-content:center;">Get Started — €750 Today →</button>
+    <p style="margin-top:14px;font-size:12px;color:#aaa;">No calls needed. Secure Whop checkout.</p>
+  </div>
+</div>
+
+<script>
+// ── Popup ───────────────────────────────────────────────────────
+(function() {
+  const popup = document.getElementById('claim-popup');
+  const close = document.getElementById('claim-close');
+  const backdrop = document.getElementById('claim-backdrop');
+
+  function showPopup() {
+    if (sessionStorage.getItem('offerPopupSeen')) return;
+    popup.style.display = 'flex';
+    sessionStorage.setItem('offerPopupSeen', '1');
+  }
+
+  function hidePopup() {
+    popup.style.display = 'none';
+  }
+
+  setTimeout(showPopup, 5000);
+  close.addEventListener('click', hidePopup);
+  backdrop.addEventListener('click', hidePopup);
+})();
+</script>
 
 <script>
 // ── Accordion ──────────────────────────────────────────────────
