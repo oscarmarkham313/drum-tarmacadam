@@ -14,6 +14,103 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── Services overview grid ───────────────────────────── */
+.svc-grid {
+  background: var(--bg-dark);
+  padding: clamp(56px,7vw,88px) var(--gutter);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.svc-grid__inner { max-width: var(--container); margin: 0 auto; }
+.svc-grid__label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 36px;
+}
+.svc-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.svc-card {
+  padding: clamp(28px,3vw,40px) clamp(20px,2.5vw,32px);
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+  transition: background 0.28s;
+}
+.svc-card:last-child { border-right: none; }
+.svc-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+.svc-card:hover { background: rgba(255,255,255,0.04); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-card__num {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.2);
+  margin-bottom: 18px;
+}
+.svc-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(17px,1.7vw,21px);
+  font-weight: 400; color: #fff; line-height: 1.2;
+  margin-bottom: 10px;
+}
+.svc-card__stat {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--accent); margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.svc-card__desc {
+  font-size: 12.5px; color: rgba(255,255,255,0.36);
+  line-height: 1.65; flex: 1;
+}
+.svc-card__arrow {
+  margin-top: 22px; font-size: 13px;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.svc-card:hover .svc-card__arrow { color: rgba(255,255,255,0.7); transform: translateX(4px); }
+
+/* ── Service section accent ───────────────────────────── */
+.service-section { position: relative; }
+.service-section__num {
+  position: absolute; top: clamp(40px,5vw,80px); right: var(--gutter);
+  font-family: var(--font-display);
+  font-size: clamp(80px,12vw,160px);
+  font-weight: 400; color: var(--border);
+  line-height: 1; pointer-events: none;
+  user-select: none; z-index: 0;
+}
+.service-section:nth-child(even) .service-section__num { right: auto; left: var(--gutter); }
+.service-section__inner { position: relative; z-index: 1; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .svc-grid__cards { grid-template-columns: repeat(3, 1fr); }
+  .svc-card:nth-child(3) { border-right: none; }
+  .svc-card:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
+  .svc-card:nth-child(5) { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
+}
+@media (max-width: 640px) {
+  .svc-grid { padding: 40px var(--gutter); }
+  .svc-grid__cards { grid-template-columns: repeat(2, 1fr); border-radius: 12px; }
+  .svc-card { padding: 22px 18px; border-right: 1px solid rgba(255,255,255,0.08); }
+  .svc-card:nth-child(2n) { border-right: none; }
+  .svc-card:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.08); }
+  .svc-card:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); }
+  .svc-card:nth-child(5) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
+  .service-section__num { display: none; }
+}
+</style>
 </head>
 <body>
 
@@ -68,8 +165,53 @@
   </div>
 </section>
 
+<!-- Services Overview Grid -->
+<section class="svc-grid">
+  <div class="svc-grid__inner">
+    <div class="svc-grid__label">What we do</div>
+    <div class="svc-grid__cards">
+      <a href="#web-design" class="svc-card">
+        <div class="svc-card__num">01</div>
+        <div class="svc-card__name">Web Design</div>
+        <div class="svc-card__stat">Live in as little as 1 day</div>
+        <div class="svc-card__desc">Custom, mobile-first websites built to turn visitors into paying customers.</div>
+        <div class="svc-card__arrow">Explore ↓</div>
+      </a>
+      <a href="#social-media" class="svc-card">
+        <div class="svc-card__num">02</div>
+        <div class="svc-card__name">Social Media</div>
+        <div class="svc-card__stat">400%+ avg follower growth</div>
+        <div class="svc-card__desc">Reels, posts, and strategy that stop the scroll and drive real enquiries.</div>
+        <div class="svc-card__arrow">Explore ↓</div>
+      </a>
+      <a href="#paid-ads" class="svc-card">
+        <div class="svc-card__num">03</div>
+        <div class="svc-card__name">Paid Ads</div>
+        <div class="svc-card__stat">Avg 6× return on ad spend</div>
+        <div class="svc-card__desc">Google &amp; Meta campaigns tracked to the euro, optimised every week.</div>
+        <div class="svc-card__arrow">Explore ↓</div>
+      </a>
+      <a href="#seo" class="svc-card">
+        <div class="svc-card__num">04</div>
+        <div class="svc-card__name">SEO</div>
+        <div class="svc-card__stat">Page 1 rankings in 90 days</div>
+        <div class="svc-card__desc">Organic traffic that compounds — customers find you without paying per click.</div>
+        <div class="svc-card__arrow">Explore ↓</div>
+      </a>
+      <a href="#email" class="svc-card">
+        <div class="svc-card__num">05</div>
+        <div class="svc-card__name">Email Marketing</div>
+        <div class="svc-card__stat">45%+ avg open rate</div>
+        <div class="svc-card__desc">Automated sequences that generate revenue while you sleep.</div>
+        <div class="svc-card__arrow">Explore ↓</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- Service: Web Design -->
 <section class="service-section" id="web-design">
+  <div class="service-section__num" aria-hidden="true">01</div>
   <div class="service-section__inner">
     <div class="service-section__copy reveal">
       <span class="pill">01 — Web Design</span>
@@ -107,6 +249,7 @@
 
 <!-- Service: Social Media -->
 <section class="service-section" id="social-media">
+  <div class="service-section__num" aria-hidden="true">02</div>
   <div class="service-section__inner flip">
     <div class="service-section__copy reveal">
       <span class="pill">02 — Social Media</span>
@@ -138,6 +281,7 @@
 
 <!-- Service: Paid Ads -->
 <section class="service-section" id="paid-ads">
+  <div class="service-section__num" aria-hidden="true">03</div>
   <div class="service-section__inner">
     <div class="service-section__copy reveal">
       <span class="pill">03 — Paid Advertising</span>
@@ -172,6 +316,7 @@
 
 <!-- Service: SEO -->
 <section class="service-section" id="seo">
+  <div class="service-section__num" aria-hidden="true">04</div>
   <div class="service-section__inner flip">
     <div class="service-section__copy reveal">
       <span class="pill">04 — Search Engine Optimisation</span>
@@ -213,6 +358,7 @@
 
 <!-- Service: Email Marketing -->
 <section class="service-section" id="email">
+  <div class="service-section__num" aria-hidden="true">05</div>
   <div class="service-section__inner">
     <div class="service-section__copy reveal">
       <span class="pill">05 — Email Marketing</span>
