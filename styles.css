@@ -136,7 +136,7 @@ button { font-family: inherit; }
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1000;
+  z-index: 9600;
   padding: 0 var(--gutter);
   height: 68px;
   display: flex;
@@ -199,7 +199,7 @@ button { font-family: inherit; }
   position: fixed;
   top: 68px; left: 0; right: 0; bottom: 0;
   background: var(--bg);
-  z-index: 999;
+  z-index: 9500;
   padding: 32px var(--gutter) 40px;
   display: flex;
   flex-direction: column;
