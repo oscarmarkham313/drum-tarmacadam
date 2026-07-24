@@ -195,6 +195,17 @@
     track.scrollLeft = scrollLeft - (x - startX) * 1.5;
   });
 
+  // Touch swipe
+  let touchStartX = 0, touchScrollLeft = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = track.scrollLeft;
+  }, { passive: true });
+  track.addEventListener('touchmove', e => {
+    const dx = touchStartX - e.touches[0].pageX;
+    track.scrollLeft = touchScrollLeft + dx;
+  }, { passive: true });
+
   // Buttons
   const cardW = () => (track.querySelector('.tcard')?.offsetWidth || 320) + 16;
   if (prevBtn) prevBtn.addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior: 'smooth' }));

@@ -289,10 +289,15 @@
       ge('dgd-chat-btn').classList.add('dgd-pulse');
     }, 3000);
 
-    // Auto-open after 8s if visitor hasn't opened it
-    setTimeout(function() {
-      if (!hasOpened) openChat();
-    }, 8000);
+    // Auto-open once per session, 8s after first visit
+    if (!sessionStorage.getItem('dgd_chat_seen')) {
+      setTimeout(function() {
+        if (!hasOpened) {
+          openChat();
+          sessionStorage.setItem('dgd_chat_seen', '1');
+        }
+      }, 8000);
+    }
   }
 
   if (document.readyState === 'loading') {

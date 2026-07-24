@@ -703,10 +703,11 @@ button { font-family: inherit; }
   padding: clamp(28px, 3vw, 40px);
   min-width: clamp(290px, 34vw, 420px);
   flex-shrink: 0; scroll-snap-align: start;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  position: relative; overflow: hidden;
 }
-.tcard:hover { border-color: var(--border-dk); }
-.tcard__stars { font-size: 13px; letter-spacing: 1px; margin-bottom: 20px; }
+.tcard:hover { border-color: var(--border-dk); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.tcard__stars { font-size: 13px; letter-spacing: 1px; margin-bottom: 20px; color: #f5a623; }
 .tcard__quote {
   font-family: var(--font-display);
   font-size: clamp(17px, 1.8vw, 21px);
@@ -722,6 +723,45 @@ button { font-family: inherit; }
 }
 .tcard__name { font-size: 13px; font-weight: 500; }
 .tcard__role { font-size: 12px; color: var(--text-3); }
+
+/* ROI cards */
+.tcard--roi {
+  border-color: rgba(30,74,60,0.22);
+  background: linear-gradient(145deg, rgba(30,74,60,0.05) 0%, var(--bg-alt) 55%);
+}
+.tcard--roi::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
+}
+.tcard--roi:hover { border-color: rgba(30,74,60,0.4); }
+.tcard__badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(30,74,60,0.1); color: var(--accent);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+  margin-bottom: 18px;
+}
+.tcard__roi {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;
+}
+.tcard__roi-from {
+  font-size: 16px; font-weight: 500; color: var(--text-3);
+}
+.tcard__roi-arrow {
+  font-size: 20px; color: var(--accent); font-weight: 300; line-height: 1;
+}
+.tcard__roi-to {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 400; color: var(--accent);
+  letter-spacing: -0.03em; line-height: 1;
+}
+.tcard__roi-label {
+  font-size: 11px; color: var(--text-4);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin-bottom: 20px;
+}
 
 /* --- Process -------------------------------------------- */
 .process {
