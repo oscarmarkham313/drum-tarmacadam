@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>DGD — €750 Offer Ad</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#0a0a0a;font-family:'DM Sans','Segoe UI',sans-serif;}
+
+/* ── Shared ── */
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px;opacity:0;pointer-events:none;}
+.scene.active{opacity:1;pointer-events:auto;}
+.tag{font-size:22px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#6ee7b7;margin-bottom:28px;}
+.big{font-size:96px;font-weight:800;line-height:1;color:#fff;letter-spacing:-.03em;text-align:center;}
+.big em{font-style:italic;color:#6ee7b7;}
+.sub{font-size:32px;color:rgba(255,255,255,.5);margin-top:24px;text-align:center;line-height:1.5;}
+.sub strong{color:rgba(255,255,255,.85);}
+
+/* ── Scene 1: Hook ── */
+#s1{background:#0a0a0a;}
+#s1 .pill-row{display:flex;gap:16px;margin-bottom:48px;}
+#s1 .pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:12px 28px;font-size:24px;color:rgba(255,255,255,.5);}
+#s1 .pill.pain{color:#f87171;border-color:rgba(248,113,113,.25);background:rgba(248,113,113,.08);}
+#s1 .q{font-size:72px;font-weight:800;color:#fff;line-height:1.1;text-align:center;letter-spacing:-.025em;max-width:800px;}
+#s1 .q span{color:#f87171;}
+
+/* ── Scene 2: The Offer ── */
+#s2{background:#0a0a0a;}
+#s2 .price-wrap{position:relative;text-align:center;margin:40px 0;}
+#s2 .price{font-size:180px;font-weight:900;color:#fff;letter-spacing:-.05em;line-height:1;}
+#s2 .price-sub{font-size:32px;color:rgba(255,255,255,.4);margin-top:8px;}
+#s2 .rule{width:80px;height:3px;background:#6ee7b7;margin:36px auto;}
+#s2 .offer-line{font-size:36px;font-weight:600;color:rgba(255,255,255,.75);text-align:center;}
+#s2 .offer-line strong{color:#6ee7b7;}
+
+/* ── Scene 3: What's included ── */
+#s3{background:#0d1a15;}
+#s3 .items{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;margin-top:24px;}
+#s3 .item{display:flex;align-items:flex-start;gap:20px;padding:28px 32px;border-bottom:1px solid rgba(255,255,255,.07);}
+#s3 .item:nth-child(odd){border-right:1px solid rgba(255,255,255,.07);}
+#s3 .tick{width:28px;height:28px;background:#6ee7b7;border-radius:50%;flex-shrink:0;margin-top:4px;display:flex;align-items:center;justify-content:center;}
+#s3 .tick::after{content:'';width:6px;height:11px;border:2.5px solid #0d1a15;border-left:none;border-top:none;transform:rotate(45deg) translateY(-1px);}
+#s3 .item-text{font-size:26px;font-weight:500;color:rgba(255,255,255,.8);line-height:1.3;}
+
+/* ── Scene 4: Social proof ── */
+#s4{background:#0a0a0a;}
+#s4 .roi{display:flex;align-items:center;justify-content:center;gap:40px;margin:40px 0;}
+#s4 .roi-num{font-size:100px;font-weight:900;letter-spacing:-.04em;}
+#s4 .roi-from{color:rgba(255,255,255,.25);}
+#s4 .roi-arr{font-size:64px;color:#6ee7b7;}
+#s4 .roi-to{color:#6ee7b7;}
+#s4 .roi-label{font-size:26px;color:rgba(255,255,255,.35);text-align:center;}
+#s4 .quote{font-size:30px;color:rgba(255,255,255,.6);text-align:center;line-height:1.6;max-width:720px;margin-top:36px;font-style:italic;}
+#s4 .author{margin-top:24px;font-size:22px;color:rgba(255,255,255,.35);}
+
+/* ── Scene 5: CTA ── */
+#s5{background:#1E4A3C;}
+#s5 .cta-tag{font-size:22px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:32px;}
+#s5 .cta-head{font-size:86px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em;text-align:center;}
+#s5 .cta-head em{font-style:italic;}
+#s5 .cta-url{margin-top:48px;font-size:32px;font-weight:600;color:rgba(255,255,255,.5);background:rgba(0,0,0,.2);border-radius:100px;padding:20px 52px;letter-spacing:.02em;}
+#s5 .cta-url span{color:#fff;}
+#s5 .cta-note{margin-top:24px;font-size:22px;color:rgba(255,255,255,.35);}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.85);}to{opacity:1;transform:scale(1);}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-60px);}to{opacity:1;transform:translateX(0);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+
+.scene.active .tag{animation:fadeIn .5s .1s both;}
+.s1-pill{animation:fadeIn .4s both;}
+.s1-q{animation:fadeUp .6s .3s both;}
+.s2-price{animation:scaleIn .6s .2s both;}
+.s2-rule{animation:fadeIn .4s .7s both;}
+.s2-offer{animation:fadeUp .5s .9s both;}
+.s3-item{opacity:0;}
+.s3-head{animation:fadeUp .5s .1s both;}
+.s4-roi{animation:scaleIn .7s .2s both;}
+.s4-quote{animation:fadeUp .5s .8s both;}
+.s4-author{animation:fadeIn .4s 1.1s both;}
+.s5-head{animation:fadeUp .7s .2s both;}
+.s5-url{animation:fadeUp .5s .8s both;animation:pulse 1.8s 1.2s ease-in-out infinite;}
+.s5-note{animation:fadeIn .4s 1.2s both;}
+</style>
+</head>
+<body>
+
+<!-- Scene 1: Hook -->
+<div class="scene" id="s1">
+  <div class="pill-row">
+    <div class="pill pain s1-pill" style="animation-delay:.1s">No website</div>
+    <div class="pill pain s1-pill" style="animation-delay:.25s">No leads</div>
+    <div class="pill pain s1-pill" style="animation-delay:.4s">No results</div>
+  </div>
+  <div class="q s1-q">Is your Irish business<br><span>invisible online?</span></div>
+</div>
+
+<!-- Scene 2: The Offer -->
+<div class="scene" id="s2">
+  <div class="tag">The fix</div>
+  <div class="price-wrap">
+    <div class="price s2-price">€750</div>
+    <div class="price-sub">to get started. €750 when you're happy.</div>
+  </div>
+  <div class="rule s2-rule"></div>
+  <div class="offer-line s2-offer"><strong>Custom website</strong> + <strong>Meta Ads campaign</strong> — live in 14 days</div>
+</div>
+
+<!-- Scene 3: What's included -->
+<div class="scene" id="s3">
+  <div class="tag s3-head">Everything included</div>
+  <div class="items">
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">Custom website built<br>from scratch</span></div>
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">Full Meta Ads campaign<br>on Facebook & Instagram</span></div>
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">30 days active<br>management</span></div>
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">Weekly performance<br>reports</span></div>
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">All copywriting<br>included</span></div>
+    <div class="item s3-item"><span class="tick"></span><span class="item-text">No contracts.<br>Pay on results.</span></div>
+  </div>
+</div>
+
+<!-- Scene 4: Social proof -->
+<div class="scene" id="s4">
+  <div class="tag">Verified client result</div>
+  <div class="roi s4-roi">
+    <div class="roi-num roi-from">€233</div>
+    <div class="roi-arr">→</div>
+    <div class="roi-num roi-to">€19,200</div>
+  </div>
+  <div class="roi-label">Ad spend → Revenue generated in 30 days</div>
+  <div class="quote s4-quote">"We spent €233 on ads and generated €19,200 in revenue. I didn't think it was possible this fast."</div>
+  <div class="author s4-author">— Michael Brennan, E-commerce, Dublin</div>
+</div>
+
+<!-- Scene 5: CTA -->
+<div class="scene" id="s5">
+  <div class="cta-tag">Limited spots</div>
+  <div class="cta-head s5-head">Get your<br><em>website & ads</em><br>for €750.</div>
+  <div class="cta-url s5-url">dublingrowthdigital.com/<span>offer</span></div>
+  <div class="cta-note s5-note">€750 today · €750 when you're happy · No contracts</div>
+</div>
+
+<script>
+const scenes = ['s1','s2','s3','s4','s5'];
+const durations = [2800, 3000, 3500, 3500, 4000];
+let current = 0;
+
+function showScene(idx) {
+  scenes.forEach((id, i) => {
+    document.getElementById(id).classList.toggle('active', i === idx);
+  });
+
+  // Stagger s3 items
+  if (idx === 2) {
+    document.querySelectorAll('.s3-item').forEach((el, i) => {
+      el.style.animation = `fadeUp 0.45s ${0.2 + i * 0.12}s both`;
+    });
+  }
+}
+
+function next() {
+  current = (current + 1) % scenes.length;
+  showScene(current);
+  if (current < scenes.length - 1) {
+    setTimeout(next, durations[current]);
+  }
+}
+
+showScene(0);
+setTimeout(next, durations[0]);
+</script>
+</body>
+</html>
