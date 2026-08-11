@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Window & Door Spraying Services Dublin | Spray Craft</title>
+  <meta name="description" content="Expert window spraying, door spraying and commercial spraying in Dublin &amp; Leinster. 2K paint system, 5-year paint guarantee, any colour of your choice." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* ══ PAGE HERO ══ */
+    .page-hero {
+      position: relative; min-height: 60vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('img/job2-after.jpg');
+      background-size: cover; background-position: center 30%;
+    }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,13,26,1) 0%, rgba(5,13,26,0.7) 50%, rgba(5,13,26,0.3) 100%);
+    }
+    .page-hero-content {
+      position: relative; z-index: 2; width: 100%;
+      max-width: 1240px; margin: 0 auto; padding: 80px 5% 70px;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: var(--muted); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--blue-3); }
+    .breadcrumb span { opacity: 0.4; }
+    .page-hero h1 { margin-bottom: 16px; }
+    .page-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 560px; line-height: 1.7; }
+
+    /* ══ SERVICES DETAIL ══ */
+    .service-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .service-section:nth-child(even) { background: var(--navy-2); }
+    .service-section:nth-child(odd) { background: var(--navy); }
+
+    .service-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .service-layout.reverse { }
+    .service-layout.reverse .service-visual { order: 2; }
+    .service-layout.reverse .service-info { order: 1; }
+
+    .service-visual { position: relative; }
+    .service-img-wrap {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+    }
+    .service-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .service-img-wrap:hover img { transform: scale(1.04); }
+
+    .service-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: linear-gradient(135deg, var(--blue), #6c63ff);
+      border-radius: 16px; padding: 20px 24px;
+      box-shadow: 0 12px 40px rgba(26,111,212,0.4);
+      text-align: center;
+    }
+    .service-badge .b-icon { font-size: 2rem; margin-bottom: 6px; }
+    .service-badge .b-text { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .service-info .tag { margin-bottom: 14px; }
+    .service-info h2 { margin-bottom: 18px; }
+    .service-info p { color: var(--muted); line-height: 1.75; font-size: 1rem; margin-bottom: 28px; }
+
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.9rem; color: rgba(255,255,255,0.8);
+    }
+    .feature-list li::before {
+      content: '✓';
+      width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%;
+      background: rgba(26,111,212,0.15); border: 1px solid rgba(26,111,212,0.3);
+      color: var(--blue-3); font-size: 0.7rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+
+    .price-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,111,212,0.08); border: 1px solid rgba(26,111,212,0.2);
+      border-radius: 10px; padding: 12px 18px;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .price-note strong { color: var(--white); }
+
+    /* ══ PAINT SYSTEM ══ */
+    .paint-system { background: var(--ink); padding: 100px 0; }
+    .ps-header { text-align: center; margin-bottom: 70px; }
+    .ps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-bottom: 60px; }
+    .ps-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px; text-align: center;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .ps-card:hover { transform: translateY(-6px); border-color: var(--border-b); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(26,111,212,0.15); }
+    .ps-icon { font-size: 2.8rem; margin-bottom: 20px; }
+    .ps-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; }
+    .ps-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    .ps-banner {
+      background: linear-gradient(135deg, rgba(26,111,212,0.12), rgba(108,99,255,0.08));
+      border: 1px solid rgba(26,111,212,0.2); border-radius: 20px;
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ps-banner h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .ps-banner p { color: var(--muted); font-size: 0.9rem; max-width: 480px; }
+
+    /* ══ COLOUR SECTION ══ */
+    .colours { background: var(--navy-3); padding: 100px 0; }
+    .colours-header { text-align: center; margin-bottom: 60px; }
+    .colour-swatches {
+      display: grid; grid-template-columns: repeat(8, 1fr); gap: 16px; margin-bottom: 40px;
+    }
+    .swatch {
+      aspect-ratio: 1; border-radius: 14px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .swatch:hover { transform: scale(1.1) rotate(3deg); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .colour-note { text-align: center; color: var(--muted); font-size: 0.875rem; }
+    .colour-note strong { color: var(--white); }
+
+    /* ══ COVERAGE FULL ══ */
+    .coverage { background: var(--navy); padding: 100px 0; }
+    .coverage-header { text-align: center; margin-bottom: 60px; }
+    .coverage-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .coverage-map {
+      background: linear-gradient(135deg, rgba(26,111,212,0.08), rgba(108,99,255,0.04));
+      border: 1px solid var(--border); border-radius: 24px;
+      min-height: 440px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px; text-align: center; padding: 40px;
+    }
+    .coverage-map .map-icon { font-size: 5rem; }
+    .coverage-map h3 { font-size: 1.5rem; font-weight: 800; }
+    .coverage-map p { color: var(--muted); font-size: 0.9rem; }
+    .areas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .area-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.7);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .area-pill:hover { border-color: var(--border-b); color: #fff; }
+    .area-pill.featured { border-color: rgba(26,111,212,0.3); color: #fff; background: rgba(26,111,212,0.07); }
+    .area-pill::before { content: '📍'; font-size: 0.85rem; }
+
+    /* ═ RESPONSIVE ═ */
+    @media (max-width: 960px) {
+      .service-layout { grid-template-columns: 1fr; gap: 48px; }
+      .service-layout.reverse .service-visual { order: 0; }
+      .service-layout.reverse .service-info { order: 0; }
+      .service-badge { bottom: -12px; right: -8px; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .colour-swatches { grid-template-columns: repeat(4,1fr); }
+      .coverage-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════
+       MOBILE OVERHAUL — SERVICES
+    ═══════════════════════════ */
+    @media (max-width: 768px) {
+      /* Page hero */
+      .page-hero { min-height: 55svh; }
+      .page-hero-content { padding: 60px 20px 48px; }
+      .page-hero h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+      .page-hero p { font-size: 0.95rem; }
+
+      /* Service sections */
+      .service-section { padding: 56px 0; }
+      .service-layout { gap: 32px; }
+      .service-img-wrap { aspect-ratio: 16/9; border-radius: 16px; }
+      .service-badge { right: 0; bottom: -14px; padding: 14px 16px; }
+      .service-badge .b-icon { font-size: 1.5rem; margin-bottom: 4px; }
+      .service-badge .b-text { font-size: 0.62rem; }
+      .service-info h2 { font-size: 1.6rem; }
+      .service-info p { font-size: 0.9rem; }
+      .feature-list li { font-size: 0.875rem; }
+      .price-note { font-size: 0.82rem; padding: 10px 14px; }
+
+      /* Paint system */
+      .paint-system { padding: 60px 0; }
+      .ps-header { margin-bottom: 40px; }
+      .ps-card { padding: 24px; }
+      .ps-banner { flex-direction: column; padding: 28px 24px; gap: 24px; }
+      .ps-banner .btn { width: 100%; justify-content: center; }
+
+      /* Colours */
+      .colours { padding: 60px 0; }
+      .colour-swatches { grid-template-columns: repeat(4,1fr); gap: 10px; }
+      .swatch { border-radius: 10px; }
+
+      /* Coverage */
+      .coverage { padding: 60px 0; }
+      .coverage-layout { gap: 36px; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .coverage-map { min-height: 260px; padding: 28px; }
+      .coverage-map .map-icon { font-size: 3.5rem; }
+
+      /* CTA section */
+      section[style*="text-align:center"] { padding: 60px 20px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="logo.png" alt="Spray Craft" style="height:64px;width:auto;border-radius:8px;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="guarantee.html">Guarantee</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-primary" style="padding:10px 20px; font-size:0.85rem;">Get a Quote</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="mobile-menu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="reviews.html" onclick="toggleMenu()">Reviews</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  <a href="contact.html" class="btn btn-primary" onclick="toggleMenu()">Get a Free Quote</a>
+  <button onclick="toggleMenu()" style="background:none;color:var(--muted);font-size:0.9rem;margin-top:12px;">✕ Close</button>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Services</span>
+    </div>
+    <div class="tag reveal">Our Services</div>
+    <h1 class="heading-xl reveal delay-1">Professional Spraying <br><span class="grad-text">for Every Property</span></h1>
+    <p class="reveal delay-2">From a single front door to a full commercial frontage — we bring expert precision and factory-quality finishes to every job, backed by our industry-leading 5-year paint guarantee.</p>
+  </div>
+</div>
+
+<!-- ══ WINDOW SPRAYING ══ -->
+<div class="service-section" id="windows">
+  <div class="container">
+    <div class="service-layout">
+      <div class="service-visual reveal left">
+        <div class="service-img-wrap">
+          <img src="img/job3-after.jpg" alt="uPVC windows sprayed anthracite grey in Dublin — Spray Craft" loading="lazy" />
+        </div>
+        <div class="service-badge">
+          <div class="b-icon">🪟</div>
+          <div class="b-text">Most Popular</div>
+        </div>
+      </div>
+      <div class="service-info reveal right delay-1">
+        <div class="tag">Service 01</div>
+        <h2 class="heading-lg">Window <span class="grad-text">Spraying</span></h2>
+        <p>Why pay thousands to replace perfectly functional windows when our professional spraying service can transform them entirely for a fraction of the cost? From old, faded uPVC to sleek aluminium frames — we deliver a flawless, factory-quality finish in any colour you choose.</p>
+        <ul class="feature-list">
+          <li>uPVC and aluminium window frames</li>
+          <li>Any RAL or BS colour — precisely matched</li>
+          <li>Full surface preparation and masking included</li>
+          <li>Interior and exterior treatment available</li>
+          <li>Flawless, smooth factory-quality finish</li>
+          <li><a href="guarantee.html" style="color:var(--blue-3);">5-year paint guarantee</a> included</li>
+          <li>Residential and commercial properties</li>
+          <li>Minimal disruption — work completed on-site</li>
+        </ul>
+        <div class="price-note">
+          <span>💰</span>
+          <span>Save up to <strong>70% vs. full window replacement</strong> — same result, a fraction of the cost</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DOOR SPRAYING ══ -->
+<div class="service-section" id="doors">
+  <div class="container">
+    <div class="service-layout reverse">
+      <div class="service-info reveal left delay-1">
+        <div class="tag">Service 02</div>
+        <h2 class="heading-lg">Door <span class="grad-text">Spraying</span></h2>
+        <p>Your front door is the first thing people see. Make it unforgettable. Whether you want a bold statement colour or a timeless classic finish, our door spraying service transforms any door into a stunning focal point — with a finish that lasts years, not months.</p>
+        <ul class="feature-list">
+          <li>uPVC, composite, aluminium & timber doors</li>
+          <li>Front doors, back doors & patio doors</li>
+          <li>Any colour of your choice — unlimited options</li>
+          <li>Professional strip, clean & prep process</li>
+          <li>Durable 2K weather-resistant finish</li>
+          <li><a href="guarantee.html" style="color:var(--blue-3);">5-year paint guarantee</a> against fading and cracking</li>
+          <li>Dramatic kerb appeal transformation</li>
+          <li>Same-day or multi-day jobs available</li>
+        </ul>
+        <div class="price-note">
+          <span>🚪</span>
+          <span>A new door colour can <strong>add thousands to your property's appeal</strong> — at a fraction of replacement cost</span>
+        </div>
+      </div>
+      <div class="service-visual reveal right">
+        <div class="service-img-wrap">
+          <img src="img/job1-after.jpg" alt="Front door sprayed anthracite grey in Dublin — Spray Craft" loading="lazy" />
+        </div>
+        <div class="service-badge">
+          <div class="b-icon">🚪</div>
+          <div class="b-text">Best Value</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMMERCIAL ══ -->
+<div class="service-section" id="commercial">
+  <div class="container">
+    <div class="service-layout">
+      <div class="service-visual reveal left">
+        <div class="service-img-wrap">
+          <!-- NEEDS-INPUT: replace with real commercial job photo -->
+          <img src="img/job4-after.jpg" alt="Commercial window spraying Dublin — Spray Craft" loading="lazy" />
+        </div>
+        <div class="service-badge">
+          <div class="b-icon">🏢</div>
+          <div class="b-text">Commercial</div>
+        </div>
+      </div>
+      <div class="service-info reveal right delay-1">
+        <div class="tag">Service 03</div>
+        <h2 class="heading-lg">Commercial <span class="grad-text">Spraying</span></h2>
+        <p>Make a powerful first impression with your business premises. We work with offices, retail units, restaurants, hotels and large commercial facilities across Dublin and Ireland — delivering professional results that elevate your brand and stand up to daily wear.</p>
+        <ul class="feature-list">
+          <li>Shop fronts & retail facades</li>
+          <li>Office buildings and commercial premises</li>
+          <li>Restaurants, hotels & hospitality venues</li>
+          <li>Large-scale project capability</li>
+          <li>Flexible scheduling — weekends & early mornings available</li>
+          <li>Minimal disruption to your business</li>
+          <li>Fully insured and certified team</li>
+          <li>Commercial paint guarantee available</li>
+        </ul>
+        <div class="price-note">
+          <span>🏢</span>
+          <span>Refresh your brand image — <strong>without the cost of a full refurb</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 2K PAINT SYSTEM ══ -->
+<section class="paint-system" id="process">
+  <div class="container">
+    <div class="ps-header">
+      <div class="tag reveal">Our Paint System</div>
+      <h2 class="heading-lg reveal delay-1">The 2K Professional System</h2>
+      <p class="lead reveal delay-2" style="margin:0 auto;">We don't use off-the-shelf paint. Our industry-leading 2K two-component system is the same trusted by professionals across Europe for its unmatched durability and finish quality.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card reveal delay-1">
+        <div class="ps-icon">🧪</div>
+        <h3>2K Two-Component Formula</h3>
+        <p>Unlike standard single-component paints, our 2K system chemically cures into an incredibly hard, durable coating that bonds permanently to the surface.</p>
+      </div>
+      <div class="ps-card reveal delay-2">
+        <div class="ps-icon">☀️</div>
+        <h3>UV & Weather Resistant</h3>
+        <p>Formulated to withstand the harshest Irish weather — UV rays, rain, frost and wind. Colour stays vibrant and finish stays intact for years.</p>
+      </div>
+      <div class="ps-card reveal delay-3">
+        <div class="ps-icon">🛡️</div>
+        <h3>Anti-Corrosion Protection</h3>
+        <p>Our system provides superior protection against corrosion — critical for metal frames and aluminium surfaces. Built to last a minimum of 5 years.</p>
+      </div>
+    </div>
+    <div class="ps-banner reveal">
+      <div>
+        <h3>Every Job. 5-Year Paint Guarantee.</h3>
+        <p>Every Spray Craft project comes with a comprehensive 5-year paint guarantee covering anti-corrosion protection and weather resistance.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="white-space:nowrap;">Get a Free Quote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COLOUR RANGE ══ -->
+<section class="colours">
+  <div class="container">
+    <div class="colours-header">
+      <div class="tag reveal">Colour Range</div>
+      <h2 class="heading-lg reveal delay-1">Any Colour You Can Imagine</h2>
+      <p class="lead reveal delay-2" style="margin:0 auto;">We match from the full RAL and BS colour ranges — thousands of options available. Bring us any colour reference and we'll match it exactly.</p>
+    </div>
+    <div class="colour-swatches reveal">
+      <div class="swatch" style="background:#FFFFFF;border:1px solid rgba(255,255,255,0.15);" title="Pure White"></div>
+      <div class="swatch" style="background:#F5F0E8;" title="Cream White"></div>
+      <div class="swatch" style="background:#D4C5A9;" title="Sand Beige"></div>
+      <div class="swatch" style="background:#4A4A4A;" title="Anthracite Grey"></div>
+      <div class="swatch" style="background:#2B2B2B;" title="Jet Black"></div>
+      <div class="swatch" style="background:#1E3A5F;" title="Navy Blue"></div>
+      <div class="swatch" style="background:#2D6A4F;" title="Forest Green"></div>
+      <div class="swatch" style="background:#6B2D2D;" title="Deep Red"></div>
+      <div class="swatch" style="background:#E8E0D5;" title="Soft Grey"></div>
+      <div class="swatch" style="background:#8B7355;" title="Bronze"></div>
+      <div class="swatch" style="background:#556B2F;" title="Olive Green"></div>
+      <div class="swatch" style="background:#1C3A3A;" title="Dark Teal"></div>
+      <div class="swatch" style="background:#5C4033;" title="Chocolate"></div>
+      <div class="swatch" style="background:#3D405B;" title="Slate"></div>
+      <div class="swatch" style="background:#C0896B;" title="Terracotta"></div>
+      <div class="swatch" style="background:#7B9E87;" title="Sage Green"></div>
+    </div>
+    <p class="colour-note reveal">These are just a sample — we match from the <strong>full RAL & BS colour range</strong>. Any colour, any shade, precisely matched.</p>
+  </div>
+</section>
+
+<!-- ══ COVERAGE ══ -->
+<section class="coverage">
+  <div class="container">
+    <div class="coverage-header">
+      <div class="tag reveal">Where We Work</div>
+      <h2 class="heading-lg reveal delay-1">Dublin & All of Ireland</h2>
+      <p class="lead reveal delay-2" style="margin:0 auto;">Based in Dublin, we travel wherever you need us. No job is too far — we bring the quality directly to your property across the entire island.</p>
+    </div>
+    <div class="coverage-layout">
+      <div class="coverage-map reveal left">
+        <div class="map-icon">🇮🇪</div>
+        <h3>Nationwide Coverage</h3>
+        <p>Professional window & door spraying<br>delivered across Dublin and all of Ireland.</p>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:16px;">Check Your Area</a>
+      </div>
+      <div class="reveal right delay-1">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px;">Areas We Serve</h3>
+        <div class="areas-grid">
+          <div class="area-pill featured">Dublin City</div>
+          <div class="area-pill featured">Dublin County</div>
+          <div class="area-pill featured">Co. Meath</div>
+          <div class="area-pill featured">Co. Kildare</div>
+          <div class="area-pill">Co. Wicklow</div>
+          <div class="area-pill">Co. Louth</div>
+          <div class="area-pill">Co. Wexford</div>
+          <div class="area-pill">Co. Cork</div>
+          <div class="area-pill">Co. Galway</div>
+          <div class="area-pill">Co. Limerick</div>
+          <div class="area-pill">Co. Waterford</div>
+          <div class="area-pill">All Other Counties</div>
+        </div>
+        <p style="margin-top:24px; font-size:0.875rem; color:var(--muted);">Not sure if we cover your area? <a href="contact.html" style="color:var(--blue-3);font-weight:600;">Get in touch →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#0d2044,#0a1a38);padding:100px 5%;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div class="tag reveal" style="display:inline-flex;margin:0 auto 24px;">Ready to Get Started?</div>
+    <h2 class="heading-lg reveal delay-1">Get Your <span class="grad-text">Free Quote</span> Today</h2>
+    <p class="lead reveal delay-2" style="margin:0 auto 40px;">No obligation, no pressure. A professional site visit and a clear, honest quote — free of charge.</p>
+    <div class="reveal delay-3" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:16px 36px;">Request a Free Quote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Spray Craft" onerror="this.style.display='none'" />
+      <div class="footer-brand-name">Spray Craft</div>
+      <div class="footer-brand-sub">Dublin & All Ireland</div>
+      <p>Professional window and door spraying for residential and commercial properties. Over 10 years of expert experience across Ireland.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="window-spraying-dublin.html">Window Spraying Dublin</a></li>
+        <li><a href="door-spraying-dublin.html">Door Spraying Dublin</a></li>
+        <li><a href="upvc-window-spraying.html">uPVC Window Spraying</a></li>
+        <li><a href="composite-door-spraying.html">Composite Door Spraying</a></li>
+        <li><a href="#commercial">Commercial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="guarantee.html">Guarantee</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+353857382789">+353 85 738 2789</a></li>
+        <li><a href="https://wa.me/353857382789">WhatsApp Us</a></li>
+        <li><a href="mailto:info.spraycraft@gmail.com">info.spraycraft@gmail.com</a></li>
+        <li><a href="contact.html">Free Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Spray Craft. All rights reserved.</p>
+    <div class="footer-badges">
+      <div class="footer-badge">10+ Years</div>
+      <div class="footer-badge">5yr Paint Guarantee</div>
+      <div class="footer-badge">2K Paint</div>
+      <div class="footer-badge">All Ireland</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  });
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- Mobile Sticky CTA Bar -->
+<div class="mob-bar">
+  <div class="mob-bar-label">🔒 <span>Lock in your free quote now</span> — slots filling fast</div>
+  <div class="mob-bar-btns">
+    <a class="mob-bar-call" href="tel:+353857382789">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg>
+      Call Now
+    </a>
+    <a class="mob-bar-wa" href="https://wa.me/353857382789?text=Hi%2C%20I'd%20like%20a%20free%20quote%20for%20window%20%2F%20door%20spraying." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- Call Button -->
+<a class="call-btn" href="tel:+353857382789" aria-label="Call Spray Craft">
+  <span class="call-tooltip">Call +353 85 738 2789</span>
+  <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg>
+</a>
+
+<!-- WhatsApp Button -->
+<a class="wa-btn" href="https://wa.me/353857382789?text=Hi%2C%20I'd%20like%20a%20free%20quote%20for%20window%20%2F%20door%20spraying." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<!-- Popup -->
+<div class="popup-overlay" id="quotePopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div class="popup-tag">Limited Availability</div>
+    <h2>Get Your <span>FREE Quote</span> Now!</h2>
+    <p>Professional window & door spraying across Dublin and all of Ireland. One call is all it takes.</p>
+    <a href="tel:+353857382789" class="popup-call-btn">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg>
+      Call Now — +353 85 738 2789
+    </a>
+    <div class="popup-dismiss" onclick="closePopup()">No thanks, I'll browse first</div>
+  </div>
+</div>
+<script>
+  setTimeout(() => document.getElementById('quotePopup').classList.add('show'), 1500);
+  function closePopup() { document.getElementById('quotePopup').classList.remove('show'); }
+  document.getElementById('quotePopup').addEventListener('click', function(e) { if (e.target === this) closePopup(); });
+</script>
+</body>
+</html>
+
+
+
