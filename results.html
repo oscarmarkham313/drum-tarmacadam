@@ -1,28 +1,140 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon.png"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png"/>
-    <meta name="theme-color" content="#0F0F0F"/>
-<title>Results — Dublin Growth Digital</title>
-<meta name="description" content="Real results from real Irish businesses. Case studies showing how Dublin Growth Digital delivers growth through web design, ads, and social media."/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="512x512" href="/icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png"/>
+<meta name="theme-color" content="#0F0F0F"/>
+<title>Client Results — Dublin Growth Digital</title>
+<meta name="description" content="Real results from real Irish businesses. Verified case studies, lead generation, revenue campaigns, and client reviews from Dublin Growth Digital."/>
 <link rel="canonical" href="results.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="styles.css?v=11"/>
+<style>
+/* ─── Results Page ─── */
+.trust-bar{background:var(--bg-dark);color:#fff;padding:0 var(--gutter)}
+.trust-bar__inner{max-width:var(--container);margin:0 auto;display:flex;align-items:stretch;justify-content:space-between}
+.trust-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:28px 16px;border-right:1px solid rgba(255,255,255,.07)}
+.trust-stat:last-child{border-right:none}
+.trust-stat__value{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);line-height:1;color:#fff}
+.trust-stat__label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-top:5px;text-align:center}
+
+.niche-selector{padding:clamp(60px,8vw,100px) var(--gutter);background:var(--bg)}
+.niche-selector__inner{max-width:var(--container);margin:0 auto}
+.niche-selector__head{text-align:center;margin-bottom:48px}
+.niche-selector__head h2{font-family:var(--font-display);font-size:clamp(28px,4vw,50px);margin-bottom:12px;line-height:1.1}
+.niche-selector__head p{color:var(--text-2);font-size:16px;max-width:520px;margin:0 auto}
+.niche-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.niche-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:36px 26px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;text-align:left}
+.niche-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#C8673A;opacity:0;transition:opacity .2s}
+.niche-card:hover,.niche-card--active{border-color:rgba(200,103,58,.35);box-shadow:0 10px 36px rgba(0,0,0,.07);transform:translateY(-3px)}
+.niche-card--active::before{opacity:1}
+.niche-card:focus-visible{outline:3px solid #C8673A;outline-offset:3px}
+.niche-card__icon{font-size:34px;line-height:1}
+.niche-card__title{font-family:var(--font-display);font-size:20px;color:var(--text);line-height:1.2}
+.niche-card__desc{font-size:13px;color:var(--text-2);line-height:1.6}
+.niche-card__count{font-size:11px;color:#C8673A;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-top:auto}
+.niche-card__arrow{font-size:18px;color:#C8673A;margin-top:auto;transition:transform .2s}
+.niche-card:hover .niche-card__arrow{transform:translateX(4px)}
+
+.results-main{background:var(--bg-alt);min-height:60vh;padding:0 var(--gutter) clamp(80px,10vw,120px)}
+.results-main__inner{max-width:var(--container);margin:0 auto}
+
+.results-filter-bar{position:sticky;top:68px;z-index:90;background:var(--bg-alt);padding:18px 0 0;border-bottom:1px solid var(--border);margin-bottom:28px}
+.results-filter-bar__row{display:flex;align-items:center;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:14px}
+.results-filter-bar__row::-webkit-scrollbar{display:none}
+.filter-chip{white-space:nowrap;padding:7px 15px;border-radius:100px;font-size:12px;font-weight:500;border:1.5px solid var(--border-dk);background:transparent;color:var(--text-2);cursor:pointer;transition:all .15s;flex-shrink:0;font-family:var(--font-body)}
+.filter-chip:hover{border-color:var(--text);color:var(--text)}
+.filter-chip--active{background:var(--text);color:#fff;border-color:var(--text)}
+
+.results-meta-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.results-count{font-size:13px;color:var(--text-3)}
+.results-sort{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-2)}
+.results-sort select{font-family:var(--font-body);font-size:13px;border:1.5px solid var(--border-dk);border-radius:6px;padding:6px 10px;background:#fff;color:var(--text);cursor:pointer}
+
+.proof-grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+.featured-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:0}
+
+.proof-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:26px 22px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .2s,transform .2s;position:relative}
+.proof-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);transform:translateY(-2px)}
+.proof-card--featured{border-color:rgba(200,103,58,.18);background:linear-gradient(140deg,#fff 0%,#fffaf6 100%)}
+.proof-card--featured::after{content:'FEATURED';position:absolute;top:16px;right:16px;font-size:9px;font-weight:700;letter-spacing:.12em;color:#C8673A;background:rgba(200,103,58,.08);padding:3px 8px;border-radius:4px}
+.proof-card__type{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);font-weight:600}
+.proof-card__client{font-family:var(--font-display);font-size:17px;color:var(--text);line-height:1.3}
+.proof-card__stat-value{font-family:var(--font-display);font-size:clamp(30px,4vw,44px);color:var(--text);line-height:1}
+.proof-card__stat-label{font-size:12px;color:var(--text-2);margin-top:3px}
+.proof-card__desc{font-size:13px;line-height:1.65;color:var(--text-2)}
+.proof-card__review{font-size:14px;line-height:1.7;color:var(--text-2);font-style:italic}
+.proof-card__review::before{content:'\201C'}
+.proof-card__review::after{content:'\201D'}
+.proof-card__stars{color:#f5a623;font-size:13px;letter-spacing:1px}
+.proof-card__meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-3);border-top:1px solid var(--border);padding-top:12px;margin-top:auto;flex-wrap:wrap}
+.proof-card__tags{display:flex;flex-wrap:wrap;gap:5px}
+.proof-tag{font-size:10px;padding:3px 8px;border-radius:4px;background:var(--bg-alt-2);color:var(--text-2);text-transform:uppercase;letter-spacing:.07em}
+
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba-box{background:var(--bg-alt);border-radius:8px;padding:14px;text-align:center}
+.ba-box__label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:6px}
+.ba-box__value{font-family:var(--font-display);font-size:22px;color:var(--text)}
+.ba-box--after .ba-box__value{color:#2d8a4e}
+
+.roi-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.roi-from{font-size:15px;color:var(--text-3);text-decoration:line-through}
+.roi-arrow{color:#C8673A;font-size:20px}
+.roi-to{font-family:var(--font-display);font-size:28px;color:var(--text)}
+
+.screenshot-box{width:100%;height:120px;background:var(--bg-alt-2);border:1.5px dashed var(--border-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:var(--text-3);transition:background .15s;text-align:center;padding:10px}
+.screenshot-box:hover{background:var(--bg-alt)}
+.screenshot-box span{display:block;margin-top:6px;font-size:11px;color:#C8673A}
+
+.load-more-wrap{text-align:center;padding:32px 0}
+.load-more-wrap p{font-size:13px;color:var(--text-3);margin-top:12px}
+
+.results-empty{text-align:center;padding:80px 20px;color:var(--text-3)}
+.results-empty h3{font-size:18px;margin-bottom:8px;color:var(--text-2)}
+
+.ph-notice{background:#fffbee;border:1px solid #f0d060;border-radius:8px;padding:14px 18px;font-size:13px;color:#6e5800;margin-bottom:24px;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.ph-notice strong{font-weight:600;color:#5a4600}
+
+.results-cta{background:var(--bg-dark);color:#fff;padding:clamp(80px,10vw,120px) var(--gutter);text-align:center}
+.results-cta__inner{max-width:640px;margin:0 auto}
+.results-cta .pill{background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.12)}
+.results-cta h2{font-family:var(--font-display);font-size:clamp(34px,5vw,58px);color:#fff;margin:20px 0 16px;line-height:1.1}
+.results-cta h2 em{color:#C8673A;font-style:normal}
+.results-cta p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.7;margin-bottom:36px}
+.results-cta__btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:20px}
+.lightbox--open{display:flex}
+.lightbox__box{background:#fff;border-radius:12px;max-width:580px;width:100%;padding:36px;position:relative;max-height:82vh;overflow-y:auto}
+.lightbox__close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-2);line-height:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.lightbox__close:hover{background:var(--bg-alt)}
+.lightbox__ph{background:var(--bg-alt);border:2px dashed var(--border-dk);border-radius:8px;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-3);font-size:13px;text-align:center;padding:24px;gap:8px}
+.lightbox__ph strong{color:var(--text-2);font-size:15px}
+
+@media(max-width:1100px){.niche-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.proof-grid{grid-template-columns:repeat(2,1fr)}.featured-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.niche-grid{grid-template-columns:1fr 1fr}.proof-grid{grid-template-columns:1fr}.featured-row{grid-template-columns:1fr}.trust-bar__inner{flex-wrap:wrap}.trust-stat{flex:1 1 calc(50% - 1px);border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}.trust-stat:nth-child(even){border-right:none}.trust-stat:nth-last-child(-n+2){border-bottom:none}}
+@media(max-width:380px){.niche-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.proof-card,.niche-card{transition:none}}
+</style>
 </head>
 <body>
 
+<!-- Loader -->
 <div class="loader" id="loader" aria-hidden="true">
   <span class="loader__word">Client Results</span>
 </div>
 
-<nav class="nav scrolled" role="navigation">
-  <a href="index.html" class="nav__logo"><img src="logo.svg" alt="Dublin Growth Digital"/></a>
+<!-- Nav -->
+<nav class="nav scrolled" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo" aria-label="Dublin Growth Digital home">
+    <img src="logo.svg" alt="Dublin Growth Digital"/>
+  </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
     <li><a href="web-design.html">Web Design</a></li>
@@ -33,11 +145,15 @@
   </ul>
   <div class="nav__right">
     <a href="services.html" class="btn btn--ghost" style="font-size:13px;padding:9px 20px;">Services</a>
-    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary" style="font-size:13px;padding:9px 20px;" target="_blank" rel="noopener">Book a Call</a>
+    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary" style="font-size:13px;padding:9px 20px;" target="_blank" rel="noopener">Free Growth Plan →</a>
   </div>
-  <button class="nav__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<nav class="nav__drawer">
+
+<!-- Mobile Drawer -->
+<nav class="nav__drawer" aria-label="Mobile navigation">
   <ul class="nav__drawer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="web-design.html">Web Design</a></li>
@@ -47,8 +163,8 @@
     <li><a href="offer.html">Offer</a></li>
   </ul>
   <div class="nav__drawer-cta">
-    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Book Free Call</a>
-    <a href="contact.html" class="btn btn--ghost btn--lg">Contact Us</a>
+    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Book a Free Strategy Call</a>
+    <a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Dublin%20Growth%20Digital" class="btn btn--ghost btn--lg" target="_blank" rel="noopener">Message on WhatsApp →</a>
   </div>
 </nav>
 
@@ -57,265 +173,151 @@
   <div class="page-hero__bg" aria-hidden="true"></div>
   <div class="page-hero__inner">
     <span class="pill">Client Results</span>
-    <h1>Numbers that <em>speak for themselves.</em></h1>
-    <p>Real results from real Irish businesses. No vanity metrics — just revenue, leads, and growth you can bank on.</p>
+    <h1>Real businesses.<br>Real campaigns.<br><em>Measurable growth.</em></h1>
+    <p>Every result on this page comes from a real Irish business. No stock photography. No invented numbers. Verified leads, verified revenue, verified ROAS — from campaigns we built and managed.</p>
     <div class="page-hero__actions">
-      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Results Like These</a>
+      <a href="#see-results" class="btn btn--primary btn--lg">See the Results ↓</a>
+      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--ghost btn--lg" target="_blank" rel="noopener">Get Results Like These →</a>
     </div>
   </div>
 </section>
 
-<!-- Summary Stats -->
-<section class="stats-bar" aria-label="Agency results summary">
-  <div class="stats-bar__grid">
-    <div class="stat-item reveal">
-      <div class="stat-item__num" data-count="52" data-suffix="+">52<span class="suffix">+</span></div>
-      <div class="stat-item__label">Irish businesses helped</div>
+<!-- Trust Bar -->
+<div class="trust-bar" aria-label="Agency performance overview">
+  <div class="trust-bar__inner">
+    <div class="trust-stat">
+      <div class="trust-stat__value">52+</div>
+      <div class="trust-stat__label">Irish Businesses Scaled</div>
     </div>
-    <div class="stat-item reveal reveal-d1">
-      <div class="stat-item__num" data-count="340" data-suffix="%">340<span class="suffix">%</span></div>
-      <div class="stat-item__label">Average lead increase</div>
+    <div class="trust-stat">
+      <div class="trust-stat__value">[X,XXX]+</div>
+      <div class="trust-stat__label">Qualified Leads Generated</div>
     </div>
-    <div class="stat-item reveal reveal-d2">
-      <div class="stat-item__num" data-count="15" data-suffix="x">15<span class="suffix">x</span></div>
-      <div class="stat-item__label">Average ROAS on paid ads</div>
+    <div class="trust-stat">
+      <div class="trust-stat__value">4.9★</div>
+      <div class="trust-stat__label">Average Client Rating</div>
     </div>
-    <div class="stat-item reveal reveal-d3">
-      <div class="stat-item__num" data-count="4.9" data-suffix="★">4.9<span class="suffix">★</span></div>
-      <div class="stat-item__label">Client satisfaction rating</div>
+    <div class="trust-stat">
+      <div class="trust-stat__value">[XX]x</div>
+      <div class="trust-stat__label">Average ROAS</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat__value">26</div>
+      <div class="trust-stat__label">Counties Served</div>
+    </div>
+  </div>
+</div>
+
+<!-- Niche Selector -->
+<section class="niche-selector" id="see-results">
+  <div class="niche-selector__inner">
+    <div class="niche-selector__head">
+      <h2>What type of business are you?</h2>
+      <p>Select your industry to see results most relevant to you — or browse all campaigns below.</p>
+    </div>
+    <div class="niche-grid" role="list">
+      <button class="niche-card" role="listitem" data-industry="trades" aria-pressed="false" tabindex="0">
+        <div class="niche-card__icon">🔧</div>
+        <div class="niche-card__title">Trades &amp; Service Businesses</div>
+        <div class="niche-card__desc">Plumbing, roofing, electrical, heating, construction, cleaning, landscaping, and all trade services.</div>
+        <div class="niche-card__count" data-industry-count="trades">— results</div>
+        <div class="niche-card__arrow">→</div>
+      </button>
+      <button class="niche-card" role="listitem" data-industry="estate-agency" aria-pressed="false" tabindex="0">
+        <div class="niche-card__icon">🏠</div>
+        <div class="niche-card__title">Estate Agencies</div>
+        <div class="niche-card__desc">Property sales, lettings, new developments, buyer lead generation, and vendor marketing.</div>
+        <div class="niche-card__count" data-industry-count="estate-agency">— results</div>
+        <div class="niche-card__arrow">→</div>
+      </button>
+      <button class="niche-card" role="listitem" data-industry="solar" aria-pressed="false" tabindex="0">
+        <div class="niche-card__icon">☀️</div>
+        <div class="niche-card__title">Solar Companies</div>
+        <div class="niche-card__desc">Solar panel installers, heat pumps, EV chargers, and renewable energy services across Ireland.</div>
+        <div class="niche-card__count" data-industry-count="solar">— results</div>
+        <div class="niche-card__arrow">→</div>
+      </button>
+      <button class="niche-card" role="listitem" data-industry="other" aria-pressed="false" tabindex="0">
+        <div class="niche-card__icon">📈</div>
+        <div class="niche-card__title">Other Niches</div>
+        <div class="niche-card__desc">Hospitality, healthcare, retail, professional services, e-commerce, and more Irish businesses.</div>
+        <div class="niche-card__count" data-industry-count="other">— results</div>
+        <div class="niche-card__arrow">→</div>
+      </button>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn--ghost" id="show-all-btn">Or view all results →</button>
     </div>
   </div>
 </section>
 
-<!-- Case Studies Grid -->
-<section class="results-page" style="background:var(--bg-alt)">
-  <div class="results-page__inner">
-    <div class="section-header reveal">
-      <span class="pill">Case Studies</span>
-      <h2>Every result. Every industry.</h2>
-      <p>From local trade businesses to national e-commerce brands — here's what we've built for our clients.</p>
+<!-- Results Main -->
+<section class="results-main" id="results-section" aria-label="Campaign results">
+  <div class="results-main__inner">
+
+    <!-- Placeholder notice -->
+    <div class="ph-notice" id="ph-notice" role="alert" aria-live="polite">
+      ⚠️
+      <div>
+        <strong>Editor notice — placeholder content only.</strong>
+        All [BRACKETED] text below must be replaced with verified client data before publishing. Only records with <code>status:"published"</code> and <code>verified:true</code> will appear on the live site. No content should be visible to visitors until real data is confirmed.
+      </div>
     </div>
 
-    <div class="results-full__grid">
-
-      <div class="result-full-card reveal">
-        <div class="result-full-card__ind">Hospitality</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+420%</div>
-            <div class="metric-block__lbl">Online bookings</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">3.2x</div>
-            <div class="metric-block__lbl">Revenue growth</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Restaurant Group</div>
-        <div class="result-full-card__body">Full social media management and Meta Ads campaign. We created a consistent content strategy with weekly Reels, Stories, and promotional campaigns that drove a 420% increase in online table bookings within 90 days.</div>
+    <!-- Filter Bar -->
+    <div class="results-filter-bar" role="navigation" aria-label="Filter results">
+      <div class="results-filter-bar__row" id="filter-chips" role="group" aria-label="Filter by campaign type">
+        <button class="filter-chip filter-chip--active" data-filter="all">All Results</button>
+        <button class="filter-chip" data-filter="lead-gen">Lead Generation</button>
+        <button class="filter-chip" data-filter="revenue">Revenue</button>
+        <button class="filter-chip" data-filter="cpl">Cost Per Lead</button>
+        <button class="filter-chip" data-filter="reviews">Client Reviews</button>
+        <button class="filter-chip" data-filter="video-reviews">Video Reviews</button>
+        <button class="filter-chip" data-filter="meta-ads">Meta Ads</button>
+        <button class="filter-chip" data-filter="google-ads">Google Ads</button>
+        <button class="filter-chip" data-filter="websites">Websites</button>
+        <button class="filter-chip" data-filter="seo">SEO</button>
       </div>
-
-      <div class="result-full-card reveal reveal-d1">
-        <div class="result-full-card__ind">E-Commerce Fashion</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">18x</div>
-            <div class="metric-block__lbl">Return on ad spend</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">€180k</div>
-            <div class="metric-block__lbl">Revenue in 6 months</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Irish Fashion Brand</div>
-        <div class="result-full-card__body">Google Shopping and Meta Ads strategy with full creative production. Built a retargeting funnel that turned window shoppers into buyers — delivering 18x ROAS and €180k in tracked revenue in six months.</div>
-      </div>
-
-      <div class="result-full-card reveal reveal-d2">
-        <div class="result-full-card__ind">Trade Services</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+290%</div>
-            <div class="metric-block__lbl">Qualified leads/month</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">#1</div>
-            <div class="metric-block__lbl">Google ranking</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Plumbing Company</div>
-        <div class="result-full-card__body">New website, Google Ads campaign, and local SEO campaign. Took a struggling plumbing business from zero online presence to the #1 Google ranking for their key terms and 290% more leads every month.</div>
-      </div>
-
-      <div class="result-full-card reveal">
-        <div class="result-full-card__ind">Health & Fitness</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+580</div>
-            <div class="metric-block__lbl">New members in 90 days</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">€12/</div>
-            <div class="metric-block__lbl">Cost per lead</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Leinster Fitness Studio</div>
-        <div class="result-full-card__body">Instagram content strategy and Meta lead ads campaign. Built a consistent brand presence and launched a membership drive that added 580 new members in 90 days at just €12 cost per lead.</div>
-      </div>
-
-      <div class="result-full-card reveal reveal-d1">
-        <div class="result-full-card__ind">Property</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">€2.1M</div>
-            <div class="metric-block__lbl">Enquiry value generated</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">240+</div>
-            <div class="metric-block__lbl">Qualified enquiries</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Property Agency</div>
-        <div class="result-full-card__body">Google Ads and conversion-optimised landing pages for both buyers and sellers. Generated over 240 qualified property enquiries representing €2.1M in potential transaction value in a single quarter.</div>
-      </div>
-
-      <div class="result-full-card reveal reveal-d2">
-        <div class="result-full-card__ind">Professional Services</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">#1</div>
-            <div class="metric-block__lbl">Google in 4 months</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">+180%</div>
-            <div class="metric-block__lbl">Organic traffic</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Accountancy Firm</div>
-        <div class="result-full-card__body">Technical SEO overhaul and content strategy. Took a local accountancy firm to position one for their most valuable keywords in just four months, driving a 180% increase in organic traffic and consistent new client enquiries.</div>
-      </div>
-
-      <div class="result-full-card reveal">
-        <div class="result-full-card__ind">Retail</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+340%</div>
-            <div class="metric-block__lbl">Online sales</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">8.2x</div>
-            <div class="metric-block__lbl">ROAS</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Irish Gift Shop</div>
-        <div class="result-full-card__body">New e-commerce website plus Google Shopping and Meta Ads strategy. Transformed a brick-and-mortar gift shop into a thriving online business with 340% growth in online sales and 8.2x return on ad spend.</div>
-      </div>
-
-      <div class="result-full-card reveal reveal-d1">
-        <div class="result-full-card__ind">Beauty & Wellness</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+8,200</div>
-            <div class="metric-block__lbl">Instagram followers</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">Fully</div>
-            <div class="metric-block__lbl">Booked out</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Beauty Salon</div>
-        <div class="result-full-card__body">Full Instagram management with consistent Reels and Stories. Grew the account by 8,200 followers in six months and generated enough bookings to have the salon fully booked three weeks in advance every month.</div>
-      </div>
-
-      <div class="result-full-card reveal reveal-d2">
-        <div class="result-full-card__ind">Education</div>
-        <div class="result-full-card__metrics">
-          <div class="metric-block">
-            <div class="metric-block__val">+670%</div>
-            <div class="metric-block__lbl">Course enrolments</div>
-          </div>
-          <div class="metric-block">
-            <div class="metric-block__val">€48k</div>
-            <div class="metric-block__lbl">Revenue in first term</div>
-          </div>
-        </div>
-        <div class="result-full-card__title">Dublin Training Academy</div>
-        <div class="result-full-card__body">Website rebuild, Meta Ads campaign, and email marketing sequence. Launched a new course offering with a complete digital marketing funnel that generated 670% more enrolments than the previous manual approach.</div>
-      </div>
-
     </div>
+
+    <!-- Meta row -->
+    <div class="results-meta-row">
+      <div class="results-count" id="results-count" aria-live="polite">— results</div>
+      <div class="results-sort">
+        <label for="sort-select">Sort:</label>
+        <select id="sort-select" aria-label="Sort results">
+          <option value="featured">Featured</option>
+          <option value="newest">Newest</option>
+          <option value="high-leads">Highest Lead Volume</option>
+          <option value="low-cpl">Lowest Cost Per Lead</option>
+          <option value="high-revenue">Highest Revenue</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="proof-grid" aria-label="Results cards" aria-live="polite">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Load More -->
+    <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+      <button class="btn btn--ghost btn--lg" id="load-more-btn" aria-label="Load more results">Load More Results</button>
+      <p id="load-more-label"></p>
+    </div>
+
   </div>
 </section>
 
-<!-- Testimonials -->
-<section class="testimonials">
-  <div class="testimonials__inner">
-    <div class="testimonials__head reveal">
-      <h2>In their own words.</h2>
-      <div class="testimonials__nav">
-        <button class="t-btn t-btn--prev" aria-label="Previous">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
-        </button>
-        <button class="t-btn t-btn--next" aria-label="Next">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="testimonials__track-wrap">
-      <div class="testimonials__track">
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">"Our bookings tripled in the first two months. Genuinely the best investment we've made in the business."</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">S</div>
-            <div><div class="tcard__name">Siobhán Murphy</div><div class="tcard__role">Murphy's Bistro, Dublin 4</div></div>
-          </div>
-        </div>
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">"Finally a marketing agency that delivers. Our Google Ads generate more leads than we can handle — in a good way."</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">C</div>
-            <div><div class="tcard__name">Ciarán O'Brien</div><div class="tcard__role">O'Brien Plumbing &amp; Heating</div></div>
-          </div>
-        </div>
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">"The new website is stunning. We went from embarrassed to share our URL to handing it out to everyone we meet."</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">A</div>
-            <div><div class="tcard__name">Aoife Gallagher</div><div class="tcard__role">Gallagher Interiors</div></div>
-          </div>
-        </div>
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">"18x ROAS. I genuinely didn't think that number was possible until I saw it on our monthly report."</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">R</div>
-            <div><div class="tcard__name">Róisín Byrne</div><div class="tcard__role">Byrne Active Wear</div></div>
-          </div>
-        </div>
-        <div class="tcard">
-          <div class="tcard__stars">★★★★★</div>
-          <p class="tcard__quote">"From zero to page one on Google in four months. The SEO results have completely transformed how we get clients."</p>
-          <div class="tcard__author">
-            <div class="tcard__avatar">P</div>
-            <div><div class="tcard__name">Patrick Walsh</div><div class="tcard__role">Walsh &amp; Associates Accountants</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band">
-  <div class="cta-band__inner reveal">
-    <span class="pill">Your Turn</span>
-    <h2>Ready to be our <em>next success story?</em></h2>
-    <p>Book a free strategy call and let's map out exactly how we'll get you results like these.</p>
-    <div class="cta-band__btns">
-      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Book Free Strategy Call</a>
-      <a href="contact.html" class="btn btn--ghost btn--lg">Send a Message</a>
+<!-- Conversion CTA -->
+<section class="results-cta" aria-label="Call to action">
+  <div class="results-cta__inner">
+    <span class="pill">Limited Availability</span>
+    <h2>Your business could<br>be <em>next.</em></h2>
+    <p>We only take on 2 new clients per quarter. If you're an ambitious Irish business owner who wants results you can actually measure, let's talk before the next slot fills.</p>
+    <div class="results-cta__btns">
+      <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Your Free Growth Plan →</a>
+      <a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Dublin%20Growth%20Digital" class="btn btn--ghost btn--lg" target="_blank" rel="noopener">WhatsApp Us Directly →</a>
     </div>
   </div>
 </section>
@@ -325,8 +327,10 @@
   <div class="footer__inner">
     <div class="footer__top">
       <div>
-        <div class="footer__brand-logo"><img src="logo.svg" alt="Dublin Growth Digital"/></div>
-        <p class="footer__brand-desc">Ireland's #1 SMMA &amp; web design agency helping Irish businesses grow online.</p>
+        <div class="footer__brand-logo">
+          <img src="logo.svg" alt="Dublin Growth Digital"/>
+        </div>
+        <p class="footer__brand-desc">Ireland's premium digital growth partner. We work with a select group of ambitious Irish businesses to build dominant market positions and drive measurable revenue growth.</p>
       </div>
       <div>
         <div class="footer__col-title">Services</div>
@@ -344,44 +348,907 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="results.html">Results</a></li>
           <li><a href="contact.html">Contact</a></li>
-    <li><a href="offer.html">Offer</a></li>
-          <li><a href="services.html#pricing">Pricing</a></li>
+          <li><a href="offer.html">Offer</a></li>
+          <li><a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" target="_blank" rel="noopener">Book a Strategy Call</a></li>
         </ul>
       </div>
       <div>
         <div class="footer__col-title">Contact</div>
         <ul class="footer__links">
-          <li></li>
-          
-          <li><a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/dublin.growth.digital/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/Dublin.Growth.Digital" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="mailto:dublingrowthdigital@gmail.com">dublingrowthdigital@gmail.com</a></li>
+          <li><a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <span class="footer__copy">&copy; 2026 Dublin Growth Digital. All rights reserved.</span>
       <div class="footer__socials">
-        <a href="https://www.instagram.com/dublinsocialagency/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/dublinsocialagency" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/dublin.growth.digital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/Dublin.Growth.Digital" target="_blank" rel="noopener">Facebook</a>
         <a href="https://wa.me/353871257533" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="wa-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
-  
+<!-- WhatsApp Float -->
+<a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Dublin%20Growth%20Digital" class="wa-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
   <span class="wa-float__icon">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </span>
 </a>
+
+<!-- Exit Intent Popup -->
+<div class="exit-popup" id="exit-popup" role="dialog" aria-modal="true" aria-label="Special offer">
+  <div class="exit-popup__bg"></div>
+  <div class="exit-popup__box">
+    <button class="exit-popup__close" aria-label="Close">&times;</button>
+    <span class="pill" style="margin-bottom:20px">Before You Go</span>
+    <h3>Don't leave without your free strategy.</h3>
+    <p>Book a free 30-minute call with our team and leave with a clear growth plan for your business — zero obligation.</p>
+    <a href="https://calendar.app.google/iwLnEDJTo2RprYDJ6" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Book Free Strategy Call →</a>
+    <a href="https://wa.me/353871257533?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Dublin%20Growth%20Digital" style="display:block;text-align:center;margin-top:12px;font-size:13px;color:#888;text-decoration:none;" target="_blank" rel="noopener">Or message us on WhatsApp →</a>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <div class="lightbox__box">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close preview">&times;</button>
+    <div id="lightbox-content"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   RESULTS DATA MODEL
+   ─────────────────────────────────────────────────────
+   Each record represents one proof card on the page.
+
+   FIELD REFERENCE:
+   id          — unique string identifier
+   industry    — 'trades' | 'estate-agency' | 'solar' | 'other'
+   cardType    — 'case-study' | 'review' | 'lead-gen' | 'revenue'
+               |  'cpl' | 'before-after' | 'roi' | 'screenshot'
+   featured    — true = large featured card (shown first)
+   status      — 'published' | 'placeholder'
+   verified    — true = data has been verified with client
+   clientName  — string (use [VERIFIED CLIENT NAME] until confirmed)
+   location    — string (county / city)
+   campaignLabel — short label, e.g. 'Meta Ads · Lead Gen'
+   tags        — array of filter keys (see FILTERS below)
+   dateLabel   — e.g. 'March 2025'
+   sortLeads   — number for sorting (or null)
+   sortCPL     — number in euros for sorting (or null)
+   sortRevenue — number in euros for sorting (or null)
+
+   CARD-TYPE FIELDS:
+   statValue / statLabel — for case-study / lead-gen / revenue / cpl cards
+   description           — supporting copy
+   review / stars        — for review cards
+   beforeValue / beforeLabel / afterValue / afterLabel — for before-after cards
+   roiFrom / roiTo / roiLabel — for ROI cards
+   hasScreenshot         — true = shows screenshot placeholder box
+   screenshotLabel       — caption for screenshot placeholder
+
+   LIVE FILTERING:
+   Only records with status:'published' AND verified:true
+   are shown to site visitors. All others remain hidden.
+   ═══════════════════════════════════════════════════════ */
+
+const DATA = [
+
+  /* ── TRADES & SERVICE BUSINESSES ── */
+  {
+    id:'tr-01', industry:'trades', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Dublin Plumbing & Heating Co.]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Generation · Meta Ads',
+    statValue:'[XX]', statLabel:'qualified leads in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — e.g. "Generated XX qualified inbound enquiries in XX days at a cost per lead of €XX. Total campaign revenue attributable: €XX,XXX."]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-02', industry:'trades', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Kildare Roofing Specialists]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Google Ads · Lead Generation',
+    statValue:'[XX]', statLabel:'new contracts in [XX] weeks',
+    description:'[VERIFIED CAMPAIGN RESULT — describe specific outcome, timeline, and cost per acquisition achieved.]',
+    tags:['lead-gen','google-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-03', industry:'trades', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Leinster Electrical Services]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Meta Ads · Revenue Campaign',
+    statValue:'€[XX,XXX]', statLabel:'revenue generated in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — describe the revenue outcome, ROAS, and any other key performance indicators verified with client.]',
+    tags:['revenue','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-04', industry:'trades', cardType:'review', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Client Review · [Service Type]',
+    statValue:null, statLabel:null,
+    description:null,
+    tags:['reviews'],
+    dateLabel:'[Month YYYY]',
+    review:'[VERIFIED REVIEW TEXT — exact words from the client, copied from Google / Facebook / WhatsApp screenshot. Do not paraphrase.]',
+    stars:5,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-05', industry:'trades', cardType:'before-after', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Cost Per Lead · Google Ads',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what changed and why.]',
+    tags:['cpl','google-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:'€[XX]', afterValue:'€[XX]',
+    beforeLabel:'Cost per lead before', afterLabel:'Cost per lead after',
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-06', industry:'trades', cardType:'roi', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Meta Ads · ROAS',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — campaign type, duration, and what the ROI figure represents.]',
+    tags:['revenue','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:'€[XXX] ad spend', roiTo:'€[XX,XXX] revenue', roiLabel:'Verified Meta Ads result',
+    hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-07', industry:'trades', cardType:'screenshot', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Ads Manager Screenshot · Meta Ads',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what the screenshot shows and what period it covers.]',
+    tags:['meta-ads','lead-gen'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null,
+    hasScreenshot:true, screenshotLabel:'[VERIFIED ADS MANAGER SCREENSHOT — upload actual image before publishing]',
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-08', industry:'trades', cardType:'lead-gen', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Generation · Google Ads',
+    statValue:'[XX]', statLabel:'appointment bookings in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — number of bookings, campaign type, and any cost-per-booking figure.]',
+    tags:['lead-gen','google-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'tr-09', industry:'trades', cardType:'review', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Client Review · [Service Type]',
+    statValue:null, statLabel:null, description:null,
+    tags:['reviews'],
+    dateLabel:'[Month YYYY]',
+    review:'[VERIFIED REVIEW TEXT — exact client words, sourced from a screenshot.]',
+    stars:5,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+
+  /* ── ESTATE AGENCIES ── */
+  {
+    id:'ea-01', industry:'estate-agency', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Dublin Southside Property Agency]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Generation · Meta Ads',
+    statValue:'[XX]', statLabel:'qualified buyer leads in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — e.g. "XX qualified buyer enquiries generated in XX days. XX of those converted to viewings. Total property values in pipeline: €X.XM."]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ea-02', industry:'estate-agency', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Connacht Property Sales]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Vendor Lead Generation · Google Ads',
+    statValue:'€[X.XM]', statLabel:'in property enquiries in [X] quarter',
+    description:'[VERIFIED CAMPAIGN RESULT — breakdown of buyer and vendor leads, pipeline value, and campaign ROI. Exact figures to be confirmed with client.]',
+    tags:['lead-gen','revenue','google-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ea-03', industry:'estate-agency', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Munster Lettings Agency]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Landlord Lead Generation · Meta Ads',
+    statValue:'[XX]', statLabel:'landlord instructions in [XX] weeks',
+    description:'[VERIFIED CAMPAIGN RESULT — number of new landlord instructions, cost per instruction, and any additional metrics.]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ea-04', industry:'estate-agency', cardType:'review', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Client Review · Property Marketing',
+    statValue:null, statLabel:null, description:null,
+    tags:['reviews'],
+    dateLabel:'[Month YYYY]',
+    review:'[VERIFIED REVIEW TEXT — exact words from the estate agent or principal, sourced from a screenshot or written confirmation.]',
+    stars:5,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ea-05', industry:'estate-agency', cardType:'before-after', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Cost Per Lead · Meta Ads',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — timeframe, campaign type, what the before / after figures represent.]',
+    tags:['cpl','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:'€[XXX]', afterValue:'€[XX]',
+    beforeLabel:'Previous cost per enquiry', afterLabel:'DGD cost per enquiry',
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ea-06', industry:'estate-agency', cardType:'screenshot', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Ads Manager Screenshot · Meta Ads',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what the screenshot shows, what period it covers, and key metrics visible.]',
+    tags:['meta-ads','lead-gen'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null,
+    hasScreenshot:true, screenshotLabel:'[VERIFIED ADS MANAGER SCREENSHOT — upload actual image before publishing]',
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+
+  /* ── SOLAR COMPANIES ── */
+  {
+    id:'so-01', industry:'solar', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Dublin Solar Installations Ltd.]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Generation · Meta Ads',
+    statValue:'[XX]', statLabel:'solar enquiries per month',
+    description:'[VERIFIED CAMPAIGN RESULT — monthly lead volume, cost per lead, and any conversion / installation pipeline data confirmed with client.]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'so-02', industry:'solar', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Leinster Heat Pump Specialists]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Google Ads · Revenue',
+    statValue:'€[XX,XXX]', statLabel:'in signed installation contracts in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — ad spend, number of installations contracted, average contract value, and total revenue figure to be confirmed.]',
+    tags:['revenue','google-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'so-03', industry:'solar', cardType:'cpl', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Munster Solar & EV Charge]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Cost Per Lead · Meta Ads',
+    statValue:'€[XX]', statLabel:'average cost per qualified solar lead',
+    description:'[VERIFIED CAMPAIGN RESULT — number of leads, cost per lead, campaign duration, and any conversion data. Actual CPL figure to be confirmed with client.]',
+    tags:['cpl','lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'so-04', industry:'solar', cardType:'review', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Client Review · Solar Lead Generation',
+    statValue:null, statLabel:null, description:null,
+    tags:['reviews'],
+    dateLabel:'[Month YYYY]',
+    review:'[VERIFIED REVIEW TEXT — exact client words. Source from screenshot (Google / Facebook / WhatsApp). Do not paraphrase.]',
+    stars:5,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'so-05', industry:'solar', cardType:'before-after', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Volume · Before vs After',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what the before/after represents (monthly leads, CPL, enquiry rate) and the campaign that drove the change.]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:'[X]', afterValue:'[XX]',
+    beforeLabel:'Monthly enquiries before', afterLabel:'Monthly enquiries after',
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'so-06', industry:'solar', cardType:'roi', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Meta Ads · Return on Ad Spend',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — campaign type, duration, and verification method for the ROI figure.]',
+    tags:['revenue','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:'€[XXX] ad spend', roiTo:'€[XX,XXX] revenue', roiLabel:'Verified Meta Ads result',
+    hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+
+  /* ── OTHER NICHES ── */
+  {
+    id:'ot-01', industry:'other', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Dublin Hospitality / Restaurant / Clinic]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Lead Generation · Meta Ads',
+    statValue:'[XX]', statLabel:'[bookings / enquiries / leads] in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — describe the specific business type, campaign type, and outcome. Exact figures to be confirmed with client.]',
+    tags:['lead-gen','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ot-02', industry:'other', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Irish E-Commerce Brand]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Revenue · Meta Ads',
+    statValue:'[XX]x', statLabel:'return on ad spend in [XX] days',
+    description:'[VERIFIED CAMPAIGN RESULT — ad spend amount, revenue generated, ROAS, and campaign duration. Exact figures to be confirmed with client via Ads Manager access.]',
+    tags:['revenue','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ot-03', industry:'other', cardType:'case-study', featured:true,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME — e.g. Dublin Professional Services Firm]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'SEO · Organic Growth',
+    statValue:'#[X]', statLabel:'Google ranking for [target keyword] in [XX] months',
+    description:'[VERIFIED CAMPAIGN RESULT — keywords ranked, traffic increase, and inbound enquiry data confirmed with client. Actual ranking position and keyword to be verified.]',
+    tags:['seo'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ot-04', industry:'other', cardType:'review', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Client Review · [Service Type]',
+    statValue:null, statLabel:null, description:null,
+    tags:['reviews'],
+    dateLabel:'[Month YYYY]',
+    review:'[VERIFIED REVIEW TEXT — copy verbatim from screenshot. Do not paraphrase or summarise.]',
+    stars:5,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ot-05', industry:'other', cardType:'roi', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Meta Ads · ROI',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what the ROI figure represents, campaign type, duration, and data source.]',
+    tags:['revenue','meta-ads'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:null, afterValue:null, beforeLabel:null, afterLabel:null,
+    roiFrom:'€[XXX] ad spend', roiTo:'€[XX,XXX] revenue', roiLabel:'Verified campaign result',
+    hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  },
+  {
+    id:'ot-06', industry:'other', cardType:'before-after', featured:false,
+    status:'placeholder', verified:false,
+    clientName:'[VERIFIED CLIENT NAME]',
+    location:'[VERIFIED COUNTY / CITY]',
+    campaignLabel:'Website Results · Before vs After',
+    statValue:null, statLabel:null,
+    description:'[VERIFIED CONTEXT — what metric improved (traffic, enquiries, conversion rate), timeframe, and what changed.]',
+    tags:['websites','seo'],
+    dateLabel:'[Month YYYY]',
+    review:null, stars:null,
+    beforeValue:'[X]%', afterValue:'[X]%',
+    beforeLabel:'Enquiry conversion rate before', afterLabel:'Enquiry conversion rate after',
+    roiFrom:null, roiTo:null, roiLabel:null, hasScreenshot:false,
+    sortLeads:null, sortCPL:null, sortRevenue:null
+  }
+
+]; /* END DATA */
+
+/* ═══════════════════════════════════════════
+   STATE
+   ─────────────────────────────────────────
+   Change industry / filter / sort by calling
+   setState() — never mutate directly.
+   ═══════════════════════════════════════════ */
+const state = {
+  industry: null,   /* null = all industries */
+  filter: 'all',
+  sort: 'featured',
+  visible: 12       /* cards shown (grows with Load More) */
+};
+
+const CARDS_PER_PAGE = 9;
+
+/* Industry labels */
+const IND_LABELS = {
+  'trades':        'Trades & Service Businesses',
+  'estate-agency': 'Estate Agencies',
+  'solar':         'Solar Companies',
+  'other':         'Other Niches'
+};
+
+/* ─── URL state ─── */
+function readURL() {
+  const p = new URLSearchParams(location.search);
+  if (p.has('industry') && IND_LABELS[p.get('industry')]) {
+    state.industry = p.get('industry');
+  }
+  if (p.has('filter')) state.filter = p.get('filter');
+  if (p.has('sort'))   state.sort   = p.get('sort');
+}
+
+function writeURL() {
+  const p = new URLSearchParams();
+  if (state.industry) p.set('industry', state.industry);
+  if (state.filter !== 'all') p.set('filter', state.filter);
+  if (state.sort   !== 'featured') p.set('sort', state.sort);
+  const qs = p.toString();
+  history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+}
+
+/* ─── Filter & sort ─── */
+function getFiltered() {
+  let rows = DATA;
+  /* In a live deployment, restrict to published+verified:
+     rows = rows.filter(r => r.status === 'published' && r.verified);
+     For now (placeholder state) show all so the editor can preview the layout. */
+  if (state.industry) rows = rows.filter(r => r.industry === state.industry);
+  if (state.filter !== 'all') rows = rows.filter(r => r.tags && r.tags.includes(state.filter));
+  if (state.sort === 'newest')       rows = [...rows].sort((a,b) => b.id.localeCompare(a.id));
+  else if (state.sort === 'high-leads')  rows = [...rows].sort((a,b) => (b.sortLeads||0) - (a.sortLeads||0));
+  else if (state.sort === 'low-cpl')     rows = [...rows].sort((a,b) => (a.sortCPL||999999) - (b.sortCPL||999999));
+  else if (state.sort === 'high-revenue') rows = [...rows].sort((a,b) => (b.sortRevenue||0) - (a.sortRevenue||0));
+  else /* featured */ rows = [...rows].sort((a,b) => (b.featured?1:0) - (a.featured?1:0));
+  return rows;
+}
+
+/* ─── Card renderers ─── */
+function tagHtml(tags) {
+  if (!tags || !tags.length) return '';
+  return `<div class="proof-card__tags">${tags.map(t => `<span class="proof-tag">${t}</span>`).join('')}</div>`;
+}
+
+function starsHtml(n) {
+  return `<div class="proof-card__stars">${'★'.repeat(Math.max(1,Math.min(5,n||5)))}</div>`;
+}
+
+function renderCard(r) {
+  const featuredClass = r.featured ? ' proof-card--featured' : '';
+  let body = '';
+
+  switch(r.cardType) {
+    case 'case-study':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div>
+          <div class="proof-card__stat-value">${r.statValue || '—'}</div>
+          <div class="proof-card__stat-label">${r.statLabel || ''}</div>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'lead-gen':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div>
+          <div class="proof-card__stat-value">${r.statValue || '—'}</div>
+          <div class="proof-card__stat-label">${r.statLabel || ''}</div>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'cpl':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div>
+          <div class="proof-card__stat-value">${r.statValue || '—'}</div>
+          <div class="proof-card__stat-label">${r.statLabel || ''}</div>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'revenue':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div>
+          <div class="proof-card__stat-value">${r.statValue || '—'}</div>
+          <div class="proof-card__stat-label">${r.statLabel || ''}</div>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'review':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        ${starsHtml(r.stars)}
+        <div class="proof-card__review">${r.review || '[VERIFIED REVIEW TEXT]'}</div>
+        <div class="proof-card__client" style="font-size:15px">${r.clientName}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'before-after':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div class="ba-grid">
+          <div class="ba-box">
+            <div class="ba-box__label">${r.beforeLabel || 'Before'}</div>
+            <div class="ba-box__value">${r.beforeValue || '—'}</div>
+          </div>
+          <div class="ba-box ba-box--after">
+            <div class="ba-box__label">${r.afterLabel || 'After'}</div>
+            <div class="ba-box__value">${r.afterValue || '—'}</div>
+          </div>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'roi':
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div>
+          <div class="roi-row">
+            <span class="roi-from">${r.roiFrom || '—'}</span>
+            <span class="roi-arrow">→</span>
+            <span class="roi-to">${r.roiTo || '—'}</span>
+          </div>
+          ${r.roiLabel ? `<div class="proof-card__stat-label" style="margin-top:4px">${r.roiLabel}</div>` : ''}
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+
+    case 'screenshot': {
+      const scLabel = (r.screenshotLabel || '[Screenshot placeholder]').replace(/'/g, '&#39;');
+      body = `
+        <div class="proof-card__type">${r.campaignLabel}</div>
+        <div class="proof-card__client">${r.clientName}</div>
+        <div class="screenshot-box" role="button" tabindex="0"
+             onclick="openLightbox('${scLabel}')"
+             onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox('${scLabel}')">
+          🖼<span>Click to view · ${r.screenshotLabel || '[Screenshot placeholder]'}</span>
+        </div>
+        <div class="proof-card__desc">${r.description || ''}</div>
+        ${tagHtml(r.tags)}
+        <div class="proof-card__meta">
+          <span>📍 ${r.location}</span>
+          <span style="margin-left:auto">${r.dateLabel}</span>
+        </div>`;
+      break;
+    }
+
+    default:
+      body = `<div class="proof-card__type">${r.cardType}</div><div class="proof-card__client">${r.clientName}</div>`;
+  }
+
+  return `<div class="proof-card${featuredClass}" data-id="${r.id}" data-industry="${r.industry}">${body}</div>`;
+}
+
+/* ─── Render grid ─── */
+function render() {
+  const grid   = document.getElementById('proof-grid');
+  const count  = document.getElementById('results-count');
+  const lmWrap = document.getElementById('load-more-wrap');
+  const lmBtn  = document.getElementById('load-more-btn');
+  const lmLbl  = document.getElementById('load-more-label');
+
+  const rows = getFiltered();
+  const total = rows.length;
+  const slice = rows.slice(0, state.visible);
+
+  count.textContent = `${total} result${total !== 1 ? 's' : ''}`;
+
+  if (total === 0) {
+    grid.innerHTML = `<div class="results-empty"><h3>No results match this filter.</h3><p>Try a different combination or <button onclick="clearFilter()" class="btn btn--ghost" style="display:inline;padding:4px 12px;font-size:13px">clear the filter</button>.</p></div>`;
+    lmWrap.style.display = 'none';
+    return;
+  }
+
+  /* Featured first row, then standard grid */
+  const featured = slice.filter(r => r.featured);
+  const standard = slice.filter(r => !r.featured);
+
+  let html = '';
+  if (featured.length) {
+    html += `<div class="featured-row">${featured.map(renderCard).join('')}</div>`;
+  }
+  if (standard.length) {
+    html += standard.map(renderCard).join('');
+  }
+  grid.innerHTML = html;
+
+  /* Load More */
+  if (total > state.visible) {
+    const remaining = total - state.visible;
+    lmBtn.textContent = `Load More Results`;
+    lmLbl.textContent = `Showing ${slice.length} of ${total} — ${remaining} more to load`;
+    lmWrap.style.display = 'block';
+  } else {
+    lmWrap.style.display = 'none';
+  }
+
+  writeURL();
+  updateNicheCards();
+}
+
+function clearFilter() {
+  state.filter = 'all';
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    c.classList.toggle('filter-chip--active', c.dataset.filter === 'all');
+  });
+  render();
+}
+
+/* ─── Niche card counts ─── */
+function updateNicheCards() {
+  ['trades','estate-agency','solar','other'].forEach(ind => {
+    const count = DATA.filter(r => r.industry === ind).length;
+    const el = document.querySelector(`[data-industry-count="${ind}"]`);
+    if (el) el.textContent = `${count} result${count !== 1 ? 's' : ''}`;
+    const card = document.querySelector(`.niche-card[data-industry="${ind}"]`);
+    if (card) card.setAttribute('aria-pressed', state.industry === ind ? 'true' : 'false');
+    if (card) card.classList.toggle('niche-card--active', state.industry === ind);
+  });
+}
+
+/* ─── Event bindings ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  readURL();
+
+  /* Niche cards */
+  document.querySelectorAll('.niche-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const ind = card.dataset.industry;
+      state.industry = (state.industry === ind) ? null : ind;
+      state.filter = 'all';
+      state.sort = 'featured';
+      state.visible = 12;
+      document.querySelectorAll('.filter-chip').forEach(c =>
+        c.classList.toggle('filter-chip--active', c.dataset.filter === 'all'));
+      document.getElementById('sort-select').value = 'featured';
+      scrollToResults();
+      render();
+    });
+  });
+
+  /* Show all */
+  document.getElementById('show-all-btn').addEventListener('click', () => {
+    state.industry = null;
+    state.filter = 'all';
+    state.visible = 12;
+    scrollToResults();
+    render();
+  });
+
+  /* Filter chips */
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      state.filter = chip.dataset.filter;
+      state.visible = 12;
+      document.querySelectorAll('.filter-chip').forEach(c =>
+        c.classList.toggle('filter-chip--active', c === chip));
+      render();
+    });
+  });
+
+  /* Sort */
+  document.getElementById('sort-select').addEventListener('change', e => {
+    state.sort = e.target.value;
+    state.visible = 12;
+    render();
+  });
+
+  /* Load More */
+  document.getElementById('load-more-btn').addEventListener('click', () => {
+    state.visible += CARDS_PER_PAGE;
+    render();
+    document.getElementById('results-count').focus();
+  });
+
+  /* Sort select: sync from URL */
+  if (state.sort) document.getElementById('sort-select').value = state.sort;
+
+  /* Initial render */
+  render();
+});
+
+function scrollToResults() {
+  const sec = document.getElementById('results-section');
+  if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+/* ─── Lightbox ─── */
+function openLightbox(label) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-content').innerHTML = `
+    <div class="lightbox__ph">
+      <strong>Screenshot Placeholder</strong>
+      <p>${label}</p>
+      <p style="font-size:11px;margin-top:12px;color:#aaa">Upload the actual screenshot image here before publishing.</p>
+    </div>`;
+  lb.classList.add('lightbox--open');
+  document.getElementById('lightbox-close').focus();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('lightbox-close').addEventListener('click', () =>
+    document.getElementById('lightbox').classList.remove('lightbox--open'));
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget)
+      e.currentTarget.classList.remove('lightbox--open');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')
+      document.getElementById('lightbox').classList.remove('lightbox--open');
+  });
+});
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>gsap.registerPlugin(ScrollTrigger);</script>
+<script>if(window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);</script>
 <script src="main.js"></script>
 <script src="chatbot.js"></script>
 </body>
 </html>
-
-
-
