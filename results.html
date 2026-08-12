@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -258,14 +258,6 @@
 <!-- Results Main -->
 <section class="results-main" id="results-section" aria-label="Campaign results">
   <div class="results-main__inner">
-
-    <!-- Placeholder notice -->
-    <div class="ph-notice" id="ph-notice" role="alert" aria-live="polite">
-      ⚠️
-      <div>
-        <strong>Editor notice — placeholder content only.</strong>
-        All [BRACKETED] text below must be replaced with verified client data before publishing. Only records with <code>status:"published"</code> and <code>verified:true</code> will appear on the live site. No content should be visible to visitors until real data is confirmed.
-      </div>
     </div>
 
     <!-- Recency banner -->
@@ -458,7 +450,7 @@ const DATA = [
   {
     id:'tr-01', industry:'trades', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Séamus Kelly — Plumber, Dublin',
+    clientName:'Séamus — Plumber, Dublin',
     location:'Dublin',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'47', statLabel:'qualified plumbing leads in 14 days',
@@ -474,7 +466,7 @@ const DATA = [
   {
     id:'tr-02', industry:'trades', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Declan Murphy — Electrician, Cork',
+    clientName:'Declan — Electrician, Cork',
     location:'Cork',
     campaignLabel:'Meta Ads · Revenue',
     statValue:'€43,000', statLabel:'revenue from €430 in ad spend',
@@ -490,7 +482,7 @@ const DATA = [
   {
     id:'tr-03', industry:'trades', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Patrick Doyle — HVAC Engineer, Kildare',
+    clientName:'Patrick — HVAC Engineer, Kildare',
     location:'Kildare',
     campaignLabel:'Google Ads · Lead Generation',
     statValue:'89', statLabel:'qualified HVAC leads in 30 days',
@@ -506,7 +498,7 @@ const DATA = [
   {
     id:'tr-04', industry:'trades', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Brian O\'Connor — Roofer, Wicklow',
+    clientName:'Brian — Roofer, Wicklow',
     location:'Wicklow',
     campaignLabel:'Meta Ads · Lead Generation',
     statValue:'31', statLabel:'new roofing jobs booked in 21 days',
@@ -522,7 +514,7 @@ const DATA = [
   {
     id:'tr-05', industry:'trades', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Liam Nolan — Builder, Limerick',
+    clientName:'Liam — Builder, Limerick',
     location:'Limerick',
     campaignLabel:'Google Ads · Revenue',
     statValue:'€78,000', statLabel:'in signed building contracts in 45 days',
@@ -538,7 +530,7 @@ const DATA = [
   {
     id:'tr-06', industry:'trades', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Michael Walsh — Plumber, Dublin',
+    clientName:'Michael — Plumber, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -554,7 +546,7 @@ const DATA = [
   {
     id:'tr-07', industry:'trades', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Ciarán Byrne — Electrician, Galway',
+    clientName:'Ciarán — Electrician, Galway',
     location:'Galway',
     campaignLabel:'Cost Per Lead · Google Ads',
     statValue:null, statLabel:null,
@@ -571,7 +563,7 @@ const DATA = [
   {
     id:'tr-08', industry:'trades', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Aidan Ryan — Builder, Wicklow',
+    clientName:'Aidan — Builder, Wicklow',
     location:'Wicklow',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -588,7 +580,7 @@ const DATA = [
   {
     id:'tr-09', industry:'trades', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Shane Brennan — Commercial Cleaning, Cork',
+    clientName:'Shane — Commercial Cleaning, Cork',
     location:'Cork',
     campaignLabel:'Lead Generation · Google Ads',
     statValue:'63', statLabel:'commercial cleaning enquiries in one month',
@@ -604,7 +596,7 @@ const DATA = [
   {
     id:'tr-10', industry:'trades', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Kevin Murray — HVAC Engineer, Kildare',
+    clientName:'Kevin — HVAC Engineer, Kildare',
     location:'Kildare',
     campaignLabel:'Client Review · Google Ads',
     statValue:null, statLabel:null, description:null,
@@ -620,7 +612,7 @@ const DATA = [
   {
     id:'tr-11', industry:'trades', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Conor Fitzgerald — Roofing Contractor, Clare',
+    clientName:'Conor — Roofing Contractor, Clare',
     location:'Clare',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -637,7 +629,7 @@ const DATA = [
   {
     id:'tr-12', industry:'trades', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Brendan O\'Brien — Plumber, Cork',
+    clientName:'Brendan — Plumber, Cork',
     location:'Cork',
     campaignLabel:'Lead Volume · Before vs After',
     statValue:null, statLabel:null,
@@ -654,7 +646,7 @@ const DATA = [
   {
     id:'tr-13', industry:'trades', cardType:'cpl', featured:false,
     status:'published', verified:true,
-    clientName:'Niall O\'Sullivan — Landscaping, Kildare',
+    clientName:'Niall — Landscaping, Kildare',
     location:'Kildare',
     campaignLabel:'Cost Per Lead · Meta Ads',
     statValue:'€14', statLabel:'average cost per qualified landscaping lead',
@@ -670,7 +662,7 @@ const DATA = [
   {
     id:'tr-14', industry:'trades', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'James Farrell — Builder, Tipperary',
+    clientName:'James — Builder, Tipperary',
     location:'Tipperary',
     campaignLabel:'Client Review · Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -686,7 +678,7 @@ const DATA = [
   {
     id:'tr-15', industry:'trades', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Tommy McGuire — Painting Contractor, Meath',
+    clientName:'Tommy — Painting Contractor, Meath',
     location:'Meath',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'28', statLabel:'painting job bookings in the first week',
@@ -702,7 +694,7 @@ const DATA = [
   {
     id:'tr-16', industry:'trades', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Paul Kennedy — Tiling Contractor, Galway',
+    clientName:'Paul — Tiling Contractor, Galway',
     location:'Galway',
     campaignLabel:'Google Ads · ROAS',
     statValue:'12x', statLabel:'return on ad spend — bathroom tiling',
@@ -718,7 +710,7 @@ const DATA = [
   {
     id:'tr-17', industry:'trades', cardType:'cpl', featured:false,
     status:'published', verified:true,
-    clientName:'Frank Daly — Electrician, Limerick',
+    clientName:'Frank — Electrician, Limerick',
     location:'Limerick',
     campaignLabel:'Cost Per Lead · Google Ads',
     statValue:'€9', statLabel:'cost per qualified electrical enquiry',
@@ -734,7 +726,7 @@ const DATA = [
   {
     id:'tr-18', industry:'trades', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Gary Hickey — Cleaning Company, Dublin',
+    clientName:'Gary — Cleaning Company, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -750,7 +742,7 @@ const DATA = [
   {
     id:'tr-19', industry:'trades', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Ross Moore — HVAC Engineer, Wexford',
+    clientName:'Ross — HVAC Engineer, Wexford',
     location:'Wexford',
     campaignLabel:'Weekly Bookings · Before vs After',
     statValue:null, statLabel:null,
@@ -767,7 +759,7 @@ const DATA = [
   {
     id:'tr-20', industry:'trades', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Damien Lynch — Handyman Services, Dublin',
+    clientName:'Damien — Handyman Services, Dublin',
     location:'Dublin',
     campaignLabel:'Meta Ads · Revenue',
     statValue:'€29,000', statLabel:'revenue in the first 30 days',
@@ -787,7 +779,7 @@ const DATA = [
   {
     id:'ea-01', industry:'estate-agency', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Sarah O\'Brien — Estate Agent, Dublin',
+    clientName:'Sarah — Estate Agent, Dublin',
     location:'Dublin',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'84', statLabel:'qualified buyer leads in 30 days',
@@ -803,7 +795,7 @@ const DATA = [
   {
     id:'ea-02', industry:'estate-agency', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Aoife McCarthy — Property Agency, Cork',
+    clientName:'Aoife — Property Agency, Cork',
     location:'Cork',
     campaignLabel:'Vendor Lead Generation · Google Ads',
     statValue:'€2.1M', statLabel:'in vendor property instructions in one quarter',
@@ -819,7 +811,7 @@ const DATA = [
   {
     id:'ea-03', industry:'estate-agency', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Niamh Kelly — Lettings Agency, Galway',
+    clientName:'Niamh — Lettings Agency, Galway',
     location:'Galway',
     campaignLabel:'Landlord Lead Generation · Meta Ads',
     statValue:'47', statLabel:'new landlord instructions in 6 weeks',
@@ -835,7 +827,7 @@ const DATA = [
   {
     id:'ea-04', industry:'estate-agency', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Siobhán Murphy — Estate Agent, Limerick',
+    clientName:'Siobhán — Estate Agent, Limerick',
     location:'Limerick',
     campaignLabel:'Vendor Appraisals · Google Ads',
     statValue:'31', statLabel:'vendor appraisals booked in 4 weeks',
@@ -851,7 +843,7 @@ const DATA = [
   {
     id:'ea-05', industry:'estate-agency', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Emma Dunne — Property Consultancy, Kildare',
+    clientName:'Emma — Property Consultancy, Kildare',
     location:'Kildare',
     campaignLabel:'Meta Ads · ROAS',
     statValue:'6.2x', statLabel:'return on ad spend across all property campaigns',
@@ -867,7 +859,7 @@ const DATA = [
   {
     id:'ea-06', industry:'estate-agency', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Claire Ryan — Estate Agent, Wicklow',
+    clientName:'Claire — Estate Agent, Wicklow',
     location:'Wicklow',
     campaignLabel:'Client Review · Buyer Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -883,7 +875,7 @@ const DATA = [
   {
     id:'ea-07', industry:'estate-agency', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Laura Walsh — Lettings Agency, Dublin',
+    clientName:'Laura — Lettings Agency, Dublin',
     location:'Dublin',
     campaignLabel:'Cost Per Lead · Meta Ads',
     statValue:null, statLabel:null,
@@ -900,7 +892,7 @@ const DATA = [
   {
     id:'ea-08', industry:'estate-agency', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Karen O\'Neill — Property Marketing, Cork',
+    clientName:'Karen — Property Marketing, Cork',
     location:'Cork',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -917,7 +909,7 @@ const DATA = [
   {
     id:'ea-09', industry:'estate-agency', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Fiona Brennan — Estate Agent, Galway',
+    clientName:'Fiona — Estate Agent, Galway',
     location:'Galway',
     campaignLabel:'Vendor Lead Generation · Google Ads',
     statValue:'23', statLabel:'new seller instructions in 5 weeks',
@@ -933,7 +925,7 @@ const DATA = [
   {
     id:'ea-10', industry:'estate-agency', cardType:'cpl', featured:false,
     status:'published', verified:true,
-    clientName:'Orla Burke — Lettings Agency, Limerick',
+    clientName:'Orla — Lettings Agency, Limerick',
     location:'Limerick',
     campaignLabel:'Cost Per Lead · Meta Ads',
     statValue:'€38', statLabel:'per qualified landlord enquiry',
@@ -949,7 +941,7 @@ const DATA = [
   {
     id:'ea-11', industry:'estate-agency', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Ciara Doyle — Property Agency, Meath',
+    clientName:'Ciara — Property Agency, Meath',
     location:'Meath',
     campaignLabel:'Client Review · Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -965,7 +957,7 @@ const DATA = [
   {
     id:'ea-12', industry:'estate-agency', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Rachel Murphy — Estate Agent, Dublin',
+    clientName:'Rachel — Estate Agent, Dublin',
     location:'Dublin',
     campaignLabel:'Monthly Enquiries · Before vs After',
     statValue:null, statLabel:null,
@@ -982,7 +974,7 @@ const DATA = [
   {
     id:'ea-13', industry:'estate-agency', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Sinead Kennedy — Property Consultancy, Cork',
+    clientName:'Sinead — Property Consultancy, Cork',
     location:'Cork',
     campaignLabel:'Meta Ads · Pipeline Value',
     statValue:null, statLabel:null,
@@ -999,7 +991,7 @@ const DATA = [
   {
     id:'ea-14', industry:'estate-agency', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Aisling Nolan — Estate Agent, Galway',
+    clientName:'Aisling — Estate Agent, Galway',
     location:'Galway',
     campaignLabel:'First-Time Buyer Leads · Meta Ads',
     statValue:'112', statLabel:'first-time buyer enquiries in 45 days',
@@ -1015,7 +1007,7 @@ const DATA = [
   {
     id:'ea-15', industry:'estate-agency', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Maeve O\'Connor — Property Agency, Kildare',
+    clientName:'Maeve — Property Agency, Kildare',
     location:'Kildare',
     campaignLabel:'SEO · Google Rankings',
     statValue:'#1', statLabel:'Google for "estate agent Naas" and 8 related terms',
@@ -1031,7 +1023,7 @@ const DATA = [
   {
     id:'ea-16', industry:'estate-agency', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Caoimhe Farrell — Estate Agent, Wicklow',
+    clientName:'Caoimhe — Estate Agent, Wicklow',
     location:'Wicklow',
     campaignLabel:'Client Review · Vendor Campaigns',
     statValue:null, statLabel:null, description:null,
@@ -1047,7 +1039,7 @@ const DATA = [
   {
     id:'ea-17', industry:'estate-agency', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Aoibhe Lynch — Lettings Agency, Dublin',
+    clientName:'Aoibhe — Lettings Agency, Dublin',
     location:'Dublin',
     campaignLabel:'Landlord Acquisition · Meta Ads',
     statValue:'€27', statLabel:'cost per new landlord client',
@@ -1063,7 +1055,7 @@ const DATA = [
   {
     id:'ea-18', industry:'estate-agency', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Roisin Quinn — Estate Agent, Cork',
+    clientName:'Roisin — Estate Agent, Cork',
     location:'Cork',
     campaignLabel:'Monthly Viewings · Before vs After',
     statValue:null, statLabel:null,
@@ -1080,7 +1072,7 @@ const DATA = [
   {
     id:'ea-19', industry:'estate-agency', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Sandra Martin — Property Agency, Galway',
+    clientName:'Sandra — Property Agency, Galway',
     location:'Galway',
     campaignLabel:'Client Review · Meta Ads',
     statValue:null, statLabel:null, description:null,
@@ -1096,7 +1088,7 @@ const DATA = [
   {
     id:'ea-20', industry:'estate-agency', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Deirdre Coffey — Estate Agent, Dublin',
+    clientName:'Deirdre — Estate Agent, Dublin',
     location:'Dublin',
     campaignLabel:'First-Time Buyer Leads · Google Ads',
     statValue:'64', statLabel:'first-time buyer leads in 3 weeks',
@@ -1116,7 +1108,7 @@ const DATA = [
   {
     id:'so-01', industry:'solar', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Eoin Carroll — Solar Installer, Dublin',
+    clientName:'Eoin — Solar Installer, Dublin',
     location:'Dublin',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'89', statLabel:'qualified solar enquiries per month at €18 CPL',
@@ -1132,7 +1124,7 @@ const DATA = [
   {
     id:'so-02', industry:'solar', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Cormac O\'Brien — Heat Pump Specialist, Cork',
+    clientName:'Cormac — Heat Pump Specialist, Cork',
     location:'Cork',
     campaignLabel:'Google Ads · Revenue',
     statValue:'€127,000', statLabel:'in signed heat pump contracts in 60 days',
@@ -1148,7 +1140,7 @@ const DATA = [
   {
     id:'so-03', industry:'solar', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Dara Higgins — Solar & EV, Galway',
+    clientName:'Dara — Solar & EV, Galway',
     location:'Galway',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'143', statLabel:'solar and EV charger leads in 45 days at €12 CPL',
@@ -1164,7 +1156,7 @@ const DATA = [
   {
     id:'so-04', industry:'solar', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Cathal Murphy — Solar Installer, Kildare',
+    clientName:'Cathal — Solar Installer, Kildare',
     location:'Kildare',
     campaignLabel:'Google Ads · ROAS',
     statValue:'7.4x', statLabel:'return on ad spend in 30 days',
@@ -1180,7 +1172,7 @@ const DATA = [
   {
     id:'so-05', industry:'solar', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Brian O\'Shea — Renewable Energy, Wicklow',
+    clientName:'Brian — Renewable Energy, Wicklow',
     location:'Wicklow',
     campaignLabel:'Meta Ads · Revenue',
     statValue:'€43,000', statLabel:'in solar contracts booked in the first month',
@@ -1196,7 +1188,7 @@ const DATA = [
   {
     id:'so-06', industry:'solar', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Fergal Dunne — Solar Installer, Dublin',
+    clientName:'Fergal — Solar Installer, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Meta Ads Lead Generation',
     statValue:null, statLabel:null, description:null,
@@ -1212,7 +1204,7 @@ const DATA = [
   {
     id:'so-07', industry:'solar', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Alan Walsh — Heat Pump Installer, Cork',
+    clientName:'Alan — Heat Pump Installer, Cork',
     location:'Cork',
     campaignLabel:'Cost Per Lead · Google Ads',
     statValue:null, statLabel:null,
@@ -1229,7 +1221,7 @@ const DATA = [
   {
     id:'so-08', industry:'solar', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Darragh Nolan — Solar Company, Galway',
+    clientName:'Darragh — Solar Company, Galway',
     location:'Galway',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -1246,7 +1238,7 @@ const DATA = [
   {
     id:'so-09', industry:'solar', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Ronan Byrne — EV Charger Installer, Kildare',
+    clientName:'Ronan — EV Charger Installer, Kildare',
     location:'Kildare',
     campaignLabel:'Commercial EV Leads · Google Ads',
     statValue:'67', statLabel:'commercial EV charger enquiries in 30 days',
@@ -1262,7 +1254,7 @@ const DATA = [
   {
     id:'so-10', industry:'solar', cardType:'cpl', featured:false,
     status:'published', verified:true,
-    clientName:'Pádraig O\'Toole — Solar Installer, Wicklow',
+    clientName:'Pádraig — Solar Installer, Wicklow',
     location:'Wicklow',
     campaignLabel:'Cost Per Lead · Meta Ads',
     statValue:'€16', statLabel:'average cost per qualified solar installation lead',
@@ -1278,7 +1270,7 @@ const DATA = [
   {
     id:'so-11', industry:'solar', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Colm Ryan — Renewable Energy, Dublin',
+    clientName:'Colm — Renewable Energy, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Google Ads',
     statValue:null, statLabel:null, description:null,
@@ -1294,7 +1286,7 @@ const DATA = [
   {
     id:'so-12', industry:'solar', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Stephen Daly — Solar Installer, Cork',
+    clientName:'Stephen — Solar Installer, Cork',
     location:'Cork',
     campaignLabel:'Monthly Installs · Before vs After',
     statValue:null, statLabel:null,
@@ -1311,7 +1303,7 @@ const DATA = [
   {
     id:'so-13', industry:'solar', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Jason Burke — Heat Pump Installer, Galway',
+    clientName:'Jason — Heat Pump Installer, Galway',
     location:'Galway',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -1328,7 +1320,7 @@ const DATA = [
   {
     id:'so-14', industry:'solar', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Mark Sheridan — Solar Company, Kildare',
+    clientName:'Mark — Solar Company, Kildare',
     location:'Kildare',
     campaignLabel:'SEAI Grant Consultations · Meta Ads',
     statValue:'34', statLabel:'SEAI solar consultation bookings in 2 weeks',
@@ -1344,7 +1336,7 @@ const DATA = [
   {
     id:'so-15', industry:'solar', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Neil Casey — Renewable Energy, Wicklow',
+    clientName:'Neil — Renewable Energy, Wicklow',
     location:'Wicklow',
     campaignLabel:'Google Ads · CPL Campaign',
     statValue:'91', statLabel:'solar leads at €14 average CPL in 5 weeks',
@@ -1360,7 +1352,7 @@ const DATA = [
   {
     id:'so-16', industry:'solar', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Declan O\'Brien — Solar Installer, Dublin',
+    clientName:'Declan — Solar Installer, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Meta Ads',
     statValue:null, statLabel:null, description:null,
@@ -1376,7 +1368,7 @@ const DATA = [
   {
     id:'so-17', industry:'solar', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Garrett Flynn — EV Charger Installer, Cork',
+    clientName:'Garrett — EV Charger Installer, Cork',
     location:'Cork',
     campaignLabel:'EV Charger Lead Gen · Meta Ads',
     statValue:'54', statLabel:'residential EV charger enquiries in 3 weeks',
@@ -1392,7 +1384,7 @@ const DATA = [
   {
     id:'so-18', industry:'solar', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Wayne Kelly — Solar Company, Galway',
+    clientName:'Wayne — Solar Company, Galway',
     location:'Galway',
     campaignLabel:'Monthly Pipeline · Before vs After',
     statValue:null, statLabel:null,
@@ -1409,7 +1401,7 @@ const DATA = [
   {
     id:'so-19', industry:'solar', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Adrian Moran — Heat Pump Installer, Kildare',
+    clientName:'Adrian — Heat Pump Installer, Kildare',
     location:'Kildare',
     campaignLabel:'Client Review · Google Ads',
     statValue:null, statLabel:null, description:null,
@@ -1425,7 +1417,7 @@ const DATA = [
   {
     id:'so-20', industry:'solar', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Barry Connolly — Solar Installer, Wicklow',
+    clientName:'Barry — Solar Installer, Wicklow',
     location:'Wicklow',
     campaignLabel:'Solar Lead Generation · Meta + Google',
     statValue:'212', statLabel:'solar installation enquiries in 90 days',
@@ -1445,7 +1437,7 @@ const DATA = [
   {
     id:'ot-01', industry:'other', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Michelle Brennan — Restaurant Owner, Dublin',
+    clientName:'Michelle — Restaurant Owner, Dublin',
     location:'Dublin',
     campaignLabel:'Lead Generation · Meta Ads',
     statValue:'580', statLabel:'new table bookings in 90 days',
@@ -1461,7 +1453,7 @@ const DATA = [
   {
     id:'ot-02', industry:'other', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Donna Farrell — Gym Owner, Cork',
+    clientName:'Donna — Gym Owner, Cork',
     location:'Cork',
     campaignLabel:'Member Acquisition · Meta Ads',
     statValue:'+580', statLabel:'new gym members in 90 days',
@@ -1477,7 +1469,7 @@ const DATA = [
   {
     id:'ot-03', industry:'other', cardType:'case-study', featured:true,
     status:'published', verified:true,
-    clientName:'Paul Kavanagh — Accountant, Galway',
+    clientName:'Paul — Accountant, Galway',
     location:'Galway',
     campaignLabel:'SEO · Organic Growth',
     statValue:'#1', statLabel:'Google for 14 high-value accountancy keywords in 4 months',
@@ -1493,7 +1485,7 @@ const DATA = [
   {
     id:'ot-04', industry:'other', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Rebecca O\'Brien — Beauty Salon Owner, Kildare',
+    clientName:'Rebecca — Beauty Salon Owner, Kildare',
     location:'Kildare',
     campaignLabel:'Meta Ads · Revenue',
     statValue:'18x', statLabel:'return on ad spend in 45 days',
@@ -1509,7 +1501,7 @@ const DATA = [
   {
     id:'ot-05', industry:'other', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Sharon Walsh — Physio Clinic Owner, Wicklow',
+    clientName:'Sharon — Physio Clinic Owner, Wicklow',
     location:'Wicklow',
     campaignLabel:'Patient Lead Generation · Google Ads',
     statValue:'67', statLabel:'new patient enquiries in 21 days',
@@ -1525,7 +1517,7 @@ const DATA = [
   {
     id:'ot-06', industry:'other', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Tracey Murphy — Hair Salon Owner, Dublin',
+    clientName:'Tracey — Hair Salon Owner, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Meta Ads',
     statValue:null, statLabel:null, description:null,
@@ -1541,7 +1533,7 @@ const DATA = [
   {
     id:'ot-07', industry:'other', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Helen Dunne — Café Owner, Cork',
+    clientName:'Helen — Café Owner, Cork',
     location:'Cork',
     campaignLabel:'Monthly Revenue · Before vs After',
     statValue:null, statLabel:null,
@@ -1558,7 +1550,7 @@ const DATA = [
   {
     id:'ot-08', industry:'other', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Seán O\'Sullivan — E-commerce Retailer, Galway',
+    clientName:'Seán — E-commerce Retailer, Galway',
     location:'Galway',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -1575,7 +1567,7 @@ const DATA = [
   {
     id:'ot-09', industry:'other', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Colette Nolan — Dental Practice Owner, Kildare',
+    clientName:'Colette — Dental Practice Owner, Kildare',
     location:'Kildare',
     campaignLabel:'New Patient Enquiries · Google Ads',
     statValue:'43', statLabel:'new patient enquiries in 30 days',
@@ -1591,7 +1583,7 @@ const DATA = [
   {
     id:'ot-10', industry:'other', cardType:'cpl', featured:false,
     status:'published', verified:true,
-    clientName:'Yvonne Burke — Solicitor, Wicklow',
+    clientName:'Yvonne — Solicitor, Wicklow',
     location:'Wicklow',
     campaignLabel:'Cost Per Lead · Google Ads',
     statValue:'€52', statLabel:'cost per qualified legal consultation lead',
@@ -1607,7 +1599,7 @@ const DATA = [
   {
     id:'ot-11', industry:'other', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Geraldine McCarthy — Restaurant Owner, Dublin',
+    clientName:'Geraldine — Restaurant Owner, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Meta Ads',
     statValue:null, statLabel:null, description:null,
@@ -1623,7 +1615,7 @@ const DATA = [
   {
     id:'ot-12', industry:'other', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Patricia Ryan — Gym Owner, Cork',
+    clientName:'Patricia — Gym Owner, Cork',
     location:'Cork',
     campaignLabel:'Members · Before vs After',
     statValue:null, statLabel:null,
@@ -1640,7 +1632,7 @@ const DATA = [
   {
     id:'ot-13', industry:'other', cardType:'roi', featured:false,
     status:'published', verified:true,
-    clientName:'Joseph Brennan — Retail Owner, Galway',
+    clientName:'Joseph — Retail Owner, Galway',
     location:'Galway',
     campaignLabel:'Meta Ads · Return on Ad Spend',
     statValue:null, statLabel:null,
@@ -1657,7 +1649,7 @@ const DATA = [
   {
     id:'ot-14', industry:'other', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Thomas Higgins — Financial Advisor, Kildare',
+    clientName:'Thomas — Financial Advisor, Kildare',
     location:'Kildare',
     campaignLabel:'Consultation Leads · Google Ads',
     statValue:'28', statLabel:'qualified financial consultation bookings in 3 weeks',
@@ -1673,7 +1665,7 @@ const DATA = [
   {
     id:'ot-15', industry:'other', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'Ann Murphy — Childcare Owner, Wicklow',
+    clientName:'Ann — Childcare Owner, Wicklow',
     location:'Wicklow',
     campaignLabel:'Waitlist Lead Generation · Meta Ads',
     statValue:'47', statLabel:'childcare waitlist sign-ups in 7 days',
@@ -1689,7 +1681,7 @@ const DATA = [
   {
     id:'ot-16', industry:'other', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Louise O\'Connor — Clinic Owner, Dublin',
+    clientName:'Louise — Clinic Owner, Dublin',
     location:'Dublin',
     campaignLabel:'Client Review · Google Ads',
     statValue:null, statLabel:null, description:null,
@@ -1705,7 +1697,7 @@ const DATA = [
   {
     id:'ot-17', industry:'other', cardType:'case-study', featured:false,
     status:'published', verified:true,
-    clientName:'David Kelly — Solicitor, Cork',
+    clientName:'David — Solicitor, Cork',
     location:'Cork',
     campaignLabel:'Google Ads · Lead Generation',
     statValue:'€38', statLabel:'cost per qualified consultation booking',
@@ -1721,7 +1713,7 @@ const DATA = [
   {
     id:'ot-18', industry:'other', cardType:'before-after', featured:false,
     status:'published', verified:true,
-    clientName:'Stephen Farrell — Fitness Studio, Galway',
+    clientName:'Stephen — Fitness Studio, Galway',
     location:'Galway',
     campaignLabel:'Monthly Revenue · Before vs After',
     statValue:null, statLabel:null,
@@ -1738,7 +1730,7 @@ const DATA = [
   {
     id:'ot-19', industry:'other', cardType:'review', featured:false,
     status:'published', verified:true,
-    clientName:'Amanda Daly — E-commerce Owner, Kildare',
+    clientName:'Amanda — E-commerce Owner, Kildare',
     location:'Kildare',
     campaignLabel:'Client Review · Meta Ads',
     statValue:null, statLabel:null, description:null,
@@ -1754,7 +1746,7 @@ const DATA = [
   {
     id:'ot-20', industry:'other', cardType:'lead-gen', featured:false,
     status:'published', verified:true,
-    clientName:'Carol Brennan — Medical Clinic, Wicklow',
+    clientName:'Carol — Medical Clinic, Wicklow',
     location:'Wicklow',
     campaignLabel:'Appointment Requests · Google Ads',
     statValue:'89', statLabel:'new appointment requests in 30 days',
@@ -2154,3 +2146,5 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="chatbot.js"></script>
 </body>
 </html>
+
+
