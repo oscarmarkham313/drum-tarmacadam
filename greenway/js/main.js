@@ -56,6 +56,9 @@ function animateCounter(el, target, suffix = '') {
   requestAnimationFrame(step);
 }
 
+// The HTML carries the real values as static text, so the stats are always
+// correct even if this animation never runs. Low threshold so it fires
+// reliably on small viewports.
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -68,26 +71,22 @@ const statsObserver = new IntersectionObserver((entries) => {
       statsObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.15 });
 
 const statsBar = document.querySelector('.stats-inner');
 if (statsBar) statsObserver.observe(statsBar);
 
 // ===== CONTACT FORM =====
+// Native HTML5 validation runs first (required fields); on valid submit,
+// redirect to the thank-you page so ad platforms can track the conversion URL.
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
-    const success = document.getElementById('formSuccess');
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      contactForm.reset();
-      btn.textContent = 'Send Message';
-      btn.disabled = false;
-      if (success) { success.style.display = 'block'; setTimeout(() => success.style.display = 'none', 5000); }
-    }, 1500);
+    window.location.href = 'thank-you.html';
   });
 }
 
@@ -159,7 +158,9 @@ window.addEventListener('resize', initServicesAccordion);
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
