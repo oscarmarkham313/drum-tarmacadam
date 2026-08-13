@@ -77,16 +77,41 @@ const statsBar = document.querySelector('.stats-inner');
 if (statsBar) statsObserver.observe(statsBar);
 
 // ===== CONTACT FORM =====
-// Native HTML5 validation runs first (required fields); on valid submit,
-// redirect to the thank-you page so ad platforms can track the conversion URL.
+// Native HTML5 validation runs first (required fields). Valid submissions are
+// delivered by FormSubmit (emails the site inbox), then redirect to the
+// thank-you page so ad platforms can track the conversion URL. On delivery
+// failure the error box appears — the visitor is never sent to the thank-you
+// page for a message that didn't send.
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/greenwaybusinessparkardagh@gmail.com';
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
+    const errBox = document.getElementById('formError');
+    if (errBox) errBox.style.display = 'none';
+    const originalText = btn.textContent;
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    window.location.href = 'thank-you.html';
+    const data = Object.fromEntries(new FormData(contactForm).entries());
+    data._subject = 'New quote request — greenwaypropertyservices.ie';
+    data._template = 'table';
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      // FormSubmit returns 200 with success:"false" (e.g. before activation),
+      // so the body must be checked — res.ok alone is not delivery.
+      if (!res.ok || String(result.success) !== 'true') throw new Error(result.message || ('HTTP ' + res.status));
+      window.location.href = 'thank-you.html';
+    } catch (err) {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      if (errBox) errBox.style.display = 'block';
+    }
   });
 }
 

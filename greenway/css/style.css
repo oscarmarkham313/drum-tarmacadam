@@ -848,6 +848,12 @@ p { font-size: 1rem; color: var(--text-body); }
   color: #155724; font-weight: 600; margin-top: 12px;
 }
 
+.form-error {
+  display: none; background: #fdecea; border: 1px solid #f5c6c2;
+  border-radius: var(--radius); padding: 16px; text-align: center;
+  color: #8a1f16; font-weight: 600; margin-top: 12px;
+}
+
 /* ===== MAP ===== */
 .map-section { background: var(--dark); padding: 0; }
 .map-wrap {
