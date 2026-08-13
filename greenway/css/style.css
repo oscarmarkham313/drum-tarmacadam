@@ -180,9 +180,14 @@ p { font-size: 1rem; color: var(--text-body); }
 .hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
-  padding: 4px;
+  padding: 14px 10px;
+  min-width: 44px;
+  min-height: 44px;
+  margin-right: -10px;
 }
 .hamburger span {
   display: block; width: 24px; height: 2px;
@@ -825,7 +830,7 @@ p { font-size: 1rem; color: var(--text-body); }
   width: 100%; padding: 13px 16px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  font-size: 0.95rem; font-family: inherit;
+  font-size: 1rem; font-family: inherit;
   color: var(--text-dark); transition: var(--transition);
   background: var(--light-gray);
 }
@@ -979,7 +984,7 @@ p { font-size: 1rem; color: var(--text-body); }
 /* Projects Page */
 .projects-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 44px; }
 .filter-btn {
-  padding: 10px 22px; border-radius: 50px; font-size: 0.875rem; font-weight: 600;
+  padding: 12px 22px; border-radius: 50px; font-size: 0.875rem; font-weight: 600; min-height: 44px;
   background: var(--white); border: 1.5px solid var(--border); color: var(--text-body); transition: var(--transition);
 }
 .filter-btn:hover, .filter-btn.active {
@@ -1092,8 +1097,8 @@ p { font-size: 1rem; color: var(--text-body); }
 
 .popup-close {
   position: absolute;
-  top: 16px; right: 16px;
-  width: 34px; height: 34px;
+  top: 12px; right: 12px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
@@ -1159,6 +1164,8 @@ p { font-size: 1rem; color: var(--text-body); }
   font-size: 0.9rem;
   font-weight: 500;
   transition: var(--transition);
+  display: inline-block;
+  padding: 12px 8px;
 }
 .popup-link:hover { color: var(--orange); }
 
@@ -1181,6 +1188,13 @@ p { font-size: 1rem; color: var(--text-body); }
   .popup-trust { gap: 10px; }
   .popup-trust span { font-size: 0.72rem; }
 }
+
+/* ===== INLINE-GRID REPLACEMENTS (mobile-safe) ===== */
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.painting-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+.info-cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.rating-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 800px; margin: 0 auto; }
+.process-grid > div, .painting-cols > div, .info-cards-3 > div, .rating-grid > div { min-width: 0; }
 
 /* ===== SCROLL ANIMATIONS ===== */
 .fade-up {
@@ -1361,6 +1375,28 @@ p { font-size: 1rem; color: var(--text-body); }
   .values-grid { grid-template-columns: 1fr; gap: 12px; }
   .projects-full-grid { grid-template-columns: 1fr 1fr; }
   .testimonials-full-grid { grid-template-columns: 1fr; }
+
+  /* INLINE-GRID REPLACEMENTS */
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .process-grid > div { padding: 20px 10px !important; }
+  .painting-cols { grid-template-columns: 1fr; }
+  .info-cards-3 { grid-template-columns: 1fr; gap: 14px; }
+  .rating-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* TAP TARGETS */
+  .footer-links { gap: 0; }
+  .footer-links a { padding: 11px 0; }
+  .footer-bottom a { display: inline-block; padding: 12px 6px; }
+  .footer-contact-item { padding: 4px 0; }
+
+  /* TYPOGRAPHY — keep reading text at 16px+ */
+  .hero p { font-size: 1rem; }
+  .about-point p { font-size: 1rem; }
+  .testimonial-card p { font-size: 1rem; }
+  .testimonial-full-card blockquote { font-size: 1rem; }
+  .service-full-card .card-body p { font-size: 1rem; }
+  .section-subtitle { font-size: 1rem; }
+  .contact-item span { font-size: 1rem; overflow-wrap: anywhere; }
 }
 
 @media (max-width: 480px) {
