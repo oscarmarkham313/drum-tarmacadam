@@ -379,6 +379,50 @@ export const offer = {
   terms: { pre: "Full terms apply —", link: "read them here", href: "/terms" },
 };
 
+export const leadModal = {
+  // Posts to the existing Formspree form. If you create a dedicated form
+  // for the modal in the Formspree dashboard, swap the id here.
+  endpoint: "https://formspree.io/f/meendppv",
+  heading: "See what your competitors are running.",
+  body: "Tell us your trade and your county and we'll send you a breakdown of the ads your nearest competitors have live right now — their hooks, their offers, and how long each has been running.",
+  fields: {
+    business: "Business name",
+    trade: "Trade",
+    county: "County",
+    email: "Email",
+  },
+  trades: [
+    "Roofing",
+    "Driveways & paving",
+    "Landscaping",
+    "Kitchen & door spraying",
+    "Powerwashing",
+    "Plumbing or electrical",
+    "Estate agency",
+    "Other",
+  ],
+  counties: [
+    "Carlow", "Cavan", "Clare", "Cork", "Donegal", "Dublin", "Galway",
+    "Kerry", "Kildare", "Kilkenny", "Laois", "Leitrim", "Limerick",
+    "Longford", "Louth", "Mayo", "Meath", "Monaghan", "Offaly",
+    "Roscommon", "Sligo", "Tipperary", "Waterford", "Westmeath",
+    "Wexford", "Wicklow",
+  ],
+  submit: "Send me the breakdown",
+  sending: "Sending…",
+  smallPrint:
+    "No spam. One email with your breakdown, and that's it unless you reply.",
+  confirmHeading: "Got it.",
+  confirmBody: "Your breakdown will be with you within 24 hours.",
+  errors: {
+    business: "Enter your business name",
+    trade: "Pick your trade",
+    county: "Pick your county",
+    email: "Enter a valid email",
+    submit: "Something went wrong — email us instead at",
+  },
+};
+
 export const footer = {
   line: "Dublin Growth Digital — web design, ads and SEO for Irish businesses.",
   legal: [{ label: "Terms", href: "/terms" }],

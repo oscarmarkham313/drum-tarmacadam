@@ -5,6 +5,7 @@ import { site } from "@/config/copy";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+import LeadModal from "@/components/LeadModal";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <LeadModal />
         <Analytics />
       </body>
     </html>
