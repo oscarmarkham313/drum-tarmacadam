@@ -99,6 +99,13 @@ body {
   animation: hl-rise 0.55s var(--ease-out) both;
 }
 
+/* testimonial slide — rise-fade on each swap */
+.t-slide {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: hl-rise-fade 0.5s var(--ease-out) both;
+}
+
 @keyframes hl-stop-pop {
   to {
     transform: scale(1);

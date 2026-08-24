@@ -104,11 +104,47 @@ export const home = {
     heading: "Numbers, not adjectives.",
     cta: { label: "All case studies", href: "/results" },
   },
-  testimonial: {
-    quote:
-      "Finally a marketing agency that speaks plain English and delivers. Our Google Ads are generating more leads than we can handle.",
-    name: "Ciarán O'Brien",
-    role: "Director, O'Brien Plumbing & Heating",
+  testimonials: {
+    eyebrow: "Testimonials",
+    heading: "In their own words.",
+    items: [
+      {
+        quote:
+          "Finally a marketing agency that speaks plain English and delivers. Our Google Ads are generating more leads than we can handle.",
+        name: "Ciarán O'Brien",
+        role: "Director, O'Brien Plumbing & Heating",
+      },
+      {
+        quote:
+          "Our bookings tripled in the first two months. The team genuinely cares about your results, not just showing up and collecting a fee.",
+        name: "Siobhán Murphy",
+        role: "Owner, Murphy's Bistro, Dublin 4",
+      },
+      {
+        quote:
+          "The new website they built for us is absolutely stunning. We went from embarrassed to share our URL to handing it out to everyone.",
+        name: "Aoife Gallagher",
+        role: "Founder, Gallagher Interiors",
+      },
+      {
+        quote:
+          "18x ROAS on our e-commerce ads. I genuinely didn't believe it was possible before we started working together.",
+        name: "Róisín Byrne",
+        role: "CEO, Byrne Active Wear",
+      },
+      {
+        quote:
+          "From zero online presence to page one on Google in four months. The SEO results have transformed our business completely.",
+        name: "Patrick Walsh",
+        role: "Partner, Walsh & Associates Accountants",
+      },
+      {
+        quote:
+          "Our Instagram grew by 8,000 followers in six months and we're getting direct enquiries from it every single week now.",
+        name: "Niamh Dolan",
+        role: "Owner, Dublin Beauty Salon",
+      },
+    ],
   },
   closing: {
     heading: "Ready when you are.",

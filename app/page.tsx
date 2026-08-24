@@ -3,13 +3,14 @@ import { home } from "@/config/copy";
 import { caseStudies } from "@/config/case-studies";
 import HeroVideo from "@/components/HeroVideo";
 import RotatingWord from "@/components/RotatingWord";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 import MagneticButton from "@/components/MagneticButton";
 import Reveal from "@/components/Reveal";
 import StatNumber from "@/components/StatNumber";
 import Funnel from "@/components/Funnel";
 
 export default function Home() {
-  const { hero, proof, services, resultsPreview, testimonial, closing } = home;
+  const { hero, proof, services, resultsPreview, testimonials, closing } = home;
   const featured = caseStudies.filter((c) => c.featured).slice(0, 2);
 
   return (
@@ -162,21 +163,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ————— ONE TESTIMONIAL ————— */}
+      {/* ————— TESTIMONIALS ————— */}
       <section className="bg-bg py-24 md:py-36">
         <div className="mx-auto max-w-container px-5 md:px-10">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="text-5xl text-accent" aria-hidden="true">
-              “
-            </span>
-            <blockquote className="mt-2 text-2xl font-bold leading-snug tracking-tight md:text-4xl">
-              {testimonial.quote}
-            </blockquote>
-            <p className="mt-8 text-sm text-text-3">
-              <span className="font-semibold text-ink">{testimonial.name}</span>
-              {" — "}
-              {testimonial.role}
-            </p>
+            <span className="eyebrow">{testimonials.eyebrow}</span>
+            <h2 className="mt-4 text-4xl font-extrabold leading-[0.98] tracking-display md:text-6xl">
+              {testimonials.heading}
+            </h2>
+            <div className="mt-12">
+              <TestimonialCarousel />
+            </div>
           </Reveal>
         </div>
       </section>
