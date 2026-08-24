@@ -214,13 +214,13 @@ export default function LeadModal() {
   if (!open) return null;
 
   const fieldBase =
-    "w-full border-b bg-transparent py-3 text-[15px] outline-none transition-colors duration-200 focus:border-ink";
+    "w-full border-b bg-transparent py-2.5 text-[15px] outline-none transition-colors duration-200 focus:border-ink md:py-3";
   const fieldBorder = (bad: boolean) =>
     bad ? "border-b-2 border-ink" : "border-hairline-dk";
 
   return (
     <div
-      className="modal-fade fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-ink/55 p-5"
+      className="modal-fade fixed inset-0 z-[60] flex items-end justify-center bg-ink/55 md:items-center md:p-5"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -231,7 +231,7 @@ export default function LeadModal() {
         aria-modal="true"
         aria-labelledby="lead-modal-heading"
         tabIndex={-1}
-        className="modal-pop relative w-full max-w-[480px] border bg-bg p-8 outline-none md:p-10"
+        className="modal-pop relative max-h-[92svh] w-full overflow-y-auto border-t bg-bg p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] outline-none md:max-h-[90vh] md:max-w-[480px] md:border md:p-10"
         style={{ borderColor: "rgba(0,0,0,0.12)" }}
       >
         <button
@@ -247,12 +247,12 @@ export default function LeadModal() {
           <div>
             <h2
               id="lead-modal-heading"
-              className="text-3xl font-extrabold leading-[1.02] tracking-display"
+              className="text-[22px] font-extrabold leading-[1.05] tracking-display md:text-3xl md:leading-[1.02]"
             >
               {leadModal.confirmHeading.replace(".", "")}
               <span className="text-accent">.</span>
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-text-2">
+            <p className="mt-3 text-sm leading-relaxed text-text-2 md:mt-4 md:text-[15px]">
               {leadModal.confirmBody}
             </p>
           </div>
@@ -260,15 +260,15 @@ export default function LeadModal() {
           <>
             <h2
               id="lead-modal-heading"
-              className="pr-10 text-3xl font-extrabold leading-[1.02] tracking-display"
+              className="pr-10 text-[22px] font-extrabold leading-[1.05] tracking-display md:text-3xl md:leading-[1.02]"
             >
               {leadModal.heading}
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-text-2">
+            <p className="mt-3 text-sm leading-relaxed text-text-2 md:mt-4 md:text-[15px]">
               {leadModal.body}
             </p>
 
-            <form onSubmit={onSubmit} noValidate className="mt-7 flex flex-col gap-5">
+            <form onSubmit={onSubmit} noValidate className="mt-5 flex flex-col gap-4 md:mt-7 md:gap-5">
               <input
                 type="text"
                 name="_gotcha"
@@ -299,7 +299,7 @@ export default function LeadModal() {
                 )}
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-4 md:gap-5">
                 <div>
                   <label htmlFor="lm-trade" className="eyebrow block !text-[10px]">
                     {leadModal.fields.trade}
@@ -376,7 +376,7 @@ export default function LeadModal() {
               <button
                 type="submit"
                 disabled={sending}
-                className="mt-1 w-full bg-ink px-8 py-4 text-sm font-semibold text-inverse transition-colors duration-300 hover:bg-accent disabled:opacity-50"
+                className="mt-1 w-full bg-ink px-8 py-3.5 text-sm font-semibold text-inverse transition-colors duration-300 hover:bg-accent disabled:opacity-50 md:py-4"
               >
                 {sending ? leadModal.sending : leadModal.submit}
               </button>
@@ -390,7 +390,7 @@ export default function LeadModal() {
                 </p>
               )}
 
-              <p className="text-xs leading-relaxed text-text-3">
+              <p className="text-[11px] leading-relaxed text-text-3 md:text-xs">
                 {leadModal.smallPrint}
               </p>
             </form>
