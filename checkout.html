@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Checkout — Dublin Growth Digital</title>
+<meta name="robots" content="noindex"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+:root {
+  --accent:       #1E4A3C;
+  --accent-light: rgba(30,74,60,0.07);
+}
+
+body { background: var(--bg-alt); }
+
+/* ── Layout ── */
+.co-page {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 860px) {
+  .co-page { grid-template-columns: 1fr; }
+}
+
+/* ── Left panel — offer summary ── */
+.co-left {
+  background: var(--bg-dark);
+  padding: clamp(48px, 7vw, 80px) clamp(32px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100svh;
+  position: sticky;
+  top: 0;
+}
+@media (max-width: 860px) {
+  .co-left { min-height: auto; position: static; }
+}
+.co-left__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+.co-left__logo img { height: 30px; width: auto; filter: brightness(10); }
+
+.co-left__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+.co-left__amount {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 9vw, 108px);
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+.co-left__rule {
+  width: 56px;
+  height: 2px;
+  background: var(--accent);
+  margin: 22px 0;
+}
+.co-left__note {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 360px;
+}
+.co-left__note strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+
+.co-left__includes {
+  margin-top: 48px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.co-left__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+.co-left__item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.co-left__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.co-left__footer {
+  margin-top: 48px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.co-left__footer a {
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.co-left__footer a:hover { color: rgba(255,255,255,0.4); }
+
+/* ── Right panel — form ── */
+.co-right {
+  padding: clamp(48px, 7vw, 80px) clamp(32px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-alt);
+}
+
+.co-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-3);
+  text-decoration: none;
+  margin-bottom: 48px;
+  transition: color 0.18s;
+}
+.co-back:hover { color: var(--text); }
+.co-back svg { width: 14px; height: 14px; }
+
+.co-form-head { margin-bottom: 36px; }
+.co-form-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.co-form-head p {
+  font-size: 14px;
+  color: var(--text-3);
+  line-height: 1.6;
+}
+
+/* Form fields */
+.co-form { display: flex; flex-direction: column; gap: 14px; max-width: 440px; }
+
+.co-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.co-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+}
+.co-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+.co-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.co-input::placeholder { color: var(--text-4); }
+.co-input.error { border-color: #c0392b; }
+
+.co-submit {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.22s var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.co-submit:hover {
+  background: #163d30;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(30,74,60,0.3);
+}
+.co-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.co-submit svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.co-secure {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-4);
+}
+.co-secure svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+.co-terms {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-4);
+  line-height: 1.6;
+}
+.co-terms a { color: var(--text-3); }
+.co-terms a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div class="co-page">
+
+  <!-- ── Left: offer summary ── -->
+  <aside class="co-left" aria-label="Order summary">
+
+    <a href="offer.html" class="co-left__logo">
+      <img src="logo.svg" alt="Dublin Growth Digital"/>
+    </a>
+
+    <div>
+      <div class="co-left__label">Due today</div>
+      <div class="co-left__amount">€750</div>
+      <div class="co-left__rule"></div>
+      <p class="co-left__note">
+        Your deposit to get started. We build and launch your Meta Ads campaign within 7 days.<br><br>
+        <strong>€750 more</strong> is due after 30 days — only when you're satisfied with the results. Not happy? We keep working at no extra cost.
+      </p>
+
+      <ul class="co-left__includes">
+        <li class="co-left__item"><span class="co-left__dot"></span>Full campaign — audiences, copy, creative</li>
+        <li class="co-left__item"><span class="co-left__dot"></span>Live within 7 days</li>
+        <li class="co-left__item"><span class="co-left__dot"></span>30 days active management</li>
+        <li class="co-left__item"><span class="co-left__dot"></span>Weekly performance reports</li>
+        <li class="co-left__item"><span class="co-left__dot"></span>Direct WhatsApp access</li>
+        <li class="co-left__item"><span class="co-left__dot"></span>Pixel &amp; tracking setup</li>
+      </ul>
+    </div>
+
+    <div class="co-left__footer">
+      <span>&copy; 2026 Dublin Growth Digital</span>
+      <span>·</span>
+      <a href="terms.html">Terms</a>
+    </div>
+
+  </aside>
+
+  <!-- ── Right: form ── -->
+  <main class="co-right">
+
+    <a href="offer.html" class="co-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to offer
+    </a>
+
+    <div class="co-form-head">
+      <h1>You're almost in.</h1>
+      <p>Fill in your details and you'll go straight to secure payment. Takes 60 seconds.</p>
+    </div>
+
+    <form class="co-form" id="co-form" novalidate>
+
+      <div class="co-field">
+        <label class="co-label" for="f-name">Your name</label>
+        <input class="co-input" type="text" id="f-name" name="name"
+               placeholder="e.g. John Murphy" autocomplete="name" required/>
+      </div>
+
+      <div class="co-field">
+        <label class="co-label" for="f-business">Business name</label>
+        <input class="co-input" type="text" id="f-business" name="business"
+               placeholder="e.g. Murphy Roofing Ltd" autocomplete="organization" required/>
+      </div>
+
+      <div class="co-field">
+        <label class="co-label" for="f-email">Email address</label>
+        <input class="co-input" type="email" id="f-email" name="email"
+               placeholder="you@yourbusiness.ie" autocomplete="email" required/>
+      </div>
+
+      <div class="co-field">
+        <label class="co-label" for="f-phone">Phone number</label>
+        <input class="co-input" type="tel" id="f-phone" name="phone"
+               placeholder="+353 87 000 0000" autocomplete="tel" required/>
+      </div>
+
+      <button type="submit" class="co-submit" id="co-submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Pay €750 Securely →
+      </button>
+
+      <div class="co-secure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Powered by Stripe · 256-bit SSL encryption
+      </div>
+
+      <p class="co-terms">
+        By continuing you agree to our <a href="terms.html">Terms &amp; Conditions</a>.
+        Your €750 deposit is non-refundable once work begins. The remaining €750 is due after 30 days only when you're satisfied.
+      </p>
+
+    </form>
+
+  </main>
+
+</div>
+
+<script>
+// ─── CONFIG ────────────────────────────────────────────────────────
+// 1. Create a Payment Link in Stripe Dashboard (€750, Irish VAT if needed)
+// 2. Set the URL below
+const STRIPE_LINK = 'https://whop.com/checkout/plan_EeyocfGbLALyC/';
+
+// Optional: Formspree endpoint to receive lead details by email
+// Create a free form at formspree.io and paste the endpoint here
+const FORMSPREE = 'https://formspree.io/f/YOUR_FORM_ID';
+// ──────────────────────────────────────────────────────────────────
+
+const form   = document.getElementById('co-form');
+const submit = document.getElementById('co-submit');
+
+// Basic validation
+function validate() {
+  const name     = document.getElementById('f-name').value.trim();
+  const business = document.getElementById('f-business').value.trim();
+  const email    = document.getElementById('f-email').value.trim();
+  const phone    = document.getElementById('f-phone').value.trim();
+  const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return name.length > 1 && business.length > 1 && emailOk && phone.length > 5;
+}
+
+['f-name','f-business','f-email','f-phone'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    submit.disabled = !validate();
+  });
+});
+submit.disabled = true;
+
+// Submit: send lead to Formspree then redirect to Stripe
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+
+  submit.disabled = true;
+  submit.textContent = 'Redirecting to payment…';
+
+  const data = {
+    name:     document.getElementById('f-name').value.trim(),
+    business: document.getElementById('f-business').value.trim(),
+    email:    document.getElementById('f-email').value.trim(),
+    phone:    document.getElementById('f-phone').value.trim(),
+    source:   'DGD Offer Checkout'
+  };
+
+  // Fire Meta pixel
+  if (typeof fbq === 'function') {
+    fbq('track', 'InitiateCheckout', { value: 750, currency: 'EUR' });
+  }
+
+  // Send lead to email (non-blocking — don't wait)
+  if (FORMSPREE && !FORMSPREE.includes('YOUR_FORM_ID')) {
+    fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(() => {});
+  }
+
+  // Short pause so fetch can fire, then go to Stripe
+  setTimeout(() => {
+    window.location.href = STRIPE_LINK;
+  }, 400);
+});
+</script>
+
+</body>
+</html>
