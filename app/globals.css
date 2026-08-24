@@ -93,6 +93,12 @@ body {
   }
 }
 
+/* rotating hero word — each swap rises through the line mask */
+.word-roll {
+  transform: translateY(112%);
+  animation: hl-rise 0.55s var(--ease-out) both;
+}
+
 @keyframes hl-stop-pop {
   to {
     transform: scale(1);

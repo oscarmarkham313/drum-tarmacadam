@@ -2,6 +2,7 @@ import Link from "next/link";
 import { home } from "@/config/copy";
 import { caseStudies } from "@/config/case-studies";
 import HeroVideo from "@/components/HeroVideo";
+import RotatingWord from "@/components/RotatingWord";
 import MagneticButton from "@/components/MagneticButton";
 import Reveal from "@/components/Reveal";
 import StatNumber from "@/components/StatNumber";
@@ -27,10 +28,7 @@ export default function Home() {
               ))}
             </span>
             <span className="hl-line">
-              <span className="hl-word" style={{ ["--w" as string]: 3 }}>
-                {hero.words[3]}
-              </span>
-              <span className="hl-stop">.</span>
+              <RotatingWord words={hero.rotating} />
             </span>
           </h1>
 

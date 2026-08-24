@@ -34,6 +34,8 @@ export const home = {
   hero: {
     // The four words. The full stop renders separately, in the accent colour.
     words: ["We", "get", "you", "customers"],
+    // After the load-in, the last word rolls through these.
+    rotating: ["customers", "enquiries", "bookings", "clients"],
     sub: "Web design, Google Ads, Meta ads and SEO for Irish businesses that want the phone to ring. Built and run from Dublin.",
     cta: { label: "Book a free strategy call", href: "/contact" },
     secondary: { label: "See the results", href: "/results" },
@@ -91,10 +93,10 @@ export const home = {
     sub: "Every engagement is built on the same mechanism. We put your business in front of people already looking, filter for the ones ready to buy, and make contacting you effortless.",
     caption: "Illustrative flow — 90 days, local services client.",
     stages: [
-      { label: "Traffic", value: 38400, detail: "People who saw you" },
-      { label: "Qualified clicks", value: 2140, detail: "Visited your site" },
-      { label: "Enquiries", value: 214, detail: "Called or messaged" },
-      { label: "Booked jobs", value: 68, detail: "Became customers" },
+      { label: "People who see you", tag: "Traffic", value: 38400 },
+      { label: "Visit your website", tag: "Clicks", value: 2140 },
+      { label: "Call or message you", tag: "Enquiries", value: 214 },
+      { label: "Become customers", tag: "Booked jobs", value: 68 },
     ],
   },
   resultsPreview: {

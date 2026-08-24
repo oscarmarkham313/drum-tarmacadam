@@ -30,12 +30,13 @@ export default function Nav() {
           className="mx-auto flex h-16 max-w-container items-center justify-between px-5 md:px-10"
           aria-label="Main"
         >
-          <Link
-            href="/"
-            className="text-[15px] font-bold tracking-tight"
-            aria-label="Dublin Growth Digital — home"
-          >
-            Dublin Growth Digital<span className="text-accent">.</span>
+          <Link href="/" aria-label="Dublin Growth Digital — home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.svg"
+              alt="Dublin Growth Digital"
+              className="h-9 w-auto"
+            />
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">

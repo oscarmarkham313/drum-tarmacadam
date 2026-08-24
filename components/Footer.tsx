@@ -7,9 +7,8 @@ export default function Footer() {
       <div className="mx-auto max-w-container px-5 py-14 md:px-10">
         <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <p className="text-[15px] font-bold tracking-tight">
-              Dublin Growth Digital<span className="text-accent">.</span>
-            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.svg" alt="Dublin Growth Digital" className="h-10 w-auto" />
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-3">
               {footer.line}
             </p>
