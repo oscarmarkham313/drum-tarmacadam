@@ -1,0 +1,40 @@
+﻿{
+    "version":  "0.0.1",
+    "configurations":  [
+                           {
+                               "name":  "greenway-v2",
+                               "runtimeExecutable":  "python",
+                               "runtimeArgs":  [
+                                                   "-m",
+                                                   "http.server",
+                                                   "8790",
+                                                   "--directory",
+                                                   "C:/Users/oscar/claude/greenway-v2"
+                                               ],
+                               "port":  8790
+                           },
+                           {
+                               "name":  "greenway",
+                               "runtimeExecutable":  "python",
+                               "runtimeArgs":  [
+                                                   "-m",
+                                                   "http.server",
+                                                   "8765",
+                                                   "--directory",
+                                                   "C:/Users/oscar/claude/greenway"
+                                               ],
+                               "port":  8765
+                           },
+                           {
+                               "name":  "brendancocoman",
+                               "runtimeExecutable":  "npm",
+                               "runtimeArgs":  [
+                                                   "run",
+                                                   "dev",
+                                                   "--prefix",
+                                                   "C:/Users/oscar/claude/brendancocoman/site"
+                                               ],
+                               "port":  4321
+                           }
+                       ]
+}
