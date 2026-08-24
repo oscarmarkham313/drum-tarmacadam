@@ -1,0 +1,21 @@
+{
+  "name": "dgd-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Programmatic social video assets from the site's design tokens. Separate from the site build.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render StatCard out/stat-card.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.240",
+    "@remotion/google-fonts": "^4.0.240",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "remotion": "^4.0.240"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "typescript": "^5.6.3"
+  }
+}
