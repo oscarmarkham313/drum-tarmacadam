@@ -85,12 +85,13 @@ write("services", html)
 
 
 # =============================================================== projects
-# Only six distinct photographs exist: transition-interior is the same shot as
-# photo-kitchen, transition-tarmac the same as photo-tarmac, transition-grounds
-# the same as photo-grounds - each pair is one image cropped two ways. Mixing
-# the pairs meant the kitchen shot appeared four times across these nine cases.
-# Nine cases against six photographs means three must repeat; this ordering
-# caps every one at two uses and never places a repeat next to itself.
+# Six distinct photographs exist (each transition-* is the same shot as its
+# photo-* counterpart, cropped differently). Nine cases against six photographs
+# used to mean the same picture appeared more than once. Rather than repeat an
+# image, the six projects that have a matching photograph lead the page and the
+# three that do not are listed below. Every image on the site is now unique,
+# and the split is honest: those three simply have not been photographed yet.
+# When real site photography arrives they move up into the main sequence.
 CASES = [
     ("Commercial", "Office refurbishment - Limerick City",
      "Full internal refurbishment of a 3,000 sq ft office space including new "
@@ -111,15 +112,17 @@ CASES = [
     ("Grounds", "Grounds maintenance contract - business park",
      "Ongoing monthly grounds maintenance including grass cutting, hedge trimming "
      "and seasonal planting for a local business park.", "photo-grounds"),
+]
+
+ALSO = [
     ("Commercial", "Plumbing fit-out - commercial unit",
-     "Full plumbing installation for a new commercial unit including pipework, "
-     "fixtures and water management systems.", "photo-office"),
+     "Full plumbing installation including pipework, fixtures and water "
+     "management systems."),
     ("Residential", "Bathroom suite renovation - Tipperary",
-     "Full bathroom renovation including new suite, tiling, plumbing and "
-     "electrical work.", "photo-kitchen"),
+     "New suite, tiling, plumbing and electrical work."),
     ("Roofing", "Roof repair and insulation - Limerick",
-     "Full roof repair and re-slating on a commercial property, including new "
-     "insulation and guttering replacement.", "photo-tarmac"),
+     "Roof repair and re-slating on a commercial property, with new insulation "
+     "and guttering."),
 ]
 
 cases = "\n".join(f'''
@@ -137,6 +140,11 @@ cases = "\n".join(f'''
         </div>
       </article>''' for cat, t, d, p in CASES)
 
+also = "\n".join(f'''        <li>
+          <span>{cat}</span>
+          <span><strong>{t}</strong><br>{d}</span>
+        </li>''' for cat, t, d in ALSO)
+
 html = S.head("Our Work | Property Maintenance Projects, Limerick | Greenway",
               "A selection of completed property maintenance, refurbishment, "
               "surfacing, drainage and grounds projects across Limerick and beyond.",
@@ -152,11 +160,21 @@ html += f'''
     <div class="shell">
       <div class="notice" data-reveal style="max-width:68ch;margin-bottom:clamp(2.5rem,6vw,4rem);">
         <strong>About the photography.</strong>
-        Every project described here is one Greenway completed. The images are
-        illustrative of the type of work - they are not photographs of these
-        specific jobs. They will be replaced as site photography is supplied.
+        Every project here is one Greenway completed. The images show the type of
+        work rather than these specific jobs, and are replaced as site photography
+        is supplied - which is also why the last three are listed without one.
       </div>
 {cases}
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="shell shell--narrow">
+      <p class="eyebrow" data-reveal>Also completed</p>
+      <h2 class="display" data-reveal style="margin-top:1.1rem;">Not yet photographed.</h2>
+      <ul class="list-plain case-list" data-reveal style="margin-top:2rem;">
+{also}
+      </ul>
     </div>
   </section>
 '''

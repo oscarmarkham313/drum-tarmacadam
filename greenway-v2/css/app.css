@@ -1101,3 +1101,24 @@ h1, h2, h3, h4 {
   align-items: end;
 }
 .band--inset .band__inner { padding: 0; }
+
+/* ------------------------------------------------- projects: unphotographed
+   Three completed projects have no photograph yet. Listing them rather than
+   reusing another project's picture keeps every image on the site unique. */
+.case-list li { align-items: start; gap: 1.5rem; }
+.case-list li > span:first-child {
+  flex: 0 0 auto;
+  min-width: 9ch;
+  font-family: var(--font-text);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  padding-top: .25em;
+}
+.case-list li > span:last-child { color: var(--warm-600); }
+.case-list strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) {
+  .case-list li { flex-direction: column; gap: .5rem; }
+}
