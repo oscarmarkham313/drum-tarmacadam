@@ -1,0 +1,7 @@
+# Local Netlify folder
+.netlify
+
+.vercel
+
+# Claude Code per-machine permission grants — local by convention, not shared
+.claude/settings.local.json

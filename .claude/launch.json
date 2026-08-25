@@ -26,6 +26,17 @@
                                "port":  8765
                            },
                            {
+                               "name":  "oneclickgo",
+                               "runtimeExecutable":  "npm",
+                               "runtimeArgs":  [
+                                                   "run",
+                                                   "dev",
+                                                   "--prefix",
+                                                   "C:/Users/oscar/AppData/Local/Temp/oneclickgo"
+                                               ],
+                               "port":  3000
+                           },
+                           {
                                "name":  "brendancocoman",
                                "runtimeExecutable":  "npm",
                                "runtimeArgs":  [
