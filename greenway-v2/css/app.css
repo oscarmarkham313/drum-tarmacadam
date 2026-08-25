@@ -937,3 +937,51 @@ h1, h2, h3, h4 {
 .hero .hero__scroll { color: #fff; }
 .pagehead.media .pagehead__lede,
 .hero .hero__meta { color: rgba(255, 255, 255, .9); }
+
+/* ============================================================== hero, v2
+   The first version left 37% of the hero empty above the headline and offered
+   a single CTA with no phone number — on a site whose headline is "One call"
+   and whose ad spend goes to a calls campaign. */
+
+/* Content sits lower than centre but no longer leaves a dead top third. */
+.hero__inner { padding-block: clamp(7rem, 14vh, 9rem) clamp(3rem, 7vh, 4.5rem); }
+
+.hero__eyebrow {
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 1.1rem;
+}
+
+.hero__meta { margin-top: 1.3rem; }
+
+/* Two co-equal CTAs: the caller and the planner. Auto-width on desktop so a
+   single button never stretches the full column. */
+.hero__actions .btn { flex: 0 1 auto; }
+
+.hero__proof {
+  list-style: none;
+  padding: 0;
+  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.6rem;
+  font-size: var(--t-small);
+  color: rgba(255, 255, 255, .92);
+}
+.hero__proof li { display: flex; align-items: baseline; gap: .55rem; }
+.hero__proof li::before {
+  content: '';
+  flex: 0 0 5px;
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+@media (max-width: 760px) {
+  /* Full-width stacked buttons stay, but the call button leads. */
+  .hero__actions .btn { flex: 1 1 100%; }
+  .hero__proof { gap: .45rem 1.1rem; }
+}
