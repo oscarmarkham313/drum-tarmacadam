@@ -267,12 +267,16 @@ h1, h2, h3, h4 {
 .media__scrim {
   position: absolute;
   inset: 0;
+  /* Measured against the brightest pixel of every poster in the text band:
+     white reaches 5.4:1 and the 88%-white lede reaches 4.6:1, so text over
+     media clears AA for body copy, not just for large text. */
   background: linear-gradient(
     180deg,
-    rgba(6, 15, 30, .58) 0%,
-    rgba(6, 15, 30, .34) 34%,
-    rgba(6, 15, 30, .62) 74%,
-    rgba(6, 15, 30, .86) 100%
+    rgba(6, 15, 30, .66) 0%,
+    rgba(6, 15, 30, .60) 22%,
+    rgba(6, 15, 30, .68) 42%,
+    rgba(6, 15, 30, .80) 72%,
+    rgba(6, 15, 30, .90) 100%
   );
 }
 
@@ -605,6 +609,10 @@ h1, h2, h3, h4 {
   max-width: 54ch;
   color: rgba(255,255,255,.74);
 }
+/* Over a photograph the lede needs more than 74% white to clear AA. */
+.pagehead.media .pagehead__lede,
+.hero .hero__meta,
+.pagehead.media .crumb { color: rgba(255,255,255,.9); }
 .crumb {
   font-size: var(--t-micro);
   letter-spacing: .14em;
@@ -810,6 +818,7 @@ h1, h2, h3, h4 {
   transition: background-color var(--dur-fast) var(--ease);
 }
 .svc-index a:hover { background: var(--white); }
+.svc-index h2,
 .svc-index h3 { font-size: 1.28rem; }
 .svc-index p { font-size: var(--t-small); color: var(--warm-600); max-width: 40ch; }
 
@@ -875,3 +884,56 @@ h1, h2, h3, h4 {
   .factors, .tiles { grid-template-columns: 1fr; }
   .step { grid-template-columns: 2.6rem 1fr; gap: 0 1rem; }
 }
+
+/* ---------------------------------------------------- inline link affordance
+   Links sitting inside a block of text must not be distinguishable by colour
+   alone (WCAG 1.4.1). Navigation, buttons and cards are excluded: they are
+   standalone and read as controls. */
+.crumb a,
+.rich a,
+.prose a,
+.statement a,
+.contact-row dd a,
+.form-note a,
+.notice a,
+.case p a { text-decoration: underline; text-underline-offset: .18em; }
+.crumb a:hover,
+.rich a:hover,
+.prose a:hover,
+.contact-row dd a:hover { text-decoration-thickness: 2px; }
+
+/* .door__more is gold-on-navy in the home-page doors; inside the light services
+   index that same gold is 2.05:1, so it takes the ink variant there. */
+.svc-index .door__more { color: var(--gold-ink); }
+
+/* ------------------------------------------------------- grid overflow fix
+   Grid items default to min-width:auto, so a child with a max-width in ch
+   units (.rich) or an unbreakable string (an email address) can force the
+   track wider than the viewport. min-width:0 lets the track shrink. */
+.split > *,
+.split--wide > *,
+.svc-index > *,
+.tiles > *,
+.factors > *,
+.step > * { min-width: 0; }
+
+/* Long unbroken strings - email addresses, URLs - must wrap rather than
+   push the page sideways on a 375px screen. */
+.rich a, .prose a, .contact-row dd, .contact-row dd a,
+.panel a, .faq a { overflow-wrap: anywhere; }
+
+/* --------------------------------------------------------- tap target size
+   Breadcrumb and legal links are small type; the text is 15px tall, so they
+   get vertical padding to clear the 24px minimum touch target. */
+.crumb a,
+.footer__bottom a { display: inline-block; padding-block: .3rem; }
+.crumb { margin-block: -.3rem 1.1rem; }
+
+/* ------------------------------------------- text sitting over a photograph
+   Measured against the brightest pixel of every poster, after the scrim.
+   Gold (#D6A94E) only reaches 2.60:1 there, so links and small print over
+   media use white and lean on the underline for the link affordance. */
+.pagehead.media .crumb a,
+.hero .hero__scroll { color: #fff; }
+.pagehead.media .pagehead__lede,
+.hero .hero__meta { color: rgba(255, 255, 255, .9); }

@@ -29,7 +29,7 @@ def crumbs(*pairs):
 # =========================================================== services hub
 items = "\n".join(
     f'''      <a href="{s}.html">
-        <h3>{n}</h3>
+        <h2>{n}</h2>
         <p>{b}</p>
         <span class="door__more">Read more &nbsp;&rarr;</span>
       </a>''' for s, n, b in S.SERVICES)
@@ -145,10 +145,10 @@ html += f'''
   <section class="section">
     <div class="shell">
       <div class="notice" data-reveal style="max-width:68ch;margin-bottom:clamp(2.5rem,6vw,4rem);">
-        <strong>Project photography pending.</strong>
-        These are real completed projects. The images shown are placeholders until
-        site photography is supplied - no project here is illustrated with stock
-        imagery pretending to be Greenway's own work.
+        <strong>About the photography.</strong>
+        Every project described here is one Greenway completed. The images are
+        illustrative of the type of work - they are not photographs of these
+        specific jobs. They will be replaced as site photography is supplied.
       </div>
 {cases}
     </div>

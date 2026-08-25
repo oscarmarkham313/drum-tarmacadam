@@ -5,6 +5,8 @@ Every page is generated from this one template so nav, footer, head, pixel and
 conversion wiring can never drift between pages.
 """
 
+import datetime as _dt
+
 PHONE_TEL = "+353830301799"
 PHONE_TXT = "083 030 1799"
 SITE = "https://greenwaypropertyservices.ie"
@@ -151,6 +153,7 @@ NAV = """
 
 
 def footer():
+    year = _dt.date.today().year
     svc = "\n".join(
         f'          <a href="{s}.html">{n}</a>' for s, n, _ in SERVICES[:6])
     return f"""
@@ -183,7 +186,7 @@ def footer():
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2026 Greenway Property Services</span>
+      <span>&copy; {year} Greenway Property Services</span>
       <span>{ADDRESS}</span>
       <span><a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a></span>
     </div>
@@ -193,8 +196,6 @@ def footer():
 <div class="sticky-call" data-sticky-call>
   <a class="btn btn--gold" href="tel:{PHONE_TEL}">Call {PHONE_TXT}</a>
 </div>
-
-<div class="dev-flag">Preview &middot; placeholder media</div>
 
 <script src="js/motion.js" defer></script>
 </body>

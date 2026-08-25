@@ -61,6 +61,26 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 
     items.forEach(function (el) { io.observe(el); });
+
+    // Safety net. IntersectionObserver does not fire while a tab has never
+    // been painted (background tab, hidden iframe, some in-app browsers), and
+    // content stuck at opacity 0 is worse than content that simply appears.
+    // Anything still unrevealed after the page has settled is shown outright.
+    var release = function () {
+      items.forEach(function (el) {
+        if (!el.classList.contains('is-revealed')) {
+          el.style.transition = 'none';
+          el.classList.add('is-revealed');
+          io.unobserve(el);
+        }
+      });
+    };
+    window.setTimeout(function () {
+      // Only force it if nothing at all has revealed - if the observer is
+      // working, leave the rest to scroll in normally.
+      var any = items.some(function (el) { return el.classList.contains('is-revealed'); });
+      if (!any) release();
+    }, 3000);
   }
 
   // -------------------------------------------------------------- video utils
