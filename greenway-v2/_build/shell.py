@@ -106,7 +106,7 @@ def head(title, desc, slug, preload_poster=None, extra=""):
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/instrumentserif.woff2" crossorigin>
 {preload}
-<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/app.min.css">
 <link rel="icon" href="images/logo-mark.png">
 <meta name="theme-color" content="#0B1B33">
 {_pixel_head()}
