@@ -218,8 +218,21 @@
     });
   }
 
+  // ------------------------------------------------------- hero load-in guard
+  // The hero entrance is pure CSS and needs no JS to run. This exists only as
+  // a rescue: a hero stuck at opacity 0 is a blank first screen, which is far
+  // worse than a hero that simply appears. By 3s every animation has long
+  // finished, so in the normal case this changes nothing at all.
+  function initHeroGuard() {
+    if (!document.querySelector('.hero')) return;
+    window.setTimeout(function () {
+      docEl.classList.add('hero-settled');
+    }, 3000);
+  }
+
   // ----------------------------------------------------------------------- go
   function boot() {
+    initHeroGuard();
     initReveal();
     initHero();
     initTransitions();
