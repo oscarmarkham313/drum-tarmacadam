@@ -85,6 +85,12 @@ write("services", html)
 
 
 # =============================================================== projects
+# Only six distinct photographs exist: transition-interior is the same shot as
+# photo-kitchen, transition-tarmac the same as photo-tarmac, transition-grounds
+# the same as photo-grounds - each pair is one image cropped two ways. Mixing
+# the pairs meant the kitchen shot appeared four times across these nine cases.
+# Nine cases against six photographs means three must repeat; this ordering
+# caps every one at two uses and never places a repeat next to itself.
 CASES = [
     ("Commercial", "Office refurbishment - Limerick City",
      "Full internal refurbishment of a 3,000 sq ft office space including new "
@@ -107,13 +113,13 @@ CASES = [
      "and seasonal planting for a local business park.", "photo-grounds"),
     ("Commercial", "Plumbing fit-out - commercial unit",
      "Full plumbing installation for a new commercial unit including pipework, "
-     "fixtures and water management systems.", "transition-interior"),
+     "fixtures and water management systems.", "photo-office"),
     ("Residential", "Bathroom suite renovation - Tipperary",
      "Full bathroom renovation including new suite, tiling, plumbing and "
      "electrical work.", "photo-kitchen"),
     ("Roofing", "Roof repair and insulation - Limerick",
      "Full roof repair and re-slating on a commercial property, including new "
-     "insulation and guttering replacement.", "transition-interior"),
+     "insulation and guttering replacement.", "photo-tarmac"),
 ]
 
 cases = "\n".join(f'''

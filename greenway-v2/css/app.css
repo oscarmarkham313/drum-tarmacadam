@@ -1081,3 +1081,23 @@ h1, h2, h3, h4 {
   opacity: 1 !important;
   transform: none !important;
 }
+
+/* ---------------------------------------------------- contained media band
+   The grounds band used to break the gutter and run edge to edge, directly
+   under the Residential/Commercial cards which are inset. Two different
+   containments back to back read as a mistake, so the band now sits in the
+   same shell and is padded like a .door. */
+.band-wrap {
+  /* Shares the warm field of the fork section directly above, so the grounds
+     card reads as a continuation of Residential/Commercial rather than as a
+     new section that happens to contain a picture. */
+  background: var(--warm-100);
+  padding-block: 0 clamp(3rem, 8vw, 6rem);
+}
+.band--inset {
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  min-height: clamp(340px, 46vh, 500px);
+  align-items: end;
+}
+.band--inset .band__inner { padding: 0; }

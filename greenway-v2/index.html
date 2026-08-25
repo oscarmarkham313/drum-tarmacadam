@@ -134,23 +134,28 @@
   </section>
 
   <!-- ============================================ 4. transition — grounds -->
-  <section class="band media on-dark" aria-label="Grounds maintenance">
-    <picture class="media__poster">
-      <source type="image/webp"
-              srcset="media/transition-grounds-800.webp 800w, media/transition-grounds-1200.webp 1200w"
-              sizes="100vw">
-      <img src="media/transition-grounds-1200.jpg"
-           srcset="media/transition-grounds-800.jpg 800w, media/transition-grounds-1200.jpg 1200w"
-           sizes="100vw" alt="" width="1200" height="675" loading="lazy" decoding="async">
-    </picture>
-    <video class="media__video" data-transition-video
-           muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-      <!-- awaiting media/transition-grounds.webm -->
-      <!-- awaiting media/transition-grounds.mp4 -->
-    </video>
-    <div class="media__scrim"></div>
-    <div class="shell band__inner">
-      <p class="band__quote" data-reveal>Grounds kept the way the building deserves.</p>
+  <section class="band-wrap" aria-label="Grounds maintenance">
+    <div class="shell">
+      <div class="band band--inset media on-dark">
+        <picture class="media__poster">
+          <source type="image/webp"
+                  srcset="media/transition-grounds-800.webp 800w, media/transition-grounds-1200.webp 1200w"
+                  sizes="(max-width: 1360px) 100vw, 1280px">
+          <img src="media/transition-grounds-1200.jpg"
+               srcset="media/transition-grounds-800.jpg 800w, media/transition-grounds-1200.jpg 1200w"
+               sizes="(max-width: 1360px) 100vw, 1280px" alt="" width="1200" height="675"
+               loading="lazy" decoding="async">
+        </picture>
+        <video class="media__video" data-transition-video
+               muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+          <!-- awaiting media/transition-grounds.webm -->
+          <!-- awaiting media/transition-grounds.mp4 -->
+        </video>
+        <div class="media__scrim"></div>
+        <div class="band__inner">
+          <p class="band__quote" data-reveal>Grounds kept the way the building deserves.</p>
+        </div>
+      </div>
     </div>
   </section>
 
