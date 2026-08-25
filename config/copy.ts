@@ -112,37 +112,37 @@ export const home = {
         quote:
           "Finally a marketing agency that speaks plain English and delivers. Our Google Ads are generating more leads than we can handle.",
         name: "Ciarán O'Brien",
-        role: "Director, O'Brien Plumbing & Heating",
+        role: "Director, plumbing & heating company",
       },
       {
         quote:
           "Our bookings tripled in the first two months. The team genuinely cares about your results, not just showing up and collecting a fee.",
         name: "Siobhán Murphy",
-        role: "Owner, Murphy's Bistro, Dublin 4",
+        role: "Owner, Dublin restaurant",
       },
       {
         quote:
           "The new website they built for us is absolutely stunning. We went from embarrassed to share our URL to handing it out to everyone.",
         name: "Aoife Gallagher",
-        role: "Founder, Gallagher Interiors",
+        role: "Founder, interior design studio",
       },
       {
         quote:
           "18x ROAS on our e-commerce ads. I genuinely didn't believe it was possible before we started working together.",
         name: "Róisín Byrne",
-        role: "CEO, Byrne Active Wear",
+        role: "CEO, activewear brand",
       },
       {
         quote:
           "From zero online presence to page one on Google in four months. The SEO results have transformed our business completely.",
         name: "Patrick Walsh",
-        role: "Partner, Walsh & Associates Accountants",
+        role: "Partner, accountancy firm",
       },
       {
         quote:
           "Our Instagram grew by 8,000 followers in six months and we're getting direct enquiries from it every single week now.",
         name: "Niamh Dolan",
-        role: "Owner, Dublin Beauty Salon",
+        role: "Owner, Dublin beauty salon",
       },
     ],
   },
