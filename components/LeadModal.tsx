@@ -3,9 +3,7 @@
 /**
  * Lead-capture modal — competitor ad breakdown offer.
  *
- * Triggers (never on load, never in the first 15s):
- *   desktop  — exit intent: mouse leaves the viewport through the top
- *   mobile   — first of: 30s on page, or 50% scroll depth
+ * Trigger: 4 seconds after landing, all devices.
  * Suppressed for 30 days after dismissal or submission (localStorage),
  * on /thank-you, and for visitors arriving from email (utm_medium=email,
  * remembered for the session).
@@ -22,8 +20,7 @@ import { leadModal, site } from "@/config/copy";
 const SUPPRESS_KEY = "dgd-lead-suppressed-until";
 const EMAIL_VISITOR_KEY = "dgd-lead-email-visitor";
 const SUPPRESS_DAYS = 30;
-const GRACE_MS = 15_000;
-const MOBILE_TIMER_MS = 30_000;
+const SHOW_DELAY_MS = 4_000;
 
 function suppressed(): boolean {
   try {
@@ -89,42 +86,15 @@ export default function LeadModal() {
 
     if (suppressed()) return;
 
-    let graceOver = false;
-    const timers: number[] = [];
-    const cleanups: (() => void)[] = [];
+    // all devices: show 4 seconds after landing
+    const t = window.setTimeout(() => {
+      if (!firedRef.current && !suppressed()) {
+        firedRef.current = true;
+        setOpen(true);
+      }
+    }, SHOW_DELAY_MS);
 
-    const fire = () => {
-      if (firedRef.current || !graceOver || suppressed()) return;
-      firedRef.current = true;
-      cleanups.forEach((c) => c());
-      setOpen(true);
-    };
-
-    timers.push(window.setTimeout(() => (graceOver = true), GRACE_MS));
-
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    if (fine) {
-      // desktop: exit intent through the top of the viewport
-      const onMouseOut = (e: MouseEvent) => {
-        if (!e.relatedTarget && e.clientY <= 0) fire();
-      };
-      document.addEventListener("mouseout", onMouseOut);
-      cleanups.push(() => document.removeEventListener("mouseout", onMouseOut));
-    } else {
-      // mobile: 30s on page, or 50% scroll depth — whichever first
-      timers.push(window.setTimeout(fire, MOBILE_TIMER_MS));
-      const onScroll = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        if (max > 0 && window.scrollY / max >= 0.5) fire();
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      cleanups.push(() => window.removeEventListener("scroll", onScroll));
-    }
-
-    return () => {
-      timers.forEach((t) => window.clearTimeout(t));
-      cleanups.forEach((c) => c());
-    };
+    return () => window.clearTimeout(t);
   }, [pathname]);
 
   /* ————— open/close plumbing ————— */
