@@ -152,8 +152,12 @@ NAV = """
 """.replace("PHONE_TEL", PHONE_TEL).replace("PHONE_TXT", PHONE_TXT)
 
 
-def footer():
+def footer(with_promo=True):
     year = _dt.date.today().year
+    # Not on contact or thank-you: the visitor is already converting there.
+    script = '<script src="js/promo.js" defer></script>' + '\n'
+    # Markup is built by promo.js, not shipped in the page - see that file.
+    promo_markup = script if with_promo else ''
     svc = "\n".join(
         f'          <a href="{s}.html">{n}</a>' for s, n, _ in SERVICES[:6])
     return f"""
@@ -198,7 +202,7 @@ def footer():
 </div>
 
 <script src="js/motion.js" defer></script>
-</body>
+{promo_markup}</body>
 </html>
 """
 

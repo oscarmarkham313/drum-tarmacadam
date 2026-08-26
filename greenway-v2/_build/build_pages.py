@@ -385,7 +385,7 @@ html += f'''
   </section>
 '''
 html += S.areas_block(dark=True)
-html += "\n</main>\n" + S.footer().replace(
+html += "\n</main>\n" + S.footer(with_promo=False).replace(
     '<script src="js/motion.js" defer></script>',
     '<script src="js/motion.js" defer></script>\n<script src="js/form.js" defer></script>')
 write("contact", html)
@@ -484,7 +484,7 @@ html += f'''
 </main>
 '''
 html += S.pixel_lead()
-html += S.footer()
+html += S.footer(with_promo=False)
 write("thank-you", html)
 
 
