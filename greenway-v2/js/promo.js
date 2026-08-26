@@ -1,19 +1,21 @@
 /*
  * Greenway - quote prompt.
  *
- * WHEN IT FIRES, AND WHY IT IS NOT ON A TIMER
- * The previous site opened this two seconds after load, on every page. Google
- * penalises mobile pages that cover their content with an interstitial when a
- * visitor arrives from search, and ranking in Limerick is the whole point of
- * this site - so a load-timer trigger would work against the thing it is meant
- * to help. Instead:
+ * TRIGGER: 4 seconds after the page loads, once per session.
  *
- *   desktop  exit intent - the pointer leaves through the top of the window
- *   mobile   after 55% scroll depth AND 20s, so it follows engagement rather
- *            than interrupting arrival
+ * This is a deliberate client decision, made with the trade-off on the table.
+ * Google's intrusive-interstitial guideline covers interstitials that cover
+ * content shortly after a visitor arrives from search on mobile, and four
+ * seconds still counts as arrival - so this carries some mobile ranking risk.
+ * There is no technical way around that: suppressing it for Googlebot would be
+ * cloaking, which is worse than the thing it would be hiding. If organic
+ * mobile impressions dip, this is the first thing to change back.
  *
- * Either way it shows once per session, never on the contact or thank-you
- * pages, and never when the visitor has already reached the footer CTA.
+ * Exit intent is kept on desktop as well, purely as a safety net for anyone
+ * who leaves before the four seconds elapse.
+ *
+ * It never appears on contact or thank-you - the visitor is already
+ * converting there - and it shows at most once per session.
  */
 (function () {
   'use strict';
@@ -21,43 +23,55 @@
   var KEY = 'gw-promo-seen';
   try { if (sessionStorage.getItem(KEY)) return; } catch (e) { /* private mode */ }
 
-  // The dialog is BUILT HERE rather than shipped in the HTML. Measured: the
-  // ~1.1 KB of markup in the page pushed the document past a congestion-window
-  // boundary and cost one full round trip - LCP went 2.26s -> 2.41s, dead
-  // consistent across runs, with the script itself costing nothing. Since it
-  // can only ever be opened by this script, the page does not need it. Search
-  // engines never see interstitial markup either, which is a bonus.
-  var tel = document.querySelector('.sticky-call a[href^="tel:"]')
-         || document.querySelector('a[href^="tel:"]');
-  var telHref = tel ? tel.getAttribute('href') : 'tel:+353830301799';
-  var telText = tel ? tel.textContent.trim() : 'Call 083 030 1799';
+  // The dialog is built lazily, inside show(), for two reasons.
+  //
+  // It is not shipped in the HTML because the ~1.1 KB of markup pushed the
+  // document past a congestion-window boundary and cost one full round trip -
+  // measured, LCP 2.26s -> 2.41s, consistent across five runs.
+  //
+  // It is not built at script init either, because innerHTML plus an append
+  // forces a style and layout pass inside the load window, where it counts
+  // against Total Blocking Time. Nothing needs to exist until the prompt
+  // actually opens, so nothing is created until then - which also means
+  // visitors who leave first, or who have already seen it this session, pay
+  // nothing at all.
+  var promo = null, card = null, lastFocus = null;
+  // NOT named `open`: that resolves to window.open, a truthy built-in, so
+  // `if (open) return;` would silently return every time with no error.
+  var isOpen = false;
 
-  var promo = document.createElement('div');
-  promo.className = 'promo';
-  promo.hidden = true;
-  promo.setAttribute('data-promo', '');
-  promo.setAttribute('role', 'dialog');
-  promo.setAttribute('aria-modal', 'true');
-  promo.setAttribute('aria-labelledby', 'promo-title');
-  promo.innerHTML =
-    '<div class="promo__card">' +
-      '<button class="promo__close" data-promo-close type="button" aria-label="Close">&times;</button>' +
-      '<p class="promo__label">Before you go</p>' +
-      '<h2 class="promo__title" id="promo-title">Get it looked at, for nothing.</h2>' +
-      '<p class="promo__text">Describe the job and we will come out, assess it and put a ' +
-        'written itemised quote in front of you. No charge, and no obligation either way.</p>' +
-      '<div class="promo__actions">' +
-        '<a class="btn btn--gold" href="' + telHref + '">' + telText + '</a>' +
-        '<a class="btn btn--ghost" href="contact.html">Request a quote</a>' +
-      '</div>' +
-      '<p class="promo__note">Free site visit &middot; Itemised quote &middot; 24/7 emergency call-outs</p>' +
-    '</div>';
-  document.body.appendChild(promo);
+  function build() {
+    var tel = document.querySelector('.sticky-call a[href^="tel:"]')
+           || document.querySelector('a[href^="tel:"]');
+    var telHref = tel ? tel.getAttribute('href') : 'tel:+353830301799';
+    var telText = tel ? tel.textContent.trim() : 'Call 083 030 1799';
 
-  var card = promo.querySelector('.promo__card');
-  var closeBtn = promo.querySelector('[data-promo-close]');
-  var lastFocus = null;
-  var open = false;
+    promo = document.createElement('div');
+    promo.className = 'promo';
+    promo.hidden = true;
+    promo.setAttribute('data-promo', '');
+    promo.setAttribute('role', 'dialog');
+    promo.setAttribute('aria-modal', 'true');
+    promo.setAttribute('aria-labelledby', 'promo-title');
+    promo.innerHTML =
+      '<div class="promo__card">' +
+        '<button class="promo__close" data-promo-close type="button" aria-label="Close">&times;</button>' +
+        '<p class="promo__label">Before you go</p>' +
+        '<h2 class="promo__title" id="promo-title">Get it looked at, for nothing.</h2>' +
+        '<p class="promo__text">Describe the job and we will come out, assess it and put a ' +
+          'written itemised quote in front of you. No charge, and no obligation either way.</p>' +
+        '<div class="promo__actions">' +
+          '<a class="btn btn--gold" href="' + telHref + '">' + telText + '</a>' +
+          '<a class="btn btn--ghost" href="contact.html">Request a quote</a>' +
+        '</div>' +
+        '<p class="promo__note">Free site visit &middot; Itemised quote &middot; 24/7 emergency call-outs</p>' +
+      '</div>';
+    document.body.appendChild(promo);
+
+    card = promo.querySelector('.promo__card');
+    promo.querySelector('[data-promo-close]').addEventListener('click', hide);
+    promo.addEventListener('click', function (e) { if (e.target === promo) hide(); });
+  }
 
   function focusables() {
     return [].slice.call(card.querySelectorAll(
@@ -65,8 +79,9 @@
   }
 
   function show() {
-    if (open) return;
-    open = true;
+    if (isOpen) return;
+    isOpen = true;
+    if (!promo) build();
     try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
 
     lastFocus = document.activeElement;
@@ -89,8 +104,8 @@
   }
 
   function hide() {
-    if (!open) return;
-    open = false;
+    if (!isOpen) return;
+    isOpen = false;
     promo.classList.remove('is-open');
     document.body.style.overflow = '';
     document.body.style.paddingRight = '';
@@ -102,13 +117,11 @@
   }
 
   // ---------------------------------------------------------------- controls
-  closeBtn.addEventListener('click', hide);
-  promo.addEventListener('click', function (e) { if (e.target === promo) hide(); });
   document.addEventListener('keydown', function (e) {
-    if (!open) return;
+    if (!isOpen) return;
     if (e.key === 'Escape') { hide(); return; }
     if (e.key !== 'Tab') return;
-    // Keep focus inside the dialog while it is open.
+    // Keep focus inside the dialog while it is isOpen.
     var f = focusables();
     if (!f.length) return;
     var first = f[0], last = f[f.length - 1];
@@ -117,58 +130,30 @@
   });
 
   // ---------------------------------------------------------------- triggers
-  var onExit = null, scrollIO = null, timer = null, armed = false;
+  var onExit = null, timer = null;
 
   function teardown() {
     if (onExit) document.removeEventListener('mouseout', onExit);
-    if (scrollIO) scrollIO.disconnect();
     if (timer) window.clearTimeout(timer);
   }
 
-  // Never interrupt someone who has already reached the closing CTA - they are
-  // looking at the same two buttons this would show them.
-  var closer = document.querySelector('.section--deep');
-  var reachedEnd = false;
-  if (closer && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { reachedEnd = true; teardown(); } });
-    }, { threshold: 0 }).observe(closer);
-  }
+  // The trigger: four seconds on the page. Nothing suppresses it.
+  //
+  // An earlier version cancelled the timer once the visitor reached the
+  // closing CTA, on the theory that they were already looking at the same two
+  // buttons. That made the prompt unpredictable - anyone who scrolled quickly
+  // never saw it - and it is not what was asked for. Four seconds means four
+  // seconds.
+  timer = window.setTimeout(show, 4000);
 
-  var coarse = window.matchMedia('(hover: none), (max-width: 760px)').matches;
-
-  if (!coarse) {
+  // Desktop also gets exit intent, purely to catch anyone who is already
+  // leaving before the four seconds are up.
+  if (!window.matchMedia('(hover: none), (max-width: 760px)').matches) {
     onExit = function (e) {
-      if (reachedEnd || e.relatedTarget || e.clientY > 8) return;
+      if (e.relatedTarget || e.clientY > 8) return;
       show();
     };
     document.addEventListener('mouseout', onExit);
-  } else {
-    // Mobile: engagement, not arrival. Both conditions must be met, and either
-    // one may be satisfied last - so neither is checked inside the other's
-    // callback. An IntersectionObserver only reports a CHANGE in intersection;
-    // if the visitor is already past the mark when the timer arms, the observer
-    // will never fire again and a check nested inside it would never run.
-    var deep = false;
-
-    function maybeShow() {
-      if (armed && deep && !reachedEnd) show();
-    }
-
-    timer = window.setTimeout(function () { armed = true; maybeShow(); }, 20000);
-
-    var mark = document.createElement('span');
-    mark.setAttribute('aria-hidden', 'true');
-    mark.style.cssText = 'position:absolute;top:55%;left:0;width:1px;height:1px;';
-    document.body.appendChild(mark);
-
-    if ('IntersectionObserver' in window) {
-      scrollIO = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { deep = true; maybeShow(); }
-        });
-      }, { threshold: 0 });
-      scrollIO.observe(mark);
-    }
   }
+
 })();
