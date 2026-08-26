@@ -65,6 +65,18 @@ export default function LeadModal() {
   useEffect(() => {
     if (pathname.startsWith("/thank-you")) return;
 
+    // owner/test override: ?leadmodal=1 opens immediately, bypassing
+    // the grace period and suppression
+    try {
+      if (new URLSearchParams(window.location.search).get("leadmodal") === "1") {
+        firedRef.current = true;
+        setOpen(true);
+        return;
+      }
+    } catch {
+      /* ignore */
+    }
+
     // arriving from an email link — remember for the whole session
     try {
       const params = new URLSearchParams(window.location.search);
