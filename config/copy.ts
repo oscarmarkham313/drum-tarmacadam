@@ -26,7 +26,6 @@ export const nav = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
-  offer: { label: "The Offer", href: "/offer" },
   cta: { label: "Book a call", href: "/contact" },
 };
 
@@ -229,38 +228,6 @@ export const services = {
       ],
     },
   ],
-  pricing: {
-    eyebrow: "Retainers",
-    heading: "Simple pricing.",
-    sub: "No hidden fees. No confusing packages. Cancel any time.",
-    tiers: [
-      {
-        name: "Starter",
-        price: "€497",
-        per: "per month",
-        line: "One channel, done properly.",
-      },
-      {
-        name: "Growth",
-        price: "€997",
-        per: "per month",
-        line: "Two channels plus landing pages.",
-        featured: true,
-      },
-      {
-        name: "Dominator",
-        price: "€1,997",
-        per: "per month",
-        line: "Full-stack: ads, SEO, social and site.",
-      },
-    ],
-    offerNote: {
-      pre: "Prefer a fixed price? The",
-      link: "€1,500 Website + Meta Ads package",
-      post: "gets you live in 14 days.",
-      href: "/offer",
-    },
-  },
 };
 
 export const results = {
@@ -325,58 +292,6 @@ export const contact = {
       { label: "Phone", value: "+353 87 125 7533", hrefKey: "phone" as const },
     ],
   },
-};
-
-export const offer = {
-  badge: "Website + Meta Ads · Fixed price · Irish businesses",
-  heading: ["A site and a campaign", "that convert."],
-  sub: "One package covers everything — design, copy, ads and management. €1,500 total: €750 today, €750 only when you're happy.",
-  cta: { label: "Get started — €750 today", href: "https://whop.com/checkout/plan_EeyocfGbLALyC/" },
-  secondary: { label: "Ask a question first", href: "/contact" },
-  payment: [
-    {
-      title: "Pay today",
-      price: "€750",
-      detail: "We start building immediately. Website and campaign both live within 14 days.",
-    },
-    {
-      title: "Pay after results",
-      price: "€750",
-      detail: "Due after 30 days — only when you're satisfied. Not happy? We keep going. No extra charge.",
-    },
-  ],
-  includes: {
-    heading: "Everything included.",
-    groups: [
-      {
-        name: "Website",
-        items: [
-          "Custom design from scratch — not a template",
-          "Fully mobile-responsive",
-          "Copywriting included",
-          "Lead capture forms",
-          "On-page SEO setup",
-          "Google Analytics + Search Console",
-          "Fast load times",
-          "Delivered in 14 days",
-        ],
-      },
-      {
-        name: "Meta Ads campaign",
-        items: [
-          "Campaign strategy & audience research",
-          "Ad copy written for your customer",
-          "Creative production",
-          "Full pixel & conversion tracking",
-          "30 days active management",
-          "A/B testing throughout",
-          "Weekly performance reports",
-          "Direct WhatsApp access to your campaign manager",
-        ],
-      },
-    ],
-  },
-  terms: { pre: "Full terms apply —", link: "read them here", href: "/terms" },
 };
 
 export const leadModal = {

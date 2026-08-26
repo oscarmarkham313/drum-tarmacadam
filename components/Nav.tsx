@@ -52,16 +52,6 @@ export default function Nav() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href={nav.offer.href}
-                className={`text-[13px] transition-colors duration-200 hover:text-accent ${
-                  pathname === nav.offer.href ? "text-accent" : "text-text-3"
-                }`}
-              >
-                {nav.offer.label}
-              </Link>
-            </li>
           </ul>
 
           <div className="hidden md:block">
@@ -103,7 +93,7 @@ export default function Nav() {
             transition={{ duration: 0.5, ease: ease.inOut }}
           >
             <ul className="flex flex-col gap-2">
-              {[...nav.links, nav.offer].map((l, i) => (
+              {nav.links.map((l, i) => (
                 <motion.li
                   key={l.href}
                   initial={reduced ? {} : { opacity: 0, y: 16 }}

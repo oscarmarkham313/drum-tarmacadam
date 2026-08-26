@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="flex flex-wrap gap-x-10 gap-y-6 text-sm">
             <div className="flex flex-col gap-2.5">
               <span className="eyebrow">Pages</span>
-              {[...nav.links, nav.offer].map((l) => (
+              {nav.links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
