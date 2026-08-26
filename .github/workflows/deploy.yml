@@ -49,3 +49,9 @@ jobs:
       - id: deployment-retry
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
+      # The legacy branch-deploy pipeline races this workflow and can land
+      # last, reverting the site to the old files at the repo root. Deploy
+      # once more after it has definitely finished so we always win.
+      - run: sleep 120
+      - id: deployment-final
+        uses: actions/deploy-pages@v4
