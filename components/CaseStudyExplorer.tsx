@@ -56,6 +56,32 @@ export default function CaseStudyExplorer() {
         })}
       </div>
 
+      {/* niche intro — DGD's approach for the selected category */}
+      {tab !== "all" && results.nicheIntros[tab as keyof typeof results.nicheIntros] && (
+        <div key={`intro-${tab}`} className={reduced ? "mt-10" : "t-slide mt-10"}>
+          <div className="border border-hairline-md bg-bg-alt p-6 md:p-8">
+            <h2 className="text-xl font-extrabold tracking-tight md:text-2xl">
+              {results.nicheIntros[tab as keyof typeof results.nicheIntros].heading}
+            </h2>
+            <ul className="mt-4 flex flex-col gap-2.5">
+              {results.nicheIntros[tab as keyof typeof results.nicheIntros].points.map(
+                (p) => (
+                  <li
+                    key={p.slice(0, 24)}
+                    className="flex items-baseline gap-3 text-sm leading-relaxed text-text-2"
+                  >
+                    <span className="text-accent" aria-hidden="true">
+                      —
+                    </span>
+                    {p}
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+        </div>
+      )}
+
       {/* list */}
       <motion.div layout={!reduced} className="mt-2">
         <AnimatePresence mode="popLayout" initial={false}>

@@ -241,6 +241,33 @@ export const results = {
     { id: "trades", label: "Trades" },
     { id: "service-businesses", label: "Service businesses" },
   ],
+  /* Shown above the case studies when a niche tab is selected. */
+  nicheIntros: {
+    "estate-agencies": {
+      heading: "How we work with estate agents",
+      points: [
+        "Vendor opportunities, not buyer lists — campaigns built around valuations and instructions.",
+        "Creative matched to your patch and your positioning, from rural one-office firms to premium city agencies.",
+        "Reporting your negotiators can actually use: enquiries, response times and appointments — never impressions.",
+      ],
+    },
+    trades: {
+      heading: "How we work with trades businesses",
+      points: [
+        "We learn the jobs you actually want, then build the campaign around those jobs and your coverage area — not every possible enquiry.",
+        "Your work presented properly: ads that reflect the standard of what you do, never cheap or generic.",
+        "Plain English throughout — we talk about enquiries and booked work, not jargon and click reports.",
+      ],
+    },
+    "service-businesses": {
+      heading: "How we work with service businesses",
+      points: [
+        "Broad services turned into clear propositions — prospects understand who you help and why to call before they enquire.",
+        "Trust-first for regulated businesses: professional campaigns with no exaggerated promises.",
+        "Fewer, better conversations — qualification built into the enquiry journey so your team quotes genuine work.",
+      ],
+    },
+  },
 };
 
 export const about = {
