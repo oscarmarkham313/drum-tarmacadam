@@ -62,10 +62,12 @@ export default function LeadModal() {
   useEffect(() => {
     if (pathname.startsWith("/thank-you")) return;
 
-    // owner/test override: ?leadmodal=1 opens immediately, bypassing
-    // the grace period and suppression
+    // owner/test override: ?leadmodal=1 opens immediately AND clears any
+    // stored suppression, so normal visits behave fresh again afterwards
     try {
       if (new URLSearchParams(window.location.search).get("leadmodal") === "1") {
+        localStorage.removeItem(SUPPRESS_KEY);
+        sessionStorage.removeItem(EMAIL_VISITOR_KEY);
         firedRef.current = true;
         setOpen(true);
         return;
