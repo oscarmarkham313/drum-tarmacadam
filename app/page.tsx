@@ -35,6 +35,18 @@ export default function Home() {
 
           <div className="hl-rule mt-10 h-px w-full max-w-xl bg-ink/20" />
 
+          <div className="hl-late mt-6 flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="text-[17px] leading-none tracking-[0.18em] text-[#f0a929]"
+            >
+              ★★★★★
+            </span>
+            <span className="text-sm font-semibold text-text-2">
+              {hero.trust.text}
+            </span>
+          </div>
+
           <div className="hl-late mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <p className="max-w-md text-[15px] leading-relaxed text-text-2">
               {hero.sub}

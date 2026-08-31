@@ -36,6 +36,7 @@ export const home = {
     // After the load-in, the last word rolls through these.
     rotating: ["customers", "enquiries", "bookings", "clients"],
     sub: "Web design, Google Ads, Meta ads and SEO for Irish businesses that want the phone to ring. Built and run from Dublin.",
+    trust: { text: "Rated 4.9 by Irish businesses" },
     cta: { label: "Get your free growth audit", href: "#audit" },
     secondary: { label: "See the results", href: "/results" },
     video: {
