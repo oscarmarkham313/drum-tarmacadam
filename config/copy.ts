@@ -36,7 +36,7 @@ export const home = {
     // After the load-in, the last word rolls through these.
     rotating: ["customers", "enquiries", "bookings", "clients"],
     sub: "Web design, Google Ads, Meta ads and SEO for Irish businesses that want the phone to ring. Built and run from Dublin.",
-    cta: { label: "Book a free strategy call", href: "/contact" },
+    cta: { label: "Get your free growth audit", href: "#audit" },
     secondary: { label: "See the results", href: "/results" },
     video: {
       webm: "/hero/hero.webm",
@@ -146,9 +146,9 @@ export const home = {
     ],
   },
   closing: {
-    heading: "Ready when you are.",
-    sub: "A 15-minute call. We'll tell you exactly what we'd do and what it costs. No deck, no obligation.",
-    cta: { label: "Book a free strategy call", href: "/contact" },
+    heading: "Find out what you're missing.",
+    sub: "Request a free growth audit — within 24 hours we'll send you exactly where your next customers are going instead of you, and the three fastest ways to fix it. Takes 20 seconds. No call, no obligation.",
+    cta: { label: "Get your free growth audit", href: "#audit" },
   },
 };
 
@@ -325,22 +325,24 @@ export const leadModal = {
   // Posts to the existing Formspree form. If you create a dedicated form
   // for the modal in the Formspree dashboard, swap the id here.
   endpoint: "https://formspree.io/f/meendppv",
-  heading: "See what your competitors are running.",
-  body: "Tell us your trade and your county and we'll send you a breakdown of the ads your nearest competitors have live right now — their hooks, their offers, and how long each has been running.",
+  heading: "Your free growth audit.",
+  body: "Tell us who you are and we'll find where your next customers are going instead of you — your Google position, who's outranking you, the ads running in your patch — and send it with the three fastest fixes. With you within 24 hours. No call, no cost, no catch.",
   fields: {
     business: "Business name",
-    trade: "Trade",
+    trade: "Business type",
     county: "County",
     email: "Email",
   },
   trades: [
     "Roofing",
     "Driveways & paving",
-    "Landscaping",
-    "Kitchen & door spraying",
-    "Powerwashing",
-    "Plumbing or electrical",
-    "Estate agency",
+    "Landscaping & gardens",
+    "Other trades",
+    "Estate or letting agency",
+    "Beauty, hair & wellness",
+    "Gym, fitness or clinic",
+    "Restaurant or café",
+    "Professional services",
     "Other",
   ],
   counties: [
@@ -350,15 +352,15 @@ export const leadModal = {
     "Roscommon", "Sligo", "Tipperary", "Waterford", "Westmeath",
     "Wexford", "Wicklow",
   ],
-  submit: "Send me the breakdown",
+  submit: "Send my free audit",
   sending: "Sending…",
   smallPrint:
-    "No spam. One email with your breakdown, and that's it unless you reply.",
+    "No spam, no sales calls. One email with your audit — that's it unless you reply.",
   confirmHeading: "Got it.",
-  confirmBody: "Your breakdown will be with you within 24 hours.",
+  confirmBody: "Your free audit will be with you within 24 hours.",
   errors: {
     business: "Enter your business name",
-    trade: "Pick your trade",
+    trade: "Pick your business type",
     county: "Pick your county",
     email: "Enter a valid email",
     submit: "Something went wrong — email us instead at",

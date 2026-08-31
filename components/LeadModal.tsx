@@ -20,7 +20,8 @@ import { leadModal, site } from "@/config/copy";
 const SUPPRESS_KEY = "dgd-lead-suppressed-until";
 const EMAIL_VISITOR_KEY = "dgd-lead-email-visitor";
 const SUPPRESS_DAYS = 30;
-const SHOW_DELAY_MS = 4_000;
+const SHOW_DELAY_MS = 2_500;
+const SCROLL_TRIGGER = 0.3; // fraction of page scrolled that also opens it
 
 function suppressed(): boolean {
   try {
@@ -88,16 +89,42 @@ export default function LeadModal() {
 
     if (suppressed()) return;
 
-    // all devices: show 4 seconds after landing
-    const t = window.setTimeout(() => {
+    const fire = () => {
       if (!firedRef.current && !suppressed()) {
         firedRef.current = true;
         setOpen(true);
       }
-    }, SHOW_DELAY_MS);
+    };
 
-    return () => window.clearTimeout(t);
+    // all devices: show shortly after landing, or once the visitor has
+    // scrolled a third of the page — whichever happens first
+    const t = window.setTimeout(fire, SHOW_DELAY_MS);
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= SCROLL_TRIGGER) fire();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [pathname]);
+
+  /* any CTA linking to "#audit" opens the form directly — suppression
+     never blocks an explicit click */
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const link = (e.target as HTMLElement | null)?.closest?.('a[href$="#audit"]');
+      if (!link) return;
+      e.preventDefault();
+      firedRef.current = true;
+      setDone(false);
+      setOpen(true);
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, []);
 
   /* ————— open/close plumbing ————— */
   const close = useCallback(() => {
@@ -166,8 +193,8 @@ export default function LeadModal() {
     if (Object.keys(nextErrors).length > 0) return;
 
     setSending(true);
-    data.append("form_type", "competitor-ad-breakdown");
-    data.append("_subject", "Competitor ad breakdown request");
+    data.append("form_type", "free-growth-audit");
+    data.append("_subject", "Free growth audit request");
     try {
       const res = await fetch(leadModal.endpoint, {
         method: "POST",
@@ -186,7 +213,7 @@ export default function LeadModal() {
       if (typeof w.gtag === "function")
         w.gtag("event", "generate_lead", {
           event_category: "lead_modal",
-          event_label: "competitor-ad-breakdown",
+          event_label: "free-growth-audit",
         });
     } catch {
       setSubmitError(true);
