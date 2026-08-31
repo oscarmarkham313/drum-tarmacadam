@@ -20,8 +20,8 @@ import { leadModal, site } from "@/config/copy";
 const SUPPRESS_KEY = "dgd-lead-suppressed-until";
 const EMAIL_VISITOR_KEY = "dgd-lead-email-visitor";
 const SUPPRESS_DAYS = 30;
-const SHOW_DELAY_MS = 2_500;
-const SCROLL_TRIGGER = 0.3; // fraction of page scrolled that also opens it
+const SHOW_DELAY_MS = 1_200;
+const SCROLL_TRIGGER = 0.15; // fraction of page scrolled that also opens it
 
 function suppressed(): boolean {
   try {
